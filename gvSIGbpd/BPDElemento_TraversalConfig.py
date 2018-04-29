@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # File: BPDElemento_TraversalConfig.py
-## Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+## Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -165,7 +165,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'responsablesDeArtefacto',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -173,7 +173,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -217,7 +217,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'politicasDeNegocioGobernantes',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDPoliticaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -225,7 +225,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioDirigentes',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -233,7 +233,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosGestores',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -416,7 +416,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'relation_name': 'tiposDeArtefactos',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -518,7 +518,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'aggregation_name':     'artefactos',
-                'columns':              [ 'title', 'description', 'codigo', 'estado', ],
+                'columns':              [ 'title', 'description', 'codigo', ],
                 'contains_collections': False,
                 'tabular_tree':         False,
                 'subitems':             [
@@ -656,7 +656,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'aggregation_name':     'herramientas',
-                'columns':              [ 'title', 'description', 'codigo', 'estado', ],
+                'columns':              [ 'title', 'description', 'codigo', ],
                 'contains_collections': False,
                 'tabular_tree':         False,
                 'subitems':             [
@@ -794,7 +794,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'aggregation_name':     'perfiles',
-                'columns':              [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':              [ 'title', 'description', 'abreviatura', ],
                 'contains_collections': False,
                 'tabular_tree':         False,
                 'subitems':             [
@@ -863,7 +863,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'aggregation_name':     'politicasDeNegocio',
-                'columns':              [ 'title', 'description', 'codigo', 'estado', ],
+                'columns':              [ 'title', 'description', 'codigo', ],
                 'contains_collections': False,
                 'tabular_tree':         False,
                 'subitems':             [
@@ -932,7 +932,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'aggregation_name':     'procedimientos',
-                'columns':              [ 'title', 'description', 'proposito', 'codigo', 'estado', ],
+                'columns':              [ 'title', 'description', 'proposito', ],
                 'contains_collections': False,
                 'tabular_tree':         False,
                 'subitems':             [
@@ -1001,7 +1001,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'aggregation_name':     'reglasDeNegocio',
-                'columns':              [ 'title', 'description', 'codigo', 'estado', ],
+                'columns':              [ 'title', 'description', 'codigo', ],
                 'contains_collections': False,
                 'tabular_tree':         False,
                 'subitems':             [
@@ -1139,7 +1139,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'aggregation_name':     'unidadesOrganizacionales',
-                'columns':              [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':              [ 'title', 'description', 'abreviatura', ],
                 'contains_collections': False,
                 'tabular_tree':         False,
                 'subitems':             [
@@ -1299,7 +1299,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'ejecutores',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -1307,7 +1307,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -1315,7 +1315,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -1485,7 +1485,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'relation_name': 'artefactosDeEntrada',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -1661,7 +1661,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'relation_name': 'destinatarios',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -1669,9 +1669,17 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'artefactosEnviados',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
+                        'reuse_config': 'Default',
+                    },
+                ],
+            },
+            {   'relation_name': 'recepciones',
+                'columns':       [ 'title', 'description', 'tituloProcesoDeNegocio', 'titulosDestinatarios', 'titulosArtefactosRecibidos', ],
+                'related_types': [
+                    {   'portal_types': [ 'BPDRecepcion', ],
                         'reuse_config': 'Default',
                     },
                 ],
@@ -1695,7 +1703,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'ejecutores',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -1703,7 +1711,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -1711,7 +1719,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -1909,7 +1917,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -1917,7 +1925,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -2191,7 +2199,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -2199,7 +2207,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -2341,14 +2349,6 @@ class BPDElemento_TraversalConfig:
             },
         ],
         'traversals':   [
-            {   'relation_name': 'instrucciones',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
-                'related_types': [
-                    {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
-                        'reuse_config': 'Default',
-                    },
-                ],
-            },
             {   'aggregation_name':     'coleccionesHerramientas',
                 'columns':              [ 'title', 'description', ],
                 'contains_collections': True,
@@ -2359,8 +2359,16 @@ class BPDElemento_TraversalConfig:
                     },
                 ],
             },
+            {   'relation_name': 'instrucciones',
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', ],
+                'related_types': [
+                    {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
+                        'reuse_config': 'Default',
+                    },
+                ],
+            },
             {   'relation_name': 'responsablesDeHerramienta',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -2368,7 +2376,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'artefactosDeHerramienta',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -2376,7 +2384,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosAsistidos',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -2394,7 +2402,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'politicasDeNegocioGobernantes',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDPoliticaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -2402,7 +2410,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioDirigentes',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -2578,7 +2586,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosSupervisados',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -2587,7 +2595,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosEjecutados',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -2623,7 +2631,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'responsableDeArtefactos',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -2631,7 +2639,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'responsableDeHerramientas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -2647,7 +2655,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioDirigentes',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -2880,7 +2888,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'ejecutores',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -2888,7 +2896,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -2896,7 +2904,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -3052,7 +3060,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'relation_name': 'procesosSupervisados',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -3061,7 +3069,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosEjecutados',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -3097,7 +3105,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'responsableDeArtefactos',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -3105,7 +3113,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'responsableDeHerramientas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -3121,7 +3129,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioDirigentes',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -3315,7 +3323,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -3323,7 +3331,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -3503,7 +3511,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosDeNegocioGobernados',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -3512,7 +3520,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'participantesGobernados',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
@@ -3521,7 +3529,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasGobernadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
@@ -3530,7 +3538,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'artefactosGobernados',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
@@ -3714,7 +3722,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'supervisor',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -3722,7 +3730,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'ejecutores',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -3770,7 +3778,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'politicasDeNegocioGobernantes',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDPoliticaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -3785,8 +3793,17 @@ class BPDElemento_TraversalConfig:
                     },
                 ],
             },
+            {   'relation_name': 'herramientasDocumentadas',
+                'columns':       [ 'title', 'description', 'codigo', ],
+                'dependency':    'Supplier',
+                'related_types': [
+                    {   'portal_types': [ 'BPDHerramienta', ],
+                        'reuse_config': 'Default',
+                    },
+                ],
+            },
             {   'relation_name': 'artefactosGestionados',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -3802,7 +3819,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -3831,15 +3848,6 @@ class BPDElemento_TraversalConfig:
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', 'BPDCaracteristica', 'BPDDecision', 'BPDEntrada', 'BPDEnvio', 'BPDExitoFinal', 'BPDExtensionProceso', 'BPDFracasoFinal', 'BPDHerramienta', 'BPDOrganizacion', 'BPDPasoSimple', 'BPDPerfil', 'BPDPlazo', 'BPDPoliticaDeNegocio', 'BPDProcesoDeNegocioSimple', 'BPDPuntoExtension', 'BPDRecepcion', 'BPDReglaDeNegocio', 'BPDSalida', 'BPDSubProceso', 'BPDUnidadOrganizacional', 'BPDUsoArtefacto', 'BPDUsoCaracteristica', ],
-                        'reuse_config': 'Default',
-                    },
-                ],
-            },
-            {   'relation_name': 'herramientasDocumentadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', ],
-                'dependency':    'Supplier',
-                'related_types': [
-                    {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
                     },
                 ],
@@ -4006,7 +4014,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -4014,7 +4022,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -4233,7 +4241,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'relation_name': 'remitente',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -4241,9 +4249,17 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'artefactosRecibidos',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
+                        'reuse_config': 'Default',
+                    },
+                ],
+            },
+            {   'relation_name': 'envios',
+                'columns':       [ 'title', 'description', 'tituloProcesoDeNegocio', 'titulosDestinatarios', 'titulosArtefactosEnviados', ],
+                'related_types': [
+                    {   'portal_types': [ 'BPDEnvio', ],
                         'reuse_config': 'Default',
                     },
                 ],
@@ -4267,7 +4283,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'ejecutores',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -4275,7 +4291,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -4283,7 +4299,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -4528,7 +4544,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosDeNegocioDirigidos',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
                         'reuse_config': 'Default',
@@ -4545,7 +4561,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'participantesDirigidos',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -4553,7 +4569,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'artefactosDirigidos',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -4561,7 +4577,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasDirigidas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -4674,7 +4690,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'relation_name': 'artefactosDeSalida',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -4833,7 +4849,7 @@ class BPDElemento_TraversalConfig:
         ],
         'traversals':   [
             {   'relation_name': 'procesoUsado',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
                         'reuse_config': 'Default',
@@ -4859,7 +4875,7 @@ class BPDElemento_TraversalConfig:
                 'candidates_scope': 'Owner',
             },
             {   'relation_name': 'ejecutores',
-                'columns':       [ 'title', 'description', 'abreviatura', 'responsabilidadesClave', ],
+                'columns':       [ 'title', 'description', 'abreviatura', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDPerfil', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -4867,7 +4883,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -4875,7 +4891,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'herramientasAplicadas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -5036,7 +5052,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosSupervisados',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -5045,7 +5061,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'procesosEjecutados',
-                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', 'estado', ],
+                'columns':       [ 'title', 'description', 'proposito', 'detallesProceso', 'codigo', ],
                 'dependency':    'Supplier',
                 'related_types': [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
@@ -5081,7 +5097,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'responsableDeArtefactos',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -5089,7 +5105,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'responsableDeHerramientas',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -5105,7 +5121,7 @@ class BPDElemento_TraversalConfig:
                 ],
             },
             {   'relation_name': 'reglasDeNegocioDirigentes',
-                'columns':       [ 'title', 'description', 'codigo', 'estado', 'nivelDeImposicion', ],
+                'columns':       [ 'title', 'description', 'codigo', ],
                 'related_types': [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',

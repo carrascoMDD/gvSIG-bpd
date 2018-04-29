@@ -2,7 +2,7 @@
 #
 # File: BPDPoliticaDeNegocio.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -102,7 +102,7 @@ schema = Schema((
     RelationField(
         name='herramientasGobernadas',
         inverse_relation_label="Politicas de Negocio gobernantes",
-        additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
+        additional_columns=['codigo'],
         inverse_relation_description="Politicas de Negocio que prescriben o gobiernan el uso de la Herramienta en la Organizacion.",
         description="Herramientas cuya utilizacion esta prescrita o gobernada por la Politica de Negocio.",
         relationship='BPDHerramientasGobernadas',
@@ -133,7 +133,7 @@ schema = Schema((
     RelationField(
         name='participantesGobernados',
         inverse_relation_label="Politicas de Negocio gobernantes",
-        additional_columns=['abreviatura', 'responsabilidadesClave'],
+        additional_columns=['abreviatura'],
         inverse_relation_description="Las Politicas de Negocio que afectan a la labor del Perfil o Unidad Organizacional",
         description="Perfiles y Unidades Organizacionales que aplican la Politica de Negocio durante su labor.",
         relationship='BPDParticipantesGobernados',
@@ -164,7 +164,7 @@ schema = Schema((
     RelationField(
         name='artefactosGobernados',
         inverse_relation_label="Politicas de Negocio gobernantes",
-        additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
+        additional_columns=['codigo'],
         inverse_relation_description="Politicas de Negocio que prescriben o gobiernan el uso del Artefacto en la Organizacion.",
         description="Artefactos cuya utilizacion esta prescrita o gobernada por la Politica de Negocio.",
         relationship='BPDArtefactosGobernados',
@@ -214,7 +214,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='politicasDeNegocioGobernantes',
         inverse_relation_description2="Business Policies to observe when executing the Business Process.",
-        additional_columns=['codigo','estado','nivelDeImposicion',],
+        additional_columns=['codigo'],
         write_permission='Modify portal content',
         label="Procesos de Negocio gobernados",
         multiValued=1,
@@ -307,6 +307,15 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDInspectClipboard",
+        'category': "object_buttons",
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
+        'permissions': ("View",),
+        'condition': """python:object.fAllowRead()"""
+       },
+
+
        {'action': "string:${object_url}/Editar",
         'category': "object",
         'id': 'edit',
@@ -352,15 +361,6 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
-        'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
-        'permissions': ("View",),
-        'condition': """python:1"""
-       },
-
-
        {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
@@ -370,8 +370,17 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddversions',
         'name': 'Versions',
         'permissions': ("View",),
@@ -379,10 +388,19 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/MDDCacheStatus/",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'mddcachestatus',
+        'name': 'Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/TextualRest",
+        'category': "object_buttons",
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

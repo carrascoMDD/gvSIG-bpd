@@ -2,7 +2,7 @@
 #
 # File: Install.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -29,6 +29,12 @@ __author__ = """Conselleria de Infraestructuras y Transporte de la Generalidad V
 Antonio Carrasco Valero <carrasco@ModelDD.org>"""
 __docformat__ = 'plaintext'
 
+
+# #############################
+# ACV 20091124 To control logging and avoid excessive warnings upon server start or product reinstall
+import logging
+from logging import ERROR as cLoggingLevel_ERROR
+# ACV 20091124 
 
 import os.path
 import sys
@@ -97,7 +103,25 @@ def install(self, reinstall=False):
     f = open(xmlpath)
     xml = f.read()
     f.close()
+    
+    # ###########################
+    """ACV 20091124
+    Avoid lots of log entries from  catalogs complaining about not found entries for instances affected by the importXML
+    Was:
     relations_tool.importXML(xml)
+    """
+    try:
+        aDisableLevel = logging.getLogger('Zope.ZCatalog').manager.disable
+        logging.getLogger('Zope.ZCatalog').manager.disable = cLoggingLevel_ERROR
+    
+        relations_tool.importXML(xml)
+    finally:
+        logging.getLogger('Zope.ZCatalog').manager.disable = aDisableLevel
+    """ACV 20091124
+    
+    """
+    # ###########################
+        
 
     # enable portal_factory for given types
     factory_tool = getToolByName(self,'portal_factory')

@@ -2,7 +2,7 @@
 #
 # File: BPDSubProceso.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -113,7 +113,7 @@ schema = Schema((
     RelationField(
         name='procesoUsado',
         inverse_relation_label="Usos como Sub-Proceso de Negocio",
-        additional_columns=['proposito', 'detallesProceso', 'codigo', 'estado'],
+        additional_columns=['proposito', 'detallesProceso'],
         inverse_relation_description="Pasos de otros Procesos de Negocio donde este proceso se ejecuta de principio a fin, como un Paso Sub-Proceso.",
         description="Proceso de Negocio que se ejecuta como parte del Proceso de Negocio de mayor alcance.",
         relationship='BPDProcesoUsado',
@@ -224,6 +224,15 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
+       {'action': "string:${object_url}/MDDInspectClipboard",
+        'category': "object_buttons",
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
+        'permissions': ("View",),
+        'condition': """python:object.fAllowRead()"""
+       },
+
+
        {'action': "string:${object_url}/Editar",
         'category': "object",
         'id': 'edit',
@@ -269,15 +278,6 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
-        'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
-        'permissions': ("View",),
-        'condition': """python:1"""
-       },
-
-
        {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
@@ -287,8 +287,17 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddversions',
         'name': 'Versions',
         'permissions': ("View",),
@@ -296,10 +305,19 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/MDDCacheStatus/",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'mddcachestatus',
+        'name': 'Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/TextualRest",
+        'category': "object_buttons",
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

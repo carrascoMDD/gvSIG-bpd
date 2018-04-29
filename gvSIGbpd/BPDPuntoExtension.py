@@ -2,7 +2,7 @@
 #
 # File: BPDPuntoExtension.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -241,10 +241,10 @@ class BPDPuntoExtension(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoMinimo, 
     immediate_view                   = 'Textual'
     default_view                     = 'Textual'
     suppl_views                      = ('Textual', 'Tabular', )
-    typeDescription                  = "Un Proceso de Negocio definido aparte, se ejercita de principio a fin como un paso parte de otro Proceso de Negocio de mayor alcance."
+    typeDescription                  = "Un Proceso de Negocio definido aparte, ejercita este Proceso de Negocio de principio a fin, y extiende este Proces de Negocio insertando comportamiento aditional en este punto del proceso."
     typeDescMsgId                    =  'gvSIGbpd_BPDPuntoExtension_help'
     archetype_name2                  = 'Extension Point'
-    typeDescription2                 = '''A Business Process, specified elsewhere, is executed in its entirety in the context of the current Business Process, as a single step.'''
+    typeDescription2                 = '''A Business Process, specified elsewhere, executes this Business Process in its entirety, and extends this Business Process inserting additional behavior at this point of the process..'''
     archetype_name_msgid             = 'gvSIGbpd_BPDPuntoExtension_label'
     factory_methods                  = None
     factory_enablers                 = None
@@ -260,6 +260,15 @@ class BPDPuntoExtension(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoMinimo, 
         'name': 'State',
         'permissions': ("View",),
         'condition': """python:0"""
+       },
+
+
+       {'action': "string:${object_url}/MDDInspectClipboard",
+        'category': "object_buttons",
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
+        'permissions': ("View",),
+        'condition': """python:object.fAllowRead()"""
        },
 
 
@@ -308,15 +317,6 @@ class BPDPuntoExtension(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoMinimo, 
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
-        'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
-        'permissions': ("View",),
-        'condition': """python:1"""
-       },
-
-
        {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
@@ -326,8 +326,17 @@ class BPDPuntoExtension(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoMinimo, 
        },
 
 
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddversions',
         'name': 'Versions',
         'permissions': ("View",),
@@ -335,10 +344,19 @@ class BPDPuntoExtension(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoMinimo, 
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/MDDCacheStatus/",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'mddcachestatus',
+        'name': 'Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/TextualRest",
+        'category': "object_buttons",
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

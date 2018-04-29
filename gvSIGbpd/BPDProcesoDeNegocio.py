@@ -2,7 +2,7 @@
 #
 # File: BPDProcesoDeNegocio.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -224,7 +224,7 @@ schema = Schema((
     RelationField(
         name='herramientasDocumentadas',
         inverse_relation_label="Instrucciones",
-        additional_columns=['proposito','detallesProceso','codigo','estado',],
+        additional_columns=['proposito','detallesProceso',],
         inverse_relation_description="Instrucciones acerca de como utilizar la Herramienta para alcanzar un objetivo, expresado como un proceso con entradas, pasos y salidas.",
         description="Herramientas cuya utilizacion se documenta en este proceso.",
         relationship='BPDHerramientasDocumentadas',
@@ -315,7 +315,7 @@ schema = Schema((
     RelationField(
         name='usadoComoSubProcesos',
         inverse_relation_label="Proceso de Negocio usado",
-        additional_columns=['proposito','detallesProceso','codigo','estado',],
+        additional_columns=['proposito','detallesProceso',],
         inverse_relation_description="Proceso de Negocio que se ejecuta como parte del Proceso de Negocio de mayor alcance.",
         description="Pasos de otros Procesos de Negocio donde este proceso se ejecuta de principio a fin, como un Paso Sub-Proceso.",
         relationship='BPDUsadoComoSubProcesos',
@@ -344,7 +344,7 @@ schema = Schema((
     RelationField(
         name='herramientasAplicadas',
         inverse_relation_label="Procesos de Negocio Asistidos",
-        additional_columns=['codigo', 'estado'],
+        additional_columns=['codigo'],
         inverse_relation_description="Procesos de Negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Pasos individuales del Procesos de Negocio.",
         description="Herramientas aplicadas en la realizacion del Proceso de Negocio. Considere ademas las Herramientas que se aplican en Pasos individuales del Proceso de Negocio.",
         relationship='BPDHerramientasAplicadasEnProcesos',
@@ -422,7 +422,7 @@ schema = Schema((
         write_permission='Modify portal content',
         inverse_relation_field_name='procesosDeNegocioGobernados',
         inverse_relation_description2="Business Processes that abide by, or enforce the Business Policy.",
-        additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
+        additional_columns=['codigo'],
         label="Politicas de Negocio Gobernantes",
         multiValued=1,
         containment="Unspecified",
@@ -452,7 +452,7 @@ schema = Schema((
         write_permission='Modify portal content',
         inverse_relation_field_name='procesosEjecutados',
         inverse_relation_description2="Business Process that can be executed by the participant Profile or Organisational Unit.",
-        additional_columns=['abreviatura', 'responsabilidadesClave'],
+        additional_columns=['abreviatura'],
         label="Ejecutores del Proceso",
         multiValued=1,
         containment="Unspecified",
@@ -512,7 +512,7 @@ schema = Schema((
         write_permission='Modify portal content',
         inverse_relation_field_name='procesosGestores',
         inverse_relation_description2="Business Processes executed to manage this Artefact.",
-        additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
+        additional_columns=['codigo'],
         label="Artefactos Gestionados",
         multiValued=1,
         containment="Unspecified",
@@ -542,7 +542,7 @@ schema = Schema((
         write_permission='Modify portal content',
         inverse_relation_field_name='procesosSupervisados',
         inverse_relation_description2="Business Process under supervision of the participant Profile or Organisational Unit.",
-        additional_columns=['abreviatura', 'responsabilidadesClave'],
+        additional_columns=['abreviatura'],
         label="Supervisor",
         multiValued=0,
         containment="Unspecified",
@@ -707,6 +707,15 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDInspectClipboard",
+        'category': "object_buttons",
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
+        'permissions': ("View",),
+        'condition': """python:object.fAllowRead()"""
+       },
+
+
        {'action': "string:${object_url}/Editar",
         'category': "object",
         'id': 'edit',
@@ -752,15 +761,6 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
-        'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
-        'permissions': ("View",),
-        'condition': """python:1"""
-       },
-
-
        {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
@@ -770,8 +770,17 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddversions',
         'name': 'Versions',
         'permissions': ("View",),
@@ -779,10 +788,19 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/MDDCacheStatus/",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'mddcachestatus',
+        'name': 'Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/TextualRest",
+        'category': "object_buttons",
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

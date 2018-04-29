@@ -32,6 +32,9 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.config import *
 
+from Products.Archetypes.utils import shasattr
+
+
 from Acquisition        import aq_inner, aq_parent
 
 
@@ -53,7 +56,7 @@ from Products.CMFCore.utils         import getToolByName
 
 from AccessControl.Permissions   import access_contents_information   as perm_AccessContentsInformation
 
-from Products.ModelDDvlPloneTool.ModelDDvlPloneTool import cModelDDvlPloneToolName, ModelDDvlPloneTool
+from Products.ModelDDvlPloneTool.ModelDDvlPloneTool import cModelDDvlPloneToolId, ModelDDvlPloneTool
 
 
 #from OFS.CopySupport import CopyError as gCopyErrorExceptionString     
@@ -108,17 +111,97 @@ class BPDElemento_Operaciones:
         
         unResult = OrderedBaseFolder.moveObjectsByDelta( self,  ids, delta, subset_ids=subset_ids)
         
-        someImpactedUIDs = []
-        someObjectValues = self.objectValues()
-        for anObject in someObjectValues:
-            anObjectUID = anObject.UID()
-            if anObjectUID:
-                someImpactedUIDs.append( anObjectUID)
-                
+        if not unResult:
+            return self
+        
+        
         unaModelDDvlPloneTool = getToolByName( self, 'ModelDDvlPlone_tool', None)
-        if unaModelDDvlPloneTool:
-            unaModelDDvlPloneTool.pFlushCachedTemplatesForElements( self, someImpactedUIDs)
+        if not unaModelDDvlPloneTool:
+            return self
+        
+        someImpactedUIDs = []
+        
+        unaOwnUID = self.UID()
+        someImpactedUIDs.append( unaOwnUID)
+        
+        if shasattr( self, 'getContenedor'):
+            unContenedor = None
+            try:
+                unContenedor = self.getContenedor()
+            except:
+                None
+            if not ( unContenedor == None):
+                unContenedorUID = ''
+                if shasattr( self, 'UID'):
+                    unContenedorUID = ''
+                    try:
+                        unContenedorUID = unContenedor.UID()
+                    except:
+                        None
+                    if unContenedorUID and not ( unContenedorUID in someImpactedUIDs):
+                        someImpactedUIDs.append( unContenedorUID)
             
+        if shasattr( self, 'getPropietario'):
+            unPropietario = None
+            try:
+                unPropietario = self.getPropietario()
+            except:
+                None
+            if not ( unPropietario == None) and not ( unPropietario == unContenedor):
+                unPropietarioUID = ''
+                if shasattr( self, 'UID'):
+                    unPropietarioUID = ''
+                    try:
+                        unPropietarioUID = unPropietario.UID()
+                    except:
+                        None
+                if unPropietarioUID and not ( unPropietarioUID in someImpactedUIDs):
+                    someImpactedUIDs.append( unPropietarioUID)
+            
+        someIds = ids
+        if not ( someIds.__class__.__name__ in [ 'list', 'tuple', 'set',]):
+            someIds = [ someIds,]
+
+        aMovedNewPosition = -1
+        someObjectValues = self.objectValues()
+        for anObjectIndex in range( len( someObjectValues)):
+            
+            anObject = someObjectValues[ anObjectIndex]
+            
+            anObjectId = anObject.getId()
+            if ( anObjectId in someIds):
+                aMovedNewPosition = anObjectIndex
+                
+            anObjectUID = anObject.UID()
+            if anObjectUID and not ( anObjectUID in someImpactedUIDs):
+                someImpactedUIDs.append( anObjectUID)
+
+                
+        anElementToReportUpon = None
+            
+        for anId in someIds:
+            for anObject in someObjectValues:
+                if anObject.getId() == anId:
+                    anElementToReportUpon = anObject
+                    break
+                
+        anElementResult = None
+        if not ( anElementToReportUpon == None):
+            anElementResult = unaModelDDvlPloneTool.fNewResultForElement( anElementToReportUpon)
+            
+            
+        unaModelDDvlPloneTool.pFlushCachedTemplatesForImpactedElementsUIDs( self, someImpactedUIDs)
+        
+        aMoveReport = {
+            'effect':                  'moved', 
+            'new_position':            aMovedNewPosition,
+            'delta':                   delta,
+            'moved_element':           anElementResult,
+            'parent_traversal_name':   '',
+            'impacted_objects_UIDs':   someImpactedUIDs,
+        } 
+        unaModelDDvlPloneTool._pSetAudit_Modification( self, 'Move Sub Object', aMoveReport)
+        
         return unResult
             
     
@@ -1404,14 +1487,9 @@ class BPDElemento_Operaciones:
             
             #aModelDDvlPloneTool = None
             #try:
-                #aModelDDvlPloneTool = aq_get( unPortalRoot, cModelDDvlPloneToolName, None, 1)
+                #aModelDDvlPloneTool = aq_get( unPortalRoot, cModelDDvlPloneToolId, None, 1)
             #except:
                 #None  
-            #if aModelDDvlPloneTool:
-                #return aModelDDvlPloneTool
-            
-            #if not ( theAllowCreation and cLazyCreateModelDDvlPloneTool):
-                #return None
      
             
             aModelDDvlPloneTool = getToolByName( self, 'ModelDDvlPlone_tool', None)
@@ -1427,10 +1505,10 @@ class BPDElemento_Operaciones:
                 return None
              
             unaNuevaTool = ModelDDvlPloneTool( ) 
-            unPortalRoot._setObject( cModelDDvlPloneToolName,  unaNuevaTool)
+            unPortalRoot._setObject( cModelDDvlPloneToolId,  unaNuevaTool)
             aModelDDvlPloneTool = None
             try:
-                aModelDDvlPloneTool = aq_get( unPortalRoot, cModelDDvlPloneToolName, None, 1)
+                aModelDDvlPloneTool = aq_get( unPortalRoot, cModelDDvlPloneToolId, None, 1)
             except:
                 None  
             if not aModelDDvlPloneTool:

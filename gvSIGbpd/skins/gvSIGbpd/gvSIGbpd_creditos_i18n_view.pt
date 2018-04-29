@@ -30,7 +30,7 @@
                  
 
 <style type="text/css" >
-   table.TRAsytle_Credits_Table {
+   table.MDDCO_Table {
         display:                table;
         color:                  Black;
         font-size:              85%;
@@ -46,35 +46,35 @@
         border-spacing:         0;
         border:                 1px solid #8CACBB;
     }
-    tr.TRAsytle_Credits_Row {
+    tr.MDDCO_Row {
         margin:                 8px 0;   
         display:                table-row;
         border-collapse:        collapse;
         background-color:       #EEF3F5;
         border-bottom:          1px solid #8CACBB; 
     }
-    td.TRAsytle_Credits_PropertyName_Cell {
+    td.MDDCO_PN_Cell {
         display:                table-cell;
         margin:                 0;
         padding:                4px;
         vertical-align:         baseline;     
         text-align:             left;
     }
-    td.TRAsytle_Credits_PropertyValue_Cell {
+    td.MDDCO_PV_Cell {
         display:                table-cell;
         margin:                 0;
         padding:                4px;
         vertical-align:         baseline;       
         text-align:             left;
     }
-    .TRAsytle_Credits_PropertyName_Main_Span {
+    .MDDCO_PN_Main_Span {
         display:                run-in;
         padding:                0;       
         font-weight:            900;
         line-height:            140%;
         font-size:              120%;
     }
-    .TRAsytle_Credits_PropertyValue_Main_Span {
+    .MDDCO_PV_Main_Span {
         display:                run-in;
         margin:                 0;
         padding:                0;       
@@ -82,76 +82,76 @@
         line-height:            140%;
         font-size:              120%;
     }
-    .TRAsytle_Credits_PropertyValue_Main_Paragraph {
+    .MDDCO_PV_Main_Para {
         display:                run-in;
         padding:                0 0 8px 0;       
         margin:                 0 !important;
         font-weight:            900;
         line-height:            140%;
     }
-    .TRAsytle_Credits_PropertyValue_Main_Span a {
+    .MDDCO_PV_Main_Span a {
         text-decoration:        underline;
         background-color:       transparent;
         color:                  #43697   
     }
-    .TRAsytle_Credits_PropertyValue_Main_Description_Span {
+    .MDDCO_PV_Main_Desc_Span {
         display:                run-in;
         margin:                 0;
         margin:                 0;
         line-height:            140%;
     }
-   .TRAsytle_Credits_PropertyValue_Main_Description_Span a {
+   .MDDCO_PV_Main_Desc_Span a {
         text-decoration:        underline;
         background-color:       transparent;
         color:                  black;   
     }
-    .TRAsytle_Credits_PropertyName_Paragraph {
+    .MDDCO_PN_Para {
         display:                run-in;
         padding:                0 0 8px 0;       
         margin:                 0 !important;
         line-height:            140%;
     }
-    .TRAsytle_Credits_PropertyName_Span {
+    .MDDCO_PN_Span {
         display:                run-in;
         margin:                 0;
         padding:                0;       
         font-weight:            700;
         line-height:            140%;
     }
-    .TRAsytle_Credits_PropertyValue_Span {
+    .MDDCO_PV_Span {
         display:                run-in;
         margin:                 0;
         padding:                0;       
         font-weight:            500;
         line-height:            140%;
     }
-   .TRAsytle_Credits_PropertyValue_Span a {
+   .MDDCO_PV_Span a {
         text-decoration:        none;
         background-color:       transparent;
         color:                  black;   
         font-weight:            900;
     }
-    .TRAsytle_Credits_PropertyValue_Highlight_Span {
+    .MDDCO_PV_High_Span {
         display:                run-in;
         margin:                 0;
         padding:                0;       
         font-weight:            900;
         line-height:            140%;
     }
-    .TRAsytle_Credits_PropertyValue_Description_Span {
+    .MDDCO_PV_Desc_Span {
         display:                run-in;
         margin:                 0;
         padding:                0;       
         font-weight:            400;
         line-height:            140%;
     }
-   .TRAsytle_Credits_PropertyValue_Description_Span a {
+   .MDDCO_PV_Desc_Span a {
         text-decoration:        none;
         background-color:       transparent;
         color:                  black;   
         font-weight:            900;
     }
-    .TRAsytle_Credits_PropertyValue_Detail_Span {
+    .MDDCO_PV_Det_Span {
         display:                run-in;
         margin:                 0;
         padding:                0;       
@@ -171,36 +171,36 @@
     <dd class="collapsibleContent">    
         
         
-        <table class="TRAsytle_Credits_Table">
+        <table class="MDDCO_Table">
             <tbody>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Main_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Main_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_ProjectTitle_PropertyName')" />                
                         </span>
                     </td>
-                   <td class="TRAsytle_Credits_PropertyValue_Cell">
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph">
-                            <span class="TRAsytle_Credits_PropertyValue_Main_Span">
+                   <td class="MDDCO_PV_Cell">
+                        <p class="MDDCO_PN_Para">
+                            <span class="MDDCO_PV_Main_Span">
                                 <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_ProjectTitle_PropertyValue')" />                
                             </span>
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph">
-                            <span class="TRAsytle_Credits_PropertyValue_Main_Description_Span">
-                                <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_ProjectTitle_Description_PropertyValue')" />                
+                        <p class="MDDCO_PN_Para">
+                            <span class="MDDCO_PV_Main_Desc_Span">
+                                <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_ProjectTitle_Desc_PropertyValue')" />                
                             </span>
                         </p>
                     </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Main_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Main_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_DevelopedBy_PropertyName', )" />                
                         </span>
                     </td>
-                   <td class="TRAsytle_Credits_PropertyValue_Cell" valign="top">
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph">
-                            <span class="TRAsytle_Credits_PropertyValue_Main_Span">
+                   <td class="MDDCO_PV_Cell" valign="top">
+                        <p class="MDDCO_PN_Para">
+                            <span class="MDDCO_PV_Main_Span">
                                 <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:define="
@@ -214,7 +214,7 @@
                                 </a>
                             </span>
                             <br/>                          
-                            <span class="TRAsytle_Credits_PropertyValue_Main_Span">
+                            <span class="MDDCO_PV_Main_Span">
                                 <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:define="
@@ -232,15 +232,15 @@
                         </p>
                     </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Main_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Main_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_PropertyName', )" />                
                         </span>
                     </td>
-                   <td class="TRAsytle_Credits_PropertyValue_Cell" valign="top">
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph">
-                            <span class="TRAsytle_Credits_PropertyValue_Main_Span">
+                   <td class="MDDCO_PV_Cell" valign="top">
+                        <p class="MDDCO_PN_Para">
+                            <span class="MDDCO_PV_Main_Span">
                                  <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:define="
@@ -258,43 +258,43 @@
                                 </a>
                             </span>
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph" tal:define="
+                        <p class="MDDCO_PN_Para" tal:define="
                             pTitle python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_Jefe_Title');
                             pName  python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_Jefe_Name')">
-                            <span class="TRAsytle_Credits_PropertyValue_Span" tal:content="pTitle" />                
+                            <span class="MDDCO_PV_Span" tal:content="pTitle" />                
                             &ensp;
-                            <span class="TRAsytle_Credits_PropertyValue_Highlight_Span" tal:content="pName" />                
+                            <span class="MDDCO_PV_High_Span" tal:content="pName" />                
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph" tal:define="
+                        <p class="MDDCO_PN_Para" tal:define="
                             pTitle python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_CoordinadorGeneral_Title');
                             pName  python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_CoordinadorGeneral_Name')">
-                            <span class="TRAsytle_Credits_PropertyValue_Span" tal:content="pTitle" />                
+                            <span class="MDDCO_PV_Span" tal:content="pTitle" />                
                             &ensp;
-                            <span class="TRAsytle_Credits_PropertyValue_Highlight_Span" tal:content="pName" />                
+                            <span class="MDDCO_PV_High_Span" tal:content="pName" />                
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph" tal:define="
+                        <p class="MDDCO_PN_Para" tal:define="
                             pTitle python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_CoordinadorTecnico_Title');
                             pName  python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_CoordinadorTecnico_Name')">
-                            <span class="TRAsytle_Credits_PropertyValue_Span" tal:content="pTitle" />                
+                            <span class="MDDCO_PV_Span" tal:content="pTitle" />                
                             &ensp;
-                            <span class="TRAsytle_Credits_PropertyValue_Highlight_Span" tal:content="pName" />                
+                            <span class="MDDCO_PV_High_Span" tal:content="pName" />                
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph">
-                            <span class="TRAsytle_Credits_PropertyValue_Description_Span">
-                                <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_Description_PropertyValue')" />                
+                        <p class="MDDCO_PN_Para">
+                            <span class="MDDCO_PV_Desc_Span">
+                                <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_SponsorProjectTitle_Desc_PropertyValue')" />                
                             </span>
                         </p>
                     </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Autores_PropertyName')" />                
                         </span>
                     </td>
-                    <td class="TRAsytle_Credits_PropertyValue_Cell">
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph">
-                            <span class="TRAsytle_Credits_PropertyValue_Span">
+                    <td class="MDDCO_PV_Cell">
+                        <p class="MDDCO_PN_Para">
+                            <span class="MDDCO_PV_Span">
                                 <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:define="
@@ -302,14 +302,14 @@
                                         pURL   python: pCredits.get( 'gvSIGbpd_credits_Author_Conselleria_URL_PropertyValue')"
                                    tal:content="pTitle" />                
                             </span>
-                            <span class="TRAsytle_Credits_PropertyValue_Detail_Span">
+                            <span class="MDDCO_PV_Det_Span">
                                 (
                                 <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Author_Conselleria_Institucion_PropertyValue')" />                
                                 )
                             </span>
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph">
-                            <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <p class="MDDCO_PN_Para">
+                            <span class="MDDCO_PV_Span">
                                 <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:define="
@@ -317,21 +317,21 @@
                                         pURL   python: pCredits.get( 'gvSIGbpd_credits_Author_ModelDrivenDevelopmentSL_URL_PropertyValue')"
                                    tal:content="pTitle" />                
                             </span>
-                            <span class="TRAsytle_Credits_PropertyValue_Detail_Span">
+                            <span class="MDDCO_PV_Det_Span">
                                 (
                                 <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Author_ModelDrivenDevelopmentSL_Empresa_PropertyValue')" />                
                                 )                
                             </span>
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph">
-                            <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <p class="MDDCO_PN_Para">
+                            <span class="MDDCO_PV_Span">
                                 <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:define="
                                         pTitle python: pCredits.get( 'gvSIGbpd_credits_Author_AntonioCarrascoValero_PropertyValue');
                                         pURL   python: pCredits.get( 'gvSIGbpd_credits_Author_AntonioCarrascoValero_URL_PropertyValue')"
                                    tal:content="pTitle" />                
-                                <span class="TRAsytle_Credits_PropertyValue_Detail_Span">
+                                <span class="MDDCO_PV_Det_Span">
                                     (
                                     <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Author_AntonioCarrascoValero_Desarrollador_PropertyValue')" />                
                                     )
@@ -340,65 +340,65 @@
                         </p>
                    </td>
                  </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_PropertyName')" />                
                         </span>
                     </td>
-                   <td class="TRAsytle_Credits_PropertyValue_Cell">
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph" tal:define="
+                   <td class="MDDCO_PV_Cell">
+                        <p class="MDDCO_PN_Para" tal:define="
                             pTitle python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Organization_Title');
                             pName  python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Organization_Name');
                             pURL   python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Organization_URL')">
-                            <span class="TRAsytle_Credits_PropertyValue_Span" tal:content="pTitle" />                
+                            <span class="MDDCO_PV_Span" tal:content="pTitle" />                
                             &ensp;
-                            <span class="TRAsytle_Credits_PropertyValue_Description_Span">
+                            <span class="MDDCO_PV_Desc_Span">
                                  <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:content="pName" />                
                             </span>
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph" tal:define="
+                        <p class="MDDCO_PN_Para" tal:define="
                             pTitle python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Business_Title');
                             pName1  python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Business_Name1');
                             pURL1   python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Business_URL1');
                             pName2  python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Business_Name2');
                             pURL2   python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Business_URL2')">
-                            <span class="TRAsytle_Credits_PropertyValue_Span" tal:content="pTitle" />                
+                            <span class="MDDCO_PV_Span" tal:content="pTitle" />                
                             &ensp;
-                            <span class="TRAsytle_Credits_PropertyValue_Description_Span">
+                            <span class="MDDCO_PV_Desc_Span">
                                  <a title="#" href="#" 
                                     tal:attributes="title pName1; href python: 'http://%s' % pURL1" 
                                     tal:content="pName1" />                
                             </span>
                             ,
                             &ensp;
-                            <span class="TRAsytle_Credits_PropertyValue_Description_Span">
+                            <span class="MDDCO_PV_Desc_Span">
                                  <a title="#" href="#" 
                                     tal:attributes="title pName2; href python: 'http://%s' % pURL2" 
                                     tal:content="pName2" />                
                             </span>
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph" tal:define="
+                        <p class="MDDCO_PN_Para" tal:define="
                             pTitle python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Platform_Title');
                             pName  python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Platform_Name');
                             pURL   python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Platform_URL')" >
-                            <span class="TRAsytle_Credits_PropertyValue_Span" tal:content="pTitle" />                
+                            <span class="MDDCO_PV_Span" tal:content="pTitle" />                
                             &ensp;
-                            <span class="TRAsytle_Credits_PropertyValue_Description_Span">
+                            <span class="MDDCO_PV_Desc_Span">
                                  <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:content="pName" />                
                             </span>
                         </p>
-                        <p class="TRAsytle_Credits_PropertyName_Paragraph" tal:define="
+                        <p class="MDDCO_PN_Para" tal:define="
                             pTitle python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Administration_Title');
                             pName  python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Administration_Name');
                             pURL   python: pCredits.get( 'gvSIGbpd_credits_RequirementsCoordination_Administration_URL')" >
-                            <span class="TRAsytle_Credits_PropertyValue_Span" tal:content="pTitle" />                
+                            <span class="MDDCO_PV_Span" tal:content="pTitle" />                
                             &ensp;
-                            <span class="TRAsytle_Credits_PropertyValue_Description_Span">
+                            <span class="MDDCO_PV_Desc_Span">
                                  <a title="#" href="#" 
                                     tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                     tal:content="pName" />                
@@ -406,26 +406,26 @@
                         </p>
                     </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Copyright_PropertyName')" />                
                         </span>
                     </td>
-                    <td class="TRAsytle_Credits_PropertyValue_Cell">
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                    <td class="MDDCO_PV_Cell">
+                        <span class="MDDCO_PV_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Copyright_PropertyValue')" />                
                         </span>
                     </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_License_PropertyName')" />                
                         </span>
                     </td>
-                   <td class="TRAsytle_Credits_PropertyValue_Cell">
-                       <span class="TRAsytle_Credits_PropertyValue_Span">
+                   <td class="MDDCO_PV_Cell">
+                       <span class="MDDCO_PV_Span">
                             <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -434,11 +434,11 @@
                                tal:content="pTitle" />                             
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_PorLa')" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                             <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -448,30 +448,30 @@
                         </span>
                     </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Warranty_PropertyName', )" />                
                         </span>
                     </td>
-                    <td class="TRAsytle_Credits_PropertyValue_Cell">
-                        <span class="TRAsytle_Credits_PropertyValue_Description_Span">
+                    <td class="MDDCO_PV_Cell">
+                        <span class="MDDCO_PV_Desc_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Warranty_PropertyValue',)" />                
                         </span>
                     </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Standards_PropertyName', )" />                
                         </span>
                     </td>
-                    <td class="TRAsytle_Credits_PropertyValue_Cell">
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                    <td class="MDDCO_PV_Cell">
+                        <span class="MDDCO_PV_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Standards_Intro_PropertyName', )" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                             <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -480,7 +480,7 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -489,7 +489,7 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -498,7 +498,7 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -507,11 +507,11 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_PorLa',)" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -520,7 +520,7 @@
                                tal:content="pTitle" />                
                         </span>
                         <br/>
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                             <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -529,7 +529,7 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                         <span class="TRAsytle_Credits_PropertyValue_Span">
+                         <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -538,7 +538,7 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -547,7 +547,7 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -557,18 +557,18 @@
                         </span>
                     </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Span">
+                <tr class="MDDCO_Row">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Platform_PropertyName', )" />                
                         </span>
                     </td>
-                   <td class="TRAsytle_Credits_PropertyValue_Cell">
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                   <td class="MDDCO_PV_Cell">
+                        <span class="MDDCO_PV_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Platform_Intro_PropertyName', )" />                
                         </span>
                         &ensp;
-                         <span class="TRAsytle_Credits_PropertyValue_Span">
+                         <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -577,7 +577,7 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -586,7 +586,7 @@
                                tal:content="pTitle" />                
                         </span>
                         &ensp;
-                        <span class="TRAsytle_Credits_PropertyValue_Span">
+                        <span class="MDDCO_PV_Span">
                              <a title="#" href="#" 
                                 tal:attributes="title pTitle; href python: 'http://%s' % pURL" 
                                 tal:define="
@@ -596,15 +596,15 @@
                         </span>
                    </td>
                 </tr>
-                <tr class="TRAsytle_Credits_Row">
+                <tr class="MDDCO_Row">
                     
-                    <td class="TRAsytle_Credits_PropertyName_Cell">
-                        <span class="TRAsytle_Credits_PropertyName_Span">
+                    <td class="MDDCO_PN_Cell">
+                        <span class="MDDCO_PN_Span">
                             <tal:block tal:content="python: pCredits.get( 'gvSIGbpd_credits_Components_PropertyName', )" />                
                         </span>
                     </td>
-                    <td class="TRAsytle_Credits_PropertyValue_Cell">
-                        <p class="TRAsytle_Credits_PropertyValue_Span" 
+                    <td class="MDDCO_PV_Cell">
+                        <p class="MDDCO_PV_Span" 
                             tal:define="
                                 unosArgs python: { 
                                     'theContextualObject'         :here,
@@ -635,7 +635,7 @@
                                 &ensp;
                             </tal:block>
                         </p>
-                        <p class="TRAsytle_Credits_PropertyValue_Span" 
+                        <p class="MDDCO_PV_Span" 
                             tal:define="
                                 unosArgs python: { 
                                     'theContextualObject'         :here,

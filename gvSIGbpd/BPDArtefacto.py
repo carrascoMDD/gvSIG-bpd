@@ -2,7 +2,7 @@
 #
 # File: BPDArtefacto.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -114,7 +114,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='artefactosDeEntrada',
         inverse_relation_description2="Artefacts required as input to allow the start of the Business Processes.",
-        additional_columns=['codigo','estado','nivelDeImposicion',],
+        additional_columns=['codigo',],
         write_permission='Modify portal content',
         label="Entrada a Procesos de Negocio",
         multiValued=1,
@@ -144,7 +144,7 @@ schema = Schema((
         write_permission='Modify portal content',
         inverse_relation_field_name='artefactosDeHerramienta',
         inverse_relation_description2="Artefacts where the tool is applied to visualize, edit or otherwise handle the Artefact content.",
-        additional_columns=['codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia'],
+        additional_columns=['codigo'],
         label="Herramientas",
         multiValued=1,
         containment="Unspecified",
@@ -174,7 +174,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='artefactosDeSalida',
         inverse_relation_description2="Artefacts produced as outcomes of successfully completed Business Processes.",
-        additional_columns=['codigo','estado','nivelDeImposicion',],
+        additional_columns=['codigo',],
         write_permission='Modify portal content',
         label="Salidas de Procesos de Negocio",
         multiValued=1,
@@ -208,13 +208,13 @@ schema = Schema((
         inverse_relation_label2="Affected Artefacts",
         inverse_relationship='BPDArtefactosDirigidos',
         write_permission='Modify portal content',
-        additional_columns=['codigo','estado','nivelDeImposicion',]
+        additional_columns=['codigo',]
     ),
 
     RelationField(
         name='pasosQueEnvianElArtefacto',
         inverse_relation_label="Artefactos Enviados",
-        additional_columns=['codigo','estado','nivelDeImposicion','version','fechaAdopcion','fechaObsolescencia',],
+        additional_columns=['codigo',],
         inverse_relation_description="Artefactos que se envian en este paso a un Participante externo.",
         description="Pasos de Proceso de Negocio que envian un Artefacto de este tipo a un Participante externo.",
         relationship='BPDPasosQueEnvianElArtefacto',
@@ -262,7 +262,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='artefactosGestionados',
         inverse_relation_description2="Artefacts managed by executing this Business Process.",
-        additional_columns=['codigo','estado','nivelDeImposicion',],
+        additional_columns=['codigo',],
         write_permission='Modify portal content',
         label="Procesos de Negocio Gestores",
         multiValued=1,
@@ -296,13 +296,13 @@ schema = Schema((
         inverse_relation_label2="Governed Artefacts",
         inverse_relationship='BPDArtefactosGobernados',
         write_permission='Modify portal content',
-        additional_columns=['codigo','estado','nivelDeImposicion',]
+        additional_columns=['codigo',]
     ),
 
     RelationField(
         name='pasosQueRecibenElArtefacto',
         inverse_relation_label="Artefactos Recibidos",
-        additional_columns=['codigo','estado','nivelDeImposicion','version','fechaAdopcion','fechaObsolescencia',],
+        additional_columns=['codigo',],
         inverse_relation_description="Artefactos que se reciben de un Participante externo en este paso.",
         description="Recepciones pasos de Proceso de Negocio donde se recibe un Artefacto de este tipo de un participante externo.",
         relationship='BPDPasosQueRecibenElArtefacto',
@@ -380,7 +380,7 @@ schema = Schema((
         write_permission='Modify portal content',
         inverse_relation_field_name='responsableDeArtefactos',
         inverse_relation_description2="Artefacts for which the the participant Profile or Organisational Unit is generally responsible for.",
-        additional_columns=['abreviatura', 'responsabilidadesClave'],
+        additional_columns=['abreviatura'],
         label="Responsables",
         multiValued=1,
         containment="Unspecified",
@@ -410,7 +410,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='tiposDeArtefactos',
         inverse_relation_description2="If the Feature Class is Reference or Aggregation, then constrains the types of Artefacts that can be referenced or aggregated.",
-        additional_columns=['codigo','estado','nivelDeImposicion','version','fechaAdopcion','fechaObsolescencia',],
+        additional_columns=['codigo',],
         write_permission='Modify portal content',
         label="Caracteristicas del Tipo",
         multiValued=1,
@@ -503,6 +503,15 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDInspectClipboard",
+        'category': "object_buttons",
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
+        'permissions': ("View",),
+        'condition': """python:object.fAllowRead()"""
+       },
+
+
        {'action': "string:${object_url}/Editar",
         'category': "object",
         'id': 'edit',
@@ -548,15 +557,6 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
-        'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
-        'permissions': ("View",),
-        'condition': """python:1"""
-       },
-
-
        {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
@@ -566,8 +566,17 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddversions',
         'name': 'Versions',
         'permissions': ("View",),
@@ -575,10 +584,19 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/MDDCacheStatus/",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'mddcachestatus',
+        'name': 'Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/TextualRest",
+        'category': "object_buttons",
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

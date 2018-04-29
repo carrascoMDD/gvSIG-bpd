@@ -2,7 +2,7 @@
 #
 # File: BPDColeccionArquetipos.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -115,12 +115,12 @@ class BPDColeccionArquetipos(BPDElemento):
        },
 
 
-       {'action': "string:${object_url}/MDDExport",
+       {'action': "string:${object_url}/MDDInspectClipboard",
         'category': "object_buttons",
-        'id': 'mddexport',
-        'name': 'Export',
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
         'permissions': ("View",),
-        'condition': """python:1"""
+        'condition': """python:object.fAllowRead()"""
        },
 
 
@@ -130,6 +130,15 @@ class BPDColeccionArquetipos(BPDElemento):
         'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDExport",
+        'category': "object_buttons",
+        'id': 'mddexport',
+        'name': 'Export',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -151,19 +160,28 @@ class BPDColeccionArquetipos(BPDElemento):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
+       {'action': "string:${object_url}/MDDVersions",
         'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
+        'id': 'mddversions',
+        'name': 'Versions',
         'permissions': ("View",),
         'condition': """python:1"""
        },
 
 
-       {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
-        'id': 'mddversions',
-        'name': 'Versions',
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDCacheStatus/",
+        'category': "object_buttons",
+        'id': 'mddcachestatus',
+        'name': 'Cache',
         'permissions': ("View",),
         'condition': """python:1"""
        },
@@ -178,10 +196,10 @@ class BPDColeccionArquetipos(BPDElemento):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/TextualRest",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

@@ -1,4 +1,4 @@
-# Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>, 2009.
+# Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gvSIGbpd\n"
@@ -1358,6 +1358,16 @@ msgstr "Receivers"
 #: BPDEnvio destinatarios
 msgid "gvSIGbpd_BPDEnvio_rel_destinatarios_help"
 msgstr "Participant Profiles or Organisational Units to whom this is Sent"
+
+#. Default: "Recepciones"
+#: BPDEnvio recepciones
+msgid "gvSIGbpd_BPDEnvio_rel_recepciones_label"
+msgstr "Receptions"
+
+#. Default: "Pasos de Recepcion llevados a cabo por otros roles, a los que entrega informacion este paso de envio desde este rol."
+#: BPDEnvio recepciones
+msgid "gvSIGbpd_BPDEnvio_rel_recepciones_help"
+msgstr "Reception steps carried out by other roles, to which this send step delivers information from this role."
 
 #. Default: "Exito Final"
 #: BPDExitoFinal
@@ -2894,10 +2904,10 @@ msgstr "Collections of Informations that may or will be made available upon succ
 msgid "gvSIGbpd_BPDPuntoExtension_label"
 msgstr "Extension Point"
 
-#. Default: "Un Proceso de Negocio definido aparte, se ejercita de principio a fin como un paso parte de otro Proceso de Negocio de mayor alcance."
+#. Default: "Un Proceso de Negocio definido aparte, ejercita este Proceso de Negocio de principio a fin, y extiende este Proces de Negocio insertando comportamiento aditional en este punto del proceso."
 #: BPDPuntoExtension
 msgid "gvSIGbpd_BPDPuntoExtension_help"
-msgstr "A Business Process, specified elsewhere, is executed in its entirety in the context of the current Business Process, as a single step."
+msgstr "A Business Process, specified elsewhere, executes this Business Process in its entirety, and extends this Business Process inserting additional behavior at this point of the process.."
 
 #. Default: "Detalles del Punto de Extension"
 #: BPDPuntoExtension detallesPaso
@@ -3018,6 +3028,16 @@ msgstr "Received Artefacts"
 #: BPDRecepcion artefactosRecibidos
 msgid "gvSIGbpd_BPDRecepcion_rel_artefactosRecibidos_help"
 msgstr "Artefacts to be received from an external participant during this step."
+
+#. Default: "Envios"
+#: BPDRecepcion envios
+msgid "gvSIGbpd_BPDRecepcion_rel_envios_label"
+msgstr "Sends"
+
+#. Default: "Pasos de Envio llevados a cabo por otros roles, que entregan informacion a este paso de recepcion en este rol."
+#: BPDRecepcion envios
+msgid "gvSIGbpd_BPDRecepcion_rel_envios_help"
+msgstr "Send steps carried out by other roles, delivering information to this reception step by this role"
 
 #. Default: "Remitente"
 #: BPDRecepcion remitente

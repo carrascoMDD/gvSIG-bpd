@@ -2,7 +2,7 @@
 #
 # File: BPDElemento_ExportConfig.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -2950,6 +2950,13 @@ class BPDElemento_ExportConfig:
                     },
                 ],
             },
+            {   'relation_name': 'recepciones',
+                'related_types': [
+                    {   'portal_types': [ 'BPDRecepcion', ],
+                        'reuse_config': 'Default',
+                    },
+                ],
+            },
             {   'relation_name':    'pasosSiguientes',
                 'related_types':    [
                     {   'portal_types': [ 'BPDDecision', 'BPDEnvio', 'BPDExitoFinal', 'BPDFracasoFinal', 'BPDPasoSimple', 'BPDPlazo', 'BPDPuntoExtension', 'BPDRecepcion', 'BPDSubProceso', ],
@@ -3957,18 +3964,18 @@ class BPDElemento_ExportConfig:
             },
         ],
         'traversals':   [
-            {   'relation_name': 'instrucciones',
-                'related_types': [
-                    {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
-                        'reuse_config': 'Default',
-                    },
-                ],
-            },
             {   'aggregation_name':     'coleccionesHerramientas',
                 'contains_collections': True,
                 'tabular_tree':         True,
                 'subitems':             [
                     {   'portal_types': [ 'BPDColeccionHerramientas', ],
+                        'reuse_config': 'Default',
+                    },
+                ],
+            },
+            {   'relation_name': 'instrucciones',
+                'related_types': [
+                    {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
                         'reuse_config': 'Default',
                     },
                 ],
@@ -5791,6 +5798,13 @@ class BPDElemento_ExportConfig:
                     },
                 ],
             },
+            {   'relation_name': 'herramientasDocumentadas',
+                'related_types': [
+                    {   'portal_types': [ 'BPDHerramienta', ],
+                        'reuse_config': 'Default',
+                    },
+                ],
+            },
             {   'relation_name': 'artefactosGestionados',
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
@@ -5917,13 +5931,6 @@ class BPDElemento_ExportConfig:
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
-                        'reuse_config': 'Default',
-                    },
-                ],
-            },
-            {   'relation_name': 'herramientasDocumentadas',
-                'related_types': [
-                    {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
                     },
                 ],
@@ -6354,6 +6361,13 @@ class BPDElemento_ExportConfig:
             {   'relation_name': 'artefactosRecibidos',
                 'related_types': [
                     {   'portal_types': [ 'BPDArtefacto', ],
+                        'reuse_config': 'Default',
+                    },
+                ],
+            },
+            {   'relation_name': 'envios',
+                'related_types': [
+                    {   'portal_types': [ 'BPDEnvio', ],
                         'reuse_config': 'Default',
                     },
                 ],

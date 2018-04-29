@@ -2,7 +2,7 @@
 #
 # File: BPDHerramienta.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -93,7 +93,7 @@ schema = Schema((
         inverse_relation_label2="Tools",
         inverse_relationship='BPDHerramientas',
         write_permission='Modify portal content',
-        additional_columns=['codigo','estado','nivelDeImposicion','version','fechaAdopcion','fechaObsolescencia',]
+        additional_columns=['codigo',]
     ),
 
     RelationField(
@@ -118,7 +118,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='herramientasAplicadas',
         inverse_relation_description2="Tools to apply in the execution of the Business Process Step, or to manipulate the used Artefacts. Consider too the Tools refered as used in the whole Business Process.",
-        additional_columns=['codigo','estado','nivelDeImposicion',],
+        additional_columns=['codigo',],
         write_permission='Modify portal content',
         label="Pasos Asistidos",
         multiValued=1,
@@ -129,7 +129,7 @@ schema = Schema((
     RelationField(
         name='procesosAsistidos',
         inverse_relation_label="Herramientas Aplicadas",
-        additional_columns=['codigo','estado',],
+        additional_columns=['codigo',],
         inverse_relation_description="Herramientas aplicadas en la realizacion del Proceso de Negocio. Considere ademas las Herramientas que se aplican en Pasos individuales del Proceso de Negocio.",
         description="Procesos de Negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Pasos individuales del Procesos de Negocio.",
         relationship='BPDProcesosAsistidos',
@@ -181,13 +181,13 @@ schema = Schema((
         inverse_relation_label2="Driven Tools",
         inverse_relationship='BPDHerramientasDirigidas',
         write_permission='Modify portal content',
-        additional_columns=['codigo','estado','nivelDeImposicion',]
+        additional_columns=['codigo',]
     ),
 
     RelationField(
         name='instrucciones',
         inverse_relation_label="Herramientas Documentadas",
-        additional_columns=['proposito', 'detallesProceso', 'codigo', 'estado'],
+        additional_columns=['proposito', 'detallesProceso'],
         inverse_relation_description="Herramientas cuya utilizacion se documenta en este proceso.",
         description="Instrucciones acerca de como utilizar la Herramienta para alcanzar un objetivo, expresado como un proceso con entradas, pasos y salidas.",
         relationship='BPDInstrucciones',
@@ -239,7 +239,7 @@ schema = Schema((
         inverse_relation_label2="Governed Tools",
         inverse_relationship='BPDHerramientasGobernadas',
         write_permission='Modify portal content',
-        additional_columns=['codigo','estado','nivelDeImposicion',]
+        additional_columns=['codigo',]
     ),
 
     RelationField(
@@ -264,7 +264,7 @@ schema = Schema((
         write_permission='Modify portal content',
         inverse_relation_field_name='responsableDeHerramientas',
         inverse_relation_description2="Tools for which the the participant Profile or Organisational Unit is generally responsible for.",
-        additional_columns=['abreviatura', 'responsabilidadesClave'],
+        additional_columns=['abreviatura'],
         label="Responsables",
         multiValued=1,
         containment="Unspecified",
@@ -357,6 +357,15 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDInspectClipboard",
+        'category': "object_buttons",
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
+        'permissions': ("View",),
+        'condition': """python:object.fAllowRead()"""
+       },
+
+
        {'action': "string:${object_url}/Editar",
         'category': "object",
         'id': 'edit',
@@ -402,15 +411,6 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
-        'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
-        'permissions': ("View",),
-        'condition': """python:1"""
-       },
-
-
        {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
@@ -420,8 +420,17 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddversions',
         'name': 'Versions',
         'permissions': ("View",),
@@ -429,10 +438,19 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/MDDCacheStatus/",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'mddcachestatus',
+        'name': 'Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/TextualRest",
+        'category': "object_buttons",
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

@@ -4,6 +4,24 @@ gvSIG Business Process Definition RELEASE NOTES
 |
 |
 
+version 1.0.0.7
+---------------
+
+
+sk Id  	Task Summary  	Start Date  	End Date  	Percent Complete
+606	BUG: Fails to paste Plone content elements (i.e. ATImage instances)	2009-12-07 17:00	  2009-12-14 17:00	100%
+579	PERF04 Avoid high number of log entries when (re)installing the gvSIG-bpd product, which uses Relations, from Zope catalogs complaining about entries not found for missing relation instances	2009-11-24 17:00	  2009-12-01 17:00	100%
+586	RELS02 Add relationship Send step delivers to zero or many Reception step	2009-11-26 00:00	  2009-12-03 00:00	100%
+
+
+|
+|
+
+--------------------------------------------------------
+
+|
+|
+
 
 **As by v200911211405**
 
@@ -13,6 +31,21 @@ gvSIG Business Process Definition RELEASE NOTES
 
 Summary of use cases implemented after delivery of version 1.0 (build200906110445)
 ==================================================================================
+
+
+- Add concept of Extension Point in the sequence of Business Process Steps, and
+
+- the concept of Business Process extension
+
+- Add the concept of Feature of Artefact
+
+- Add the concepts of Using an Artefact or a Feature from a Business Process Step
+
+- Add the relations: a Tool instructions are Business Processes, and a Business Process applies Tools.
+
+- Search for words in all string fields, not just the fields named "Title", "Description" and "Text"
+
+- Reorder aggregated elements by Drag&Drop.
 
 
 

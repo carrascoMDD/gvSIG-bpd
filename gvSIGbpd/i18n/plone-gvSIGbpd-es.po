@@ -1,4 +1,4 @@
-# Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>, 2009.
+# Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gvSIGbpd\n"

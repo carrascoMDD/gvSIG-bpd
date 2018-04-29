@@ -2,7 +2,7 @@
 #
 # File: BPDParticipante.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -77,7 +77,7 @@ schema = Schema((
     RelationField(
         name='destinatarioDeEnvios',
         inverse_relation_label="Destinatarios",
-        additional_columns=['abreviatura','responsabilidadesClave',],
+        additional_columns=['abreviatura',],
         inverse_relation_description="Perfiles o Unidades Organizacionales a los que se destina el Envio.",
         description="Envios que se destinan a este Perfil o Unidad Organizacional.",
         relationship='BPDDestinatarioDeEnvios',
@@ -125,7 +125,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='ejecutores',
         inverse_relation_description2="Participant Profiles and Organisational Units allowed to execute the Step.",
-        additional_columns=['abreviatura','responsabilidadesClave',],
+        additional_columns=['abreviatura',],
         write_permission='Modify portal content',
         label="Pasos Ejecutados",
         multiValued=1,
@@ -155,7 +155,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='ejecutores',
         inverse_relation_description2="Participant Profiles and Organisational Units allowed to execute the Business Process.",
-        additional_columns=['abreviatura','responsabilidadesClave',],
+        additional_columns=['abreviatura',],
         write_permission='Modify portal content',
         label="Procesos Ejecutados",
         multiValued=1,
@@ -189,7 +189,7 @@ schema = Schema((
         inverse_relation_label2="Directed Participant Profiles and Organisational Units",
         inverse_relationship='BPDParticipantesDirigidos',
         write_permission='Modify portal content',
-        additional_columns=['abreviatura','responsabilidadesClave',]
+        additional_columns=['abreviatura',]
     ),
 
     RelationField(
@@ -218,13 +218,13 @@ schema = Schema((
         inverse_relation_label2="Governed participant Profiles and Organisational Units",
         inverse_relationship='BPDParticipantesGobernados',
         write_permission='Modify portal content',
-        additional_columns=['abreviatura','responsabilidadesClave',]
+        additional_columns=['abreviatura',]
     ),
 
     RelationField(
         name='remitenteDeRecepciones',
         inverse_relation_label="Remitente",
-        additional_columns=['abreviatura','responsabilidadesClave',],
+        additional_columns=['abreviatura',],
         inverse_relation_description="El Perfil o Unidad Organizacional que originan la Recepcion.",
         description="Recepciones originadas en este Perfil o Unidad Organizacional.",
         relationship='BPDRemitenteDeRecepciones',
@@ -307,7 +307,7 @@ schema = Schema((
         inverse_relation_label2="Responsible Profiles or Organisational Units",
         inverse_relationship='BPDResponsablesDeArtefacto',
         write_permission='Modify portal content',
-        additional_columns=['abreviatura','responsabilidadesClave',]
+        additional_columns=['abreviatura',]
     ),
 
     RelationField(
@@ -336,7 +336,7 @@ schema = Schema((
         inverse_relation_label2="Profiles or Organisational Units Responsible for the Tool",
         inverse_relationship='BPDResponsablesDeHerramienta',
         write_permission='Modify portal content',
-        additional_columns=['abreviatura','responsabilidadesClave',]
+        additional_columns=['abreviatura',]
     ),
 
     RelationField(
@@ -361,7 +361,7 @@ schema = Schema((
         dependency_supplier=True,
         inverse_relation_field_name='supervisor',
         inverse_relation_description2="The participant Profile or Organisational Unit is responsible to ensure the compliance of the Business Process execution with applicable directives.",
-        additional_columns=['abreviatura','responsabilidadesClave',],
+        additional_columns=['abreviatura',],
         write_permission='Modify portal content',
         label="Procesos Supervisados",
         multiValued=1,
@@ -433,6 +433,15 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
+       {'action': "string:${object_url}/MDDInspectClipboard",
+        'category': "object_buttons",
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
+        'permissions': ("View",),
+        'condition': """python:object.fAllowRead()"""
+       },
+
+
        {'action': "string:${object_url}/Editar",
         'category': "object",
         'id': 'edit',
@@ -478,15 +487,6 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
-        'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
-        'permissions': ("View",),
-        'condition': """python:1"""
-       },
-
-
        {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
@@ -496,8 +496,17 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddversions',
         'name': 'Versions',
         'permissions': ("View",),
@@ -505,10 +514,19 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/MDDCacheStatus/",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'mddcachestatus',
+        'name': 'Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/TextualRest",
+        'category': "object_buttons",
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

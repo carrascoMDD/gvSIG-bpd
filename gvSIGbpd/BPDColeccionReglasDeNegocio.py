@@ -2,7 +2,7 @@
 #
 # File: BPDColeccionReglasDeNegocio.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -52,7 +52,7 @@ schema = Schema((
         ),
         contains_collections=False,
         label2='Business Rules',
-        additional_columns=['codigo', 'estado'],
+        additional_columns=['codigo'],
         label='Reglas de Negocio',
         represents_aggregation=True,
         description2='Business Rules derived from Business Policies, and driving the Business Process in the Organisation.',
@@ -123,7 +123,7 @@ class BPDColeccionReglasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
     allowed_content_types = ['BPDReglaDeNegocio'] + list(getattr(BPDColeccionArquetipos, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
-    content_icon = 'bpdcoleccion.gif'
+    content_icon = 'bpdcoleccion_reglasdenegocio.gif'
     immediate_view                   = 'Textual'
     default_view                     = 'Textual'
     suppl_views                      = ('Textual', 'Tabular', )
@@ -158,12 +158,12 @@ class BPDColeccionReglasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/MDDExport",
+       {'action': "string:${object_url}/MDDInspectClipboard",
         'category': "object_buttons",
-        'id': 'mddexport',
-        'name': 'Export',
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
         'permissions': ("View",),
-        'condition': """python:1"""
+        'condition': """python:object.fAllowRead()"""
        },
 
 
@@ -173,6 +173,15 @@ class BPDColeccionReglasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
         'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDExport",
+        'category': "object_buttons",
+        'id': 'mddexport',
+        'name': 'Export',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -194,19 +203,28 @@ class BPDColeccionReglasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
+       {'action': "string:${object_url}/MDDVersions",
         'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
+        'id': 'mddversions',
+        'name': 'Versions',
         'permissions': ("View",),
         'condition': """python:1"""
        },
 
 
-       {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
-        'id': 'mddversions',
-        'name': 'Versions',
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDCacheStatus/",
+        'category': "object_buttons",
+        'id': 'mddcachestatus',
+        'name': 'Cache',
         'permissions': ("View",),
         'condition': """python:1"""
        },
@@ -221,10 +239,10 @@ class BPDColeccionReglasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/TextualRest",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },

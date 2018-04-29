@@ -2,7 +2,7 @@
 #
 # File: BPDEnvio.py
 #
-# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
+# Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)
@@ -108,7 +108,7 @@ schema = Schema((
     RelationField(
         name='destinatarios',
         inverse_relation_label="Destinatario de Envios",
-        additional_columns=['abreviatura', 'responsabilidadesClave'],
+        additional_columns=['abreviatura'],
         inverse_relation_description="Envios que se destinan a este Perfil o Unidad Organizacional.",
         description="Perfiles o Unidades Organizacionales a los que se destina el Envio.",
         relationship='BPDDestinatarios',
@@ -168,9 +168,38 @@ schema = Schema((
     ),
 
     RelationField(
+        name='recepciones',
+        inverse_relation_label="Envios",
+        additional_columns=['tituloProcesoDeNegocio', 'titulosDestinatarios', 'titulosArtefactosRecibidos'],
+        inverse_relation_description="Pasos de Envio llevados a cabo por otros roles, que entregan informacion a este paso de recepcion en este rol.",
+        description="Pasos de Recepcion llevados a cabo por otros roles, a los que entrega informacion este paso de envio desde este rol.",
+        relationship='BPDEnviosRecepciones',
+        inverse_relation_field_name='envios',
+        inverse_relation_label2="Sends",
+        label2="Receptions",
+        inverse_relation_description2="Send steps carried out by other roles, delivering information to this reception step by this role",
+        widget=ReferenceBrowserWidget(
+            label="Recepciones",
+            label2="Receptions",
+            description="Pasos de Recepcion llevados a cabo por otros roles, a los que entrega informacion este paso de envio desde este rol.",
+            description2="Reception steps carried out by other roles, to which this send step delivers information from this role.",
+            label_msgid='gvSIGbpd_BPDEnvio_rel_recepciones_label',
+            description_msgid='gvSIGbpd_BPDEnvio_rel_recepciones_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        label="Recepciones",
+        description2="Reception steps carried out by other roles, to which this send step delivers information from this role.",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDRecepcionesEnvios',
+        owner_class_name="BPDEnvio",
+        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"
+    ),
+
+    RelationField(
         name='artefactosEnviados',
         inverse_relation_label="Enviado desde Pasos de Procesos de Negocio",
-        additional_columns=['codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia'],
+        additional_columns=['codigo'],
         inverse_relation_description="Pasos de Proceso de Negocio que envian un Artefacto de este tipo a un Participante externo.",
         description="Artefactos que se envian en este paso a un Participante externo.",
         relationship='BPDArtefactosEnviados',
@@ -339,6 +368,15 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
+       {'action': "string:${object_url}/MDDInspectClipboard",
+        'category': "object_buttons",
+        'id': 'inspectclipboard',
+        'name': 'Clipboard',
+        'permissions': ("View",),
+        'condition': """python:object.fAllowRead()"""
+       },
+
+
        {'action': "string:${object_url}/Editar",
         'category': "object",
         'id': 'edit',
@@ -384,15 +422,6 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/TextualRest",
-        'category': "object_buttons",
-        'id': 'textual_rest',
-        'name': 'TextualRest',
-        'permissions': ("View",),
-        'condition': """python:1"""
-       },
-
-
        {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
@@ -402,8 +431,17 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
+       {'action': "string:${object_url}/MDDChanges",
+        'category': "object_buttons",
+        'id': 'mddchanges',
+        'name': 'Changes',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDVersions",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddversions',
         'name': 'Versions',
         'permissions': ("View",),
@@ -411,10 +449,19 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/MDDInspectCache/",
+       {'action': "string:${object_url}/MDDCacheStatus/",
         'category': "object_buttons",
-        'id': 'mddinspectcache',
-        'name': 'Inspect Cache',
+        'id': 'mddcachestatus',
+        'name': 'Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/TextualRest",
+        'category': "object_buttons",
+        'id': 'textual_rest',
+        'name': 'TextualRest',
         'permissions': ("View",),
         'condition': """python:1"""
        },
