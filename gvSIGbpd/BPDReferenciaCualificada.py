@@ -119,7 +119,10 @@ class BPDReferenciaCualificada(OrderedBaseFolder, BPDArquetipo):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -127,19 +130,20 @@ class BPDReferenciaCualificada(OrderedBaseFolder, BPDArquetipo):
 
 
     allowed_content_types = [] + list(getattr(BPDArquetipo, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdreferenciacualificada.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Permite referir a otros elementos de la aplicacion, incluyendo ademas un texto cualificando la referencia."
-    typeDescMsgId =  'gvSIGbpd_BPDReferenciaCualificada_help'
-    archetype_name2 = 'Qualified Reference'
-    typeDescription2 = '''Allows to reference other application elements, including an additional title and description that qualifies the reference.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDReferenciaCualificada_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Permite referir a otros elementos de la aplicacion, incluyendo ademas un texto cualificando la referencia."
+    typeDescMsgId                    =  'gvSIGbpd_BPDReferenciaCualificada_help'
+    archetype_name2                  = 'Qualified Reference'
+    typeDescription2                 = '''Allows to reference other application elements, including an additional title and description that qualifies the reference.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDReferenciaCualificada_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -158,6 +162,15 @@ class BPDReferenciaCualificada(OrderedBaseFolder, BPDArquetipo):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -199,21 +212,12 @@ class BPDReferenciaCualificada(OrderedBaseFolder, BPDArquetipo):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -226,12 +230,12 @@ class BPDReferenciaCualificada(OrderedBaseFolder, BPDArquetipo):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -252,6 +256,20 @@ class BPDReferenciaCualificada(OrderedBaseFolder, BPDArquetipo):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDReferenciaCualificada, PROJECTNAME)
 # end of class BPDReferenciaCualificada

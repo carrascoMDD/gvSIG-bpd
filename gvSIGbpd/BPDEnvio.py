@@ -43,6 +43,68 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import Reference
 
 schema = Schema((
 
+    IntegerField(
+        name='multiplicidadMinima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Minima",
+            label2="Minimum Multiplicity",
+            description="Numero minimo de elementos a enviar. Introduzca 0 para indicar que el Envio procedera con exito, aunque no se envie ningun artefacto.",
+            description2="Minimum number of elements to send. Enter 0 to indicate that the Send will proceed with success, even if no Artefact of the type was sent",
+            label_msgid='gvSIGbpd_BPDEnvio_attr_multiplicidadMinima_label',
+            description_msgid='gvSIGbpd_BPDEnvio_attr_multiplicidadMinima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero minimo de elementos a enviar. Introduzca 0 para indicar que el Envio procedera con exito, aunque no se envie ningun artefacto.",
+        duplicates="0",
+        label2="Minimum Multiplicity",
+        ea_localid="410",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Minimum number of elements to send. Enter 0 to indicate that the Send will proceed with success, even if no Artefact of the type was sent",
+        ea_guid="{5CDF47ED-7EA6-4b5a-96E9-8535F338B5C8}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Multiplicidad Minima",
+        length="0",
+        containment="Not Specified",
+        position="3",
+        owner_class_name="BPDEnvio"
+    ),
+
+    IntegerField(
+        name='multiplicidadMaxima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Maxima",
+            label2="Maximum Multiplicity",
+            description="Numero maximo de elementos a enviar. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a enviar.",
+            description2="Maximum number of elements to send. Enter -1 to indicate that there is no upper limit in the number of elements to send.",
+            label_msgid='gvSIGbpd_BPDEnvio_attr_multiplicidadMaxima_label',
+            description_msgid='gvSIGbpd_BPDEnvio_attr_multiplicidadMaxima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero maximo de elementos a enviar. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a enviar.",
+        duplicates="0",
+        label2="Maximum Multiplicity",
+        ea_localid="407",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Maximum number of elements to send. Enter -1 to indicate that there is no upper limit in the number of elements to send.",
+        ea_guid="{878AAA95-0490-4fad-932B-24C2F6CA3C83}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="-1",
+        label="Multiplicidad Maxima",
+        length="0",
+        containment="Not Specified",
+        position="4",
+        owner_class_name="BPDEnvio"
+    ),
+
     RelationField(
         name='destinatarios',
         inverse_relation_label="Destinatario de Envios",
@@ -101,7 +163,7 @@ schema = Schema((
         containment="Not Specified",
         position="2",
         owner_class_name="BPDEnvio",
-        expression="context.fTFLVs([ 'esInicial', 'titulosDestinatarios','titulosArtefactosEnviados','ejecutores'])",
+        expression="context.fTFLVsUnless([ ['esInicial', False,], ['titulosDestinatarios','',],['titulosArtefactosEnviados','',],['ejecutores',None,],[ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
         computed_types="string"
     ),
 
@@ -238,7 +300,10 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -246,19 +311,20 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
 
 
     allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdenvio.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Representa un Paso de Proceso en que se envia una informacion al exterior del ambito del Proceso."
-    typeDescMsgId =  'gvSIGbpd_BPDEnvio_help'
-    archetype_name2 = 'Send'
-    typeDescription2 = '''Represents a Business Process Step where some information is sent outside of the boudaries of the Business Process.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDEnvio_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Representa un Paso de Proceso en que se envia una informacion al exterior del ambito del Proceso."
+    typeDescMsgId                    =  'gvSIGbpd_BPDEnvio_help'
+    archetype_name2                  = 'Send'
+    typeDescription2                 = '''Represents a Business Process Step where some information is sent outside of the boudaries of the Business Process.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDEnvio_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -277,6 +343,15 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -318,21 +393,12 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -345,12 +411,12 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -371,6 +437,20 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDEnvio, PROJECTNAME)
 # end of class BPDEnvio

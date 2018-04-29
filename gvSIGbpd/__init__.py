@@ -99,6 +99,7 @@ def initialize(context):
     import BPDPasoEstimado
     import BPDRecepcion
     import BPDColeccionArquetipos
+    import BPDPuntoExtension
     import BPDEntrada
     import BPDPasoConAnteriores
     import BPDColeccionSalidas
@@ -107,13 +108,17 @@ def initialize(context):
     import BPDDecision
     import BPDElemento
     import BPDPasoSimple
+    import BPDCaracteristica
     import BPDSubProceso
     import BPDPasoConExcepciones
+    import BPDUsoArtefacto
+    import BPDExtensionProceso
     import BPDPerfil
     import BPDReglaDeNegocio
     import BPDArtefacto
     import BPDProcesoDeNegocio
     import BPDArquetipoReferenciable
+    import BPDUsoCaracteristica
     import BPDConVersiones
     import BPDPasoGeneral
     import BPDColeccionReglasDeNegocio

@@ -70,7 +70,7 @@ schema = Schema((
         containment="Not Specified",
         position="0",
         owner_class_name="BPDConTraducciones",
-        expression="(context.getOriginalDeTraduccion() and True) or False",
+        expression="context.fDerive_EsTraduccionInterna()",
         computed_types="boolean",
         exclude_from_copyconfig="True"
     ),
@@ -103,7 +103,7 @@ schema = Schema((
         length="0",
         exclude_from_traversalconfig="True",
         containment="Not Specified",
-        position="1",
+        position="2",
         owner_class_name="BPDConTraducciones"
     ),
 
@@ -135,7 +135,7 @@ schema = Schema((
         length="0",
         exclude_from_traversalconfig="True",
         containment="Not Specified",
-        position="2",
+        position="3",
         owner_class_name="BPDConTraducciones"
     ),
 
@@ -167,7 +167,7 @@ schema = Schema((
         length="0",
         exclude_from_traversalconfig="True",
         containment="Not Specified",
-        position="3",
+        position="4",
         owner_class_name="BPDConTraducciones"
     ),
 
@@ -196,6 +196,72 @@ schema = Schema((
         multiValued=0,
         inverse_relation_label2="Translated Elements",
         inverse_relationship='BPDElementosTraducidos',
+        write_permission='Modify portal content'
+    ),
+
+    StringField(
+        name='esTraduccionInternaAlmacenada',
+        widget=SelectionWidget(
+            label="Es Traduccion (uso interno)  Almacenada",
+            label2="Is Translation (internal) Stored",
+            description="Si Verdadero, entonces el elemento es una traduccion de algun otro elemento en un idioma canonic. Almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion.",
+            description2="If True, then the element is a translation of another element in a canonical language. Stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root.",
+            label_msgid='gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_label',
+            description_msgid='gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Si Verdadero, entonces el elemento es una traduccion de algun otro elemento en un idioma canonic. Almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion.",
+        vocabulary=[ 'Segun Contedor', 'No Traducible', 'Traduccion', 'Canonica',  ],
+        duplicates="0",
+        vocabulary_msgids=['gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_option_Segun Contedor', 'gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_option_No Traducible', 'gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_option_Traduccion', 'gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_option_Canonica'],
+        label2="Is Translation (internal) Stored",
+        ea_localid="588",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;IsLiteral=0;",
+        description2="If True, then the element is a translation of another element in a canonical language. Stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root.",
+        ea_guid="{EB9AE814-AFC7-4ed5-8A03-94DEC8CACEC0}",
+        vocabulary2=[  'By Container', 'Not Translatable', 'Translation',  'Canonical',],
+        scale="0",
+        default="Segun Contedor",
+        write_permission='Modify portal content',
+        label="Es Traduccion (uso interno)  Almacenada",
+        length="0",
+        exclude_from_traversalconfig="True",
+        containment="Not Specified",
+        position="1",
+        owner_class_name="BPDConTraducciones",
+        exclude_from_exportconfig="True",
+        exclude_from_copyconfig="""True
+        True"""
+    ),
+
+    RelationField(
+        name='traduccionesDeIdiomaCanonico',
+        inverse_relation_label="En Idioma Canonico",
+        containment="Unspecified",
+        inverse_relation_description="El Original de este modelo en su Idioma Canonico, del que se derivan todas las traducciones a otros Idiomas.",
+        description="Traducciones del Modelo en Idioma Canonico a otros Idiomas.",
+        relationship='BPDEnIdiomaCanonicoDe',
+        inverse_relation_field_name='idiomaCanonico',
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        label2="In Canonical Language For",
+        inverse_relation_description2="The Original of this model in its Original Language, from where all other translations are derived from.",
+        widget=ReferenceBrowserWidget(
+            label="En Idioma Canonico De",
+            label2="In Canonical Language For",
+            description="Traducciones del Modelo en Idioma Canonico a otros Idiomas.",
+            description2="Translations of the Model in Canonical Language into other Languages.",
+            label_msgid='gvSIGbpd_BPDConTraducciones_rel_traduccionesDeIdiomaCanonico_label',
+            description_msgid='gvSIGbpd_BPDConTraducciones_rel_traduccionesDeIdiomaCanonico_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        label="En Idioma Canonico De",
+        description2="Translations of the Model in Canonical Language into other Languages.",
+        multiValued=1,
+        inverse_relation_label2="In Canonical Language",
+        inverse_relationship='BPDIdiomaCanonico',
         write_permission='Modify portal content'
     ),
 
@@ -229,6 +295,67 @@ schema = Schema((
         dependency_supplier=True
     ),
 
+    RelationField(
+        name='idiomaCanonico',
+        inverse_relation_label="En Idioma Canonico De",
+        inverse_relation_description="Traducciones del Modelo en Idioma Canonico a otros Idiomas.",
+        description="El Original de este modelo en su Idioma Canonico, del que se derivan todas las traducciones a otros Idiomas.",
+        relationship='BPDIdiomaCanonico',
+        label2="In Canonical Language",
+        widget=ReferenceBrowserWidget(
+            label="En Idioma Canonico",
+            label2="In Canonical Language",
+            description="El Original de este modelo en su Idioma Canonico, del que se derivan todas las traducciones a otros Idiomas.",
+            description2="The Original of this model in its Original Language, from where all other translations are derived from.",
+            label_msgid='gvSIGbpd_BPDConTraducciones_rel_idiomaCanonico_label',
+            description_msgid='gvSIGbpd_BPDConTraducciones_rel_idiomaCanonico_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="The Original of this model in its Original Language, from where all other translations are derived from.",
+        inverse_relation_label2="In Canonical Language For",
+        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        write_permission='Modify portal content',
+        inverse_relation_field_name='traduccionesDeIdiomaCanonico',
+        inverse_relation_description2="Translations of the Model in Canonical Language into other Languages.",
+        label="En Idioma Canonico",
+        multiValued=0,
+        containment="Unspecified",
+        inverse_relationship='BPDEnIdiomaCanonicoDe',
+        owner_class_name="BPDConTraducciones"
+    ),
+
+    StringField(
+        name='uidInterTraduccionesInterno',
+        widget=StringWidget(
+            label="Identificador Inter Traducciones (uso interno)",
+            label2="Inter-Version identifier (internal)",
+            description="Identificador compartido entre todas las traducciones del elemento, para uso interno de la aplicacion.",
+            description2="Identifier shared by all translations of an element, used internally by the application.",
+            label_msgid='gvSIGbpd_BPDConTraducciones_attr_uidInterTraduccionesInterno_label',
+            description_msgid='gvSIGbpd_BPDConTraducciones_attr_uidInterTraduccionesInterno_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        ea_localid="594",
+        description="Identificador compartido entre todas las traducciones del elemento, para uso interno de la aplicacion.",
+        duplicates="0",
+        label2="Inter-Version identifier (internal)",
+        is_inter_translation="True",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Identifier shared by all translations of an element, used internally by the application.",
+        ea_guid="{93C931F4-2835-4425-BE69-E0DF2F9D2094}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Identificador Inter Traducciones (uso interno)",
+        length="0",
+        exclude_from_traversalconfig="True",
+        containment="Not Specified",
+        position="2",
+        owner_class_name="BPDConTraducciones"
+    ),
+
 ),
 )
 
@@ -248,6 +375,7 @@ class BPDConTraducciones:
 
     # Versioning and Translation fields
 
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'

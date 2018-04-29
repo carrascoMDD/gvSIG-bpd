@@ -52,7 +52,7 @@ schema = Schema((
         ),
         contains_collections=False,
         label2='Business Policies',
-        additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
+        additional_columns=['codigo', 'estado'],
         label='Politicas de Negocio',
         represents_aggregation=True,
         description2='Business Policies  governing the Organisation and its Business Processes, and constitute the basis for the Business Rules.',
@@ -110,7 +110,10 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -118,19 +121,20 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
     allowed_content_types = ['BPDPoliticaDeNegocio'] + list(getattr(BPDColeccionArquetipos, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
-    #content_icon = 'BPDColeccionPoliticasDeNegocio.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Coleccion de Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio."
-    typeDescMsgId =  'gvSIGbpd_BPDColeccionPoliticasDeNegocio_help'
-    archetype_name2 = 'Business Policies collection'
-    typeDescription2 = '''Collection of Business Policies  governing the Organisation and its Business Processes, and constitute the basis for the Business Rules.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDColeccionPoliticasDeNegocio_label'
-    factory_methods = None
-    factory_enablers = None
+    filter_content_types             = 1
+    global_allow                     = 0
+    content_icon = 'bpdcoleccion.gif'
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Coleccion de Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio."
+    typeDescMsgId                    =  'gvSIGbpd_BPDColeccionPoliticasDeNegocio_help'
+    archetype_name2                  = 'Business Policies collection'
+    typeDescription2                 = '''Collection of Business Policies  governing the Organisation and its Business Processes, and constitute the basis for the Business Rules.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDColeccionPoliticasDeNegocio_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -163,6 +167,15 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
        {'action': "string:${object_url}/MDDImport",
         'category': "object_buttons",
         'id': 'mddimport',
@@ -172,7 +185,7 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
@@ -190,24 +203,6 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/Editar",
-        'category': "object",
-        'id': 'edit',
-        'name': 'Edit',
-        'permissions': ("ModifyPortalContent",),
-        'condition': """python:object.fAllowWrite()"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
-       },
-
-
        {'action': "string:${object_url}/MDDVersions",
         'category': "object",
         'id': 'mddversions',
@@ -217,12 +212,21 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/Editar",
+        'category': "object",
+        'id': 'edit',
+        'name': 'Edit',
+        'permissions': ("ModifyPortalContent",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -250,6 +254,13 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
         """
         
         return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDColeccionPoliticasDeNegocio, PROJECTNAME)
 # end of class BPDColeccionPoliticasDeNegocio

@@ -49,7 +49,7 @@ schema = Schema((
             label="Detalles del Paso",
             label2="Step details",
             description="Detalles acerca de las caracteristicas del Paso de Proceso de Negocio.",
-            description2="Details about the fetarues of the Busienss Process Step",
+            description2="Details about the features of the Business Process Step",
             label_msgid='gvSIGbpd_BPDPasoSimple_attr_detallesPaso_label',
             description_msgid='gvSIGbpd_BPDPasoSimple_attr_detallesPaso_help',
             i18n_domain='gvSIGbpd',
@@ -63,7 +63,7 @@ schema = Schema((
         precision=0,
         collection="false",
         styleex="volatile=0;",
-        description2="Details about the fetarues of the Busienss Process Step",
+        description2="Details about the features of the Business Process Step",
         ea_guid="{FE9E3D1B-442F-4cbf-B1EA-C18A7E3AC11C}",
         exclude_from_values_form="True",
         scale="0",
@@ -72,7 +72,7 @@ schema = Schema((
         containment="Not Specified",
         position="1",
         owner_class_name="BPDPasoSimple",
-        expression="context.fTFLVs([ 'esInicial', 'ejecutores'])",
+        expression="context.fTFLVsUnless([ ['esInicial',False,],[ 'ejecutores',None,],[ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
         computed_types="string"
     ),
 
@@ -122,7 +122,10 @@ class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -130,19 +133,20 @@ class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral):
 
 
     allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdpasosimple.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Una actuacion individual de la secuencia que compone un Proceso de Negocio."
-    typeDescMsgId =  'gvSIGbpd_BPDPasoSimple_help'
-    archetype_name2 = 'Simple Step'
-    typeDescription2 = '''An individual action in the secuence describing the behaviour during the Business Process.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDPasoSimple_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Una actuacion individual de la secuencia que compone un Proceso de Negocio."
+    typeDescMsgId                    =  'gvSIGbpd_BPDPasoSimple_help'
+    archetype_name2                  = 'Simple Step'
+    typeDescription2                 = '''An individual action in the secuence describing the behaviour during the Business Process.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDPasoSimple_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -161,6 +165,15 @@ class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -202,21 +215,12 @@ class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -229,12 +233,12 @@ class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -255,6 +259,20 @@ class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
 
 registerType(BPDPasoSimple, PROJECTNAME)
 # end of class BPDPasoSimple

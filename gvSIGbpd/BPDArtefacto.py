@@ -44,6 +44,31 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import Reference
 schema = Schema((
 
     ComputedField(
+        name='caracteristicas',
+        widget=ComputedWidget(
+            label="Caracteristicas",
+            label2="Features",
+            description="Elementos de informacion que se especifican para el Artefacto, o que podra contener el Artefacto.",
+            description2="Information elements specified for the Artefact, or that may be contained by the Artefact.",
+            label_msgid='gvSIGbpd_BPDArtefacto_contents_caracteristicas_label',
+            description_msgid='gvSIGbpd_BPDArtefacto_contents_caracteristicas_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        contains_collections=False,
+        label2='Features',
+        additional_columns=['detallesCaracteristica', 'titulosTiposArtefactos'],
+        label='Caracteristicas',
+        represents_aggregation=True,
+        description2='Information elements specified for the Artefact, or that may be contained by the Artefact.',
+        multiValued=1,
+        owner_class_name="BPDArtefacto",
+        expression="context.objectValues(['BPDCaracteristica'])",
+        computed_types=['BPDCaracteristica'],
+        non_framework_elements=False,
+        description='Elementos de informacion que se especifican para el Artefacto, o que podra contener el Artefacto.'
+    ),
+
+    ComputedField(
         name='coleccionesArtefactos',
         widget=ComputedWidget(
             label="Artefactos subordinados",
@@ -216,6 +241,36 @@ schema = Schema((
     ),
 
     RelationField(
+        name='procesosGestores',
+        inverse_relation_label="Artefactos Gestionados",
+        inverse_relation_description="Artefactos que se gestionan ejecutando el Proceso de Negocio.",
+        description="Procesos de Negocio con que se gestiona este Artefacto.",
+        relationship='BPDProcesosGestoresDeArtefactos',
+        label2="Managing Business Processes",
+        widget=ReferenceBrowserWidget(
+            label="Procesos de Negocio Gestores",
+            label2="Managing Business Processes",
+            description="Procesos de Negocio con que se gestiona este Artefacto.",
+            description2="Business Processes executed to manage this Artefact.",
+            label_msgid='gvSIGbpd_BPDArtefacto_rel_procesosGestores_label',
+            description_msgid='gvSIGbpd_BPDArtefacto_rel_procesosGestores_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Business Processes executed to manage this Artefact.",
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        inverse_relation_label2="Managed Artefacts",
+        dependency_supplier=True,
+        inverse_relation_field_name='artefactosGestionados',
+        inverse_relation_description2="Artefacts managed by executing this Business Process.",
+        additional_columns=['codigo','estado','nivelDeImposicion',],
+        write_permission='Modify portal content',
+        label="Procesos de Negocio Gestores",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDArtefactosGestionadosPorProcesos'
+    ),
+
+    RelationField(
         name='politicasDeNegocioGobernantes',
         inverse_relation_label="Artefactos Gobernados",
         containment="Unspecified",
@@ -274,6 +329,36 @@ schema = Schema((
     ),
 
     RelationField(
+        name='usosDelArtefacto',
+        inverse_relation_label="Artefactos Usados",
+        inverse_relation_description="Artefactos usados en este Paso del Proceso de Negocio.",
+        description="Pasos de Procesos de Negocio donde se usa este Artefacto.",
+        relationship='BPDUsosDeArtefactos',
+        label2="Artefact Usages",
+        widget=ReferenceBrowserWidget(
+            label="Usos del Artefacto",
+            label2="Artefact Usages",
+            description="Pasos de Procesos de Negocio donde se usa este Artefacto.",
+            description2="Business Process Steps using this Artefact.",
+            label_msgid='gvSIGbpd_BPDArtefacto_rel_usosDelArtefacto_label',
+            description_msgid='gvSIGbpd_BPDArtefacto_rel_usosDelArtefacto_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Business Process Steps using this Artefact.",
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        inverse_relation_label2="Artefacts Used",
+        dependency_supplier=True,
+        inverse_relation_field_name='artefactosUsados',
+        inverse_relation_description2="Artefacts used in this Business Process Step.",
+        additional_columns=['codigo','estado','nivelDeImposicion',],
+        write_permission='Modify portal content',
+        label="Usos del Artefacto",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDArtefactosUsados'
+    ),
+
+    RelationField(
         name='responsablesDeArtefacto',
         inverse_relation_label="Artefactos a su cargo",
         inverse_relation_description="Artefactos que estan a cargo del Perfil o Unidad Organizacional.",
@@ -301,6 +386,36 @@ schema = Schema((
         containment="Unspecified",
         inverse_relationship='BPDArtefactosACargo',
         owner_class_name="BPDArtefacto"
+    ),
+
+    RelationField(
+        name='caracteristicasDelTipo',
+        inverse_relation_label="Tipos de Artefactos",
+        inverse_relation_description="Si la Clase de Caracteristica es Referencia o Agregacion, entonces restringe los tipos de Artefactos referenciados o agregados.",
+        description="Caracteristicas de Clase Referencia o Agregacion que estan restringidas a Artefactos de este tipo.",
+        relationship='BPDCaracteristicasDelTipo',
+        label2="Features of the Type",
+        widget=ReferenceBrowserWidget(
+            label="Caracteristicas del Tipo",
+            label2="Features of the Type",
+            description="Caracteristicas de Clase Referencia o Agregacion que estan restringidas a Artefactos de este tipo.",
+            description2="Features of Reference or Aggregation Class constrained to Artefacts of this type.",
+            label_msgid='gvSIGbpd_BPDArtefacto_rel_caracteristicasDelTipo_label',
+            description_msgid='gvSIGbpd_BPDArtefacto_rel_caracteristicasDelTipo_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Features of Reference or Aggregation Class constrained to Artefacts of this type.",
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        inverse_relation_label2="Artefact Types",
+        dependency_supplier=True,
+        inverse_relation_field_name='tiposDeArtefactos',
+        inverse_relation_description2="If the Feature Class is Reference or Aggregation, then constrains the types of Artefacts that can be referenced or aggregated.",
+        additional_columns=['codigo','estado','nivelDeImposicion','version','fechaAdopcion','fechaObsolescencia',],
+        write_permission='Modify portal content',
+        label="Caracteristicas del Tipo",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDTiposDeCaracteristicas'
     ),
 
 ),
@@ -349,27 +464,31 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
 
 
 
-    allowed_content_types = ['BPDColeccionArtefactos'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    allowed_content_types = ['BPDCaracteristica', 'BPDColeccionArtefactos'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdartefacto.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Un elemento identificable de information utilizada en el esfuerzo en los procesos de gestion de gvSIG."
-    typeDescMsgId =  'gvSIGbpd_BPDArtefacto_help'
-    archetype_name2 = 'Artefact'
-    typeDescription2 = '''An identifiable piece of information, i.e. that can be produced, consumed or handled over during the course of Business Processes.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDArtefacto_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Un elemento identificable de information utilizada en el esfuerzo en los procesos de gestion de gvSIG."
+    typeDescMsgId                    =  'gvSIGbpd_BPDArtefacto_help'
+    archetype_name2                  = 'Artefact'
+    typeDescription2                 = '''An identifiable piece of information, i.e. that can be produced, consumed or handled over during the course of Business Processes.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDArtefacto_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -388,6 +507,15 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -429,21 +557,12 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -456,12 +575,12 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -489,6 +608,13 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         """
         
         return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDArtefacto, PROJECTNAME)
 # end of class BPDArtefacto

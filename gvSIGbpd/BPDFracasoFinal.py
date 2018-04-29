@@ -37,8 +37,8 @@ from Products.gvSIGbpd.BPDPasoConAnteriores import BPDPasoConAnteriores
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -74,7 +74,7 @@ schema = Schema((
         containment="Not Specified",
         position="1",
         owner_class_name="BPDFracasoFinal",
-        expression="str()",
+        expression="context.fTFLVsUnless([ [ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
         computed_types="string"
     ),
 
@@ -126,7 +126,10 @@ class BPDFracasoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -134,19 +137,20 @@ class BPDFracasoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo
 
 
     allowed_content_types = [] + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdfracasofinal.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Indica el final del Proceso de Negocio con un resultado fallido."
-    typeDescMsgId =  'gvSIGbpd_BPDFracasoFinal_help'
-    archetype_name2 = 'Failure'
-    typeDescription2 = '''Indicates that the Business Process exit with failure.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDFracasoFinal_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Indica el final del Proceso de Negocio con un resultado fallido."
+    typeDescMsgId                    =  'gvSIGbpd_BPDFracasoFinal_help'
+    archetype_name2                  = 'Failure'
+    typeDescription2                 = '''Indicates that the Business Process exit with failure.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDFracasoFinal_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -165,6 +169,15 @@ class BPDFracasoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -206,21 +219,12 @@ class BPDFracasoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -233,12 +237,12 @@ class BPDFracasoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -259,6 +263,20 @@ class BPDFracasoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
 
 registerType(BPDFracasoFinal, PROJECTNAME)
 # end of class BPDFracasoFinal

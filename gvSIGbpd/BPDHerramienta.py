@@ -99,31 +99,60 @@ schema = Schema((
     RelationField(
         name='pasosAsistidos',
         inverse_relation_label="Herramientas aplicadas",
-        inverse_relation_description="Herramientas a utilizar para ejecutar el paso de proceso de negocio o manejar los artefactos usados.",
-        description="Pasos de procesos de negocio donde se aplica la Herramienta.",
+        inverse_relation_description="Herramientas a utilizar para ejecutar este Paso del Proceso de Negocio, o manejar los Artefactos usados en el Paso. Considere ademas las Herramientas referidas como usadas desde todo el Proceso de Negocio.",
+        description="Pasos de procesos de negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Procesos de Negocio completos.",
         relationship='BPDPasosAsistidos',
         label2="Assisted Steps",
         widget=ReferenceBrowserWidget(
             label="Pasos Asistidos",
             label2="Assisted Steps",
-            description="Pasos de procesos de negocio donde se aplica la Herramienta.",
-            description2="Business process steps applying the tool.",
+            description="Pasos de procesos de negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Procesos de Negocio completos.",
+            description2="Business Process Steps applying the Tool. The Tool may be also applied by whole Business Processes.",
             label_msgid='gvSIGbpd_BPDHerramienta_rel_pasosAsistidos_label',
             description_msgid='gvSIGbpd_BPDHerramienta_rel_pasosAsistidos_help',
             i18n_domain='gvSIGbpd',
         ),
-        description2="Business process steps applying the tool.",
+        description2="Business Process Steps applying the Tool. The Tool may be also applied by whole Business Processes.",
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         inverse_relation_label2="Applied Tools",
         dependency_supplier=True,
         inverse_relation_field_name='herramientasAplicadas',
-        inverse_relation_description2="Tools to apply in the execution of the business process step, or to manipulate the used artefacts.",
+        inverse_relation_description2="Tools to apply in the execution of the Business Process Step, or to manipulate the used Artefacts. Consider too the Tools refered as used in the whole Business Process.",
         additional_columns=['codigo','estado','nivelDeImposicion',],
         write_permission='Modify portal content',
         label="Pasos Asistidos",
         multiValued=1,
         containment="Unspecified",
         inverse_relationship='BPDHerramientasAplicadas'
+    ),
+
+    RelationField(
+        name='procesosAsistidos',
+        inverse_relation_label="Herramientas Aplicadas",
+        additional_columns=['codigo','estado',],
+        inverse_relation_description="Herramientas aplicadas en la realizacion del Proceso de Negocio. Considere ademas las Herramientas que se aplican en Pasos individuales del Proceso de Negocio.",
+        description="Procesos de Negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Pasos individuales del Procesos de Negocio.",
+        relationship='BPDProcesosAsistidos',
+        inverse_relation_field_name='herramientasAplicadas',
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        inverse_relation_label2="Applied Tools",
+        label2="Assisted Business Processes",
+        inverse_relation_description2="Tools applied in executing the Business Process. Consider too the Tools applied in individual Business Process Steps.",
+        widget=ReferenceBrowserWidget(
+            label="Procesos de Negocio Asistidos",
+            label2="Assisted Business Processes",
+            description="Procesos de Negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Pasos individuales del Procesos de Negocio.",
+            description2="Business Processes applying the Tool. The Tool may be also applied by individual Business Processes Steps.",
+            label_msgid='gvSIGbpd_BPDHerramienta_rel_procesosAsistidos_label',
+            description_msgid='gvSIGbpd_BPDHerramienta_rel_procesosAsistidos_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        label="Procesos de Negocio Asistidos",
+        description2="Business Processes applying the Tool. The Tool may be also applied by individual Business Processes Steps.",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDHerramientasAplicadasEnProcesos',
+        dependency_supplier=True
     ),
 
     RelationField(
@@ -153,6 +182,35 @@ schema = Schema((
         inverse_relationship='BPDHerramientasDirigidas',
         write_permission='Modify portal content',
         additional_columns=['codigo','estado','nivelDeImposicion',]
+    ),
+
+    RelationField(
+        name='instrucciones',
+        inverse_relation_label="Herramientas Documentadas",
+        additional_columns=['proposito', 'detallesProceso', 'codigo', 'estado'],
+        inverse_relation_description="Herramientas cuya utilizacion se documenta en este proceso.",
+        description="Instrucciones acerca de como utilizar la Herramienta para alcanzar un objetivo, expresado como un proceso con entradas, pasos y salidas.",
+        relationship='BPDInstrucciones',
+        inverse_relation_field_name='herramientasDocumentadas',
+        inverse_relation_label2="Documented Tools",
+        label2="Instructions",
+        inverse_relation_description2="Tools whose usage is documented in this process.",
+        widget=ReferenceBrowserWidget(
+            label="Instrucciones",
+            label2="Instructions",
+            description="Instrucciones acerca de como utilizar la Herramienta para alcanzar un objetivo, expresado como un proceso con entradas, pasos y salidas.",
+            description2="Instructions about how to use the Tool to accomplish a goal, expressed as a process with inputs, steps and outputs.",
+            label_msgid='gvSIGbpd_BPDHerramienta_rel_instrucciones_label',
+            description_msgid='gvSIGbpd_BPDHerramienta_rel_instrucciones_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        label="Instrucciones",
+        description2="Instructions about how to use the Tool to accomplish a goal, expressed as a process with inputs, steps and outputs.",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDHerramientasDocumentadas',
+        owner_class_name="BPDHerramienta",
+        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"
     ),
 
     RelationField(
@@ -260,7 +318,10 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -268,19 +329,20 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
     allowed_content_types = ['BPDColeccionHerramientas'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdherramienta.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Una Herramienta es una aplicacion informatica aplicada en ciertos pasos de sus Procesos de Negocio, posiblemente para operar con algunos Artefactos."
-    typeDescMsgId =  'gvSIGbpd_BPDHerramienta_help'
-    archetype_name2 = 'Tool'
-    typeDescription2 = '''A Tool is software applied in certain Business Process Steps, possibly to operate with some Artefacts.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDHerramienta_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Una Herramienta es una aplicacion informatica aplicada en ciertos pasos de sus Procesos de Negocio, posiblemente para operar con algunos Artefactos."
+    typeDescMsgId                    =  'gvSIGbpd_BPDHerramienta_help'
+    archetype_name2                  = 'Tool'
+    typeDescription2                 = '''A Tool is software applied in certain Business Process Steps, possibly to operate with some Artefacts.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDHerramienta_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -299,6 +361,15 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -340,21 +411,12 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -367,12 +429,12 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -393,6 +455,20 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDHerramienta, PROJECTNAME)
 # end of class BPDHerramienta

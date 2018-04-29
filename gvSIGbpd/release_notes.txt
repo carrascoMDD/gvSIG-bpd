@@ -1,6 +1,11 @@
 gvSIG Business Process Definition RELEASE NOTES
 ===============================================
 
+|
+|
+
+
+**As by v200911211405**
 
 |
 |
@@ -8,6 +13,14 @@ gvSIG Business Process Definition RELEASE NOTES
 
 Summary of use cases implemented after delivery of version 1.0 (build200906110445)
 ==================================================================================
+
+
+
+**Use Cases already reported as implemented after delivery of version 1.0 (build200907160507**
+
+
+
+
 
 - The application now automatically creates in the Plone Site an instance of ModelDDvlPloneTool,
   if one does not exist yet.
@@ -41,6 +54,126 @@ Summary of use cases implemented after delivery of version 1.0 (build20090611044
 |
 
 
+
+version 1.0.0.6
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+Error Exception when creating a new version of a root organization
+
+Error when Refactoring a Business Process Input as an Output
+
+ETTY 04x01 Relationship &quot;Extends&quot; between Business Processes
+
+ETTY 04x02 Add to Business Processes features to specify the management of Artefacts
+
+ETTY 04x03 Add Text field to Business Process  different from the Purpose field
+
+ETTY 04x04 Add to Business Processes features to specify the management of Artefact Features
+
+ETTY 33 Extension Point Step
+
+ETTY 34 Feature
+
+ETTY10x01 Input Add features to specify minimum and maximum multiplicity or artefacts
+
+ETTY11x01 Output Add features to specify minimum and maximum multiplicity or artefacts
+
+ETTY13x1 Add to General Step features to specify the usage  production and consumption of Artefacts
+
+ETTY13x2 Add to General Step features to specify the usage  production and consumption of Features in Artefacts
+
+ETTY20x01 Reception Add features to specify minimum and maximum multiplicity or artefacts
+
+ETTY21x01 SendAdd features to specify minimum and maximum multiplicity or artefacts
+
+IMPO01x1 Import elements from XML file not in a zip archive with binary content
+
+Import a whole root organization fails to create relations
+
+SUC04 Search elements including text and string fields other than description and text
+
+USEX 06  In Textual View  hide titles of previous Process Steps
+
+USEX 07 In Textual View for an Artifact  display the title of the related Inputs\' Business Process owner
+
+USEX 08 Add object action to reorder aggregated elements by drag and drop
+
+
+|
+|
+
+**KNOWN BUGS Pending to be resolved in this iteration**
+
+-None at this time-
+
+|
+|
+
+
+
+**POSTPONED**
+
+
+*To 1.1*
+
+COMU 02 Edit and publish pages to present the gvSIG-bpd product to OSOR communities
+
+DOCU 01 Edit and publish gvSIG-bpd user documentation
+
+DOCU 02 Edit and publish gvSIG-bpd install documentation
+
+DOCU 03 Edit and publish gvSIG-bpd administration documentation
+
+DOCU04 Edit and publish gvSIG-bpd testing documentation and supporting artefacts
+
+|
+|
+
+*Until further scheduling*
+
+EXPO02 Export textual views of an element and its contents as  HTML pages in a (g)zip archive
+
+FEAT04 Show transitively reachable influencers or influenced elements
+
+IPAG01 Integrate with gvSIG Plone service to assemble as a single page a complete network of gvSIG-bpd specification
+
+IMOF01 Integrate into gvSIG-bpd the ModelDDploneMOF application to define o.o. information structures
+
+IRDB01 Integrate into gvSIG-bpd the ModelDDploneRDB appto define 
+
+IBMM01 Integrate into gvSIG-bpd the ModelDDploneBMM application to define business motivation models
+
+PERF 01 Accelerate processing times for Paste  Import  New Version and New Translation
+
+SUC02 Search business process definition contents within the containing root Organization
+
+SUC03 Change the Status  Enforcement Level  Adoption or Retirement Dates of multiple Business Processes in a single action
+
+USEX 09 Add Drag and Drop support to link Previous and Next Business Process Steps 
+
+USEX05 Add action to create a step before or after the current one
+
+USEX10 When creating step  link with previous and next
+
+
+
+
+
+
+|
+|
+
+
+------------------------------
+
+|
+|
 
 
 version 1.0.0.5

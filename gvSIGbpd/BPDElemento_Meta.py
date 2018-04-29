@@ -36,6 +36,19 @@ from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.config import *
 
 
+# Classes added here during runtime will be acceptable roots,
+# after invocation of the fParentArchetypeClassNames_ResetCache method
+#
+gAdditionalParentArchetypeClassNames = [ ]
+
+
+
+# Private Cache of class names
+# 
+gParentArchetypeClassNamesCache      = [ ]
+
+
+
 
 class BPDElemento_Meta:            
 
@@ -43,6 +56,48 @@ class BPDElemento_Meta:
     """
     security = ClassSecurityInfo()
 
+
+    
+
+
+
+  
+  
+  
+    security.declarePrivate('fParentArchetypeClassNames')
+    def fParentArchetypeClassNames( self):
+    
+        if gParentArchetypeClassNamesCache:
+            return gParentArchetypeClassNamesCache
+        
+        return self.fParentArchetypeClassNames_ResetCache()
+        
+        
+        
+        
+        
+        
+        
+    security.declarePrivate('fParentArchetypeClassNames_ResetCache')
+    def fParentArchetypeClassNames_ResetCache( self):
+    
+        aWorkingCopy = self.fArchetypeClassNames()[:]
+        
+        # Thread safety to be assured here for cases when simultaneusly:
+        #
+        # Others may be adding to the gAdditionalParentArchetypeClassNames
+        # Others may also invoke this method
+        #
+        if gAdditionalParentArchetypeClassNames:
+            aWorkingCopy += gAdditionalParentArchetypeClassNames
+        
+        gParentArchetypeClassNamesCache = aWorkingCopy
+        
+        return gParentArchetypeClassNamesCache
+        
+            
+    
+    
     
     security.declarePrivate('fArchetypeSchemaByName')
     def fArchetypeSchemaByName( self, theMetaTypeName):
@@ -59,6 +114,7 @@ class BPDElemento_Meta:
     def fArchetypeClassNames( self):
         return [ 
             'BPDArtefacto',
+            'BPDCaracteristica',
             'BPDColeccionArtefactos',
             'BPDColeccionEntradas',
             'BPDColeccionHerramientas',
@@ -73,6 +129,7 @@ class BPDElemento_Meta:
             'BPDEntrada',
             'BPDEnvio',
             'BPDExitoFinal',
+            'BPDExtensionProceso',
             'BPDFracasoFinal',
             'BPDHerramienta',
             'BPDOrganizacion',
@@ -82,12 +139,15 @@ class BPDElemento_Meta:
             'BPDPlazo',
             'BPDPoliticaDeNegocio',
             'BPDProcesoDeNegocioSimple',
+            'BPDPuntoExtension',
             'BPDRecepcion',
             'BPDReferenciaCualificada',
             'BPDReglaDeNegocio',
             'BPDSalida',
             'BPDSubProceso',
             'BPDUnidadOrganizacional',
+            'BPDUsoArtefacto',
+            'BPDUsoCaracteristica',
  
         ]
         
@@ -103,6 +163,10 @@ class BPDElemento_Meta:
             if theMetaTypeName == 'BPDArtefacto':
                 from Products.gvSIGbpd.BPDArtefacto         import BPDArtefacto
                 return BPDArtefacto            
+
+            if theMetaTypeName == 'BPDCaracteristica':
+                from Products.gvSIGbpd.BPDCaracteristica         import BPDCaracteristica
+                return BPDCaracteristica            
 
             if theMetaTypeName == 'BPDColeccionArtefactos':
                 from Products.gvSIGbpd.BPDColeccionArtefactos         import BPDColeccionArtefactos
@@ -160,6 +224,10 @@ class BPDElemento_Meta:
                 from Products.gvSIGbpd.BPDExitoFinal         import BPDExitoFinal
                 return BPDExitoFinal            
 
+            if theMetaTypeName == 'BPDExtensionProceso':
+                from Products.gvSIGbpd.BPDExtensionProceso         import BPDExtensionProceso
+                return BPDExtensionProceso            
+
             if theMetaTypeName == 'BPDFracasoFinal':
                 from Products.gvSIGbpd.BPDFracasoFinal         import BPDFracasoFinal
                 return BPDFracasoFinal            
@@ -196,6 +264,10 @@ class BPDElemento_Meta:
                 from Products.gvSIGbpd.BPDProcesoDeNegocioSimple         import BPDProcesoDeNegocioSimple
                 return BPDProcesoDeNegocioSimple            
 
+            if theMetaTypeName == 'BPDPuntoExtension':
+                from Products.gvSIGbpd.BPDPuntoExtension         import BPDPuntoExtension
+                return BPDPuntoExtension            
+
             if theMetaTypeName == 'BPDRecepcion':
                 from Products.gvSIGbpd.BPDRecepcion         import BPDRecepcion
                 return BPDRecepcion            
@@ -219,6 +291,14 @@ class BPDElemento_Meta:
             if theMetaTypeName == 'BPDUnidadOrganizacional':
                 from Products.gvSIGbpd.BPDUnidadOrganizacional         import BPDUnidadOrganizacional
                 return BPDUnidadOrganizacional            
+
+            if theMetaTypeName == 'BPDUsoArtefacto':
+                from Products.gvSIGbpd.BPDUsoArtefacto         import BPDUsoArtefacto
+                return BPDUsoArtefacto            
+
+            if theMetaTypeName == 'BPDUsoCaracteristica':
+                from Products.gvSIGbpd.BPDUsoCaracteristica         import BPDUsoCaracteristica
+                return BPDUsoCaracteristica            
 
         except:
             None

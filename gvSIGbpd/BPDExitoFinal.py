@@ -51,7 +51,7 @@ schema = Schema((
             label="Detalles del Paso",
             label2="Step details",
             description="Detalles acerca de las caracteristicas del Paso de Proceso de Negocio.",
-            description2="Details about the fetarues of the Busienss Process Step",
+            description2="Details about the fetarues of the Business Process Step",
             label_msgid='gvSIGbpd_BPDExitoFinal_attr_detallesPaso_label',
             description_msgid='gvSIGbpd_BPDExitoFinal_attr_detallesPaso_help',
             i18n_domain='gvSIGbpd',
@@ -65,7 +65,7 @@ schema = Schema((
         precision=0,
         collection="false",
         styleex="volatile=0;",
-        description2="Details about the fetarues of the Busienss Process Step",
+        description2="Details about the fetarues of the Business Process Step",
         ea_guid="{6FA7B4A1-D726-41c7-AA1D-570594B06708}",
         exclude_from_values_form="True",
         scale="0",
@@ -74,7 +74,7 @@ schema = Schema((
         containment="Not Specified",
         position="1",
         owner_class_name="BPDExitoFinal",
-        expression="str()",
+        expression="context.fTFLVsUnless([ [ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
         computed_types="string"
     ),
 
@@ -126,7 +126,10 @@ class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, 
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -134,19 +137,20 @@ class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, 
 
 
     allowed_content_types = [] + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdexitofinal.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Indica el final del Proceso de Negocio con un resultado satisfactorio."
-    typeDescMsgId =  'gvSIGbpd_BPDExitoFinal_help'
-    archetype_name2 = 'Success'
-    typeDescription2 = '''Indicates that the Business Process completes with successful result.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDExitoFinal_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Indica el final del Proceso de Negocio con un resultado satisfactorio."
+    typeDescMsgId                    =  'gvSIGbpd_BPDExitoFinal_help'
+    archetype_name2                  = 'Success'
+    typeDescription2                 = '''Indicates that the Business Process completes with successful result.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDExitoFinal_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -165,6 +169,15 @@ class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, 
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -206,21 +219,12 @@ class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, 
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -233,12 +237,12 @@ class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, 
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -259,6 +263,20 @@ class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, 
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDExitoFinal, PROJECTNAME)
 # end of class BPDExitoFinal

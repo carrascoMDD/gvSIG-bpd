@@ -102,38 +102,6 @@ schema = Schema((
         exclude_from_copyconfig="True"
     ),
 
-    StringField(
-        name='versionInterna',
-        widget=StringWidget(
-            label="Version (uso interno)",
-            label2="Version identifier (internal)",
-            description="Identificador de version para uso interno de la aplicacion.",
-            description2="Version identifier used internally by the application.",
-            label_msgid='gvSIGbpd_BPDOrganizacion_attr_versionInterna_label',
-            description_msgid='gvSIGbpd_BPDOrganizacion_attr_versionInterna_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Identificador de version para uso interno de la aplicacion.",
-        duplicates="0",
-        label2="Version identifier (internal)",
-        ea_localid="372",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Version identifier used internally by the application.",
-        ea_guid="{6F804C0A-A2C8-47e1-8D1D-3D708FAF4D61}",
-        write_permission='Modify portal content',
-        scale="0",
-        is_version="True",
-        label="Version (uso interno)",
-        length="0",
-        exclude_from_traversalconfig="True",
-        containment="Not Specified",
-        position="1",
-        owner_class_name="BPDOrganizacion"
-    ),
-
     ComputedField(
         name='coleccionesPoliticasDeNegocio',
         widget=ComputedWidget(
@@ -254,38 +222,6 @@ schema = Schema((
         description='Colecciones de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio.'
     ),
 
-    TextField(
-        name='comentarioVersionInterna',
-        widget=TextAreaWidget(
-            label="Comentario de Version (uso interno)",
-            label2="Version Comment (internal)",
-            description="Comentario a la version para uso interno de la aplicacion.",
-            description2="Comments on the Version used internally by the application.",
-            label_msgid='gvSIGbpd_BPDOrganizacion_attr_comentarioVersionInterna_label',
-            description_msgid='gvSIGbpd_BPDOrganizacion_attr_comentarioVersionInterna_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Comentario a la version para uso interno de la aplicacion.",
-        duplicates="0",
-        label2="Version Comment (internal)",
-        ea_localid="373",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Comments on the Version used internally by the application.",
-        ea_guid="{E772FF53-10E9-4299-B6DB-1CE6FA85B39C}",
-        is_version_comment="True",
-        scale="0",
-        write_permission='Modify portal content',
-        label="Comentario de Version (uso interno)",
-        length="0",
-        exclude_from_traversalconfig="True",
-        containment="Not Specified",
-        position="3",
-        owner_class_name="BPDOrganizacion"
-    ),
-
 ),
 )
 
@@ -332,7 +268,10 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -340,19 +279,20 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
 
 
     allowed_content_types = ['BPDColeccionPoliticasDeNegocio', 'BPDColeccionHerramientas', 'BPDColeccionProcesosDeNegocio', 'BPDColeccionReglasDeNegocio', 'BPDColeccionArtefactos'] + list(getattr(BPDUnidadOrganizacional, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 1
+    filter_content_types             = 1
+    global_allow                     = 1
     content_icon = 'bpdorganizacion.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Raiz de contenidos para definicion y publicacion de procedimientos de gestion."
-    typeDescMsgId =  'gvSIGbpd_BPDOrganizacion_help'
-    archetype_name2 = 'Organisation'
-    typeDescription2 = '''Root of all definition and publicacion content.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDOrganizacion_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Raiz de contenidos para definicion y publicacion de procedimientos de gestion."
+    typeDescMsgId                    =  'gvSIGbpd_BPDOrganizacion_help'
+    archetype_name2                  = 'Organisation'
+    typeDescription2                 = '''Root of all definition and publicacion content.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDOrganizacion_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -376,12 +316,39 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
        },
 
 
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+       },
+
+
        {'action': "string:$object_url/content_status_history",
         'category': "object",
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
         'condition': """python:0"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -421,21 +388,12 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -448,12 +406,12 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -489,13 +447,6 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         
         return self._at_rename_after_creation or  ('portal_factory' in self.getPhysicalPath()) or ((  not self.getEsRaiz()) and self.fAllowWrite())
 
-    security.declarePublic('getEsRaiz')
-    def getEsRaiz(self):
-        """
-        """
-        
-        return not aq_parent( aq_inner( self)) or ( not( aq_parent( aq_inner( self)).meta_type == "BPDColeccionUnidadesOrganizacionales")) # First test for objects still not hooed up into the hierarchy
-
     security.declarePublic('fAllowRead')
     def fAllowRead(self):
         """
@@ -509,6 +460,13 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         """
         
         return self.fAllowRead() and self.getPermiteModificar() and ( self.getEsRaiz() or self.getRaiz().fAllowWrite())
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDOrganizacion, PROJECTNAME)
 # end of class BPDOrganizacion

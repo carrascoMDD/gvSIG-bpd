@@ -70,7 +70,7 @@ schema = Schema((
         containment="Not Specified",
         position="0",
         owner_class_name="BPDConVersiones",
-        expression="( context.getRaiz() and context.getRaiz().getVersionInterna()) or ''",
+        expression="context.fDerive_VersionInterna()",
         computed_types="string"
     ),
 
@@ -95,17 +95,52 @@ schema = Schema((
         styleex="volatile=0;",
         description2="Comments on the Version used internally by the application.",
         ea_guid="{6D55FB7D-845F-4d6f-A0EC-16D50104B872}",
-        label="Comentario de Version (uso interno)",
+        is_version_comment_storage="True",
         write_permission='Modify portal content',
         scale="0",
+        label="Comentario de Version (uso interno)",
         is_version_comment="True",
         length="0",
         exclude_from_traversalconfig="True",
         containment="Not Specified",
         position="1",
         owner_class_name="BPDConVersiones",
-        expression="( context.getRaiz() and context.getRaiz().getVersionInterna()) or ''",
+        expression="context.fDerive_ComentarioVersionInterna()",
         computed_types="text"
+    ),
+
+    TextField(
+        name='comentarioVersionInternaAlmacenada',
+        widget=TextAreaWidget(
+            label="Comentario Almacenado de Version (uso interno)",
+            label2="Version Comment Stored (internal)",
+            description="Comentario a la version para uso interno de la aplicacion, almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion.",
+            description2="Comments on the Version used internally by the application, stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root.",
+            label_msgid='gvSIGbpd_BPDConVersiones_attr_comentarioVersionInternaAlmacenada_label',
+            description_msgid='gvSIGbpd_BPDConVersiones_attr_comentarioVersionInternaAlmacenada_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Comentario a la version para uso interno de la aplicacion, almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion.",
+        duplicates="0",
+        label2="Version Comment Stored (internal)",
+        ea_localid="587",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Comments on the Version used internally by the application, stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root.",
+        ea_guid="{8E697EA1-7B3F-4109-86A0-5CD3F5A04A59}",
+        is_version_comment_storage="True",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Comentario Almacenado de Version (uso interno)",
+        length="0",
+        exclude_from_traversalconfig="True",
+        containment="Not Specified",
+        position="4",
+        owner_class_name="BPDConVersiones",
+        exclude_from_exportconfig="True",
+        exclude_from_copyconfig="True"
     ),
 
     StringField(
@@ -113,13 +148,13 @@ schema = Schema((
         widget=StringWidget(
             label="Identificador Inter Versiones (uso interno)",
             label2="Inter-Version identifier (internal)",
-            description="Identificador compartido entre todos las versiones del elemento, para uso interno de la aplicacion.",
-            description2="Identifier shared by all version of an element, used internally by the application.",
+            description="Identificador compartido entre todas las versiones del elemento, para uso interno de la aplicacion.",
+            description2="Identifier shared by all versions of an element, used internally by the application.",
             label_msgid='gvSIGbpd_BPDConVersiones_attr_uidInterVersionesInterno_label',
             description_msgid='gvSIGbpd_BPDConVersiones_attr_uidInterVersionesInterno_help',
             i18n_domain='gvSIGbpd',
         ),
-        description="Identificador compartido entre todos las versiones del elemento, para uso interno de la aplicacion.",
+        description="Identificador compartido entre todas las versiones del elemento, para uso interno de la aplicacion.",
         duplicates="0",
         label2="Inter-Version identifier (internal)",
         ea_localid="374",
@@ -127,7 +162,7 @@ schema = Schema((
         precision=0,
         collection="false",
         styleex="volatile=0;",
-        description2="Identifier shared by all version of an element, used internally by the application.",
+        description2="Identifier shared by all versions of an element, used internally by the application.",
         ea_guid="{F10E126B-25CB-4bca-A85F-4BA84475227F}",
         write_permission='Modify portal content',
         scale="0",
@@ -136,8 +171,42 @@ schema = Schema((
         length="0",
         exclude_from_traversalconfig="True",
         containment="Not Specified",
-        position="1",
+        position="2",
         owner_class_name="BPDConVersiones"
+    ),
+
+    StringField(
+        name='versionInternaAlmacenada',
+        widget=StringWidget(
+            label="Version Almacenada (uso interno)",
+            label2="Version identifier Stored (internal)",
+            description="Identificador de version para uso interno de la aplicacion, almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion.",
+            description2="Version identifier used internally by the application, stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root.",
+            label_msgid='gvSIGbpd_BPDConVersiones_attr_versionInternaAlmacenada_label',
+            description_msgid='gvSIGbpd_BPDConVersiones_attr_versionInternaAlmacenada_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Identificador de version para uso interno de la aplicacion, almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion.",
+        duplicates="0",
+        label2="Version identifier Stored (internal)",
+        ea_localid="586",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        is_version_storage="True",
+        description2="Version identifier used internally by the application, stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root.",
+        ea_guid="{65F698D8-7237-45b2-8C10-A6EF168D9E59}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Version Almacenada (uso interno)",
+        length="0",
+        exclude_from_traversalconfig="True",
+        containment="Not Specified",
+        position="3",
+        owner_class_name="BPDConVersiones",
+        exclude_from_exportconfig="True",
+        exclude_from_copyconfig="True"
     ),
 
     RelationField(
@@ -219,7 +288,9 @@ class BPDConVersiones:
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
 
 
 

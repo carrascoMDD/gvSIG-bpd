@@ -109,25 +109,25 @@ schema = Schema((
     RelationField(
         name='herramientasAplicadas',
         inverse_relation_label="Pasos Asistidos",
-        inverse_relation_description="Pasos de procesos de negocio donde se aplica la Herramienta.",
-        description="Herramientas a utilizar para ejecutar el paso de proceso de negocio o manejar los artefactos usados.",
+        inverse_relation_description="Pasos de procesos de negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Procesos de Negocio completos.",
+        description="Herramientas a utilizar para ejecutar este Paso del Proceso de Negocio, o manejar los Artefactos usados en el Paso. Considere ademas las Herramientas referidas como usadas desde todo el Proceso de Negocio.",
         relationship='BPDHerramientasAplicadas',
         label2="Applied Tools",
         widget=ReferenceBrowserWidget(
             label="Herramientas aplicadas",
             label2="Applied Tools",
-            description="Herramientas a utilizar para ejecutar el paso de proceso de negocio o manejar los artefactos usados.",
-            description2="Tools to apply in the execution of the business process step, or to manipulate the used artefacts.",
+            description="Herramientas a utilizar para ejecutar este Paso del Proceso de Negocio, o manejar los Artefactos usados en el Paso. Considere ademas las Herramientas referidas como usadas desde todo el Proceso de Negocio.",
+            description2="Tools to apply in the execution of the Business Process Step, or to manipulate the used Artefacts. Consider too the Tools refered as used in the whole Business Process.",
             label_msgid='gvSIGbpd_BPDPasoMinimo_rel_herramientasAplicadas_label',
             description_msgid='gvSIGbpd_BPDPasoMinimo_rel_herramientasAplicadas_help',
             i18n_domain='gvSIGbpd',
         ),
-        description2="Tools to apply in the execution of the business process step, or to manipulate the used artefacts.",
+        description2="Tools to apply in the execution of the Business Process Step, or to manipulate the used Artefacts. Consider too the Tools refered as used in the whole Business Process.",
         inverse_relation_label2="Assisted Steps",
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         write_permission='Modify portal content',
         inverse_relation_field_name='pasosAsistidos',
-        inverse_relation_description2="Business process steps applying the tool.",
+        inverse_relation_description2="Business Process Steps applying the Tool. The Tool may be also applied by whole Business Processes.",
         additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
         label="Herramientas aplicadas",
         multiValued=1,
@@ -163,10 +163,118 @@ schema = Schema((
         label="Proceso de Negocio",
         length="0",
         containment="Not Specified",
-        position="1",
+        position="3",
         owner_class_name="BPDPasoMinimo",
         expression="context.getPropietario().Title()",
         computed_types="string"
+    ),
+
+    ComputedField(
+        name='titulosArtefactosUsados',
+        widget=ComputedField._properties['widget'](
+            label="Artefactos Usados",
+            label2="Used Artefacts",
+            description="Artefactos que se usan en el Paso del Proceso de Negocio.",
+            description2="Artefacts Used in the Business Process Step",
+            label_msgid='gvSIGbpd_BPDPasoMinimo_attr_titulosArtefactosUsados_label',
+            description_msgid='gvSIGbpd_BPDPasoMinimo_attr_titulosArtefactosUsados_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        exclude_from_values_paragraph="True",
+        description="Artefactos que se usan en el Paso del Proceso de Negocio.",
+        duplicates="0",
+        label2="Used Artefacts",
+        ea_localid="426",
+        derived="0",
+        collection="false",
+        label="Artefactos Usados",
+        description2="Artefacts Used in the Business Process Step",
+        containment="Not Specified",
+        ea_guid="{0B25CA4F-EE74-4ee0-9FEB-19F4EDBD5352}",
+        position="1",
+        owner_class_name="BPDPasoMinimo",
+        styleex="volatile=0;",
+        expression="', '.join( [ a.fTFLVsUnless([ ['title','',], ['titulosArtefactosUsados','',],]) for a in  context.getUsosArtefactos()])",
+        exclude_from_values_form="True"
+    ),
+
+    ComputedField(
+        name='titulosCaracteristicasUsadas',
+        widget=ComputedField._properties['widget'](
+            label="Caracteristicas Usadas",
+            label2="Used Artefacts",
+            description="Caracteristicas de Artefactos que se usan en el Paso del Proceso de Negocio.",
+            description2="Artefact Featuress Used in the Business Process Step",
+            label_msgid='gvSIGbpd_BPDPasoMinimo_attr_titulosCaracteristicasUsadas_label',
+            description_msgid='gvSIGbpd_BPDPasoMinimo_attr_titulosCaracteristicasUsadas_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        exclude_from_values_paragraph="True",
+        description="Caracteristicas de Artefactos que se usan en el Paso del Proceso de Negocio.",
+        duplicates="0",
+        label2="Used Artefacts",
+        ea_localid="444",
+        derived="0",
+        collection="false",
+        styleex="volatile=0;",
+        description2="Artefact Featuress Used in the Business Process Step",
+        containment="Not Specified",
+        ea_guid="{16A5583E-8246-491a-BA03-9461528824C6}",
+        position="2",
+        owner_class_name="BPDPasoMinimo",
+        label="Caracteristicas Usadas",
+        expression="', '.join( [ a.fTFLVsUnless([ ['title','',], ['titulosCaracteristicasUsadas','',],]) for a in  context.getUsosCaracteristicas()])",
+        exclude_from_values_form="True"
+    ),
+
+    ComputedField(
+        name='usosArtefactos',
+        widget=ComputedWidget(
+            label="Usa Artefactos",
+            label2="Use Artefacts",
+            description="Artefactos usados en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar.",
+            description2="Artefacts used in the Business Process Step, to Create, Read, Update, Delete or Link.",
+            label_msgid='gvSIGbpd_BPDPasoMinimo_contents_usosArtefactos_label',
+            description_msgid='gvSIGbpd_BPDPasoMinimo_contents_usosArtefactos_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        contains_collections=False,
+        label2='Use Artefacts',
+        additional_columns=['esRequerido', 'modoDeUso', 'titulosArtefactosUsados'],
+        label='Usa Artefactos',
+        represents_aggregation=True,
+        description2='Artefacts used in the Business Process Step, to Create, Read, Update, Delete or Link.',
+        multiValued=1,
+        owner_class_name="BPDPasoMinimo",
+        expression="context.objectValues(['BPDUsoArtefacto'])",
+        computed_types=['BPDUsoArtefacto'],
+        non_framework_elements=False,
+        description='Artefactos usados en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar.'
+    ),
+
+    ComputedField(
+        name='usosCaracteristicas',
+        widget=ComputedWidget(
+            label="Usa Caracteristicas",
+            label2="Use Features",
+            description="Caracteristicas de Artefactos que se usan en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar.",
+            description2="Artefact Features used in the Business Process Step, to Create, Read, Update, Delete or Link.",
+            label_msgid='gvSIGbpd_BPDPasoMinimo_contents_usosCaracteristicas_label',
+            description_msgid='gvSIGbpd_BPDPasoMinimo_contents_usosCaracteristicas_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        contains_collections=False,
+        label2='Use Features',
+        additional_columns=['esRequerida', 'modoDeUso', 'titulosCaracteristicasUsadas'],
+        label='Usa Caracteristicas',
+        represents_aggregation=True,
+        description2='Artefact Features used in the Business Process Step, to Create, Read, Update, Delete or Link.',
+        multiValued=1,
+        owner_class_name="BPDPasoMinimo",
+        expression="context.objectValues(['BPDUsoCaracteristica'])",
+        computed_types=['BPDUsoCaracteristica'],
+        non_framework_elements=False,
+        description='Caracteristicas de Artefactos que se usan en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar.'
     ),
 
 ),
@@ -210,14 +318,17 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable, BPDPasoConRest
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
 
 
 
-    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', [])) + list(getattr(BPDPasoConRestriccionesTiempo, 'allowed_content_types', []))
+    allowed_content_types = ['BPDUsoArtefacto', 'BPDUsoCaracteristica'] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', [])) + list(getattr(BPDPasoConRestriccionesTiempo, 'allowed_content_types', []))
 
     actions =  (
 
@@ -235,6 +346,15 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable, BPDPasoConRest
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -276,21 +396,12 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable, BPDPasoConRest
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -303,12 +414,12 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable, BPDPasoConRest
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 

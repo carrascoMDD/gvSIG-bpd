@@ -52,7 +52,7 @@ schema = Schema((
         ),
         contains_collections=False,
         label2='Outputs',
-        additional_columns=['esRequerido', 'titulosArtefactosDeSalida'],
+        additional_columns=['esRequerida', 'titulosArtefactosDeSalida'],
         label='Salidas',
         represents_aggregation=True,
         description2='Informations that may or will be made available upon successful completion of the Business Process.',
@@ -110,7 +110,10 @@ class BPDColeccionSalidas(OrderedBaseFolder, BPDColeccionArquetipos):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -118,19 +121,20 @@ class BPDColeccionSalidas(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
     allowed_content_types = ['BPDSalida'] + list(getattr(BPDColeccionArquetipos, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
-    #content_icon = 'BPDColeccionSalidas.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Coleccion de Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio."
-    typeDescMsgId =  'gvSIGbpd_BPDColeccionSalidas_help'
-    archetype_name2 = 'Outputs collection'
-    typeDescription2 = '''Collection of Informations that may or will be made available upon successful completion of the Business Process.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDColeccionSalidas_label'
-    factory_methods = None
-    factory_enablers = None
+    filter_content_types             = 1
+    global_allow                     = 0
+    content_icon = 'bpdcoleccion.gif'
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Coleccion de Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio."
+    typeDescMsgId                    =  'gvSIGbpd_BPDColeccionSalidas_help'
+    archetype_name2                  = 'Outputs collection'
+    typeDescription2                 = '''Collection of Informations that may or will be made available upon successful completion of the Business Process.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDColeccionSalidas_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -163,6 +167,15 @@ class BPDColeccionSalidas(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
        {'action': "string:${object_url}/MDDImport",
         'category': "object_buttons",
         'id': 'mddimport',
@@ -172,7 +185,7 @@ class BPDColeccionSalidas(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
@@ -190,24 +203,6 @@ class BPDColeccionSalidas(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/Editar",
-        'category': "object",
-        'id': 'edit',
-        'name': 'Edit',
-        'permissions': ("ModifyPortalContent",),
-        'condition': """python:object.fAllowWrite()"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
-       },
-
-
        {'action': "string:${object_url}/MDDVersions",
         'category': "object",
         'id': 'mddversions',
@@ -217,12 +212,21 @@ class BPDColeccionSalidas(OrderedBaseFolder, BPDColeccionArquetipos):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/Editar",
+        'category': "object",
+        'id': 'edit',
+        'name': 'Edit',
+        'permissions': ("ModifyPortalContent",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -243,6 +247,13 @@ class BPDColeccionSalidas(OrderedBaseFolder, BPDColeccionArquetipos):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
     security.declarePublic('manage_pasteObjects')
     def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):

@@ -62,11 +62,12 @@ schema = Schema((
         description2="Steps that execute before this step. This step will execute after the completion of any of its previous steps.",
         ea_guid="{F5A864F4-B3F6-484a-B71D-608CCBB08FEB}",
         exclude_from_values_form="True",
+        expression="', '.join( [a.Title() for a in context.getPasosAnteriores()])",
         label="Pasos Anteriores",
         containment="Not Specified",
         position="0",
         owner_class_name="BPDPasoConAnteriores",
-        expression="', '.join( [a.Title() for a in context.getPasosAnteriores()])",
+        exclude_from_views="[ 'Textual', ]",
         computed_types="string"
     ),
 

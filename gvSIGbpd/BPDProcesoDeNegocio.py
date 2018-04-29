@@ -43,249 +43,6 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import  Referenc
 
 schema = Schema((
 
-    TextField(
-        name='proposito',
-        widget=TextAreaWidget(
-            label="Proposito",
-            label2="Purpose",
-            description="Perseguido por el Proceso",
-            description2="Pursued by the Business Process.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_proposito_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_proposito_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Perseguido por el Proceso",
-        duplicates="0",
-        label2="Purpose",
-        ea_localid="231",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Pursued by the Business Process.",
-        ea_guid="{91E6E831-690D-49dc-9CBD-AED7809684B2}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Proposito",
-        length="0",
-        containment="Not Specified",
-        position="0",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    TextField(
-        name='preCondicion',
-        widget=TextAreaWidget(
-            label="Pre Condicion",
-            label2="Pre Condition",
-            description="La condicion que debera cumplirse para que pueda comenzar el Proceso",
-            description2="The conditioni that is required to be true, to allow the start of the Business Process execution.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="La condicion que debera cumplirse para que pueda comenzar el Proceso",
-        duplicates="0",
-        label2="Pre Condition",
-        ea_localid="236",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="The conditioni that is required to be true, to allow the start of the Business Process execution.",
-        ea_guid="{30ADBBDD-941A-4c1a-B6F7-0E033B19BF46}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Pre Condicion",
-        length="0",
-        containment="Not Specified",
-        position="5",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    TextField(
-        name='postCondicion',
-        widget=TextAreaWidget(
-            label="Post Condicion",
-            label2="Post Condition",
-            description="La condicion que se cumplira cuando el Proceso concluya con exito.",
-            description2="The condition that is guaranteed to be met, whent he Business Process completes successfully.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="La condicion que se cumplira cuando el Proceso concluya con exito.",
-        duplicates="0",
-        label2="Post Condition",
-        ea_localid="237",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="The condition that is guaranteed to be met, whent he Business Process completes successfully.",
-        ea_guid="{ADE0B368-5B74-4162-A5CE-F94276D53067}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Post Condicion",
-        length="0",
-        containment="Not Specified",
-        position="6",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    StringField(
-        name='responsableMantenimiento',
-        widget=StringWidget(
-            label="Responsable del Mantenimiento",
-            label2="Responsible for Maintenance",
-            description="Responsable de Mantenimiento",
-            description2="Person in charge of the maintenance of the specification.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_responsableMantenimiento_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_responsableMantenimiento_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Responsable de Mantenimiento",
-        duplicates="0",
-        label2="Responsible for Maintenance",
-        ea_localid="232",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Person in charge of the maintenance of the specification.",
-        ea_guid="{928DD89F-31AE-42be-8D23-9C475ED711B5}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Responsable del Mantenimiento",
-        length="0",
-        containment="Not Specified",
-        position="1",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    TextField(
-        name='seleccionDePersonal',
-        widget=TextAreaWidget(
-            label="Seleccion de Personal",
-            label2="Human Resources Selection",
-            description="Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico.",
-            description2="Selection criteria for staffing the Performer Profiles with matching individuals, specifically for this Business Process.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico.",
-        duplicates="0",
-        label2="Human Resources Selection",
-        ea_localid="238",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Selection criteria for staffing the Performer Profiles with matching individuals, specifically for this Business Process.",
-        ea_guid="{D823D784-F46A-43bf-9FC4-56881646DC0E}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Seleccion de Personal",
-        length="0",
-        containment="Not Specified",
-        position="7",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    BooleanField(
-        name='esPlaneado',
-        widget=BooleanField._properties['widget'](
-            label="Es Planificado",
-            label2="Is Planned",
-            description="Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos).",
-            description2="Each Business Process instance shall be planned in advance (i.e., time and resources).",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos).",
-        duplicates="0",
-        label2="Is Planned",
-        ea_localid="233",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Each Business Process instance shall be planned in advance (i.e., time and resources).",
-        ea_guid="{825E14F7-ACB9-44fe-BD10-A6E3AD626823}",
-        write_permission='Modify portal content',
-        scale="0",
-        default="0",
-        label="Es Planificado",
-        length="0",
-        containment="Not Specified",
-        position="2",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    BooleanField(
-        name='esContinuo',
-        widget=BooleanField._properties['widget'](
-            label="Es Continuo",
-            label2="Is Continuous",
-            description="El Proceso se ejercita continuadamente, comenzando una nueva instancia al completar la anterior, sin necesidad de iniciacion explicita por su Responsable o la Organizacion.",
-            description2="The Business Process is executed continuously, starting a new instance when the previous one completes, whithout any explicit initiation by a participant Profile or Organisational Unit.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esContinuo_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esContinuo_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="El Proceso se ejercita continuadamente, comenzando una nueva instancia al completar la anterior, sin necesidad de iniciacion explicita por su Responsable o la Organizacion.",
-        duplicates="0",
-        label2="Is Continuous",
-        ea_localid="234",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="The Business Process is executed continuously, starting a new instance when the previous one completes, whithout any explicit initiation by a participant Profile or Organisational Unit.",
-        ea_guid="{6D7A800C-2EA2-429f-82FA-AC871296D402}",
-        write_permission='Modify portal content',
-        scale="0",
-        default="0",
-        label="Es Continuo",
-        length="0",
-        containment="Not Specified",
-        position="3",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    BooleanField(
-        name='esRepetible',
-        widget=BooleanField._properties['widget'](
-            label="Es Repetible",
-            label2="Is  Repeteable",
-            description="El Proceso se puede aplicar varias veces una tras otra sobre la misma instancia de informacion, por ejemplo, hasta conseguir un Resultado de calidad aceptable.",
-            description2="Whether the Business Process may iterate and execute multiple times on the same instance of information, por example, until obtaining a sufficiently satisfactory result.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esRepetible_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esRepetible_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="El Proceso se puede aplicar varias veces una tras otra sobre la misma instancia de informacion, por ejemplo, hasta conseguir un Resultado de calidad aceptable.",
-        duplicates="0",
-        label2="Is  Repeteable",
-        ea_localid="235",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Whether the Business Process may iterate and execute multiple times on the same instance of information, por example, until obtaining a sufficiently satisfactory result.",
-        ea_guid="{5C122DA3-18FD-416a-8948-195B081ECE38}",
-        write_permission='Modify portal content',
-        scale="0",
-        default="0",
-        label="Es Repetible",
-        length="0",
-        containment="Not Specified",
-        position="4",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
     ComputedField(
         name='coleccionesProcesosDeNegocio',
         widget=ComputedWidget(
@@ -321,6 +78,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_detallesProceso_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Detalles acerca de las caracteristicas del Proceso de Negocio.",
         duplicates="0",
         label2="Business Process details",
@@ -338,14 +96,226 @@ schema = Schema((
         containment="Not Specified",
         position="8",
         owner_class_name="BPDProcesoDeNegocio",
-        expression="context.fTFLVs([ 'esPlaneado', 'esContinuo','esRepetible', ])",
+        expression="context.fTFLVsUnless([ [ 'esPlaneado', False,], [ 'esContinuo', False,], ['esRepetible', False,], ])",
         computed_types="string"
+    ),
+
+    BooleanField(
+        name='esContinuo',
+        widget=BooleanField._properties['widget'](
+            label="Es Continuo",
+            label2="Is Continuous",
+            description="El Proceso se ejercita continuadamente, comenzando una nueva instancia al completar la anterior, sin necesidad de iniciacion explicita por su Responsable o la Organizacion.",
+            description2="The Business Process is executed continuously, starting a new instance when the previous one completes, whithout any explicit initiation by a participant Profile or Organisational Unit.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esContinuo_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esContinuo_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="El Proceso se ejercita continuadamente, comenzando una nueva instancia al completar la anterior, sin necesidad de iniciacion explicita por su Responsable o la Organizacion.",
+        duplicates="0",
+        label2="Is Continuous",
+        ea_localid="234",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="The Business Process is executed continuously, starting a new instance when the previous one completes, whithout any explicit initiation by a participant Profile or Organisational Unit.",
+        ea_guid="{6D7A800C-2EA2-429f-82FA-AC871296D402}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Es Continuo",
+        length="0",
+        exclude_from_values_paragraph_when="False",
+        containment="Not Specified",
+        position="3",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    BooleanField(
+        name='esPlaneado',
+        widget=BooleanField._properties['widget'](
+            label="Es Planificado",
+            label2="Is Planned",
+            description="Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos).",
+            description2="Each Business Process instance shall be planned in advance (i.e., time and resources).",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos).",
+        duplicates="0",
+        label2="Is Planned",
+        ea_localid="233",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Each Business Process instance shall be planned in advance (i.e., time and resources).",
+        ea_guid="{825E14F7-ACB9-44fe-BD10-A6E3AD626823}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Es Planificado",
+        length="0",
+        exclude_from_values_paragraph_when="False",
+        containment="Not Specified",
+        position="2",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    BooleanField(
+        name='esRepetible',
+        widget=BooleanField._properties['widget'](
+            label="Es Repetible",
+            label2="Is  Repeteable",
+            description="El Proceso se puede aplicar varias veces una tras otra sobre la misma instancia de informacion, por ejemplo, hasta conseguir un Resultado de calidad aceptable.",
+            description2="Whether the Business Process may iterate and execute multiple times on the same instance of information, por example, until obtaining a sufficiently satisfactory result.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esRepetible_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esRepetible_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="El Proceso se puede aplicar varias veces una tras otra sobre la misma instancia de informacion, por ejemplo, hasta conseguir un Resultado de calidad aceptable.",
+        duplicates="0",
+        label2="Is  Repeteable",
+        ea_localid="235",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Whether the Business Process may iterate and execute multiple times on the same instance of information, por example, until obtaining a sufficiently satisfactory result.",
+        ea_guid="{5C122DA3-18FD-416a-8948-195B081ECE38}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Es Repetible",
+        length="0",
+        exclude_from_values_paragraph_when="False",
+        containment="Not Specified",
+        position="4",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    ComputedField(
+        name='extensiones',
+        widget=ComputedWidget(
+            label="Extensiones de Procesos de Negocio",
+            label2="Extend Business Processes",
+            description="Procesos de Negocio extendidos por este Proceso, insertando el comportamiento de este Proceso en un Punto de Extension del Proceso de Negocio extendido.",
+            description2="Business Processes extended by this Process, inserting this Process behavior into a Extension Point in the Steps of the extended Business Process.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_contents_extensiones_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_contents_extensiones_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        contains_collections=False,
+        label2='Extend Business Processes',
+        additional_columns=['condicion', 'titulosProcesosExtendidos'],
+        label='Extensiones de Procesos de Negocio',
+        represents_aggregation=True,
+        description2='Business Processes extended by this Process, inserting this Process behavior into a Extension Point in the Steps of the extended Business Process.',
+        multiValued=1,
+        owner_class_name="BPDProcesoDeNegocio",
+        expression="context.objectValues(['BPDExtensionProceso'])",
+        computed_types=['BPDExtensionProceso'],
+        non_framework_elements=False,
+        description='Procesos de Negocio extendidos por este Proceso, insertando el comportamiento de este Proceso en un Punto de Extension del Proceso de Negocio extendido.'
+    ),
+
+    RelationField(
+        name='herramientasDocumentadas',
+        inverse_relation_label="Instrucciones",
+        additional_columns=['proposito','detallesProceso','codigo','estado',],
+        inverse_relation_description="Instrucciones acerca de como utilizar la Herramienta para alcanzar un objetivo, expresado como un proceso con entradas, pasos y salidas.",
+        description="Herramientas cuya utilizacion se documenta en este proceso.",
+        relationship='BPDHerramientasDocumentadas',
+        inverse_relation_field_name='instrucciones',
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        inverse_relation_label2="Instructions",
+        label2="Documented Tools",
+        inverse_relation_description2="Instructions about how to use the Tool to accomplish a goal, expressed as a process with inputs, steps and outputs.",
+        widget=ReferenceBrowserWidget(
+            label="Herramientas Documentadas",
+            label2="Documented Tools",
+            description="Herramientas cuya utilizacion se documenta en este proceso.",
+            description2="Tools whose usage is documented in this process.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_rel_herramientasDocumentadas_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_rel_herramientasDocumentadas_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        label="Herramientas Documentadas",
+        description2="Tools whose usage is documented in this process.",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDInstrucciones',
+        dependency_supplier=True
+    ),
+
+    TextField(
+        name='postCondicion',
+        widget=TextAreaWidget(
+            label="Post Condicion",
+            label2="Post Condition",
+            description="La condicion que se cumplira cuando el Proceso concluya con exito. Puede expresar reglas de corelacion entre las varias Salidas del Proceso.",
+            description2="The condition that is guaranteed to be met, whent he Business Process completes successfully. May express corelation rules over the varios Process Outputs.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="La condicion que se cumplira cuando el Proceso concluya con exito. Puede expresar reglas de corelacion entre las varias Salidas del Proceso.",
+        searchable=1,
+        duplicates="0",
+        label2="Post Condition",
+        ea_localid="237",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="The condition that is guaranteed to be met, whent he Business Process completes successfully. May express corelation rules over the varios Process Outputs.",
+        ea_guid="{ADE0B368-5B74-4162-A5CE-F94276D53067}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Post Condicion",
+        length="0",
+        containment="Not Specified",
+        position="6",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    TextField(
+        name='preCondicion',
+        widget=TextAreaWidget(
+            label="Pre Condicion",
+            label2="Pre Condition",
+            description="La condicion que debera cumplirse para que pueda comenzar el Proceso. Puede expresar reglas de corelacion entre las varias Entradas del Proceso.",
+            description2="The condition that is required to be true, to allow the start of the Business Process execution. May express corelation rules over the varios Process Inputs.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="La condicion que debera cumplirse para que pueda comenzar el Proceso. Puede expresar reglas de corelacion entre las varias Entradas del Proceso.",
+        searchable=1,
+        duplicates="0",
+        label2="Pre Condition",
+        ea_localid="236",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="The condition that is required to be true, to allow the start of the Business Process execution. May express corelation rules over the varios Process Inputs.",
+        ea_guid="{30ADBBDD-941A-4c1a-B6F7-0E033B19BF46}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Pre Condicion",
+        length="0",
+        containment="Not Specified",
+        position="5",
+        owner_class_name="BPDProcesoDeNegocio"
     ),
 
     RelationField(
         name='usadoComoSubProcesos',
         inverse_relation_label="Proceso de Negocio usado",
-        additional_columns=['proposito','responsableMantenimiento','detallesProceso','estado','nivelDeImposicion',],
+        additional_columns=['proposito','detallesProceso','codigo','estado',],
         inverse_relation_description="Proceso de Negocio que se ejecuta como parte del Proceso de Negocio de mayor alcance.",
         description="Pasos de otros Procesos de Negocio donde este proceso se ejecuta de principio a fin, como un Paso Sub-Proceso.",
         relationship='BPDUsadoComoSubProcesos',
@@ -372,6 +342,35 @@ schema = Schema((
     ),
 
     RelationField(
+        name='herramientasAplicadas',
+        inverse_relation_label="Procesos de Negocio Asistidos",
+        additional_columns=['codigo', 'estado'],
+        inverse_relation_description="Procesos de Negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Pasos individuales del Procesos de Negocio.",
+        description="Herramientas aplicadas en la realizacion del Proceso de Negocio. Considere ademas las Herramientas que se aplican en Pasos individuales del Proceso de Negocio.",
+        relationship='BPDHerramientasAplicadasEnProcesos',
+        inverse_relation_field_name='procesosAsistidos',
+        inverse_relation_label2="Assisted Business Processes",
+        label2="Applied Tools",
+        inverse_relation_description2="Business Processes applying the Tool. The Tool may be also applied by individual Business Processes Steps.",
+        widget=ReferenceBrowserWidget(
+            label="Herramientas Aplicadas",
+            label2="Applied Tools",
+            description="Herramientas aplicadas en la realizacion del Proceso de Negocio. Considere ademas las Herramientas que se aplican en Pasos individuales del Proceso de Negocio.",
+            description2="Tools applied in executing the Business Process. Consider too the Tools applied in individual Business Process Steps.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_rel_herramientasAplicadas_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_rel_herramientasAplicadas_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        label="Herramientas Aplicadas",
+        description2="Tools applied in executing the Business Process. Consider too the Tools applied in individual Business Process Steps.",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDProcesosAsistidos',
+        owner_class_name="BPDProcesoDeNegocio",
+        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"
+    ),
+
+    RelationField(
         name='reglasDeNegocioDirigentes',
         inverse_relation_label="Procesos de Negocio dirigidos",
         inverse_relation_description="Procesos de Negocio que toman en cuenta la Regla de Negocio durante su ejecucion.",
@@ -389,7 +388,7 @@ schema = Schema((
         ),
         description2="Business Rules to take into account when executing the Business Process.",
         inverse_relation_label2="Guided Business Processes",
-        deststyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
+        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         write_permission='Modify portal content',
         inverse_relation_field_name='procesosDeNegocioDirigidos',
         inverse_relation_description2="Business Process applying or enforcing during their execution this Business Rule.",
@@ -462,6 +461,66 @@ schema = Schema((
     ),
 
     RelationField(
+        name='caracteristicasGestionadas',
+        inverse_relation_label="Procesos de Negocio Gestores",
+        inverse_relation_description="Procesos de Negocio con que se gestiona esta Caracteristica de Artefacto.",
+        description="Caracteristicas de Artefactos que se gestionan ejecutando el Proceso de Negocio.",
+        relationship='BPDCaracteristicasGestionadasPorProcesos',
+        label2="Managed Features",
+        widget=ReferenceBrowserWidget(
+            label="Caracteristicas Gestionadas",
+            label2="Managed Features",
+            description="Caracteristicas de Artefactos que se gestionan ejecutando el Proceso de Negocio.",
+            description2="Artefact Features managed by executing this Business Process.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_rel_caracteristicasGestionadas_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_rel_caracteristicasGestionadas_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Artefact Features managed by executing this Business Process.",
+        inverse_relation_label2="Managing Business Processes",
+        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        write_permission='Modify portal content',
+        inverse_relation_field_name='procesosGestores',
+        inverse_relation_description2="Business Processes executed to manage this Artefact Feature.",
+        additional_columns=['claseCaracteristica', 'tituloArtefacto'],
+        label="Caracteristicas Gestionadas",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDProcesosGestoresDeCaracteristicas',
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    RelationField(
+        name='artefactosGestionados',
+        inverse_relation_label="Procesos de Negocio Gestores",
+        inverse_relation_description="Procesos de Negocio con que se gestiona este Artefacto.",
+        description="Artefactos que se gestionan ejecutando el Proceso de Negocio.",
+        relationship='BPDArtefactosGestionadosPorProcesos',
+        label2="Managed Artefacts",
+        widget=ReferenceBrowserWidget(
+            label="Artefactos Gestionados",
+            label2="Managed Artefacts",
+            description="Artefactos que se gestionan ejecutando el Proceso de Negocio.",
+            description2="Artefacts managed by executing this Business Process.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_rel_artefactosGestionados_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_rel_artefactosGestionados_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Artefacts managed by executing this Business Process.",
+        inverse_relation_label2="Managing Business Processes",
+        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        write_permission='Modify portal content',
+        inverse_relation_field_name='procesosGestores',
+        inverse_relation_description2="Business Processes executed to manage this Artefact.",
+        additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
+        label="Artefactos Gestionados",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDProcesosGestoresDeArtefactos',
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    RelationField(
         name='supervisor',
         inverse_relation_label="Procesos Supervisados",
         inverse_relation_description="Procesos de Negocio que se encarga de supervisar el Perfil o Unidad Organizacional.",
@@ -488,6 +547,99 @@ schema = Schema((
         multiValued=0,
         containment="Unspecified",
         inverse_relationship='BPDProcesosSupervisados',
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    TextField(
+        name='proposito',
+        widget=TextAreaWidget(
+            label="Proposito",
+            label2="Purpose",
+            description="Perseguido por el Proceso",
+            description2="Pursued by the Business Process.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_proposito_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_proposito_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Perseguido por el Proceso",
+        searchable=1,
+        duplicates="0",
+        label2="Purpose",
+        ea_localid="231",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Pursued by the Business Process.",
+        ea_guid="{91E6E831-690D-49dc-9CBD-AED7809684B2}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Proposito",
+        length="0",
+        containment="Not Specified",
+        position="0",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    StringField(
+        name='responsableMantenimiento',
+        widget=StringWidget(
+            label="Responsable del Mantenimiento",
+            label2="Responsible for Maintenance",
+            description="Responsable de Mantenimiento",
+            description2="Person in charge of the maintenance of the specification.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_responsableMantenimiento_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_responsableMantenimiento_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Responsable de Mantenimiento",
+        searchable=1,
+        duplicates="0",
+        label2="Responsible for Maintenance",
+        ea_localid="232",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Person in charge of the maintenance of the specification.",
+        ea_guid="{928DD89F-31AE-42be-8D23-9C475ED711B5}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Responsable del Mantenimiento",
+        length="0",
+        containment="Not Specified",
+        position="1",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    TextField(
+        name='seleccionDePersonal',
+        widget=TextAreaWidget(
+            label="Seleccion de Personal",
+            label2="Human Resources Selection",
+            description="Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico.",
+            description2="Selection criteria for staffing the Performer Profiles with matching individuals, specifically for this Business Process.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico.",
+        searchable=1,
+        duplicates="0",
+        label2="Human Resources Selection",
+        ea_localid="238",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Selection criteria for staffing the Performer Profiles with matching individuals, specifically for this Business Process.",
+        ea_guid="{D823D784-F46A-43bf-9FC4-56881646DC0E}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Seleccion de Personal",
+        length="0",
+        containment="Not Specified",
+        position="7",
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
@@ -531,14 +683,17 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
 
 
 
-    allowed_content_types = ['BPDColeccionProcesosDeNegocio'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
+    allowed_content_types = ['BPDColeccionProcesosDeNegocio', 'BPDExtensionProceso'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
 
     actions =  (
 
@@ -556,6 +711,15 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -597,21 +761,12 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -624,12 +779,12 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -643,20 +798,6 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
     ##/code-section class-header
 
     # Methods
-
-    security.declarePublic('getText')
-    def getText(self):
-        """
-        """
-        
-        return self.getProposito()
-
-    security.declarePublic('setText')
-    def setText(self,theText):
-        """
-        """
-        
-        self.setProposito( theText)
 # end of class BPDProcesoDeNegocio
 
 ##code-section module-footer #fill in your manual code here

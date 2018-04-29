@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -73,7 +73,7 @@ schema = Schema((
         containment="Not Specified",
         position="1",
         owner_class_name="BPDSubProceso",
-        expression="context.fTFLVs([ 'esInicial', 'procesoUsado','ejecutores'])",
+        expression="context.fTFLVsUnless([ ['esInicial',False,],[ 'procesoUsado',None,],['ejecutores',None,],[ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
         computed_types="string"
     ),
 
@@ -113,7 +113,7 @@ schema = Schema((
     RelationField(
         name='procesoUsado',
         inverse_relation_label="Usos como Sub-Proceso de Negocio",
-        additional_columns=['proposito', 'responsableMantenimiento', 'detallesProceso', 'estado', 'nivelDeImposicion'],
+        additional_columns=['proposito', 'detallesProceso', 'codigo', 'estado'],
         inverse_relation_description="Pasos de otros Procesos de Negocio donde este proceso se ejecuta de principio a fin, como un Paso Sub-Proceso.",
         description="Proceso de Negocio que se ejecuta como parte del Proceso de Negocio de mayor alcance.",
         relationship='BPDProcesoUsado',
@@ -185,7 +185,10 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -193,19 +196,20 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
 
 
     allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdsubproceso.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Un Proceso de Negocio definido aparte, se ejercita de principio a fin como un paso parte de otro Proceso de Negocio de mayor alcance."
-    typeDescMsgId =  'gvSIGbpd_BPDSubProceso_help'
-    archetype_name2 = 'Sub Process'
-    typeDescription2 = '''A Business Process, specified elsewhere, is executed in its entirety in the context of the current Business Process, as a single step.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDSubProceso_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Un Proceso de Negocio definido aparte, se ejercita de principio a fin como un paso parte de otro Proceso de Negocio de mayor alcance."
+    typeDescMsgId                    =  'gvSIGbpd_BPDSubProceso_help'
+    archetype_name2                  = 'Sub Process'
+    typeDescription2                 = '''A Business Process, specified elsewhere, is executed in its entirety in the context of the current Business Process, as a single step.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDSubProceso_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -224,6 +228,15 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -265,21 +278,12 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -292,12 +296,12 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -318,6 +322,20 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDSubProceso, PROJECTNAME)
 # end of class BPDSubProceso

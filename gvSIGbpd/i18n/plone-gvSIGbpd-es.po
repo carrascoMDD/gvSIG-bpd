@@ -2,8 +2,6 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gvSIGbpd\n"
-"POT-Creation-Date: Tue Oct 27 18:06:58 2009\n"
-"PO-Revision-Date: Tue Oct 27 18:06:58 2009\n"
 "Last-Translator: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
 "Language-Team: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +18,11 @@ msgstr ""
 #: BPDArtefacto
 msgid "Artefacto"
 msgstr "Artefacto"
+
+#. Default: "Caracteristica"
+#: BPDCaracteristica
+msgid "Caracteristica"
+msgstr "Caracteristica"
 
 #. Default: "Coleccion de Artefactos"
 #: BPDColeccionArtefactos
@@ -91,6 +94,11 @@ msgstr "Envio"
 msgid "Exito Final"
 msgstr "Exito Final"
 
+#. Default: "Extension de Proceso de Negocio"
+#: BPDExtensionProceso
+msgid "Extension de Proceso de Negocio"
+msgstr "Extension de Proceso de Negocio"
+
 #. Default: "Fracaso Final"
 #: BPDFracasoFinal
 msgid "Fracaso Final"
@@ -136,6 +144,11 @@ msgstr "Politica de Negocio"
 msgid "Proceso de Negocio"
 msgstr "Proceso de Negocio"
 
+#. Default: "Punto de Extension"
+#: BPDPuntoExtension
+msgid "Punto de Extension"
+msgstr "Punto de Extension"
+
 #. Default: "Recepcion"
 #: BPDRecepcion
 msgid "Recepcion"
@@ -165,3 +178,13 @@ msgstr "Sub Proceso"
 #: BPDUnidadOrganizacional
 msgid "Unidad Organizacional"
 msgstr "Unidad Organizacional"
+
+#. Default: "Uso de Artefacto"
+#: BPDUsoArtefacto
+msgid "Uso de Artefacto"
+msgstr "Uso de Artefacto"
+
+#. Default: "Uso de Caracteristica de Artefacto"
+#: BPDUsoCaracteristica
+msgid "Uso de Caracteristica de Artefacto"
+msgstr "Uso de Caracteristica de Artefacto"

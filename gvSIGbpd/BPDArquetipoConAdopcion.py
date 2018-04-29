@@ -50,8 +50,8 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDArquetipoConAdopcion_attr_codigo_help',
             i18n_domain='gvSIGbpd',
         ),
-        scale="0",
         description="Codigo unico del elemento.",
+        searchable=1,
         duplicates="0",
         label2="Code",
         ea_localid="239",
@@ -59,13 +59,15 @@ schema = Schema((
         precision=0,
         collection="false",
         styleex="volatile=0;",
-        length="0",
         description2="Unique code for the element.",
-        containment="Not Specified",
         ea_guid="{F546FDFC-03EE-4d4d-8923-305F3A561385}",
+        scale="0",
+        label="Codigo",
+        length="0",
+        exclude_from_values_paragraph_when='',
+        containment="Not Specified",
         position="0",
-        owner_class_name="BPDArquetipoConAdopcion",
-        label="Codigo"
+        owner_class_name="BPDArquetipoConAdopcion"
     ),
 
     StringField(
@@ -95,6 +97,7 @@ schema = Schema((
         scale="0",
         label="Estado",
         length="0",
+        exclude_from_values_paragraph_when='',
         containment="Not Specified",
         position="1",
         owner_class_name="BPDArquetipoConAdopcion",
@@ -125,6 +128,8 @@ schema = Schema((
         scale="0",
         label="Fecha de Adopcion",
         length="0",
+        exclude_from_values_paragraph_when="""None
+        None""",
         containment="Not Specified",
         position="4",
         owner_class_name="BPDArquetipoConAdopcion",
@@ -188,6 +193,7 @@ schema = Schema((
         scale="0",
         label="Nivel de Imposicion",
         length="0",
+        exclude_from_values_paragraph_when='',
         containment="Not Specified",
         position="2",
         owner_class_name="BPDArquetipoConAdopcion",
@@ -218,6 +224,7 @@ schema = Schema((
         scale="0",
         label="Version",
         length="0",
+        exclude_from_values_paragraph_when='',
         containment="Not Specified",
         position="3",
         owner_class_name="BPDArquetipoConAdopcion",
@@ -264,7 +271,10 @@ class BPDArquetipoConAdopcion(BPDArquetipoReferenciable):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -289,6 +299,15 @@ class BPDArquetipoConAdopcion(BPDArquetipoReferenciable):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -330,21 +349,12 @@ class BPDArquetipoConAdopcion(BPDArquetipoReferenciable):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -357,12 +367,12 @@ class BPDArquetipoConAdopcion(BPDArquetipoReferenciable):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 

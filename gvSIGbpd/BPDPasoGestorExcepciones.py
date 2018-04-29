@@ -122,19 +122,20 @@ class BPDPasoGestorExcepciones:
     meta_type = 'BPDPasoGestorExcepciones'
     portal_type = 'BPDPasoGestorExcepciones'
     allowed_content_types = []
-    filter_content_types = 0
-    global_allow = 1
+    filter_content_types             = 0
+    global_allow                     = 1
     #content_icon = 'BPDPasoGestorExcepciones.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "Incorpora la capacidad de servir como paso de continuacion alternativo de un paso anterior en que no se ha cumplido la condicion, o se ha agotado el plazo, o se ha dado alguna otra condicion excepcional."
-    typeDescMsgId =  'gvSIGbpd_BPDPasoGestorExcepciones_help'
-    archetype_name2 = ''
-    typeDescription2 = ''''''
-    archetype_name_msgid = 'gvSIGbpd_BPDPasoGestorExcepciones_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'base_view'
+    default_view                     = 'base_view'
+    suppl_views                      = ()
+    typeDescription                  = "Incorpora la capacidad de servir como paso de continuacion alternativo de un paso anterior en que no se ha cumplido la condicion, o se ha agotado el plazo, o se ha dado alguna otra condicion excepcional."
+    typeDescMsgId                    =  'gvSIGbpd_BPDPasoGestorExcepciones_help'
+    archetype_name2                  = ''
+    typeDescription2                 = ''''''
+    archetype_name_msgid             = 'gvSIGbpd_BPDPasoGestorExcepciones_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
     _at_rename_after_creation = True
 

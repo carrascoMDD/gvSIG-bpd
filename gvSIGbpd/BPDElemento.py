@@ -48,9 +48,9 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
-from Acquisition  import aq_inner, aq_parent
 from Products.CMFCore.utils  import getToolByName
+from Acquisition  import aq_inner, aq_parent
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -275,6 +275,64 @@ schema = Schema((
         write_permission='Modify portal content'
     ),
 
+    RelationField(
+        name='elementosCopia',
+        inverse_relation_label="Originales",
+        inverse_relation_description="Elementos que se copiaron sobre este elemento. Permite recordar de donde se obtuvo la informacion de este elemento.",
+        description="Elementos sobre los que se copio la informacion de este elemento. Permite recordar donde se ha utilizado la informacion de este elemento.",
+        relationship='BPDElementosCopia',
+        label2="Copies",
+        widget=ReferenceBrowserWidget(
+            label="Copias",
+            label2="Copies",
+            description="Elementos sobre los que se copio la informacion de este elemento. Permite recordar donde se ha utilizado la informacion de este elemento.",
+            description2="Elements onto which information in this elemento was copied onto. Allows to record were has been used the information in this element",
+            label_msgid='gvSIGbpd_BPDElemento_rel_elementosCopia_label',
+            description_msgid='gvSIGbpd_BPDElemento_rel_elementosCopia_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Elements onto which information in this elemento was copied onto. Allows to record were has been used the information in this element",
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        inverse_relation_label2="Originals",
+        dependency_supplier=True,
+        inverse_relation_field_name='elementosOriginales',
+        inverse_relation_description2="Elementos that were copied onto this element. Allow to record from where was ontained the information in this element.",
+        write_permission='Modify portal content',
+        label="Copias",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDElementosOriginales'
+    ),
+
+    RelationField(
+        name='elementosOriginales',
+        inverse_relation_label="Copias",
+        inverse_relation_description="Elementos sobre los que se copio la informacion de este elemento. Permite recordar donde se ha utilizado la informacion de este elemento.",
+        description="Elementos que se copiaron sobre este elemento. Permite recordar de donde se obtuvo la informacion de este elemento.",
+        relationship='BPDElementosOriginales',
+        label2="Originals",
+        widget=ReferenceBrowserWidget(
+            label="Originales",
+            label2="Originals",
+            description="Elementos que se copiaron sobre este elemento. Permite recordar de donde se obtuvo la informacion de este elemento.",
+            description2="Elementos that were copied onto this element. Allow to record from where was ontained the information in this element.",
+            label_msgid='gvSIGbpd_BPDElemento_rel_elementosOriginales_label',
+            description_msgid='gvSIGbpd_BPDElemento_rel_elementosOriginales_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Elementos that were copied onto this element. Allow to record from where was ontained the information in this element.",
+        inverse_relation_label2="Copies",
+        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        write_permission='Modify portal content',
+        inverse_relation_field_name='elementosCopia',
+        inverse_relation_description2="Elements onto which information in this elemento was copied onto. Allows to record were has been used the information in this element",
+        label="Originales",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDElementosCopia',
+        owner_class_name="BPDElemento"
+    ),
+
     ComputedField(
         name='archivos',
         widget=ComputedWidget(
@@ -475,7 +533,10 @@ class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducc
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -504,13 +565,6 @@ class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducc
     ##/code-section class-header
 
     # Methods
-
-    security.declarePublic('CookedBody')
-    def CookedBody(self,setlevel=0,stx_level=None):
-        """
-        """
-        
-        return getToolByName( self, 'ModelDDvlPlone_tool').fCookedBodyForElement( None, self, stx_level, setlevel, None)
 
     security.declarePublic('displayContentsTab')
     def displayContentsTab(self):
@@ -546,6 +600,13 @@ class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducc
         """
         
         return self.fAllowRead()
+
+    security.declarePublic('fIsCacheable')
+    def fIsCacheable(self):
+        """
+        """
+        
+        return True
 
     security.declarePublic('fAllowTranslation')
     def fAllowTranslation(self):
@@ -596,40 +657,12 @@ class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducc
         
         return self.fAllowRead() and self.getRaiz().fAllowWrite()
 
-    security.declarePublic('getContenedor')
-    def getContenedor(self):
-        """
-        """
-        
-        return aq_parent( aq_inner( self))
-
-    security.declarePublic('getContenedorContenedor')
-    def getContenedorContenedor(self):
-        """
-        """
-        
-        return aq_parent( aq_parent( aq_inner( self)))
-
-    security.declarePublic('getEditableBody')
-    def getEditableBody(self):
-        """
-        """
-        
-        return getToolByName( self, 'ModelDDvlPlone_tool').fEditableBodyForElement( None, self, None)
-
     security.declarePublic('getEsColeccion')
     def getEsColeccion(self):
         """
         """
         
         return False
-
-    security.declarePublic('getEsRaiz')
-    def getEsRaiz(self):
-        """
-        """
-        
-        return not aq_parent( aq_inner( self)) # Overriden in BPDOrganizacion. Test for objects still not hooed up into the hierarchy.
 
     security.declarePublic('getNombreProyecto')
     def getNombreProyecto(self):
@@ -644,6 +677,20 @@ class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducc
         """
         
         return []
+
+    security.declarePublic('fRelationsNotPropagatingViewInvalidation')
+    def fRelationsNotPropagatingViewInvalidation(self):
+        """
+        """
+        
+        return ['elementosDerivados','versionAnterior','siguientesVersiones','elementoUsado','elementosTraducidos','originalDeTraduccion','elementosOriginales','elementosCopia','traduccionesDeIdiomaCanonico','idiomaCanonico']
+
+    security.declarePublic('unused_fRelationFieldsNotPropagatingViewInvalidation')
+    def unused_fRelationFieldsNotPropagatingViewInvalidation(self):
+        """
+        """
+        
+        return ['elementosDerivados','versionAnterior','siguientesVersiones','elementoUsado','elementosTraducidos','originalDeTraduccion','elementosOriginales','elementosCopia','traduccionesDeIdiomaCanonico','idiomaCanonico']
 # end of class BPDElemento
 
 ##code-section module-footer #fill in your manual code here

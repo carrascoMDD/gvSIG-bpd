@@ -36,23 +36,85 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
 schema = Schema((
 
+    IntegerField(
+        name='multiplicidadMinima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Minima",
+            label2="Minimum Multiplicity",
+            description="Numero minimo de elementos disponibles al final del Proceso de Negocio. Si la Salida Es Requerida, se considera que la Multiplicidad Minima de la Entrada es mayor or igual que 1.",
+            description2="Minimum number of elements available at the end of the Business Process. If the Output Is Required,  then it is considered that the Minimum Multiplicity is equal or bigger than 1.",
+            label_msgid='gvSIGbpd_BPDSalida_attr_multiplicidadMinima_label',
+            description_msgid='gvSIGbpd_BPDSalida_attr_multiplicidadMinima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero minimo de elementos disponibles al final del Proceso de Negocio. Si la Salida Es Requerida, se considera que la Multiplicidad Minima de la Entrada es mayor or igual que 1.",
+        duplicates="0",
+        label2="Minimum Multiplicity",
+        ea_localid="413",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Minimum number of elements available at the end of the Business Process. If the Output Is Required,  then it is considered that the Minimum Multiplicity is equal or bigger than 1.",
+        ea_guid="{063B84C6-BFC8-43e9-A941-968805A4B8D6}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Multiplicidad Minima",
+        length="0",
+        containment="Not Specified",
+        position="3",
+        owner_class_name="BPDSalida"
+    ),
+
+    IntegerField(
+        name='multiplicidadMaxima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Maxima",
+            label2="Maximum Multiplicity",
+            description="Numero maximo de elementos disponibles al final del Proceso de Negocio. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos.",
+            description2="Maximum number of elements available at the end of the Business Process.  Enter -1 to indicate that there is no upper limit in the number of elements.",
+            label_msgid='gvSIGbpd_BPDSalida_attr_multiplicidadMaxima_label',
+            description_msgid='gvSIGbpd_BPDSalida_attr_multiplicidadMaxima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero maximo de elementos disponibles al final del Proceso de Negocio. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos.",
+        duplicates="0",
+        label2="Maximum Multiplicity",
+        ea_localid="414",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Maximum number of elements available at the end of the Business Process.  Enter -1 to indicate that there is no upper limit in the number of elements.",
+        ea_guid="{F2AAFE4C-4186-4d46-AF03-B46F23782DEF}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="-1",
+        label="Multiplicidad Maxima",
+        length="0",
+        containment="Not Specified",
+        position="4",
+        owner_class_name="BPDSalida"
+    ),
+
     BooleanField(
-        name='esRequerido',
+        name='esRequerida',
         widget=BooleanField._properties['widget'](
             label="Es Requerida",
             label2="Is Required",
             description="Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso.",
             description2="Whether the Output shall be always produced when the Business Process completes successfully.",
-            label_msgid='gvSIGbpd_BPDSalida_attr_esRequerido_label',
-            description_msgid='gvSIGbpd_BPDSalida_attr_esRequerido_help',
+            label_msgid='gvSIGbpd_BPDSalida_attr_esRequerida_label',
+            description_msgid='gvSIGbpd_BPDSalida_attr_esRequerida_help',
             i18n_domain='gvSIGbpd',
         ),
         description="Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso.",
@@ -213,7 +275,10 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -221,19 +286,20 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
 
 
     allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdsalida.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Informaciones que puede o debe producir el esfuerzo realizado en el Proceso de Negocio."
-    typeDescMsgId =  'gvSIGbpd_BPDSalida_help'
-    archetype_name2 = 'business process Output'
-    typeDescription2 = '''Information that may be produced during the Business Process execution and delivered at its end.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDSalida_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Informaciones que puede o debe producir el esfuerzo realizado en el Proceso de Negocio."
+    typeDescMsgId                    =  'gvSIGbpd_BPDSalida_help'
+    archetype_name2                  = 'business process Output'
+    typeDescription2                 = '''Information that may be produced during the Business Process execution and delivered at its end.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDSalida_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -252,6 +318,15 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -293,21 +368,12 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -320,12 +386,12 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -346,6 +412,20 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDSalida, PROJECTNAME)
 # end of class BPDSalida

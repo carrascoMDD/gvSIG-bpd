@@ -2,8 +2,6 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gvSIGbpd\n"
-"POT-Creation-Date: Tue Oct 27 18:06:58 2009\n"
-"PO-Revision-Date: Tue Oct 27 18:06:58 2009\n"
 "Last-Translator: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
 "Language-Team: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
 "MIME-Version: 1.0\n"
@@ -216,6 +214,16 @@ msgstr "Artefact"
 msgid "gvSIGbpd_BPDArtefacto_help"
 msgstr "An identifiable piece of information, i.e. that can be produced, consumed or handled over during the course of Business Processes."
 
+#. Default: "Caracteristicas"
+#: BPDArtefacto caracteristicas
+msgid "gvSIGbpd_BPDArtefacto_contents_caracteristicas_label"
+msgstr "Features"
+
+#. Default: "Elementos de informacion que se especifican para el Artefacto, o que podra contener el Artefacto."
+#: BPDArtefacto caracteristicas
+msgid "gvSIGbpd_BPDArtefacto_contents_caracteristicas_help"
+msgstr "Information elements specified for the Artefact, or that may be contained by the Artefact."
+
 #. Default: "Artefactos subordinados"
 #: BPDArtefacto coleccionesArtefactos
 msgid "gvSIGbpd_BPDArtefacto_contents_coleccionesArtefactos_label"
@@ -225,6 +233,16 @@ msgstr "Subordinated Artefacts"
 #: BPDArtefacto coleccionesArtefactos
 msgid "gvSIGbpd_BPDArtefacto_contents_coleccionesArtefactos_help"
 msgstr "Collections of Lower level Artefacts produced, consumed, consulted, edited, or otherwise object of the Organisation effort, and defined within the context of this Artefact."
+
+#. Default: "Caracteristicas del Tipo"
+#: BPDArtefacto caracteristicasDelTipo
+msgid "gvSIGbpd_BPDArtefacto_rel_caracteristicasDelTipo_label"
+msgstr "Features of the Type"
+
+#. Default: "Caracteristicas de Clase Referencia o Agregacion que estan restringidas a Artefactos de este tipo."
+#: BPDArtefacto caracteristicasDelTipo
+msgid "gvSIGbpd_BPDArtefacto_rel_caracteristicasDelTipo_help"
+msgstr "Features of Reference or Aggregation Class constrained to Artefacts of this type."
 
 #. Default: "Entrada a Procesos de Negocio"
 #: BPDArtefacto entradasAProcesosDeNegocio
@@ -276,6 +294,16 @@ msgstr "Geverning Business Policies"
 msgid "gvSIGbpd_BPDArtefacto_rel_politicasDeNegocioGobernantes_help"
 msgstr "Business Policies that prescribe or govern the utilisation of the Artefact in the Organisation"
 
+#. Default: "Procesos de Negocio Gestores"
+#: BPDArtefacto procesosGestores
+msgid "gvSIGbpd_BPDArtefacto_rel_procesosGestores_label"
+msgstr "Managing Business Processes"
+
+#. Default: "Procesos de Negocio con que se gestiona este Artefacto."
+#: BPDArtefacto procesosGestores
+msgid "gvSIGbpd_BPDArtefacto_rel_procesosGestores_help"
+msgstr "Business Processes executed to manage this Artefact."
+
 #. Default: "Reglas de Negocio dirigentes"
 #: BPDArtefacto reglasDeNegocioDirigentes
 msgid "gvSIGbpd_BPDArtefacto_rel_reglasDeNegocioDirigentes_label"
@@ -305,6 +333,141 @@ msgstr "Business Process Outputs"
 #: BPDArtefacto salidasDeProcesosDeNegocio
 msgid "gvSIGbpd_BPDArtefacto_rel_salidasDeProcesosDeNegocio_help"
 msgstr "Business Processes where the Artefact is made available as Output, upon successful completion."
+
+#. Default: "Usos del Artefacto"
+#: BPDArtefacto usosDelArtefacto
+msgid "gvSIGbpd_BPDArtefacto_rel_usosDelArtefacto_label"
+msgstr "Artefact Usages"
+
+#. Default: "Pasos de Procesos de Negocio donde se usa este Artefacto."
+#: BPDArtefacto usosDelArtefacto
+msgid "gvSIGbpd_BPDArtefacto_rel_usosDelArtefacto_help"
+msgstr "Business Process Steps using this Artefact."
+
+#. Default: "Caracteristica"
+#: BPDCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_label"
+msgstr "Feature"
+
+#. Default: "Un Elemento de informacion que se especifican para el Artefacto, o que podra contener el Artefacto."
+#: BPDCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_help"
+msgstr "Information elements specified for the Artefact, or that may be contained by the Artefact."
+
+#. Default: "Clase de Caracteristica"
+#: BPDCaracteristica claseCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_attr_claseCaracteristica_label"
+msgstr "Feature Class"
+
+#. Default: "Puede ser Atributo, Referencia o Agregacion."
+#: BPDCaracteristica claseCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_attr_claseCaracteristica_help"
+msgstr "How the Artefact is used in this Business Process Step, to Create, Read, Update, Delete or Link."
+
+#. Default: "Atributo"
+#: BPDCaracteristica claseCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_attr_claseCaracteristica_option_Atributo"
+msgstr "Attribute"
+
+#. Default: "Referencia"
+#: BPDCaracteristica claseCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_attr_claseCaracteristica_option_Referencia"
+msgstr "Reference"
+
+#. Default: "Agregacion"
+#: BPDCaracteristica claseCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_attr_claseCaracteristica_option_Agregacion"
+msgstr "Aggregation"
+
+#. Default: "Detalles de la Caracteristica"
+#: BPDCaracteristica detallesCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_attr_detallesCaracteristica_label"
+msgstr "Feature details"
+
+#. Default: "Detalles acerca de la caracteristica, incluyendo restricciones de tipo y multiplicidad"
+#: BPDCaracteristica detallesCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_attr_detallesCaracteristica_help"
+msgstr "Details about the Feature, including type and multiplicity constrains."
+
+#. Default: "Multiplicidad Maxima"
+#: BPDCaracteristica multiplicidadMaxima
+msgid "gvSIGbpd_BPDCaracteristica_attr_multiplicidadMaxima_label"
+msgstr "Maximum Multiplicity"
+
+#. Default: "Si la Clase de Caracteristica es Referencia o Agregacion, entonces restringe el numero maximo de Artefactos referenciados o agregados."
+#: BPDCaracteristica multiplicidadMaxima
+msgid "gvSIGbpd_BPDCaracteristica_attr_multiplicidadMaxima_help"
+msgstr "If the Feature Class is Reference or Aggregation, then constrains the maximum number of  referenced or aggregated Artefacts."
+
+#. Default: "Multiplicidad Minima"
+#: BPDCaracteristica multiplicidadMinima
+msgid "gvSIGbpd_BPDCaracteristica_attr_multiplicidadMinima_label"
+msgstr "Minimum Multiplicity"
+
+#. Default: "Si la Clase de Caracteristica es Referencia o Agregacion, entonces restringe el numero minimo de Artefactos referenciados o agregados."
+#: BPDCaracteristica multiplicidadMinima
+msgid "gvSIGbpd_BPDCaracteristica_attr_multiplicidadMinima_help"
+msgstr "If the Feature Class is Reference or Aggregation, then constrains the minimum number of  referenced or aggregated Artefacts."
+
+#. Default: "Restriccion del Tipo"
+#: BPDCaracteristica restriccionTipo
+msgid "gvSIGbpd_BPDCaracteristica_attr_restriccionTipo_label"
+msgstr "Type Constraint"
+
+#. Default: "Restringe el tipo de la Caracteristica. Puede ser el nombre de un tipo primitivo, e indicar longitudes o precisiones minimas y maximas. Puede restringir valores de Artefactos relacionados o agregados."
+#: BPDCaracteristica restriccionTipo
+msgid "gvSIGbpd_BPDCaracteristica_attr_restriccionTipo_help"
+msgstr "Constrains the Feature Type. May be the name of a primitive type, and indicate minimum and maximum length and precision. May constrain values on referenced or aggregated artefacts."
+
+#. Default: "Artefacto"
+#: BPDCaracteristica tituloArtefacto
+msgid "gvSIGbpd_BPDCaracteristica_attr_tituloArtefacto_label"
+msgstr "Artefact"
+
+#. Default: "El titulo del Artefacto con esta Caracteristica."
+#: BPDCaracteristica tituloArtefacto
+msgid "gvSIGbpd_BPDCaracteristica_attr_tituloArtefacto_help"
+msgstr "Title of the Artefact with this Feature."
+
+#. Default: "Tipos de Artefactos"
+#: BPDCaracteristica titulosTiposArtefactos
+msgid "gvSIGbpd_BPDCaracteristica_attr_titulosTiposArtefactos_label"
+msgstr "Artefact Types"
+
+#. Default: "Si la Clase de Caracteristica es Referencia o Agregacion, indica los tipos de Artefactos a referir o agregar."
+#: BPDCaracteristica titulosTiposArtefactos
+msgid "gvSIGbpd_BPDCaracteristica_attr_titulosTiposArtefactos_help"
+msgstr "If the Feature Class is Reference or Aggregation, indicates the types of Artefacts to refer or aggregate."
+
+#. Default: "Procesos de Negocio Gestores"
+#: BPDCaracteristica procesosGestores
+msgid "gvSIGbpd_BPDCaracteristica_rel_procesosGestores_label"
+msgstr "Managing Business Processes"
+
+#. Default: "Procesos de Negocio con que se gestiona esta Caracteristica de Artefacto."
+#: BPDCaracteristica procesosGestores
+msgid "gvSIGbpd_BPDCaracteristica_rel_procesosGestores_help"
+msgstr "Business Processes executed to manage this Artefact Feature."
+
+#. Default: "Tipos de Artefactos"
+#: BPDCaracteristica tiposDeArtefactos
+msgid "gvSIGbpd_BPDCaracteristica_rel_tiposDeArtefactos_label"
+msgstr "Artefact Types"
+
+#. Default: "Si la Clase de Caracteristica es Referencia o Agregacion, entonces restringe los tipos de Artefactos referenciados o agregados."
+#: BPDCaracteristica tiposDeArtefactos
+msgid "gvSIGbpd_BPDCaracteristica_rel_tiposDeArtefactos_help"
+msgstr "If the Feature Class is Reference or Aggregation, then constrains the types of Artefacts that can be referenced or aggregated."
+
+#. Default: "Usos de la Caracteristica"
+#: BPDCaracteristica usosDeLaCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_rel_usosDeLaCaracteristica_label"
+msgstr "Feature Usages"
+
+#. Default: "Usos de la Caracteristica en Pasos de Procesos de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar."
+#: BPDCaracteristica usosDeLaCaracteristica
+msgid "gvSIGbpd_BPDCaracteristica_rel_usosDeLaCaracteristica_help"
+msgstr "Uses of the Artefact Feature in Business Process Steps, to Create, Read, Update, Delete or Link."
 
 #. Default: "BPDColeccionArquetipos"
 #: BPDColeccionArquetipos
@@ -676,6 +839,46 @@ msgstr "Is Translation (internal)"
 msgid "gvSIGbpd_BPDConTraducciones_attr_esTraduccionInterna_help"
 msgstr "If True, then the element is a translation of another element in a canonical language."
 
+#. Default: "Es Traduccion (uso interno)  Almacenada"
+#: BPDConTraducciones esTraduccionInternaAlmacenada
+msgid "gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_label"
+msgstr "Is Translation (internal) Stored"
+
+#. Default: "Si Verdadero, entonces el elemento es una traduccion de algun otro elemento en un idioma canonic. Almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion."
+#: BPDConTraducciones esTraduccionInternaAlmacenada
+msgid "gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_help"
+msgstr "If True, then the element is a translation of another element in a canonical language. Stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root."
+
+#. Default: "Segun Contedor"
+#: BPDConTraducciones esTraduccionInternaAlmacenada
+msgid "gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_option_Segun Contedor"
+msgstr "By Container"
+
+#. Default: "No Traducible"
+#: BPDConTraducciones esTraduccionInternaAlmacenada
+msgid "gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_option_No Traducible"
+msgstr "Not Translatable"
+
+#. Default: "Traduccion"
+#: BPDConTraducciones esTraduccionInternaAlmacenada
+msgid "gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_option_Traduccion"
+msgstr "Translation"
+
+#. Default: "Canonica"
+#: BPDConTraducciones esTraduccionInternaAlmacenada
+msgid "gvSIGbpd_BPDConTraducciones_attr_esTraduccionInternaAlmacenada_option_Canonica"
+msgstr "Canonical"
+
+#. Default: "Identificador Inter Traducciones (uso interno)"
+#: BPDConTraducciones uidInterTraduccionesInterno
+msgid "gvSIGbpd_BPDConTraducciones_attr_uidInterTraduccionesInterno_label"
+msgstr "Inter-Version identifier (internal)"
+
+#. Default: "Identificador compartido entre todas las traducciones del elemento, para uso interno de la aplicacion."
+#: BPDConTraducciones uidInterTraduccionesInterno
+msgid "gvSIGbpd_BPDConTraducciones_attr_uidInterTraduccionesInterno_help"
+msgstr "Identifier shared by all translations of an element, used internally by the application."
+
 #. Default: "Elementos Traducidos"
 #: BPDConTraducciones elementosTraducidos
 msgid "gvSIGbpd_BPDConTraducciones_rel_elementosTraducidos_label"
@@ -695,6 +898,26 @@ msgstr "Original of this translation"
 #: BPDConTraducciones elementosTraducidos
 msgid "gvSIGbpd_BPDConTraducciones_rel_originalDeTraduccion_help"
 msgstr "The original element of this translation into a different language."
+
+#. Default: "En Idioma Canonico"
+#: BPDConTraducciones idiomaCanonico
+msgid "gvSIGbpd_BPDConTraducciones_rel_idiomaCanonico_label"
+msgstr "In Canonical Language"
+
+#. Default: "El Original de este modelo en su Idioma Canonico, del que se derivan todas las traducciones a otros Idiomas."
+#: BPDConTraducciones idiomaCanonico
+msgid "gvSIGbpd_BPDConTraducciones_rel_idiomaCanonico_help"
+msgstr "The Original of this model in its Original Language, from where all other translations are derived from."
+
+#. Default: "En Idioma Canonico De"
+#: BPDConTraducciones idiomaCanonico
+msgid "gvSIGbpd_BPDConTraducciones_rel_traduccionesDeIdiomaCanonico_label"
+msgstr "In Canonical Language For"
+
+#. Default: "Traducciones del Modelo en Idioma Canonico a otros Idiomas."
+#: BPDConTraducciones idiomaCanonico
+msgid "gvSIGbpd_BPDConTraducciones_rel_traduccionesDeIdiomaCanonico_help"
+msgstr "Translations of the Model in Canonical Language into other Languages."
 
 #. Default: "BPDConVersiones"
 #: BPDConVersiones
@@ -716,15 +939,25 @@ msgstr "Version Comment (internal)"
 msgid "gvSIGbpd_BPDConVersiones_attr_comentarioVersionInterna_help"
 msgstr "Comments on the Version used internally by the application."
 
+#. Default: "Comentario Almacenado de Version (uso interno)"
+#: BPDConVersiones comentarioVersionInternaAlmacenada
+msgid "gvSIGbpd_BPDConVersiones_attr_comentarioVersionInternaAlmacenada_label"
+msgstr "Version Comment Stored (internal)"
+
+#. Default: "Comentario a la version para uso interno de la aplicacion, almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion."
+#: BPDConVersiones comentarioVersionInternaAlmacenada
+msgid "gvSIGbpd_BPDConVersiones_attr_comentarioVersionInternaAlmacenada_help"
+msgstr "Comments on the Version used internally by the application, stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root."
+
 #. Default: "Identificador Inter Versiones (uso interno)"
 #: BPDConVersiones uidInterVersionesInterno
 msgid "gvSIGbpd_BPDConVersiones_attr_uidInterVersionesInterno_label"
 msgstr "Inter-Version identifier (internal)"
 
-#. Default: "Identificador compartido entre todos las versiones del elemento, para uso interno de la aplicacion."
+#. Default: "Identificador compartido entre todas las versiones del elemento, para uso interno de la aplicacion."
 #: BPDConVersiones uidInterVersionesInterno
 msgid "gvSIGbpd_BPDConVersiones_attr_uidInterVersionesInterno_help"
-msgstr "Identifier shared by all version of an element, used internally by the application."
+msgstr "Identifier shared by all versions of an element, used internally by the application."
 
 #. Default: "Version (uso interno)"
 #: BPDConVersiones versionInterna
@@ -735,6 +968,16 @@ msgstr "Version identifier (internal)"
 #: BPDConVersiones versionInterna
 msgid "gvSIGbpd_BPDConVersiones_attr_versionInterna_help"
 msgstr "Version identifier used internally by the application."
+
+#. Default: "Version Almacenada (uso interno)"
+#: BPDConVersiones versionInternaAlmacenada
+msgid "gvSIGbpd_BPDConVersiones_attr_versionInternaAlmacenada_label"
+msgstr "Version identifier Stored (internal)"
+
+#. Default: "Identificador de version para uso interno de la aplicacion, almacenado en este elemento. No se usa a menos que sea un elemento raiz, como Organizacion, u otro tipo sin raiz Organizacion."
+#: BPDConVersiones versionInternaAlmacenada
+msgid "gvSIGbpd_BPDConVersiones_attr_versionInternaAlmacenada_help"
+msgstr "Version identifier used internally by the application, stored in this element. Unused unless the element is a root, as an Organization, or has noOrganization  root."
 
 #. Default: "Siguientes Versiones"
 #: BPDConVersiones versionesSiguientes
@@ -906,6 +1149,26 @@ msgstr "Base Elements"
 msgid "gvSIGbpd_BPDElemento_rel_elementosBase_help"
 msgstr "Elements from whish this one has been derived."
 
+#. Default: "Originales"
+#: BPDElemento elementosOriginales
+msgid "gvSIGbpd_BPDElemento_rel_elementosOriginales_label"
+msgstr "Originals"
+
+#. Default: "Elementos que se copiaron sobre este elemento. Permite recordar de donde se obtuvo la informacion de este elemento."
+#: BPDElemento elementosOriginales
+msgid "gvSIGbpd_BPDElemento_rel_elementosOriginales_help"
+msgstr "Elementos that were copied onto this element. Allow to record from where was ontained the information in this element."
+
+#. Default: "Copias"
+#: BPDElemento elementosOriginales
+msgid "gvSIGbpd_BPDElemento_rel_elementosCopia_label"
+msgstr "Copies"
+
+#. Default: "Elementos sobre los que se copio la informacion de este elemento. Permite recordar donde se ha utilizado la informacion de este elemento."
+#: BPDElemento elementosOriginales
+msgid "gvSIGbpd_BPDElemento_rel_elementosCopia_help"
+msgstr "Elements onto which information in this elemento was copied onto. Allows to record were has been used the information in this element"
+
 #. Default: "Usos del Elemento"
 #: BPDElemento usosDelElemento
 msgid "gvSIGbpd_BPDElemento_rel_usosDelElemento_label"
@@ -955,6 +1218,26 @@ msgstr "Sources of Information"
 #: BPDEntrada fuenteDeInformacion
 msgid "gvSIGbpd_BPDEntrada_attr_fuenteDeInformacion_help"
 msgstr "Identifies where to obtain the input information."
+
+#. Default: "Multiplicidad Maxima"
+#: BPDEntrada multiplicidadMaxima
+msgid "gvSIGbpd_BPDEntrada_attr_multiplicidadMaxima_label"
+msgstr "Maximum Multiplicity"
+
+#. Default: "Numero maximo de elementos disponibles al comienzo del Proceso de Negocio. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos."
+#: BPDEntrada multiplicidadMaxima
+msgid "gvSIGbpd_BPDEntrada_attr_multiplicidadMaxima_help"
+msgstr "Maximum number of elements available at the beginning of the Business Process.  Enter -1 to indicate that there is no upper limit in the number of elements."
+
+#. Default: "Multiplicidad Minima"
+#: BPDEntrada multiplicidadMinima
+msgid "gvSIGbpd_BPDEntrada_attr_multiplicidadMinima_label"
+msgstr "Minimum Multiplicity"
+
+#. Default: "Numero minimo de elementos disponibles al comienzo del Proceso de Negocio. Si la Entrada Es Requerida, se considera que la Multiplicidad Minima de la Entrada es mayor or igual que 1."
+#: BPDEntrada multiplicidadMinima
+msgid "gvSIGbpd_BPDEntrada_attr_multiplicidadMinima_help"
+msgstr "Minimum number of elements available at the beginning of the Business Process. If the Input Is Required,  then it is considered that the Minimum Multiplicity is equal or bigger than 1."
 
 #. Default: "Proceso de Negocio"
 #: BPDEntrada tituloProcesoDeNegocio
@@ -1016,6 +1299,26 @@ msgstr "Step details"
 msgid "gvSIGbpd_BPDEnvio_attr_detallesPaso_help"
 msgstr "Details about the fetarues of the Busienss Process Step"
 
+#. Default: "Multiplicidad Maxima"
+#: BPDEnvio multiplicidadMaxima
+msgid "gvSIGbpd_BPDEnvio_attr_multiplicidadMaxima_label"
+msgstr "Maximum Multiplicity"
+
+#. Default: "Numero maximo de elementos a enviar. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a enviar."
+#: BPDEnvio multiplicidadMaxima
+msgid "gvSIGbpd_BPDEnvio_attr_multiplicidadMaxima_help"
+msgstr "Maximum number of elements to send. Enter -1 to indicate that there is no upper limit in the number of elements to send."
+
+#. Default: "Multiplicidad Minima"
+#: BPDEnvio multiplicidadMinima
+msgid "gvSIGbpd_BPDEnvio_attr_multiplicidadMinima_label"
+msgstr "Minimum Multiplicity"
+
+#. Default: "Numero minimo de elementos a enviar. Introduzca 0 para indicar que el Envio procedera con exito, aunque no se envie ningun artefacto."
+#: BPDEnvio multiplicidadMinima
+msgid "gvSIGbpd_BPDEnvio_attr_multiplicidadMinima_help"
+msgstr "Minimum number of elements to send. Enter 0 to indicate that the Send will proceed with success, even if no Artefact of the type was sent"
+
 #. Default: "Artefactos Enviados"
 #: BPDEnvio titulosArtefactosEnviados
 msgid "gvSIGbpd_BPDEnvio_attr_titulosArtefactosEnviados_label"
@@ -1074,7 +1377,57 @@ msgstr "Step details"
 #. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
 #: BPDExitoFinal detallesPaso
 msgid "gvSIGbpd_BPDExitoFinal_attr_detallesPaso_help"
-msgstr "Details about the fetarues of the Busienss Process Step"
+msgstr "Details about the fetarues of the Business Process Step"
+
+#. Default: "Extension de Proceso de Negocio"
+#: BPDExtensionProceso
+msgid "gvSIGbpd_BPDExtensionProceso_label"
+msgstr "Extend Business Process"
+
+#. Default: "Indica que el Proceso de Negocio aporta comportamiento adicional a uno o mas Procesos de Negocio"
+#: BPDExtensionProceso
+msgid "gvSIGbpd_BPDExtensionProceso_help"
+msgstr "Indicates the the Business Process introduces additional behavior to other Business Process(es)."
+
+#. Default: "Condicion"
+#: BPDExtensionProceso condicion
+msgid "gvSIGbpd_BPDExtensionProceso_attr_condicion_label"
+msgstr "Condition"
+
+#. Default: "Criterio para determinar si el Proceso de Negocio puede realmente extender el Proceso de Negocio extendido."
+#: BPDExtensionProceso condicion
+msgid "gvSIGbpd_BPDExtensionProceso_attr_condicion_help"
+msgstr "Criteria to determine whether this Business Process can actually extend the extended Business Process."
+
+#. Default: "Proceso de Negocio"
+#: BPDExtensionProceso tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDExtensionProceso_attr_tituloProcesoDeNegocio_label"
+msgstr "Business Process"
+
+#. Default: "El titulo del Proceso de Negocio que contiene la Extension"
+#: BPDExtensionProceso tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDExtensionProceso_attr_tituloProcesoDeNegocio_help"
+msgstr "Title of the Business Process containing the Extension."
+
+#. Default: "Procesos de Negocio Extendidos"
+#: BPDExtensionProceso titulosProcesosExtendidos
+msgid "gvSIGbpd_BPDExtensionProceso_attr_titulosProcesosExtendidos_label"
+msgstr "Extended Business Processes"
+
+#. Default: "Los titulos de los Procesos de Negocio que son Extendidos por este Proceso de Negocio."
+#: BPDExtensionProceso titulosProcesosExtendidos
+msgid "gvSIGbpd_BPDExtensionProceso_attr_titulosProcesosExtendidos_help"
+msgstr "Titles of the Business Processes extended by this Business process."
+
+#. Default: "Puntos de Extension"
+#: BPDExtensionProceso puntosExtension
+msgid "gvSIGbpd_BPDExtensionProceso_rel_puntosExtension_label"
+msgstr "Extension Points"
+
+#. Default: "El Punto de Extension en el Proceso de Negocio que se extiende insertando el comportamiento de este Proceso de Negocio."
+#: BPDExtensionProceso puntosExtension
+msgid "gvSIGbpd_BPDExtensionProceso_rel_puntosExtension_help"
+msgstr "The Extension Point in the Business Process that is being extended by inserting the behavior of this Business Process."
 
 #. Default: "Fracaso Final"
 #: BPDFracasoFinal
@@ -1126,15 +1479,25 @@ msgstr "Artefacts handled with the Tool"
 msgid "gvSIGbpd_BPDHerramienta_rel_artefactosDeHerramienta_help"
 msgstr "Artefacts where the tool is applied to visualize, edit or otherwise handle the Artefact content."
 
+#. Default: "Instrucciones"
+#: BPDHerramienta instrucciones
+msgid "gvSIGbpd_BPDHerramienta_rel_instrucciones_label"
+msgstr "Instructions"
+
+#. Default: "Instrucciones acerca de como utilizar la Herramienta para alcanzar un objetivo, expresado como un proceso con entradas, pasos y salidas."
+#: BPDHerramienta instrucciones
+msgid "gvSIGbpd_BPDHerramienta_rel_instrucciones_help"
+msgstr "Instructions about how to use the Tool to accomplish a goal, expressed as a process with inputs, steps and outputs."
+
 #. Default: "Pasos Asistidos"
 #: BPDHerramienta pasosAsistidos
 msgid "gvSIGbpd_BPDHerramienta_rel_pasosAsistidos_label"
 msgstr "Assisted Steps"
 
-#. Default: "Pasos de procesos de negocio donde se aplica la Herramienta."
+#. Default: "Pasos de procesos de negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Procesos de Negocio completos."
 #: BPDHerramienta pasosAsistidos
 msgid "gvSIGbpd_BPDHerramienta_rel_pasosAsistidos_help"
-msgstr "Business process steps applying the tool."
+msgstr "Business Process Steps applying the Tool. The Tool may be also applied by whole Business Processes."
 
 #. Default: "Politicas de Negocio gobernantes"
 #: BPDHerramienta politicasDeNegocioGobernantes
@@ -1145,6 +1508,16 @@ msgstr "Governing Business Policies"
 #: BPDHerramienta politicasDeNegocioGobernantes
 msgid "gvSIGbpd_BPDHerramienta_rel_politicasDeNegocioGobernantes_help"
 msgstr "Business Policies that prescribe or govern the utilisation of the Tool in the Organisation"
+
+#. Default: "Procesos de Negocio Asistidos"
+#: BPDHerramienta procesosAsistidos
+msgid "gvSIGbpd_BPDHerramienta_rel_procesosAsistidos_label"
+msgstr "Assisted Business Processes"
+
+#. Default: "Procesos de Negocio donde se aplica la Herramienta.La Herramienta puede ademas se usada por Pasos individuales del Procesos de Negocio."
+#: BPDHerramienta procesosAsistidos
+msgid "gvSIGbpd_BPDHerramienta_rel_procesosAsistidos_help"
+msgstr "Business Processes applying the Tool. The Tool may be also applied by individual Business Processes Steps."
 
 #. Default: "Reglas de Negocio dirigentes"
 #: BPDHerramienta reglasDeNegocioDirigentes
@@ -1176,16 +1549,6 @@ msgstr "Organisation"
 msgid "gvSIGbpd_BPDOrganizacion_help"
 msgstr "Root of all definition and publicacion content."
 
-#. Default: "Comentario de Version (uso interno)"
-#: BPDOrganizacion comentarioVersionInterna
-msgid "gvSIGbpd_BPDOrganizacion_attr_comentarioVersionInterna_label"
-msgstr "Version Comment (internal)"
-
-#. Default: "Comentario a la version para uso interno de la aplicacion."
-#: BPDOrganizacion comentarioVersionInterna
-msgid "gvSIGbpd_BPDOrganizacion_attr_comentarioVersionInterna_help"
-msgstr "Comments on the Version used internally by the application."
-
 #. Default: "Permite ver Organizacion"
 #: BPDOrganizacion permiteLeer
 msgid "gvSIGbpd_BPDOrganizacion_attr_permiteLeer_label"
@@ -1205,16 +1568,6 @@ msgstr "Allow to change Organization"
 #: BPDOrganizacion permiteModificar
 msgid "gvSIGbpd_BPDOrganizacion_attr_permiteModificar_help"
 msgstr "If True, then the users may change the Organization. It may be False during long import processes or by manager request."
-
-#. Default: "Version (uso interno)"
-#: BPDOrganizacion versionInterna
-msgid "gvSIGbpd_BPDOrganizacion_attr_versionInterna_label"
-msgstr "Version identifier (internal)"
-
-#. Default: "Identificador de version para uso interno de la aplicacion."
-#: BPDOrganizacion versionInterna
-msgid "gvSIGbpd_BPDOrganizacion_attr_versionInterna_help"
-msgstr "Version identifier used internally by the application."
 
 #. Default: "Artefactos (colecciones)"
 #: BPDOrganizacion coleccionesArtefactos
@@ -2001,15 +2354,55 @@ msgstr "Business Process"
 msgid "gvSIGbpd_BPDPasoMinimo_attr_tituloProcesoDeNegocio_help"
 msgstr "Title of the Business Process containing the Step."
 
+#. Default: "Artefactos Usados"
+#: BPDPasoMinimo titulosArtefactosUsados
+msgid "gvSIGbpd_BPDPasoMinimo_attr_titulosArtefactosUsados_label"
+msgstr "Used Artefacts"
+
+#. Default: "Artefactos que se usan en el Paso del Proceso de Negocio."
+#: BPDPasoMinimo titulosArtefactosUsados
+msgid "gvSIGbpd_BPDPasoMinimo_attr_titulosArtefactosUsados_help"
+msgstr "Artefacts Used in the Business Process Step"
+
+#. Default: "Caracteristicas Usadas"
+#: BPDPasoMinimo titulosCaracteristicasUsadas
+msgid "gvSIGbpd_BPDPasoMinimo_attr_titulosCaracteristicasUsadas_label"
+msgstr "Used Artefacts"
+
+#. Default: "Caracteristicas de Artefactos que se usan en el Paso del Proceso de Negocio."
+#: BPDPasoMinimo titulosCaracteristicasUsadas
+msgid "gvSIGbpd_BPDPasoMinimo_attr_titulosCaracteristicasUsadas_help"
+msgstr "Artefact Featuress Used in the Business Process Step"
+
+#. Default: "Usa Artefactos"
+#: BPDPasoMinimo usosArtefactos
+msgid "gvSIGbpd_BPDPasoMinimo_contents_usosArtefactos_label"
+msgstr "Use Artefacts"
+
+#. Default: "Artefactos usados en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar."
+#: BPDPasoMinimo usosArtefactos
+msgid "gvSIGbpd_BPDPasoMinimo_contents_usosArtefactos_help"
+msgstr "Artefacts used in the Business Process Step, to Create, Read, Update, Delete or Link."
+
+#. Default: "Usa Caracteristicas"
+#: BPDPasoMinimo usosCaracteristicas
+msgid "gvSIGbpd_BPDPasoMinimo_contents_usosCaracteristicas_label"
+msgstr "Use Features"
+
+#. Default: "Caracteristicas de Artefactos que se usan en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar."
+#: BPDPasoMinimo usosCaracteristicas
+msgid "gvSIGbpd_BPDPasoMinimo_contents_usosCaracteristicas_help"
+msgstr "Artefact Features used in the Business Process Step, to Create, Read, Update, Delete or Link."
+
 #. Default: "Herramientas aplicadas"
 #: BPDPasoMinimo herramientasAplicadas
 msgid "gvSIGbpd_BPDPasoMinimo_rel_herramientasAplicadas_label"
 msgstr "Applied Tools"
 
-#. Default: "Herramientas a utilizar para ejecutar el paso de proceso de negocio o manejar los artefactos usados."
+#. Default: "Herramientas a utilizar para ejecutar este Paso del Proceso de Negocio, o manejar los Artefactos usados en el Paso. Considere ademas las Herramientas referidas como usadas desde todo el Proceso de Negocio."
 #: BPDPasoMinimo herramientasAplicadas
 msgid "gvSIGbpd_BPDPasoMinimo_rel_herramientasAplicadas_help"
-msgstr "Tools to apply in the execution of the business process step, or to manipulate the used artefacts."
+msgstr "Tools to apply in the execution of the Business Process Step, or to manipulate the used Artefacts. Consider too the Tools refered as used in the whole Business Process."
 
 #. Default: "Reglas de Negocio aplicadas"
 #: BPDPasoMinimo reglasDeNegocioAplicadas
@@ -2039,7 +2432,7 @@ msgstr "Step details"
 #. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
 #: BPDPasoSimple detallesPaso
 msgid "gvSIGbpd_BPDPasoSimple_attr_detallesPaso_help"
-msgstr "Details about the fetarues of the Busienss Process Step"
+msgstr "Details about the features of the Business Process Step"
 
 #. Default: "Perfil"
 #: BPDPerfil
@@ -2301,20 +2694,20 @@ msgstr "Whether the Business Process may iterate and execute multiple times on t
 msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_label"
 msgstr "Post Condition"
 
-#. Default: "La condicion que se cumplira cuando el Proceso concluya con exito."
+#. Default: "La condicion que se cumplira cuando el Proceso concluya con exito. Puede expresar reglas de corelacion entre las varias Salidas del Proceso."
 #: BPDProcesoDeNegocio postCondicion
 msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_help"
-msgstr "The condition that is guaranteed to be met, whent he Business Process completes successfully."
+msgstr "The condition that is guaranteed to be met, whent he Business Process completes successfully. May express corelation rules over the varios Process Outputs."
 
 #. Default: "Pre Condicion"
 #: BPDProcesoDeNegocio preCondicion
 msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_label"
 msgstr "Pre Condition"
 
-#. Default: "La condicion que debera cumplirse para que pueda comenzar el Proceso"
+#. Default: "La condicion que debera cumplirse para que pueda comenzar el Proceso. Puede expresar reglas de corelacion entre las varias Entradas del Proceso."
 #: BPDProcesoDeNegocio preCondicion
 msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_help"
-msgstr "The conditioni that is required to be true, to allow the start of the Business Process execution."
+msgstr "The condition that is required to be true, to allow the start of the Business Process execution. May express corelation rules over the varios Process Inputs."
 
 #. Default: "Proposito"
 #: BPDProcesoDeNegocio proposito
@@ -2356,6 +2749,36 @@ msgstr "Nested Business Processes"
 msgid "gvSIGbpd_BPDProcesoDeNegocio_contents_coleccionesProcesosDeNegocio_help"
 msgstr "Collections of Lower level Business Processes, defined in the context of this Business Process realising courses of action pusuing subordinate goals."
 
+#. Default: "Extensiones de Procesos de Negocio"
+#: BPDProcesoDeNegocio extensiones
+msgid "gvSIGbpd_BPDProcesoDeNegocio_contents_extensiones_label"
+msgstr "Extend Business Processes"
+
+#. Default: "Procesos de Negocio extendidos por este Proceso, insertando el comportamiento de este Proceso en un Punto de Extension del Proceso de Negocio extendido."
+#: BPDProcesoDeNegocio extensiones
+msgid "gvSIGbpd_BPDProcesoDeNegocio_contents_extensiones_help"
+msgstr "Business Processes extended by this Process, inserting this Process behavior into a Extension Point in the Steps of the extended Business Process."
+
+#. Default: "Artefactos Gestionados"
+#: BPDProcesoDeNegocio artefactosGestionados
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_artefactosGestionados_label"
+msgstr "Managed Artefacts"
+
+#. Default: "Artefactos que se gestionan ejecutando el Proceso de Negocio."
+#: BPDProcesoDeNegocio artefactosGestionados
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_artefactosGestionados_help"
+msgstr "Artefacts managed by executing this Business Process."
+
+#. Default: "Caracteristicas Gestionadas"
+#: BPDProcesoDeNegocio caracteristicasGestionadas
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_caracteristicasGestionadas_label"
+msgstr "Managed Features"
+
+#. Default: "Caracteristicas de Artefactos que se gestionan ejecutando el Proceso de Negocio."
+#: BPDProcesoDeNegocio caracteristicasGestionadas
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_caracteristicasGestionadas_help"
+msgstr "Artefact Features managed by executing this Business Process."
+
 #. Default: "Ejecutores del Proceso"
 #: BPDProcesoDeNegocio ejecutores
 msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_ejecutores_label"
@@ -2365,6 +2788,26 @@ msgstr "Performers"
 #: BPDProcesoDeNegocio ejecutores
 msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_ejecutores_help"
 msgstr "Participant Profiles and Organisational Units allowed to execute the Business Process."
+
+#. Default: "Herramientas Aplicadas"
+#: BPDProcesoDeNegocio herramientasAplicadas
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_herramientasAplicadas_label"
+msgstr "Applied Tools"
+
+#. Default: "Herramientas aplicadas en la realizacion del Proceso de Negocio. Considere ademas las Herramientas que se aplican en Pasos individuales del Proceso de Negocio."
+#: BPDProcesoDeNegocio herramientasAplicadas
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_herramientasAplicadas_help"
+msgstr "Tools applied in executing the Business Process. Consider too the Tools applied in individual Business Process Steps."
+
+#. Default: "Herramientas Documentadas"
+#: BPDProcesoDeNegocio herramientasDocumentadas
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_herramientasDocumentadas_label"
+msgstr "Documented Tools"
+
+#. Default: "Herramientas cuya utilizacion se documenta en este proceso."
+#: BPDProcesoDeNegocio herramientasDocumentadas
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_herramientasDocumentadas_help"
+msgstr "Tools whose usage is documented in this process."
 
 #. Default: "Politicas de Negocio Gobernantes"
 #: BPDProcesoDeNegocio politicasDeNegocioGobernantes
@@ -2446,6 +2889,56 @@ msgstr "Outputs (collections)"
 msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesSalidas_help"
 msgstr "Collections of Informations that may or will be made available upon successful completion of the Business Process."
 
+#. Default: "Punto de Extension"
+#: BPDPuntoExtension
+msgid "gvSIGbpd_BPDPuntoExtension_label"
+msgstr "Extension Point"
+
+#. Default: "Un Proceso de Negocio definido aparte, se ejercita de principio a fin como un paso parte de otro Proceso de Negocio de mayor alcance."
+#: BPDPuntoExtension
+msgid "gvSIGbpd_BPDPuntoExtension_help"
+msgstr "A Business Process, specified elsewhere, is executed in its entirety in the context of the current Business Process, as a single step."
+
+#. Default: "Detalles del Punto de Extension"
+#: BPDPuntoExtension detallesPaso
+msgid "gvSIGbpd_BPDPuntoExtension_attr_detallesPaso_label"
+msgstr "Extension Point Step details"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDPuntoExtension detallesPaso
+msgid "gvSIGbpd_BPDPuntoExtension_attr_detallesPaso_help"
+msgstr "Details about the Extension Point Step, including the title of the used Business Process."
+
+#. Default: "Es Inicial"
+#: BPDPuntoExtension esInicial
+msgid "gvSIGbpd_BPDPuntoExtension_attr_esInicial_label"
+msgstr "Is Initial"
+
+#. Default: "Indica si el Paso se ejecuta al comenzar el Proceso."
+#: BPDPuntoExtension esInicial
+msgid "gvSIGbpd_BPDPuntoExtension_attr_esInicial_help"
+msgstr "Whether this Step executes at the beginning of the Business Process."
+
+#. Default: "Extensiones en Procesos de Negocio"
+#: BPDPuntoExtension titulosProcesosExtensiones
+msgid "gvSIGbpd_BPDPuntoExtension_attr_titulosProcesosExtensiones_label"
+msgstr "Extending Business Processes"
+
+#. Default: "Proceso de Negocio que extienden  este Proceso de Negocio insertando su comportamiento en este Punto de Extension."
+#: BPDPuntoExtension titulosProcesosExtensiones
+msgid "gvSIGbpd_BPDPuntoExtension_attr_titulosProcesosExtensiones_help"
+msgstr "Business Processes extending this Business Process inserting their behavior in this Extension Point."
+
+#. Default: "Extensiones Procesos"
+#: BPDPuntoExtension extensionesProcesos
+msgid "gvSIGbpd_BPDPuntoExtension_rel_extensionesProcesos_label"
+msgstr "Process Extensions"
+
+#. Default: "Extensiones de Procesos de Negocio insertando comportamiento en este Punto de Extension."
+#: BPDPuntoExtension extensionesProcesos
+msgid "gvSIGbpd_BPDPuntoExtension_rel_extensionesProcesos_help"
+msgstr "Business Process Extensions inserting behavior in this Extension Point."
+
 #. Default: "Recepcion"
 #: BPDRecepcion
 msgid "gvSIGbpd_BPDRecepcion_label"
@@ -2456,6 +2949,16 @@ msgstr "Receive"
 msgid "gvSIGbpd_BPDRecepcion_help"
 msgstr "Represents a Business Process Step to wait to receive some information from the outside of the boudaries of the Business Process."
 
+#. Default: "Condicion"
+#: BPDRecepcion condicion
+msgid "gvSIGbpd_BPDRecepcion_attr_condicion_label"
+msgstr "Condition"
+
+#. Default: "Condicion que se evalua sobre Artefactos recibidos para determinar si la Recepcion puede realmente continuar. Puede expresar reglas de corelacion que deben cumplir los varios Artefactos recibidos."
+#: BPDRecepcion condicion
+msgid "gvSIGbpd_BPDRecepcion_attr_condicion_help"
+msgstr "Criteria to evaulate over received Artefacts to determine if the Reception may actually proceed. May express corelation rules that the received Artefacts must comply with."
+
 #. Default: "Detalles del Paso"
 #: BPDRecepcion detallesPaso
 msgid "gvSIGbpd_BPDRecepcion_attr_detallesPaso_label"
@@ -2465,6 +2968,26 @@ msgstr "Step details"
 #: BPDRecepcion detallesPaso
 msgid "gvSIGbpd_BPDRecepcion_attr_detallesPaso_help"
 msgstr "Details about the fetarues of the Busienss Process Step"
+
+#. Default: "Multiplicidad Maxima"
+#: BPDRecepcion multiplicidadMaxima
+msgid "gvSIGbpd_BPDRecepcion_attr_multiplicidadMaxima_label"
+msgstr "Maximum Multiplicity"
+
+#. Default: "Numero maximo de elementos a recibir. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a recibir."
+#: BPDRecepcion multiplicidadMaxima
+msgid "gvSIGbpd_BPDRecepcion_attr_multiplicidadMaxima_help"
+msgstr "Maximum number of elements to receive. Enter -1 to indicate that there is no upper limit in the number of elements to receive."
+
+#. Default: "Multiplicidad Minima"
+#: BPDRecepcion multiplicidadMinima
+msgid "gvSIGbpd_BPDRecepcion_attr_multiplicidadMinima_label"
+msgstr "Minimum Multiplicity"
+
+#. Default: "Numero minimo de elementos a recibir. Introduzca 0 para indicar que la Recepcion procedera con exito, aunque no se haya recibido ningun artefacto."
+#: BPDRecepcion multiplicidadMinima
+msgid "gvSIGbpd_BPDRecepcion_attr_multiplicidadMinima_help"
+msgstr "Minimum number of elements to receive. Enter 0 to indicate that the Reception will proceed with success, even if no Artefact of the type has been received."
 
 #. Default: "Remitente"
 #: BPDRecepcion tituloRemitente
@@ -2617,14 +3140,34 @@ msgid "gvSIGbpd_BPDSalida_help"
 msgstr "Information that may be produced during the Business Process execution and delivered at its end."
 
 #. Default: "Es Requerida"
-#: BPDSalida esRequerido
-msgid "gvSIGbpd_BPDSalida_attr_esRequerido_label"
+#: BPDSalida esRequerida
+msgid "gvSIGbpd_BPDSalida_attr_esRequerida_label"
 msgstr "Is Required"
 
 #. Default: "Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso."
-#: BPDSalida esRequerido
-msgid "gvSIGbpd_BPDSalida_attr_esRequerido_help"
+#: BPDSalida esRequerida
+msgid "gvSIGbpd_BPDSalida_attr_esRequerida_help"
 msgstr "Whether the Output shall be always produced when the Business Process completes successfully."
+
+#. Default: "Multiplicidad Maxima"
+#: BPDSalida multiplicidadMaxima
+msgid "gvSIGbpd_BPDSalida_attr_multiplicidadMaxima_label"
+msgstr "Maximum Multiplicity"
+
+#. Default: "Numero maximo de elementos disponibles al final del Proceso de Negocio. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos."
+#: BPDSalida multiplicidadMaxima
+msgid "gvSIGbpd_BPDSalida_attr_multiplicidadMaxima_help"
+msgstr "Maximum number of elements available at the end of the Business Process.  Enter -1 to indicate that there is no upper limit in the number of elements."
+
+#. Default: "Multiplicidad Minima"
+#: BPDSalida multiplicidadMinima
+msgid "gvSIGbpd_BPDSalida_attr_multiplicidadMinima_label"
+msgstr "Minimum Multiplicity"
+
+#. Default: "Numero minimo de elementos disponibles al final del Proceso de Negocio. Si la Salida Es Requerida, se considera que la Multiplicidad Minima de la Entrada es mayor or igual que 1."
+#: BPDSalida multiplicidadMinima
+msgid "gvSIGbpd_BPDSalida_attr_multiplicidadMinima_help"
+msgstr "Minimum number of elements available at the end of the Business Process. If the Output Is Required,  then it is considered that the Minimum Multiplicity is equal or bigger than 1."
 
 #. Default: "Proceso de Negocio"
 #: BPDSalida tituloProcesoDeNegocio
@@ -2725,3 +3268,233 @@ msgstr "Organisational Units (collections)"
 #: BPDUnidadOrganizacional coleccionesUnidadesOrganizacionales
 msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesUnidadesOrganizacionales_help"
 msgstr "Collections of Organisational Units corresponding to the Organisation decomposition into units, departments, sections, ... at a lower level, participants in the Business Processes."
+
+#. Default: "Uso de Artefacto"
+#: BPDUsoArtefacto
+msgid "gvSIGbpd_BPDUsoArtefacto_label"
+msgstr "Use Artefact"
+
+#. Default: "Artefactos que se usan en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar."
+#: BPDUsoArtefacto
+msgid "gvSIGbpd_BPDUsoArtefacto_help"
+msgstr "Artefacts used in the Business Process Step, to Create, Read, Update, Delete or Link."
+
+#. Default: "Es Requerido"
+#: BPDUsoArtefacto esRequerido
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_esRequerido_label"
+msgstr "Is Required"
+
+#. Default: "Indica si el Artefacto es absolutamente necesario para llevar a cabo el Paso del Proceso de Negocio."
+#: BPDUsoArtefacto esRequerido
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_esRequerido_help"
+msgstr "Whether the Artefact is absolutely needed to carry out th eBusiness Process Step."
+
+#. Default: "Modo de Uso"
+#: BPDUsoArtefacto modoDeUso
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_modoDeUso_label"
+msgstr "Usage Mode"
+
+#. Default: "Como se usa el Artefacto en este Paso del Proceso de Negocio: Crear, Leer, Actualizar, Eliminar y Enlazar."
+#: BPDUsoArtefacto modoDeUso
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_modoDeUso_help"
+msgstr "How the Artefact is used in this Business Process Step, to Create, Read, Update, Delete or Link."
+
+#. Default: "Leer"
+#: BPDUsoArtefacto modoDeUso
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_modoDeUso_option_Leer"
+msgstr "Read"
+
+#. Default: "Actualizar"
+#: BPDUsoArtefacto modoDeUso
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_modoDeUso_option_Actualizar"
+msgstr "Update"
+
+#. Default: "Crear"
+#: BPDUsoArtefacto modoDeUso
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_modoDeUso_option_Crear"
+msgstr "Create"
+
+#. Default: "Eliminar"
+#: BPDUsoArtefacto modoDeUso
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_modoDeUso_option_Eliminar"
+msgstr "Delete"
+
+#. Default: "Enlazar"
+#: BPDUsoArtefacto modoDeUso
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_modoDeUso_option_Enlazar"
+msgstr "Link"
+
+#. Default: "Multiplicidad Maxima"
+#: BPDUsoArtefacto multiplicidadMaxima
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_multiplicidadMaxima_label"
+msgstr "Maximum Multiplicity"
+
+#. Default: "Numero maximo de elementos disponibles al comienzo del Proceso de Negocio. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos."
+#: BPDUsoArtefacto multiplicidadMaxima
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_multiplicidadMaxima_help"
+msgstr "Maximum number of elements available at the beginning of the Business Process.  Enter -1 to indicate that there is no upper limit in the number of elements."
+
+#. Default: "Multiplicidad Minima"
+#: BPDUsoArtefacto multiplicidadMinima
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_multiplicidadMinima_label"
+msgstr "Minimum Multiplicity"
+
+#. Default: "Numero minimo de elementos usados en el Paso. Si el Uso del Artefacto Es Requerido, se considera que la Multiplicidad Minima es mayor or igual que 1."
+#: BPDUsoArtefacto multiplicidadMinima
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_multiplicidadMinima_help"
+msgstr "Minimum number of elements used in the Step. If the Artefact Use Is Required,  then it is considered that the Minimum Multiplicity is equal or bigger than 1."
+
+#. Default: "Paso de Proceso de Negocio"
+#: BPDUsoArtefacto tituloPasoDeProcesoDeNegocio
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_tituloPasoDeProcesoDeNegocio_label"
+msgstr "Business Process Step"
+
+#. Default: "El titulo del Paso de Proceso de Negocio que contiene el Uso de Artefacto."
+#: BPDUsoArtefacto tituloPasoDeProcesoDeNegocio
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_tituloPasoDeProcesoDeNegocio_help"
+msgstr "Title of the Business Process Step containing the Use Artefact."
+
+#. Default: "Proceso de Negocio"
+#: BPDUsoArtefacto tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_tituloProcesoDeNegocio_label"
+msgstr "Business Process"
+
+#. Default: "El titulo del Proceso de Negocio que contiene el Uso de Artefacto"
+#: BPDUsoArtefacto tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_tituloProcesoDeNegocio_help"
+msgstr "Title of the Business Process containing the Use Artefact"
+
+#. Default: "Artefactos Usados"
+#: BPDUsoArtefacto titulosArtefactosUsados
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_titulosArtefactosUsados_label"
+msgstr "Used Artefacts"
+
+#. Default: "Artefactos que se usan en el Paso del Proceso de Negocio."
+#: BPDUsoArtefacto titulosArtefactosUsados
+msgid "gvSIGbpd_BPDUsoArtefacto_attr_titulosArtefactosUsados_help"
+msgstr "Artefacts Used in the Business Process Step"
+
+#. Default: "Artefactos Usados"
+#: BPDUsoArtefacto artefactosUsados
+msgid "gvSIGbpd_BPDUsoArtefacto_rel_artefactosUsados_label"
+msgstr "Artefacts Used"
+
+#. Default: "Artefactos usados en este Paso del Proceso de Negocio."
+#: BPDUsoArtefacto artefactosUsados
+msgid "gvSIGbpd_BPDUsoArtefacto_rel_artefactosUsados_help"
+msgstr "Artefacts used in this Business Process Step."
+
+#. Default: "Uso de Caracteristica de Artefacto"
+#: BPDUsoCaracteristica
+msgid "gvSIGbpd_BPDUsoCaracteristica_label"
+msgstr "Use Feature in Artefact"
+
+#. Default: "Caracteristicas de Artefacto que se usan en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar."
+#: BPDUsoCaracteristica
+msgid "gvSIGbpd_BPDUsoCaracteristica_help"
+msgstr "Artefact Features used in the Business Process Step, to Create, Read, Update, Delete or Link."
+
+#. Default: "Es Requerida"
+#: BPDUsoCaracteristica esRequerida
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_esRequerida_label"
+msgstr "Is Required"
+
+#. Default: "Indica si la Caracteristica es absolutamente necesaria para llevar a cabo el Paso del Proceso de Negocio."
+#: BPDUsoCaracteristica esRequerida
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_esRequerida_help"
+msgstr "Whether the Feature is absolutely needed to carry out th eBusiness Process Step."
+
+#. Default: "Modo de Uso"
+#: BPDUsoCaracteristica modoDeUso
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_modoDeUso_label"
+msgstr "Usage Mode"
+
+#. Default: "Como se usa la Caracteristica en este Paso del Proceso de Negocio: Crear, Leer, Actualizar, Eliminar y Enlazar."
+#: BPDUsoCaracteristica modoDeUso
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_modoDeUso_help"
+msgstr "How the Feature is used in this Business Process Step, to Create, Read, Update, Delete or Link."
+
+#. Default: "Leer"
+#: BPDUsoCaracteristica modoDeUso
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_modoDeUso_option_Leer"
+msgstr "Read"
+
+#. Default: "Actualizar"
+#: BPDUsoCaracteristica modoDeUso
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_modoDeUso_option_Actualizar"
+msgstr "Update"
+
+#. Default: "Crear"
+#: BPDUsoCaracteristica modoDeUso
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_modoDeUso_option_Crear"
+msgstr "Create"
+
+#. Default: "Eliminar"
+#: BPDUsoCaracteristica modoDeUso
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_modoDeUso_option_Eliminar"
+msgstr "Delete"
+
+#. Default: "Enlazar"
+#: BPDUsoCaracteristica modoDeUso
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_modoDeUso_option_Enlazar"
+msgstr "Link"
+
+#. Default: "Multiplicidad Maxima"
+#: BPDUsoCaracteristica multiplicidadMaxima
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_multiplicidadMaxima_label"
+msgstr "Maximum Multiplicity"
+
+#. Default: "Numero maximo de elementos disponibles al comienzo del Proceso de Negocio. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos."
+#: BPDUsoCaracteristica multiplicidadMaxima
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_multiplicidadMaxima_help"
+msgstr "Maximum number of elements available at the beginning of the Business Process.  Enter -1 to indicate that there is no upper limit in the number of elements."
+
+#. Default: "Multiplicidad Minima"
+#: BPDUsoCaracteristica multiplicidadMinima
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_multiplicidadMinima_label"
+msgstr "Minimum Multiplicity"
+
+#. Default: "Numero minimo de elementos usados en el Paso. Si el Uso del Artefacto Es Requerido, se considera que la Multiplicidad Minima es mayor or igual que 1."
+#: BPDUsoCaracteristica multiplicidadMinima
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_multiplicidadMinima_help"
+msgstr "Minimum number of elements used in the Step. If the Artefact Use Is Required,  then it is considered that the Minimum Multiplicity is equal or bigger than 1."
+
+#. Default: "Paso de Proceso de Negocio"
+#: BPDUsoCaracteristica tituloPasoDeProcesoDeNegocio
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_tituloPasoDeProcesoDeNegocio_label"
+msgstr "Business Process Step"
+
+#. Default: "El titulo del Paso de Proceso de Negocio que contiene el Uso de Artefacto."
+#: BPDUsoCaracteristica tituloPasoDeProcesoDeNegocio
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_tituloPasoDeProcesoDeNegocio_help"
+msgstr "Title of the Business Process Step containing the Use Artefact."
+
+#. Default: "Proceso de Negocio"
+#: BPDUsoCaracteristica tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_tituloProcesoDeNegocio_label"
+msgstr "Business Process"
+
+#. Default: "El titulo del Proceso de Negocio que contiene el Uso de Artefacto"
+#: BPDUsoCaracteristica tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_tituloProcesoDeNegocio_help"
+msgstr "Title of the Business Process containing the Use Artefact"
+
+#. Default: "Caracteristicas Usadas"
+#: BPDUsoCaracteristica titulosCaracteristicasUsadas
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_titulosCaracteristicasUsadas_label"
+msgstr "Used Features"
+
+#. Default: "Caracteristicas que se usan en el Paso del Proceso de Negocio."
+#: BPDUsoCaracteristica titulosCaracteristicasUsadas
+msgid "gvSIGbpd_BPDUsoCaracteristica_attr_titulosCaracteristicasUsadas_help"
+msgstr "Features Used in the Business Process Step"
+
+#. Default: "Caracteristicas Usadas"
+#: BPDUsoCaracteristica caracteristicasUsadas
+msgid "gvSIGbpd_BPDUsoCaracteristica_rel_caracteristicasUsadas_label"
+msgstr "Used Features"
+
+#. Default: "Caracteristicas de Artefactos que se usan en el Paso del Proceso de Negocio, para Crear, Leer, Actualizar, Eliminar y Enlazar."
+#: BPDUsoCaracteristica caracteristicasUsadas
+msgid "gvSIGbpd_BPDUsoCaracteristica_rel_caracteristicasUsadas_help"
+msgstr "Artefact Features used in the Business Process Step, to Create, Read, Update, Delete or Link."

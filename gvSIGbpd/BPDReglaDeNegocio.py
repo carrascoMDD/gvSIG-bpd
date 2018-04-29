@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -225,7 +225,7 @@ schema = Schema((
         description="Procesos de Negocio que toman en cuenta la Regla de Negocio durante su ejecucion.",
         relationship='BPDProcesosDeNegocioDirigidos',
         inverse_relation_field_name='reglasDeNegocioDirigentes',
-        sourcestyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Guided Business Processes",
         inverse_relation_description2="Business Rules to take into account when executing the Business Process.",
         widget=ReferenceBrowserWidget(
@@ -292,7 +292,10 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -300,19 +303,20 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
     allowed_content_types = ['BPDColeccionReglasDeNegocio'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdregladenegocio.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Regla que desarrolla Politicas de Negocio,  posiblemente aplicada en la ejecucion de Procesos de Negocio, o afectando la operacion de Unidaddes Organizacionales, Perfiles, Artefactos y Herramientas."
-    typeDescMsgId =  'gvSIGbpd_BPDReglaDeNegocio_help'
-    archetype_name2 = 'Business Rule'
-    typeDescription2 = '''Business Rule based in Busines Policies, possibly applied during the execution of Business Processes or their Steps, or affecting the operation of Organisational Units, Profiles, Artefacts and Tools.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDReglaDeNegocio_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Regla que desarrolla Politicas de Negocio,  posiblemente aplicada en la ejecucion de Procesos de Negocio, o afectando la operacion de Unidaddes Organizacionales, Perfiles, Artefactos y Herramientas."
+    typeDescMsgId                    =  'gvSIGbpd_BPDReglaDeNegocio_help'
+    archetype_name2                  = 'Business Rule'
+    typeDescription2                 = '''Business Rule based in Busines Policies, possibly applied during the execution of Business Processes or their Steps, or affecting the operation of Organisational Units, Profiles, Artefacts and Tools.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDReglaDeNegocio_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -331,6 +335,15 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -372,21 +385,12 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -399,12 +403,12 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -432,6 +436,13 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         """
         
         return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDReglaDeNegocio, PROJECTNAME)
 # end of class BPDReglaDeNegocio

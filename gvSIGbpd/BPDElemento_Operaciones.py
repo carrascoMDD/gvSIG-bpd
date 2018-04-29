@@ -51,6 +51,7 @@ from Acquisition                    import aq_get
 from Products.CMFCore               import permissions
 from Products.CMFCore.utils         import getToolByName
 
+from AccessControl.Permissions   import access_contents_information   as perm_AccessContentsInformation
 
 from Products.ModelDDvlPloneTool.ModelDDvlPloneTool import cModelDDvlPloneToolName, ModelDDvlPloneTool
 
@@ -91,7 +92,44 @@ class BPDElemento_Operaciones:
 
     ##code-section class-header #fill in your manual code here
     
+  
     
+    
+   
+    # #############################################################
+    # Intercepting modification method for re-ordering an OrderedBaseFolder specialization
+    # used in to provide drag&drop functionality directly from Plone.
+    # does not hit the ModelDDvlPlone framework presentation layer
+    # and therefore the incalidation of cache entries must be triggered by intercepting the method
+    #
+
+    security.declareProtected(permissions.ModifyPortalContent, 'pHandle_moveObjectsByDelta')
+    def pHandle_moveObjectsByDelta(self, ids, delta, subset_ids=None): 
+        
+        unResult = OrderedBaseFolder.moveObjectsByDelta( self,  ids, delta, subset_ids=subset_ids)
+        
+        someImpactedUIDs = []
+        someObjectValues = self.objectValues()
+        for anObject in someObjectValues:
+            anObjectUID = anObject.UID()
+            if anObjectUID:
+                someImpactedUIDs.append( anObjectUID)
+                
+        unaModelDDvlPloneTool = getToolByName( self, 'ModelDDvlPlone_tool', None)
+        if unaModelDDvlPloneTool:
+            unaModelDDvlPloneTool.pFlushCachedTemplatesForElements( self, someImpactedUIDs)
+            
+        return unResult
+            
+    
+    
+    
+    
+    # #############################################################
+    # Portal accessors
+    # 
+
+
  
     security.declarePrivate('fPortalRoot')
     def fPortalRoot(self):
@@ -101,6 +139,68 @@ class BPDElemento_Operaciones:
     
     
         
+    
+    
+    
+# #############################################################
+# Version  accessors (root of application elements network)
+# 
+
+
+    
+    security.declareProtected( permissions.View, 'fDerive_VersionInterna')
+    def fDerive_VersionInterna(self):
+        
+        unRaiz = self.getRaiz()
+        
+        if ( not unRaiz) or ( unRaiz == self):
+            return self.getVersionInternaAlmacenada()
+        
+        return unRaiz.getVersionInterna()
+    
+            
+    
+
+    
+
+    
+    security.declareProtected( permissions.View, 'fDerive_ComentarioVersionInterna')
+    def fDerive_ComentarioVersionInterna(self):
+        
+        unRaiz = self.getRaiz()
+        
+        if ( not unRaiz) or ( unRaiz == self):
+            return self.getComentarioVersionInternaAlmacenada()
+        
+        return unRaiz.getComentarioVersionInterna()
+    
+            
+    
+   
+    
+    
+# #############################################################
+# Translation  accessors 
+# 
+
+
+    security.declareProtected( permissions.View, 'fDerive_EsTraduccionInterna')
+    def fDerive_EsTraduccionInterna(self):
+        
+        unRaiz = self.getRaiz()
+        
+        unEsTraduccionInternaAlmacenada = self.getEsTraduccionInternaAlmacenada()
+        if unEsTraduccionInternaAlmacenada=='Segun Contenedor':
+            if not unRaiz:
+                return 'No Traducible'
+            
+            return unRaiz.getEsTraduccionInterna()
+        
+        return unEsTraduccionInternaAlmacenada
+    
+
+        
+    
         
 
     
@@ -111,10 +211,6 @@ class BPDElemento_Operaciones:
 
 
 
-
-
-
-     
  
     security.declarePrivate( 'fComposeOwnerName')
     def fComposeOwnerName( self, theSeparator, theAttributeName, theExcludeRoot=True):
@@ -171,10 +267,19 @@ class BPDElemento_Operaciones:
       
       
       
-      
+
+    
+    
+    
+    
+# #############################################################
+# Raiz  accessors (root of application elements network)
+# 
+
+    
 
 
-    security.declarePrivate('getRaiz')
+    security.declareProtected( permissions.View, 'getRaiz')
     def getRaiz(self):
         if self.getEsRaiz():
             return self            
@@ -184,6 +289,82 @@ class BPDElemento_Operaciones:
             return None
         
         return unContenedor.getRaiz()
+
+
+
+    # OJO ACV 20091111 
+    # Removed from model and coded here for more efficiency
+    #
+    security.declareProtected( permissions.View, 'getEsRaiz')
+    def getEsRaiz(self):
+                   
+        unContenedor =  aq_parent( aq_inner( self))
+
+        if not unContenedor:
+            return True
+        
+        unMetaTypeContenedor = unContenedor.meta_type 
+        
+        unasClassNames = self.fParentArchetypeClassNames()
+        
+        if ( unMetaTypeContenedor in unasClassNames):
+            return False
+            
+        return True
+
+
+
+    # OJO ACV 20091111 
+    # Removed from model and coded here for more efficiency
+    #
+    security.declareProtected( permissions.View, 'getContenedor')
+    def getContenedor(self):
+        return aq_parent( aq_inner( self))
+
+
+
+
+
+    # OJO ACV 20091111 
+    # Removed from model and coded here for more efficiency
+    #
+    security.declareProtected( permissions.View, 'getContenedorContenedor')
+    def getContenedorContenedor(self):
+        return aq_parent( aq_parent( aq_inner( self)))
+
+
+
+
+
+    # OJO ACV 20091111 
+    # Removed from model and coded here for more efficiency
+    #
+    security.declareProtected( permissions.View, 'CookedBody')
+    def CookedBody(self, setlevel=0, stx_level=None):
+        return getToolByName( self, 'ModelDDvlPlone_tool').fCookedBodyForElement( None, self, stx_level, setlevel, None)
+
+
+
+
+
+    # OJO ACV 20091111 
+    # Removed from model and coded here for more efficiency
+    #
+    security.declareProtected( permissions.View, 'getEditableBody')
+    def getEditableBody(self, setlevel=0, stx_level=None):
+        return getToolByName( self, 'ModelDDvlPlone_tool').fEditableBodyForElement( None, self, None)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -378,6 +559,30 @@ class BPDElemento_Operaciones:
         return unResultString
             
 
+
+#   fTFLVsUnless stands for function for multiple  Translated Field Label and Value
+#   will be used in the context of expressions of computed archetype schema fields
+#   the short name is to use less space
+#   in the tagged value edition fields
+#   of case tools            
+    security.declarePrivate('fTFLVsUnless')
+    def fTFLVsUnless(self, theFieldNamesAndExcludeValues):
+        if not theFieldNamesAndExcludeValues:
+            return ''
+        
+        someFieldLabelsAndValues = []
+        for unFieldName, unExcludeValue in theFieldNamesAndExcludeValues:
+            unFieldLabelAndValue = self.fTFLVUnless( unFieldName, unExcludeValue)
+            if unFieldLabelAndValue:
+                someFieldLabelsAndValues.append( unFieldLabelAndValue)
+
+        if not someFieldLabelsAndValues:
+            return ''
+            
+        unResultString = '; '.join( someFieldLabelsAndValues)
+
+        return unResultString
+            
     
     
 #   fTFLV stands for function for Translated Field Label and Value
@@ -401,7 +606,28 @@ class BPDElemento_Operaciones:
         return aTranslatedLabel + ' ' + unValueString
              
 
+   
+#   fTFLVUnless stands for function for Translated Field Label and Value
+#   will be used in the context of expressions of computed archetype schema fields
+#   the short name is to use less space
+#   in the tagged value edition fields
+#   of case tools            
+    security.declarePrivate('fTFLVUnless')
+    def fTFLVUnless(self, theFieldName, theExcludeValue):
+        if not theFieldName:
+            return ''
+
+        unValueString = self.fFVUnless( theFieldName, theExcludeValue)
+        if not unValueString:
+            return ''
+        
+        aTranslatedLabel = self.fTFL( theFieldName)
+        if not aTranslatedLabel:
+            aTranslatedLabel = ''         
     
+        return aTranslatedLabel + ' ' + unValueString
+             
+        
     
     
 #   fFV stands for function for  Field Value
@@ -540,6 +766,140 @@ class BPDElemento_Operaciones:
     
     
 
+    
+#   fFVUnless stands for function for  Field Value
+#   will be used in the context of expressions of computed archetype schema fields
+#   the short name is to use less space
+#   in the tagged value edition fields
+#   of case tools            
+    security.declarePrivate('fFVUnless')
+    def fFVUnless(self, theFieldName, theExcludeValue):
+        if not theFieldName:
+            return ''
+
+        unSchema = self.schema
+        if not unSchema.has_key( theFieldName):
+            return ''
+            
+        unField  = unSchema[ theFieldName]
+        if not unField:
+            return ''
+
+        unAccessor = unField.getAccessor( self)
+        if not unAccessor:
+            return ''
+
+        unValue = unAccessor()
+        if ( unValue == None):
+            return ''
+            
+        if unValue == theExcludeValue:
+            return ''
+        
+        
+        if unField.__class__.__name__ in ( 'RelationField', 'ReferenceField'):
+            unIsMultiValued = unField.multiValued
+            if not unIsMultiValued: 
+                if not unValue:
+                    return ''
+                unTitle = unValue.Title()
+                if not unTitle:
+                    return ''
+                return unTitle
+            else:
+                unosTitulos = []
+                if unValue:
+                    for unElement in unValue:
+                        unTitle = unElement.Title()
+                        if unTitle:
+                            unosTitulos.append( unTitle)
+                if not unosTitulos:
+                    return ''
+                unosTitulosString = ', '.join( unosTitulos)
+                return unosTitulosString
+                                             
+        
+                        
+        unElementFieldType      = unField.type
+        
+        if unElementFieldType == 'computed':
+            unElementFieldType = 'string'
+                    
+        unValueString = ''
+                            
+        unWidget = unField.widget
+        if unWidget and (unWidget.getType() == 'Products.Archetypes.Widget.SelectionWidget') and unField.__dict__.has_key('vocabulary'):    
+            unValueString = unValue    
+            someVocabularyOptions   = []
+            try:
+                someVocabularyOptions = unField.vocabulary   
+            except:
+                None
+                
+            someVocabularyMsgIds = []
+            try:
+                someVocabularyMsgIds = unField.vocabulary_msgids   
+            except:
+                None
+                
+            aTranslationService = None
+            try:
+                aTranslationService = self.translation_service
+            except:
+                None
+
+            anI18NDomain = self.getNombreProyecto()   
+                
+            if someVocabularyOptions and someVocabularyMsgIds and aTranslationService and anI18NDomain:
+                if unValue in someVocabularyOptions:
+                    unValueIndex = someVocabularyOptions.index( unValue)
+                    if (unValueIndex >= 0) and ( unValueIndex < len( someVocabularyMsgIds)):
+                        unValueMsgId = someVocabularyMsgIds[ unValueIndex]
+                        aTranslation = aTranslationService.utranslate( anI18NDomain, unValueMsgId, mapping=None, context=self , target_language= None, default=unValueString)                       
+                        if aTranslation:
+                            unValueString = aTranslation                                               
+                   
+        elif unElementFieldType in[  'string', 'text']:            
+            unValueString = unValue
+            
+        elif unElementFieldType == 'boolean':
+            unValueString = str( unValue)
+        
+            aTranslationService = None
+            try:
+                aTranslationService = self.translation_service
+            except:
+                None
+
+            anI18NDomain = self.getNombreProyecto() 
+              
+            if aTranslationService and anI18NDomain:
+                if unValue:
+                    aTranslation = aTranslationService.utranslate( 'ModelDDvlPlone', 'ModelDDvlPlone_True', mapping=None, context=self , target_language= None, default=unValueString)                       
+                    if aTranslation:
+                        unValueString = aTranslation
+                else:
+                    aTranslation = aTranslationService.utranslate( 'ModelDDvlPlone', 'ModelDDvlPlone_False', mapping=None, context=self , target_language= None, default=unValueString)                       
+                    if aTranslation:
+                        unValueString = aTranslation
+                        
+        elif unElementFieldType == 'integer':
+            unValueString  = str( unValue)
+            
+        elif unElementFieldType == 'float':
+            unValueString  = str( unValue)
+
+        elif unElementFieldType == 'fixedpoint':
+            unValueString  = str( unValue)
+
+        elif unElementFieldType == 'datetime':
+            unValueString  = str( unValue)
+        
+        else:
+            unValueString  = str( unValue)
+    
+        return unValueString
+    
 
 
     
@@ -615,6 +975,49 @@ class BPDElemento_Operaciones:
         return aUnicodeTranslatedLabelAndValue               
                
         
+
+    
+    
+
+     
+    security.declarePrivate( 'fTrTFLVs')
+    def fTrTFLVs( self, theFieldNamesToTraverse, theFieldNamesToGet):
+
+        if not theFieldNamesToTraverse:
+            return self.fTFLVs( theFieldNamesToGet)
+        
+        unSonMulti = False
+        unosElementosPasoAnterior = [ self]
+        unosElementosNuevoPaso = [ ]
+        for unFieldNameToTraverse in theFieldNamesToTraverse:
+            for unElementoAnterior in unosElementosPasoAnterior:
+                unSchema = unElementoAnterior.schema
+                if unSchema.has_key( unFieldNameToTraverse):
+                    unField     = unSchema[ unFieldNameToTraverse]
+                    
+                    unEsMulti   = unField.multiValued
+                    unAccesor   = unField.getAccessor( unElementoAnterior)
+                    unValue     = unAccesor( )
+                    if unEsMulti:
+                        unSonMulti = True
+                        if unValue:
+                            unosElementosNuevoPaso += unValue
+                    else:
+                        if unValue:
+                            unosElementosNuevoPaso.append( unValue)
+                                
+            unosElementosPasoAnterior = unosElementosNuevoPaso
+        
+        if not unosElementosPasoAnterior:
+            return []
+            
+        unResult = ', '.join( [ unElemento.fTFLVs( theFieldNamesToGet) for unElemento in unosElementosPasoAnterior ])
+        
+        return unResult
+    
+    
+    
+    
     
 
      
@@ -664,14 +1067,15 @@ class BPDElemento_Operaciones:
         """
         
         unResultDict = theResultDict
-        
+        if ( unResultDict == None):
+            unResultDict = { }
+                
         if not theI18NDomainsStringsAndDefaults:
             return unResultDict
         
-        if ( unResultDict == None):
-            unResultDict = { }
-        
         aTranslationService = getToolByName( self, 'translation_service', None)
+        if not aTranslationService:
+            return unResultDict
         
         for aDomainStringsAndDefaults in theI18NDomainsStringsAndDefaults:
             aI18NDomain             = aDomainStringsAndDefaults[ 0] or cI18NDomainDefault
@@ -890,6 +1294,7 @@ class BPDElemento_Operaciones:
 
         somePermissionsAndRoles = [ 
             [ [ permissions.View, ],                [ 'Manager', 'Owner', 'Reviewer', ], ],
+            [ [ perm_AccessContentsInformation, ],  [ 'Manager', 'Owner', 'Reviewer', ], ],
             [ [ permissions.ListFolderContents, ],  [ 'Manager', 'Owner', 'Reviewer', ], ],
             [ [ permissions.ModifyPortalContent, ], [ 'Manager', 'Owner', ], ],
             [ [ permissions.AddPortalContent, ],    [ 'Manager', 'Owner', ], ],
@@ -958,6 +1363,7 @@ class BPDElemento_Operaciones:
                                     theTimeProfilingResults =None,
                                     theContainerElement     =theItem, 
                                     theTypeName             =unTypeName, 
+                                    theId                   =None,
                                     theTitle                =unNewTitle, 
                                     theDescription          ='',
                                     theAdditionalParams     =None,

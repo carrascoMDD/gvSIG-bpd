@@ -43,36 +43,6 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import Reference
 
 schema = Schema((
 
-    RelationField(
-        name='artefactosDeEntrada',
-        inverse_relation_label="Entrada a Procesos de Negocio",
-        inverse_relation_description="Entradas a Procesos de Negocio en que el Artefacto debe estar disponible, para poder comenzar la ejecucion.",
-        description="Artefactos que deben estar disponibles para comenzar el Proceso de Negocio",
-        relationship='BPDArtefactosDeEntrada',
-        label2="Input Artefacts",
-        widget=ReferenceBrowserWidget(
-            label="Artefactos de Entrada",
-            label2="Input Artefacts",
-            description="Artefactos que deben estar disponibles para comenzar el Proceso de Negocio",
-            description2="Artefacts required as input to allow the start of the Business Processes.",
-            label_msgid='gvSIGbpd_BPDEntrada_rel_artefactosDeEntrada_label',
-            description_msgid='gvSIGbpd_BPDEntrada_rel_artefactosDeEntrada_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description2="Artefacts required as input to allow the start of the Business Processes.",
-        inverse_relation_label2="Input to Business Processes",
-        deststyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
-        write_permission='Modify portal content',
-        inverse_relation_field_name='entradasAProcesosDeNegocio',
-        inverse_relation_description2="Inputs to Business Processes where the Artefact must be made available , in order  to start execution.",
-        additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
-        label="Artefactos de Entrada",
-        multiValued=1,
-        containment="Unspecified",
-        inverse_relationship='BPDEntradasAProcesosDeNegocio',
-        owner_class_name="BPDEntrada"
-    ),
-
     BooleanField(
         name='esRequerida',
         widget=BooleanField._properties['widget'](
@@ -104,6 +74,98 @@ schema = Schema((
         owner_class_name="BPDEntrada"
     ),
 
+    IntegerField(
+        name='multiplicidadMinima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Minima",
+            label2="Minimum Multiplicity",
+            description="Numero minimo de elementos disponibles al comienzo del Proceso de Negocio. Si la Entrada Es Requerida, se considera que la Multiplicidad Minima de la Entrada es mayor or igual que 1.",
+            description2="Minimum number of elements available at the beginning of the Business Process. If the Input Is Required,  then it is considered that the Minimum Multiplicity is equal or bigger than 1.",
+            label_msgid='gvSIGbpd_BPDEntrada_attr_multiplicidadMinima_label',
+            description_msgid='gvSIGbpd_BPDEntrada_attr_multiplicidadMinima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero minimo de elementos disponibles al comienzo del Proceso de Negocio. Si la Entrada Es Requerida, se considera que la Multiplicidad Minima de la Entrada es mayor or igual que 1.",
+        duplicates="0",
+        label2="Minimum Multiplicity",
+        ea_localid="411",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Minimum number of elements available at the beginning of the Business Process. If the Input Is Required,  then it is considered that the Minimum Multiplicity is equal or bigger than 1.",
+        ea_guid="{76D75EAB-FA5E-4845-B4FB-CFF0B1B548EC}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Multiplicidad Minima",
+        length="0",
+        containment="Not Specified",
+        position="4",
+        owner_class_name="BPDEntrada"
+    ),
+
+    IntegerField(
+        name='multiplicidadMaxima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Maxima",
+            label2="Maximum Multiplicity",
+            description="Numero maximo de elementos disponibles al comienzo del Proceso de Negocio. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos.",
+            description2="Maximum number of elements available at the beginning of the Business Process.  Enter -1 to indicate that there is no upper limit in the number of elements.",
+            label_msgid='gvSIGbpd_BPDEntrada_attr_multiplicidadMaxima_label',
+            description_msgid='gvSIGbpd_BPDEntrada_attr_multiplicidadMaxima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero maximo de elementos disponibles al comienzo del Proceso de Negocio. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos.",
+        duplicates="0",
+        label2="Maximum Multiplicity",
+        ea_localid="412",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Maximum number of elements available at the beginning of the Business Process.  Enter -1 to indicate that there is no upper limit in the number of elements.",
+        ea_guid="{FB249D1C-281B-492a-893F-77604FB71B0E}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="-1",
+        label="Multiplicidad Maxima",
+        length="0",
+        containment="Not Specified",
+        position="6",
+        owner_class_name="BPDEntrada"
+    ),
+
+    RelationField(
+        name='artefactosDeEntrada',
+        inverse_relation_label="Entrada a Procesos de Negocio",
+        inverse_relation_description="Entradas a Procesos de Negocio en que el Artefacto debe estar disponible, para poder comenzar la ejecucion.",
+        description="Artefactos que deben estar disponibles para comenzar el Proceso de Negocio",
+        relationship='BPDArtefactosDeEntrada',
+        label2="Input Artefacts",
+        widget=ReferenceBrowserWidget(
+            label="Artefactos de Entrada",
+            label2="Input Artefacts",
+            description="Artefactos que deben estar disponibles para comenzar el Proceso de Negocio",
+            description2="Artefacts required as input to allow the start of the Business Processes.",
+            label_msgid='gvSIGbpd_BPDEntrada_rel_artefactosDeEntrada_label',
+            description_msgid='gvSIGbpd_BPDEntrada_rel_artefactosDeEntrada_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Artefacts required as input to allow the start of the Business Processes.",
+        inverse_relation_label2="Input to Business Processes",
+        deststyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
+        write_permission='Modify portal content',
+        inverse_relation_field_name='entradasAProcesosDeNegocio',
+        inverse_relation_description2="Inputs to Business Processes where the Artefact must be made available , in order  to start execution.",
+        additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
+        label="Artefactos de Entrada",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='BPDEntradasAProcesosDeNegocio',
+        owner_class_name="BPDEntrada"
+    ),
+
     TextField(
         name='fuenteDeInformacion',
         widget=TextAreaWidget(
@@ -116,6 +178,7 @@ schema = Schema((
             i18n_domain='gvSIGbpd',
         ),
         description="Identifica de donde se debe obtener la informacion de Entrada.",
+        searchable=1,
         duplicates="0",
         label2="Sources of Information",
         ea_localid="210",
@@ -189,7 +252,7 @@ schema = Schema((
         description2="Artefacts required as input to allow the start of the Business Processes.",
         containment="Not Specified",
         ea_guid="{D6D11F45-DE22-463d-A8FC-1299E58E21B6}",
-        position="4",
+        position="7",
         owner_class_name="BPDEntrada",
         label="Artefactos de Entrada",
         expression="', '.join( [a.Title() for a in context.getArtefactosDeEntrada()])",
@@ -208,6 +271,7 @@ schema = Schema((
             i18n_domain='gvSIGbpd',
         ),
         description="El valor que se toma por defecto para la informacion de entrada, cuando no se suministra un valor de entrada.",
+        searchable=1,
         duplicates="0",
         label2="Default Value",
         ea_localid="211",
@@ -272,7 +336,10 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -280,19 +347,20 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
 
 
     allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdentrada.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Informacion de Entrada que se debe o puede aportar para ejecutar un Proceso de Negocio."
-    typeDescMsgId =  'gvSIGbpd_BPDEntrada_help'
-    archetype_name2 = 'Input'
-    typeDescription2 = '''nformation that may or must be made available at the start of the Business Process.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDEntrada_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Informacion de Entrada que se debe o puede aportar para ejecutar un Proceso de Negocio."
+    typeDescMsgId                    =  'gvSIGbpd_BPDEntrada_help'
+    archetype_name2                  = 'Input'
+    typeDescription2                 = '''nformation that may or must be made available at the start of the Business Process.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDEntrada_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -311,6 +379,15 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -352,21 +429,12 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -379,12 +447,12 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -405,6 +473,20 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDEntrada, PROJECTNAME)
 # end of class BPDEntrada

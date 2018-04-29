@@ -44,6 +44,98 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import Reference
 
 schema = Schema((
 
+    IntegerField(
+        name='multiplicidadMinima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Minima",
+            label2="Minimum Multiplicity",
+            description="Numero minimo de elementos a recibir. Introduzca 0 para indicar que la Recepcion procedera con exito, aunque no se haya recibido ningun artefacto.",
+            description2="Minimum number of elements to receive. Enter 0 to indicate that the Reception will proceed with success, even if no Artefact of the type has been received.",
+            label_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMinima_label',
+            description_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMinima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero minimo de elementos a recibir. Introduzca 0 para indicar que la Recepcion procedera con exito, aunque no se haya recibido ningun artefacto.",
+        duplicates="0",
+        label2="Minimum Multiplicity",
+        ea_localid="409",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Minimum number of elements to receive. Enter 0 to indicate that the Reception will proceed with success, even if no Artefact of the type has been received.",
+        ea_guid="{956FE7FC-8E01-433d-B5E4-AAFC70075229}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Multiplicidad Minima",
+        length="0",
+        containment="Not Specified",
+        position="3",
+        owner_class_name="BPDRecepcion"
+    ),
+
+    IntegerField(
+        name='multiplicidadMaxima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Maxima",
+            label2="Maximum Multiplicity",
+            description="Numero maximo de elementos a recibir. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a recibir.",
+            description2="Maximum number of elements to receive. Enter -1 to indicate that there is no upper limit in the number of elements to receive.",
+            label_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMaxima_label',
+            description_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMaxima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero maximo de elementos a recibir. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a recibir.",
+        duplicates="0",
+        label2="Maximum Multiplicity",
+        ea_localid="408",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Maximum number of elements to receive. Enter -1 to indicate that there is no upper limit in the number of elements to receive.",
+        ea_guid="{C8CCCF9F-3C22-453d-A75B-D5CFB83A899E}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="-1",
+        label="Multiplicidad Maxima",
+        length="0",
+        containment="Not Specified",
+        position="5",
+        owner_class_name="BPDRecepcion"
+    ),
+
+    TextField(
+        name='condicion',
+        widget=TextAreaWidget(
+            label="Condicion",
+            label2="Condition",
+            description="Condicion que se evalua sobre Artefactos recibidos para determinar si la Recepcion puede realmente continuar. Puede expresar reglas de corelacion que deben cumplir los varios Artefactos recibidos.",
+            description2="Criteria to evaulate over received Artefacts to determine if the Reception may actually proceed. May express corelation rules that the received Artefacts must comply with.",
+            label_msgid='gvSIGbpd_BPDRecepcion_attr_condicion_label',
+            description_msgid='gvSIGbpd_BPDRecepcion_attr_condicion_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Condicion que se evalua sobre Artefactos recibidos para determinar si la Recepcion puede realmente continuar. Puede expresar reglas de corelacion que deben cumplir los varios Artefactos recibidos.",
+        duplicates="0",
+        label2="Condition",
+        ea_localid="430",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Criteria to evaulate over received Artefacts to determine if the Reception may actually proceed. May express corelation rules that the received Artefacts must comply with.",
+        ea_guid="{2881037E-A3B4-4151-8A20-0F03D534D303}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Condicion",
+        length="0",
+        containment="Not Specified",
+        position="0",
+        owner_class_name="BPDRecepcion"
+    ),
+
     ComputedField(
         name='detallesPaso',
         widget=ComputedField._properties['widget'](
@@ -73,7 +165,7 @@ schema = Schema((
         containment="Not Specified",
         position="2",
         owner_class_name="BPDRecepcion",
-        expression="context.fTFLVs([ 'esInicial', 'tituloRemitente','titulosArtefactosRecibidos','ejecutores'])",
+        expression="context.fTFLVsUnless([ [ 'esInicial',False,],['tituloRemitente','',],['titulosArtefactosRecibidos','',],['ejecutores',None,],[ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
         computed_types="string"
     ),
 
@@ -239,7 +331,10 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
 
     inter_version_field = 'uidInterVersionesInterno'
     version_field = 'versionInterna'
+    version_storage_field = 'versionInternaAlmacenada'
     version_comment_field = 'comentarioVersionInterna'
+    version_comment_storage_field = 'comentarioVersionInternaAlmacenada'
+    inter_translation_field = 'uidInterTraduccionesInterno'
     language_field = 'codigoIdiomaInterno'
     fields_pending_translation_field = 'camposPendientesTraduccionInterna'
     fields_pending_revision_field = 'camposPendientesRevisionInterna'
@@ -247,19 +342,20 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
 
 
     allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 0
+    filter_content_types             = 1
+    global_allow                     = 0
     content_icon = 'bpdrecepcion.gif'
-    immediate_view = 'Textual'
-    default_view = 'Textual'
-    suppl_views = ('Textual', 'Tabular', )
-    typeDescription = "Representa un Paso de Proceso en que se espera y recibe una informacion externa."
-    typeDescMsgId =  'gvSIGbpd_BPDRecepcion_help'
-    archetype_name2 = 'Receive'
-    typeDescription2 = '''Represents a Business Process Step to wait to receive some information from the outside of the boudaries of the Business Process.'''
-    archetype_name_msgid = 'gvSIGbpd_BPDRecepcion_label'
-    factory_methods = None
-    factory_enablers = None
+    immediate_view                   = 'Textual'
+    default_view                     = 'Textual'
+    suppl_views                      = ('Textual', 'Tabular', )
+    typeDescription                  = "Representa un Paso de Proceso en que se espera y recibe una informacion externa."
+    typeDescMsgId                    =  'gvSIGbpd_BPDRecepcion_help'
+    archetype_name2                  = 'Receive'
+    typeDescription2                 = '''Represents a Business Process Step to wait to receive some information from the outside of the boudaries of the Business Process.'''
+    archetype_name_msgid             = 'gvSIGbpd_BPDRecepcion_label'
+    factory_methods                  = None
+    factory_enablers                 = None
+    propagate_delete_impact_to       = None
 
 
     actions =  (
@@ -278,6 +374,15 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         'category': "object",
         'id': 'edit',
         'name': 'Edit',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowWrite()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDOrdenar",
+        'category': "object_buttons",
+        'id': 'reorder',
+        'name': 'Reorder',
         'permissions': ("Modify portal content",),
         'condition': """python:object.fAllowWrite()"""
        },
@@ -319,21 +424,12 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/",
         'category': "object",
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
         'condition': """python:1"""
-       },
-
-
-       {'action': "string:${object_url}/MDDNewVersion",
-        'category': "object_buttons",
-        'id': 'mddnewversion',
-        'name': 'New Version',
-        'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
        },
 
 
@@ -346,12 +442,12 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
-       {'action': "string:${object_url}/MDDNewTranslation",
+       {'action': "string:${object_url}/MDDInspectCache/",
         'category': "object_buttons",
-        'id': 'mddnewtranslation',
-        'name': 'New Translation',
-        'permissions': ("Modify portal content",),
-        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
+        'id': 'mddinspectcache',
+        'name': 'Inspect Cache',
+        'permissions': ("View",),
+        'condition': """python:1"""
        },
 
 
@@ -372,6 +468,20 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         """
         
         return self.pHandle_manage_afterAdd(  item, container)
+
+    security.declarePublic('manage_pasteObjects')
+    def manage_pasteObjects(self,cb_copy_data=None,REQUEST=None):
+        """
+        """
+        
+        return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('moveObjectsByDelta')
+    def moveObjectsByDelta(self,ids,delta,subset_ids=None):
+        """
+        """
+        
+        return self.pHandle_moveObjectsByDelta( ids, delta, subset_ids=subset_ids)
 
 registerType(BPDRecepcion, PROJECTNAME)
 # end of class BPDRecepcion
