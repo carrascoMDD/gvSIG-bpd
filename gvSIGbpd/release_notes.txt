@@ -4,6 +4,20 @@ gvSIG Business Process Definition RELEASE NOTES
 |
 |
 
+version 1.0.1
+---------------
+
+Version For tag. No other changes.
+
+
+|
+|
+
+--------------------------------------------
+
+|
+|
+
 version 1.0.0.7
 ---------------
 
