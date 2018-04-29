@@ -1,0 +1,2112 @@
+# Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: gvSIGbpd\n"
+"POT-Creation-Date: Thu Jun 11 04:45:18 2009\n"
+"PO-Revision-Date: Thu Jun 11 04:45:18 2009\n"
+"Last-Translator: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
+"Language-Team: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: gvSIGbpd\n"
+"X-Is-Fallback-For: es-ar es-bo es-co es-cr es-cl es-do es-ec es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-es es-uy es-ve\n"
+
+#. Default: "BPDArquetipo"
+#: BPDArquetipo
+msgid "gvSIGbpd_BPDArquetipo_label"
+msgstr "BPDArquetipo"
+
+#. Default: "BPDArquetipo"
+#: BPDArquetipo
+msgid "gvSIGbpd_BPDArquetipo_help"
+msgstr "BPDArquetipo"
+
+#. Default: "BPDArquetipoConAdopcion"
+#: BPDArquetipoConAdopcion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_label"
+msgstr "BPDArquetipoConAdopcion"
+
+#. Default: "BPDArquetipoConAdopcion"
+#: BPDArquetipoConAdopcion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_help"
+msgstr "BPDArquetipoConAdopcion"
+
+#. Default: "Codigo"
+#: BPDArquetipoConAdopcion codigo
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_codigo_label"
+msgstr "Codigo"
+
+#. Default: "Codigo unico del elemento."
+#: BPDArquetipoConAdopcion codigo
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_codigo_help"
+msgstr "Codigo unico del elemento."
+
+#. Default: "Estado"
+#: BPDArquetipoConAdopcion estado
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_estado_label"
+msgstr "Estado"
+
+#. Default: "Estado del ciclo de vida de creacion, adopcion y retiro."
+#: BPDArquetipoConAdopcion estado
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_estado_help"
+msgstr "Estado del ciclo de vida de creacion, adopcion y retiro."
+
+#. Default: "Redaccion"
+#: BPDArquetipoConAdopcion estado
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_estado_option_Redaccion"
+msgstr "Redaccion"
+
+#. Default: "Pendiente de Revision"
+#: BPDArquetipoConAdopcion estado
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_estado_option_Pendiente de Revision"
+msgstr "Pendiente de Revision"
+
+#. Default: "Aprobado"
+#: BPDArquetipoConAdopcion estado
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_estado_option_Aprobado"
+msgstr "Aprobado"
+
+#. Default: "Retirado"
+#: BPDArquetipoConAdopcion estado
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_estado_option_Retirado"
+msgstr "Retirado"
+
+#. Default: "Fecha de Adopcion"
+#: BPDArquetipoConAdopcion fechaAdopcion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_fechaAdopcion_label"
+msgstr "Fecha de Adopcion"
+
+#. Default: "Fecha en que el elemento de definicion ha sido o sera Adoptado, es decir, entra en vigor la obligacion de aplicarlo en la gestion de la organizacion."
+#: BPDArquetipoConAdopcion fechaAdopcion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_fechaAdopcion_help"
+msgstr "Fecha en que el elemento de definicion ha sido o sera Adoptado, es decir, entra en vigor la obligacion de aplicarlo en la gestion de la organizacion."
+
+#. Default: "Fecha de Obsolescencia"
+#: BPDArquetipoConAdopcion fechaObsolescencia
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_fechaObsolescencia_label"
+msgstr "Fecha de Obsolescencia"
+
+#. Default: "Fecha en que el elemento de definicion se va a retirar o se ha retirado, y en que dejara de ser obligado su cumplimiento en la gestion de la organizacion."
+#: BPDArquetipoConAdopcion fechaObsolescencia
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_fechaObsolescencia_help"
+msgstr "Fecha en que el elemento de definicion se va a retirar o se ha retirado, y en que dejara de ser obligado su cumplimiento en la gestion de la organizacion."
+
+#. Default: "Nivel de Imposicion"
+#: BPDArquetipoConAdopcion nivelDeImposicion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_nivelDeImposicion_label"
+msgstr "Nivel de Imposicion"
+
+#. Default: "Indica el nivel de imposicion con que se debe aplicar un elemento de definicion, que puede expresarse en un rango de valores desde Imposicion Estricta a Guia Sugerida."
+#: BPDArquetipoConAdopcion nivelDeImposicion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_nivelDeImposicion_help"
+msgstr "Indica el nivel de imposicion con que se debe aplicar un elemento de definicion, que puede expresarse en un rango de valores desde Imposicion Estricta a Guia Sugerida."
+
+#. Default: "Imposicion Estricta"
+#: BPDArquetipoConAdopcion nivelDeImposicion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_nivelDeImposicion_option_Imposicion Estricta"
+msgstr "Imposicion Estricta"
+
+#. Default: "Imposicion Diferida"
+#: BPDArquetipoConAdopcion nivelDeImposicion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_nivelDeImposicion_option_Imposicion Diferida"
+msgstr "Imposicion Diferida"
+
+#. Default: "Invalidacion Autorizada Previamente"
+#: BPDArquetipoConAdopcion nivelDeImposicion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_nivelDeImposicion_option_Invalidacion Autorizada Previamente"
+msgstr "Invalidacion Autorizada Previamente"
+
+#. Default: "Invalidacion Justificada Posteriormente"
+#: BPDArquetipoConAdopcion nivelDeImposicion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_nivelDeImposicion_option_Invalidacion Justificada Posteriormente"
+msgstr "Invalidacion Justificada Posteriormente"
+
+#. Default: "Invalidacion Explicada"
+#: BPDArquetipoConAdopcion nivelDeImposicion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_nivelDeImposicion_option_Invalidacion Explicada"
+msgstr "Invalidacion Explicada"
+
+#. Default: "Guia Sugerida"
+#: BPDArquetipoConAdopcion nivelDeImposicion
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_nivelDeImposicion_option_Guia Sugerida"
+msgstr "Guia Sugerida"
+
+#. Default: "Version"
+#: BPDArquetipoConAdopcion version
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_version_label"
+msgstr "Version"
+
+#. Default: "El Proceso puede evolucionar a lo largo de versiones sucesivas."
+#: BPDArquetipoConAdopcion version
+msgid "gvSIGbpd_BPDArquetipoConAdopcion_attr_version_help"
+msgstr "El Proceso puede evolucionar a lo largo de versiones sucesivas."
+
+#. Default: "BPDArquetipoReferenciable"
+#: BPDArquetipoReferenciable
+msgid "gvSIGbpd_BPDArquetipoReferenciable_label"
+msgstr "BPDArquetipoReferenciable"
+
+#. Default: "BPDArquetipoReferenciable"
+#: BPDArquetipoReferenciable
+msgid "gvSIGbpd_BPDArquetipoReferenciable_help"
+msgstr "BPDArquetipoReferenciable"
+
+#. Default: "All Related Elements"
+#: BPDArquetipoReferenciable todosRelacionados
+msgid "gvSIGbpd_BPDArquetipoReferenciable_attr_todosRelacionados_label"
+msgstr "All Related Elements"
+
+#. Default: "All Related Elements"
+#: BPDArquetipoReferenciable todosRelacionados
+msgid "gvSIGbpd_BPDArquetipoReferenciable_attr_todosRelacionados_help"
+msgstr "All Related Elements"
+
+#. Default: "Referencias Cualificadas"
+#: BPDArquetipoReferenciable referenciasCualificadas
+msgid "gvSIGbpd_BPDArquetipoReferenciable_contents_referenciasCualificadas_label"
+msgstr "Referencias Cualificadas"
+
+#. Default: "Referencias a otros elementos, cualificadas con un titulo y una descripcion."
+#: BPDArquetipoReferenciable referenciasCualificadas
+msgid "gvSIGbpd_BPDArquetipoReferenciable_contents_referenciasCualificadas_help"
+msgstr "Referencias a otros elementos, cualificadas con un titulo y una descripcion."
+
+#. Default: "Referentes Cualificados"
+#: BPDArquetipoReferenciable referentesCualificados
+msgid "gvSIGbpd_BPDArquetipoReferenciable_rel_referentesCualificados_label"
+msgstr "Referentes Cualificados"
+
+#. Default: "Referencias Cualificadas refiriendo a este elemento."
+#: BPDArquetipoReferenciable referentesCualificados
+msgid "gvSIGbpd_BPDArquetipoReferenciable_rel_referentesCualificados_help"
+msgstr "Referencias Cualificadas refiriendo a este elemento."
+
+#. Default: "Elementos Referenciados"
+#: BPDArquetipoReferenciable referidos
+msgid "gvSIGbpd_BPDArquetipoReferenciable_rel_referidos_label"
+msgstr "Elementos Referenciados"
+
+#. Default: "Elementos de la aplicacion referidos desde este elemento."
+#: BPDArquetipoReferenciable referidos
+msgid "gvSIGbpd_BPDArquetipoReferenciable_rel_referidos_help"
+msgstr "Elementos de la aplicacion referidos desde este elemento."
+
+#. Default: "Elementos Referentes"
+#: BPDArquetipoReferenciable referidos
+msgid "gvSIGbpd_BPDArquetipoReferenciable_rel_referentes_label"
+msgstr "Elementos Referentes"
+
+#. Default: "Elementos de la aplicacion que refieren al presente elemento."
+#: BPDArquetipoReferenciable referidos
+msgid "gvSIGbpd_BPDArquetipoReferenciable_rel_referentes_help"
+msgstr "Elementos de la aplicacion que refieren al presente elemento."
+
+#. Default: "Artefacto"
+#: BPDArtefacto
+msgid "gvSIGbpd_BPDArtefacto_label"
+msgstr "Artefacto"
+
+#. Default: "Un elemento identificable de information utilizada en el esfuerzo en los procesos de gestion de gvSIG."
+#: BPDArtefacto
+msgid "gvSIGbpd_BPDArtefacto_help"
+msgstr "Un elemento identificable de information utilizada en el esfuerzo en los procesos de gestion de gvSIG."
+
+#. Default: "Artefactos subordinados"
+#: BPDArtefacto coleccionesArtefactos
+msgid "gvSIGbpd_BPDArtefacto_contents_coleccionesArtefactos_label"
+msgstr "Artefactos subordinados"
+
+#. Default: "Colecciones de Artefactos de orden inferior a este artefacto, que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion, definidos en el contexto de este Artefacto."
+#: BPDArtefacto coleccionesArtefactos
+msgid "gvSIGbpd_BPDArtefacto_contents_coleccionesArtefactos_help"
+msgstr "Colecciones de Artefactos de orden inferior a este artefacto, que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion, definidos en el contexto de este Artefacto."
+
+#. Default: "Entrada a Procesos de Negocio"
+#: BPDArtefacto entradasAProcesosDeNegocio
+msgid "gvSIGbpd_BPDArtefacto_rel_entradasAProcesosDeNegocio_label"
+msgstr "Entrada a Procesos de Negocio"
+
+#. Default: "Entradas a Procesos de Negocio en que el Artefacto debe estar disponible, para poder comenzar la ejecucion."
+#: BPDArtefacto entradasAProcesosDeNegocio
+msgid "gvSIGbpd_BPDArtefacto_rel_entradasAProcesosDeNegocio_help"
+msgstr "Entradas a Procesos de Negocio en que el Artefacto debe estar disponible, para poder comenzar la ejecucion."
+
+#. Default: "Herramientas"
+#: BPDArtefacto herramientas
+msgid "gvSIGbpd_BPDArtefacto_rel_herramientas_label"
+msgstr "Herramientas"
+
+#. Default: "Herramientas utiles para manejar Artefactos de este tipo."
+#: BPDArtefacto herramientas
+msgid "gvSIGbpd_BPDArtefacto_rel_herramientas_help"
+msgstr "Herramientas utiles para manejar Artefactos de este tipo."
+
+#. Default: "Enviado desde Pasos de Procesos de Negocio"
+#: BPDArtefacto pasosQueEnvianElArtefacto
+msgid "gvSIGbpd_BPDArtefacto_rel_pasosQueEnvianElArtefacto_label"
+msgstr "Enviado desde Pasos de Procesos de Negocio"
+
+#. Default: "Pasos de Proceso de Negocio que envian un Artefacto de este tipo a un Participante externo."
+#: BPDArtefacto pasosQueEnvianElArtefacto
+msgid "gvSIGbpd_BPDArtefacto_rel_pasosQueEnvianElArtefacto_help"
+msgstr "Pasos de Proceso de Negocio que envian un Artefacto de este tipo a un Participante externo."
+
+#. Default: "Recepciones"
+#: BPDArtefacto pasosQueRecibenElArtefacto
+msgid "gvSIGbpd_BPDArtefacto_rel_pasosQueRecibenElArtefacto_label"
+msgstr "Recepciones"
+
+#. Default: "Recepciones pasos de Proceso de Negocio donde se recibe un Artefacto de este tipo de un participante externo."
+#: BPDArtefacto pasosQueRecibenElArtefacto
+msgid "gvSIGbpd_BPDArtefacto_rel_pasosQueRecibenElArtefacto_help"
+msgstr "Recepciones pasos de Proceso de Negocio donde se recibe un Artefacto de este tipo de un participante externo."
+
+#. Default: "Politicas de Negocio gobernantes"
+#: BPDArtefacto politicasDeNegocioGobernantes
+msgid "gvSIGbpd_BPDArtefacto_rel_politicasDeNegocioGobernantes_label"
+msgstr "Politicas de Negocio gobernantes"
+
+#. Default: "Politicas de Negocio que prescriben o gobiernan el uso del Artefacto en la Organizacion."
+#: BPDArtefacto politicasDeNegocioGobernantes
+msgid "gvSIGbpd_BPDArtefacto_rel_politicasDeNegocioGobernantes_help"
+msgstr "Politicas de Negocio que prescriben o gobiernan el uso del Artefacto en la Organizacion."
+
+#. Default: "Reglas de Negocio dirigentes"
+#: BPDArtefacto reglasDeNegocioDirigentes
+msgid "gvSIGbpd_BPDArtefacto_rel_reglasDeNegocioDirigentes_label"
+msgstr "Reglas de Negocio dirigentes"
+
+#. Default: "Reglas de Negocio que dirigen el uso del Artefacto en la Organizacion."
+#: BPDArtefacto reglasDeNegocioDirigentes
+msgid "gvSIGbpd_BPDArtefacto_rel_reglasDeNegocioDirigentes_help"
+msgstr "Reglas de Negocio que dirigen el uso del Artefacto en la Organizacion."
+
+#. Default: "Responsables"
+#: BPDArtefacto responsablesDeArtefacto
+msgid "gvSIGbpd_BPDArtefacto_rel_responsablesDeArtefacto_label"
+msgstr "Responsables"
+
+#. Default: "Perfiles o Unidades Organizacionales a cargo de los Artefactos de este tipo."
+#: BPDArtefacto responsablesDeArtefacto
+msgid "gvSIGbpd_BPDArtefacto_rel_responsablesDeArtefacto_help"
+msgstr "Perfiles o Unidades Organizacionales a cargo de los Artefactos de este tipo."
+
+#. Default: "Salidas de Procesos de Negocio"
+#: BPDArtefacto salidasDeProcesosDeNegocio
+msgid "gvSIGbpd_BPDArtefacto_rel_salidasDeProcesosDeNegocio_label"
+msgstr "Salidas de Procesos de Negocio"
+
+#. Default: "Procesos de Negocio donde el Artefacto se produce como Salida, tras el final exitoso de la ejecucion."
+#: BPDArtefacto salidasDeProcesosDeNegocio
+msgid "gvSIGbpd_BPDArtefacto_rel_salidasDeProcesosDeNegocio_help"
+msgstr "Procesos de Negocio donde el Artefacto se produce como Salida, tras el final exitoso de la ejecucion."
+
+#. Default: "BPDColeccionArquetipos"
+#: BPDColeccionArquetipos
+msgid "gvSIGbpd_BPDColeccionArquetipos_label"
+msgstr "BPDColeccionArquetipos"
+
+#. Default: "BPDColeccionArquetipos"
+#: BPDColeccionArquetipos
+msgid "gvSIGbpd_BPDColeccionArquetipos_help"
+msgstr "BPDColeccionArquetipos"
+
+#. Default: "Coleccion de Artefactos"
+#: BPDColeccionArtefactos
+msgid "gvSIGbpd_BPDColeccionArtefactos_label"
+msgstr "Coleccion de Artefactos"
+
+#. Default: "Coleccion de Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion."
+#: BPDColeccionArtefactos
+msgid "gvSIGbpd_BPDColeccionArtefactos_help"
+msgstr "Coleccion de Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion."
+
+#. Default: "Artefactos"
+#: BPDColeccionArtefactos artefactos
+msgid "gvSIGbpd_BPDColeccionArtefactos_contents_artefactos_label"
+msgstr "Artefactos"
+
+#. Default: "Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion."
+#: BPDColeccionArtefactos artefactos
+msgid "gvSIGbpd_BPDColeccionArtefactos_contents_artefactos_help"
+msgstr "Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion."
+
+#. Default: "Coleccion de Entradas"
+#: BPDColeccionEntradas
+msgid "gvSIGbpd_BPDColeccionEntradas_label"
+msgstr "Coleccion de Entradas"
+
+#. Default: "Coleccion de Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio."
+#: BPDColeccionEntradas
+msgid "gvSIGbpd_BPDColeccionEntradas_help"
+msgstr "Coleccion de Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio."
+
+#. Default: "Entradas"
+#: BPDColeccionEntradas entradas
+msgid "gvSIGbpd_BPDColeccionEntradas_contents_entradas_label"
+msgstr "Entradas"
+
+#. Default: "Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio."
+#: BPDColeccionEntradas entradas
+msgid "gvSIGbpd_BPDColeccionEntradas_contents_entradas_help"
+msgstr "Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio."
+
+#. Default: "Coleccion de Herramientas"
+#: BPDColeccionHerramientas
+msgid "gvSIGbpd_BPDColeccionHerramientas_label"
+msgstr "Coleccion de Herramientas"
+
+#. Default: "Coleccion de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio."
+#: BPDColeccionHerramientas
+msgid "gvSIGbpd_BPDColeccionHerramientas_help"
+msgstr "Coleccion de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio."
+
+#. Default: "Herramientas"
+#: BPDColeccionHerramientas herramientas
+msgid "gvSIGbpd_BPDColeccionHerramientas_contents_herramientas_label"
+msgstr "Herramientas"
+
+#. Default: "Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio."
+#: BPDColeccionHerramientas herramientas
+msgid "gvSIGbpd_BPDColeccionHerramientas_contents_herramientas_help"
+msgstr "Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio."
+
+#. Default: "Coleccion de Pasos"
+#: BPDColeccionPasos
+msgid "gvSIGbpd_BPDColeccionPasos_label"
+msgstr "Coleccion de Pasos"
+
+#. Default: "Coleccion de Acciones individuales en que transcurre la ejecucion del Proceso de Negocio."
+#: BPDColeccionPasos
+msgid "gvSIGbpd_BPDColeccionPasos_help"
+msgstr "Coleccion de Acciones individuales en que transcurre la ejecucion del Proceso de Negocio."
+
+#. Default: "Pasos"
+#: BPDColeccionPasos pasos
+msgid "gvSIGbpd_BPDColeccionPasos_contents_pasos_label"
+msgstr "Pasos"
+
+#. Default: "Acciones individuales en que transcurre la ejecucion del Proceso de Negocio."
+#: BPDColeccionPasos pasos
+msgid "gvSIGbpd_BPDColeccionPasos_contents_pasos_help"
+msgstr "Acciones individuales en que transcurre la ejecucion del Proceso de Negocio."
+
+#. Default: "Coleccion de Perfiles"
+#: BPDColeccionPerfiles
+msgid "gvSIGbpd_BPDColeccionPerfiles_label"
+msgstr "Coleccion de Perfiles"
+
+#. Default: "Coleccion de Perfiles tipificando las clases de individuos participantes en los Procesos de Negocio."
+#: BPDColeccionPerfiles
+msgid "gvSIGbpd_BPDColeccionPerfiles_help"
+msgstr "Coleccion de Perfiles tipificando las clases de individuos participantes en los Procesos de Negocio."
+
+#. Default: "Perfiles"
+#: BPDColeccionPerfiles perfiles
+msgid "gvSIGbpd_BPDColeccionPerfiles_contents_perfiles_label"
+msgstr "Perfiles"
+
+#. Default: "Perfiles tipificando las clases de individuos participantes en los esfuerzos de la Organización."
+#: BPDColeccionPerfiles perfiles
+msgid "gvSIGbpd_BPDColeccionPerfiles_contents_perfiles_help"
+msgstr "Perfiles tipificando las clases de individuos participantes en los esfuerzos de la Organización."
+
+#. Default: "Coleccion de Politicas de Negocio"
+#: BPDColeccionPoliticasDeNegocio
+msgid "gvSIGbpd_BPDColeccionPoliticasDeNegocio_label"
+msgstr "Coleccion de Politicas de Negocio"
+
+#. Default: "Coleccion de Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio."
+#: BPDColeccionPoliticasDeNegocio
+msgid "gvSIGbpd_BPDColeccionPoliticasDeNegocio_help"
+msgstr "Coleccion de Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio."
+
+#. Default: "Politicas de Negocio"
+#: BPDColeccionPoliticasDeNegocio politicasDeNegocio
+msgid "gvSIGbpd_BPDColeccionPoliticasDeNegocio_contents_politicasDeNegocio_label"
+msgstr "Politicas de Negocio"
+
+#. Default: "Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio."
+#: BPDColeccionPoliticasDeNegocio politicasDeNegocio
+msgid "gvSIGbpd_BPDColeccionPoliticasDeNegocio_contents_politicasDeNegocio_help"
+msgstr "Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio."
+
+#. Default: "Coleccion de Procesos de Negocio"
+#: BPDColeccionProcesosDeNegocio
+msgid "gvSIGbpd_BPDColeccionProcesosDeNegocio_label"
+msgstr "Coleccion de Procesos de Negocio"
+
+#. Default: "Coleccion de Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos."
+#: BPDColeccionProcesosDeNegocio
+msgid "gvSIGbpd_BPDColeccionProcesosDeNegocio_help"
+msgstr "Coleccion de Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos."
+
+#. Default: "Procesos de Negocio"
+#: BPDColeccionProcesosDeNegocio procedimientos
+msgid "gvSIGbpd_BPDColeccionProcesosDeNegocio_contents_procedimientos_label"
+msgstr "Procesos de Negocio"
+
+#. Default: "Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos."
+#: BPDColeccionProcesosDeNegocio procedimientos
+msgid "gvSIGbpd_BPDColeccionProcesosDeNegocio_contents_procedimientos_help"
+msgstr "Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos."
+
+#. Default: "Coleccion de Reglas de Negocio"
+#: BPDColeccionReglasDeNegocio
+msgid "gvSIGbpd_BPDColeccionReglasDeNegocio_label"
+msgstr "Coleccion de Reglas de Negocio"
+
+#. Default: "Coleccion de Reglas deNegocio que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion."
+#: BPDColeccionReglasDeNegocio
+msgid "gvSIGbpd_BPDColeccionReglasDeNegocio_help"
+msgstr "Coleccion de Reglas deNegocio que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion."
+
+#. Default: "Reglas de Negocio"
+#: BPDColeccionReglasDeNegocio reglasDeNegocio
+msgid "gvSIGbpd_BPDColeccionReglasDeNegocio_contents_reglasDeNegocio_label"
+msgstr "Reglas de Negocio"
+
+#. Default: "Reglas deNegocio que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion."
+#: BPDColeccionReglasDeNegocio reglasDeNegocio
+msgid "gvSIGbpd_BPDColeccionReglasDeNegocio_contents_reglasDeNegocio_help"
+msgstr "Reglas deNegocio que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion."
+
+#. Default: "Coleccion de Salidas"
+#: BPDColeccionSalidas
+msgid "gvSIGbpd_BPDColeccionSalidas_label"
+msgstr "Coleccion de Salidas"
+
+#. Default: "Coleccion de Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio."
+#: BPDColeccionSalidas
+msgid "gvSIGbpd_BPDColeccionSalidas_help"
+msgstr "Coleccion de Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio."
+
+#. Default: "Salidas"
+#: BPDColeccionSalidas salidas
+msgid "gvSIGbpd_BPDColeccionSalidas_contents_salidas_label"
+msgstr "Salidas"
+
+#. Default: "Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio."
+#: BPDColeccionSalidas salidas
+msgid "gvSIGbpd_BPDColeccionSalidas_contents_salidas_help"
+msgstr "Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio."
+
+#. Default: "Coleccion de Unidades Organizacionales"
+#: BPDColeccionUnidadesOrganizacionales
+msgid "gvSIGbpd_BPDColeccionUnidadesOrganizacionales_label"
+msgstr "Coleccion de Unidades Organizacionales"
+
+#. Default: "Coleccion de UnidadesOrganizacionales mostrando la descomposicion organica en unidades, departamentos, secciones, etc. de orden inferior participantes en los Procesos de Negocio."
+#: BPDColeccionUnidadesOrganizacionales
+msgid "gvSIGbpd_BPDColeccionUnidadesOrganizacionales_help"
+msgstr "Coleccion de UnidadesOrganizacionales mostrando la descomposicion organica en unidades, departamentos, secciones, etc. de orden inferior participantes en los Procesos de Negocio."
+
+#. Default: "Unidades Organizacionales"
+#: BPDColeccionUnidadesOrganizacionales unidadesOrganizacionales
+msgid "gvSIGbpd_BPDColeccionUnidadesOrganizacionales_contents_unidadesOrganizacionales_label"
+msgstr "Unidades Organizacionales"
+
+#. Default: "UnidadesOrganizacionales mostrando la descomposicion organica en unidades, departamentos, secciones, etc. de orden inferior participantes en los Procesos de Negocio."
+#: BPDColeccionUnidadesOrganizacionales unidadesOrganizacionales
+msgid "gvSIGbpd_BPDColeccionUnidadesOrganizacionales_contents_unidadesOrganizacionales_help"
+msgstr "UnidadesOrganizacionales mostrando la descomposicion organica en unidades, departamentos, secciones, etc. de orden inferior participantes en los Procesos de Negocio."
+
+#. Default: "Decision"
+#: BPDDecision
+msgid "gvSIGbpd_BPDDecision_label"
+msgstr "Decision"
+
+#. Default: "BPDDecision"
+#: BPDDecision
+msgid "gvSIGbpd_BPDDecision_help"
+msgstr "BPDDecision"
+
+#. Default: "Condicion"
+#: BPDDecision condicionSiguientePaso
+msgid "gvSIGbpd_BPDDecision_attr_condicionSiguientePaso_label"
+msgstr "Condicion"
+
+#. Default: "Condicion que se evalua para determinar el siguiente Paso por el que continua el Proceso de Negocio."
+#: BPDDecision condicionSiguientePaso
+msgid "gvSIGbpd_BPDDecision_attr_condicionSiguientePaso_help"
+msgstr "Condicion que se evalua para determinar el siguiente Paso por el que continua el Proceso de Negocio."
+
+#. Default: "Detalles del Paso"
+#: BPDDecision detallesPaso
+msgid "gvSIGbpd_BPDDecision_attr_detallesPaso_label"
+msgstr "Detalles del Paso"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDDecision detallesPaso
+msgid "gvSIGbpd_BPDDecision_attr_detallesPaso_help"
+msgstr "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+
+#. Default: "BPDElemento"
+#: BPDElemento
+msgid "gvSIGbpd_BPDElemento_label"
+msgstr "BPDElemento"
+
+#. Default: "BPDElemento"
+#: BPDElemento
+msgid "gvSIGbpd_BPDElemento_help"
+msgstr "BPDElemento"
+
+#. Default: "Codigo de Idioma"
+#: BPDElemento codigoIdioma
+msgid "gvSIGbpd_BPDElemento_attr_codigoIdioma_label"
+msgstr "Codigo de Idioma"
+
+#. Default: "Codigo del idioma en que se ha creado el contenido del elemento."
+#: BPDElemento codigoIdioma
+msgid "gvSIGbpd_BPDElemento_attr_codigoIdioma_help"
+msgstr "Codigo del idioma en que se ha creado el contenido del elemento."
+
+#. Default: "pathDelRaiz"
+#: BPDElemento pathDelRaiz
+msgid "gvSIGbpd_BPDElemento_attr_pathDelRaiz_label"
+msgstr "pathDelRaiz"
+
+#. Default: "pathDelRaiz"
+#: BPDElemento pathDelRaiz
+msgid "gvSIGbpd_BPDElemento_attr_pathDelRaiz_help"
+msgstr "pathDelRaiz"
+
+#. Default: "Texto"
+#: BPDElemento text
+msgid "gvSIGbpd_BPDElemento_attr_text_label"
+msgstr "Texto"
+
+#. Default: "Una descripcion textual extensa del elemento."
+#: BPDElemento text
+msgid "gvSIGbpd_BPDElemento_attr_text_help"
+msgstr "Una descripcion textual extensa del elemento."
+
+#. Default: "Version Interna"
+#: BPDElemento versionInterna
+msgid "gvSIGbpd_BPDElemento_attr_versionInterna_label"
+msgstr "Version Interna"
+
+#. Default: "Identificador de version para uso interno de la aplicacion."
+#: BPDElemento versionInterna
+msgid "gvSIGbpd_BPDElemento_attr_versionInterna_help"
+msgstr "Identificador de version para uso interno de la aplicacion."
+
+#. Default: "Ficheros"
+#: BPDElemento archivos
+msgid "gvSIGbpd_BPDElemento_contents_archivos_label"
+msgstr "Ficheros"
+
+#. Default: "Elementos Plone convencionales conteniendo un Fichero de contenido arbitrario."
+#: BPDElemento archivos
+msgid "gvSIGbpd_BPDElemento_contents_archivos_help"
+msgstr "Elementos Plone convencionales conteniendo un Fichero de contenido arbitrario."
+
+#. Default: "Documentos"
+#: BPDElemento documentos
+msgid "gvSIGbpd_BPDElemento_contents_documentos_label"
+msgstr "Documentos"
+
+#. Default: "Elementos del tipo documento convencional en Plone."
+#: BPDElemento documentos
+msgid "gvSIGbpd_BPDElemento_contents_documentos_help"
+msgstr "Elementos del tipo documento convencional en Plone."
+
+#. Default: "Enlace"
+#: BPDElemento enlaces
+msgid "gvSIGbpd_BPDElemento_contents_enlaces_label"
+msgstr "Enlace"
+
+#. Default: "Elementos Plone conteniendo una referencia a una pagina Web (URLs como http://www.gvSIG.org)"
+#: BPDElemento enlaces
+msgid "gvSIGbpd_BPDElemento_contents_enlaces_help"
+msgstr "Elementos Plone conteniendo una referencia a una pagina Web (URLs como http://www.gvSIG.org)"
+
+#. Default: "Imagenes"
+#: BPDElemento imagenes
+msgid "gvSIGbpd_BPDElemento_contents_imagenes_label"
+msgstr "Imagenes"
+
+#. Default: "Elementos Plone convencionales conteniendo una Imagen."
+#: BPDElemento imagenes
+msgid "gvSIGbpd_BPDElemento_contents_imagenes_help"
+msgstr "Elementos Plone convencionales conteniendo una Imagen."
+
+#. Default: "Noticias"
+#: BPDElemento noticias
+msgid "gvSIGbpd_BPDElemento_contents_noticias_label"
+msgstr "Noticias"
+
+#. Default: "Elementos de Plone conteniendo una Noticia."
+#: BPDElemento noticias
+msgid "gvSIGbpd_BPDElemento_contents_noticias_help"
+msgstr "Elementos de Plone conteniendo una Noticia."
+
+#. Default: "Elementos Derivados"
+#: BPDElemento elementosDerivados
+msgid "gvSIGbpd_BPDElemento_rel_elementosDerivados_label"
+msgstr "Elementos Derivados"
+
+#. Default: "Elementos que han sido derivados a partir del actual."
+#: BPDElemento elementosDerivados
+msgid "gvSIGbpd_BPDElemento_rel_elementosDerivados_help"
+msgstr "Elementos que han sido derivados a partir del actual."
+
+#. Default: "Elementos Base"
+#: BPDElemento elementosDerivados
+msgid "gvSIGbpd_BPDElemento_rel_elementosBase_label"
+msgstr "Elementos Base"
+
+#. Default: "Elementos a partir de los cuales se ha derivado el actual."
+#: BPDElemento elementosDerivados
+msgid "gvSIGbpd_BPDElemento_rel_elementosBase_help"
+msgstr "Elementos a partir de los cuales se ha derivado el actual."
+
+#. Default: "Elementos Traducidos"
+#: BPDElemento elementosTraducidos
+msgid "gvSIGbpd_BPDElemento_rel_elementosTraducidos_label"
+msgstr "Elementos Traducidos"
+
+#. Default: "Traducciones de este elemento a otros idiomas."
+#: BPDElemento elementosTraducidos
+msgid "gvSIGbpd_BPDElemento_rel_elementosTraducidos_help"
+msgstr "Traducciones de este elemento a otros idiomas."
+
+#. Default: "Original de esta Traduccion"
+#: BPDElemento elementosTraducidos
+msgid "gvSIGbpd_BPDElemento_rel_originalDeTraduccion_label"
+msgstr "Original de esta Traduccion"
+
+#. Default: "El elemento original de esta traduccion a otro idioma."
+#: BPDElemento elementosTraducidos
+msgid "gvSIGbpd_BPDElemento_rel_originalDeTraduccion_help"
+msgstr "El elemento original de esta traduccion a otro idioma."
+
+#. Default: "Siguientes Versiones"
+#: BPDElemento siguientesVersiones
+msgid "gvSIGbpd_BPDElemento_rel_siguientesVersiones_label"
+msgstr "Siguientes Versiones"
+
+#. Default: "Versiones posteriores del Elemento"
+#: BPDElemento siguientesVersiones
+msgid "gvSIGbpd_BPDElemento_rel_siguientesVersiones_help"
+msgstr "Versiones posteriores del Elemento"
+
+#. Default: "Version Anterior"
+#: BPDElemento siguientesVersiones
+msgid "gvSIGbpd_BPDElemento_rel_versionAnterior_label"
+msgstr "Version Anterior"
+
+#. Default: "Version predecesora a la actual de este elemento"
+#: BPDElemento siguientesVersiones
+msgid "gvSIGbpd_BPDElemento_rel_versionAnterior_help"
+msgstr "Version predecesora a la actual de este elemento"
+
+#. Default: "Usos del Elemento"
+#: BPDElemento usosDelElemento
+msgid "gvSIGbpd_BPDElemento_rel_usosDelElemento_label"
+msgstr "Usos del Elemento"
+
+#. Default: "Donde se usa el elemento como parte de otra definicion."
+#: BPDElemento usosDelElemento
+msgid "gvSIGbpd_BPDElemento_rel_usosDelElemento_help"
+msgstr "Donde se usa el elemento como parte de otra definicion."
+
+#. Default: "Elemento Usado"
+#: BPDElemento usosDelElemento
+msgid "gvSIGbpd_BPDElemento_rel_elementoUsado_label"
+msgstr "Elemento Usado"
+
+#. Default: "El elemento que se reutiliza en esta definicion."
+#: BPDElemento usosDelElemento
+msgid "gvSIGbpd_BPDElemento_rel_elementoUsado_help"
+msgstr "El elemento que se reutiliza en esta definicion."
+
+#. Default: "Entrada"
+#: BPDEntrada
+msgid "gvSIGbpd_BPDEntrada_label"
+msgstr "Entrada"
+
+#. Default: "Informacion de Entrada que se debe o puede aportar para ejecutar un Proceso de Negocio."
+#: BPDEntrada
+msgid "gvSIGbpd_BPDEntrada_help"
+msgstr "Informacion de Entrada que se debe o puede aportar para ejecutar un Proceso de Negocio."
+
+#. Default: "Es Requerida"
+#: BPDEntrada esRequerida
+msgid "gvSIGbpd_BPDEntrada_attr_esRequerida_label"
+msgstr "Es Requerida"
+
+#. Default: "Indica si la Entrada es absolutamente necesaria para la ejecucion del Proceso."
+#: BPDEntrada esRequerida
+msgid "gvSIGbpd_BPDEntrada_attr_esRequerida_help"
+msgstr "Indica si la Entrada es absolutamente necesaria para la ejecucion del Proceso."
+
+#. Default: "Fuente de Informacion"
+#: BPDEntrada fuenteDeInformacion
+msgid "gvSIGbpd_BPDEntrada_attr_fuenteDeInformacion_label"
+msgstr "Fuente de Informacion"
+
+#. Default: "Identifica de donde se debe obtener la informacion de Entrada."
+#: BPDEntrada fuenteDeInformacion
+msgid "gvSIGbpd_BPDEntrada_attr_fuenteDeInformacion_help"
+msgstr "Identifica de donde se debe obtener la informacion de Entrada."
+
+#. Default: "Proceso de Negocio"
+#: BPDEntrada tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDEntrada_attr_tituloProcesoDeNegocio_label"
+msgstr "Proceso de Negocio"
+
+#. Default: "El titulo del Proceso de Negocio que contiene la Entrada"
+#: BPDEntrada tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDEntrada_attr_tituloProcesoDeNegocio_help"
+msgstr "El titulo del Proceso de Negocio que contiene la Entrada"
+
+#. Default: "Artefactos de Entrada"
+#: BPDEntrada titulosArtefactosDeEntrada
+msgid "gvSIGbpd_BPDEntrada_attr_titulosArtefactosDeEntrada_label"
+msgstr "Artefactos de Entrada"
+
+#. Default: "Artefactos que deben estar disponibles para comenzar el Proceso de Negocio"
+#: BPDEntrada titulosArtefactosDeEntrada
+msgid "gvSIGbpd_BPDEntrada_attr_titulosArtefactosDeEntrada_help"
+msgstr "Artefactos que deben estar disponibles para comenzar el Proceso de Negocio"
+
+#. Default: "Valor por Defecto"
+#: BPDEntrada valorDefecto
+msgid "gvSIGbpd_BPDEntrada_attr_valorDefecto_label"
+msgstr "Valor por Defecto"
+
+#. Default: "El valor que se toma por defecto para la informacion de entrada, cuando no se suministra un valor de entrada."
+#: BPDEntrada valorDefecto
+msgid "gvSIGbpd_BPDEntrada_attr_valorDefecto_help"
+msgstr "El valor que se toma por defecto para la informacion de entrada, cuando no se suministra un valor de entrada."
+
+#. Default: "Artefactos de Entrada"
+#: BPDEntrada artefactosDeEntrada
+msgid "gvSIGbpd_BPDEntrada_rel_artefactosDeEntrada_label"
+msgstr "Artefactos de Entrada"
+
+#. Default: "Artefactos que deben estar disponibles para comenzar el Proceso de Negocio"
+#: BPDEntrada artefactosDeEntrada
+msgid "gvSIGbpd_BPDEntrada_rel_artefactosDeEntrada_help"
+msgstr "Artefactos que deben estar disponibles para comenzar el Proceso de Negocio"
+
+#. Default: "Envio"
+#: BPDEnvio
+msgid "gvSIGbpd_BPDEnvio_label"
+msgstr "Envio"
+
+#. Default: "Representa un Paso de Proceso en que se envia una informacion al exterior del ambito del Proceso."
+#: BPDEnvio
+msgid "gvSIGbpd_BPDEnvio_help"
+msgstr "Representa un Paso de Proceso en que se envia una informacion al exterior del ambito del Proceso."
+
+#. Default: "Detalles del Paso"
+#: BPDEnvio detallesPaso
+msgid "gvSIGbpd_BPDEnvio_attr_detallesPaso_label"
+msgstr "Detalles del Paso"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDEnvio detallesPaso
+msgid "gvSIGbpd_BPDEnvio_attr_detallesPaso_help"
+msgstr "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+
+#. Default: "Artefactos Enviados"
+#: BPDEnvio titulosArtefactosEnviados
+msgid "gvSIGbpd_BPDEnvio_attr_titulosArtefactosEnviados_label"
+msgstr "Artefactos Enviados"
+
+#. Default: "Artefactos que se envian en este paso a un Participante externo."
+#: BPDEnvio titulosArtefactosEnviados
+msgid "gvSIGbpd_BPDEnvio_attr_titulosArtefactosEnviados_help"
+msgstr "Artefactos que se envian en este paso a un Participante externo."
+
+#. Default: "Destinatarios"
+#: BPDEnvio titulosDestinatarios
+msgid "gvSIGbpd_BPDEnvio_attr_titulosDestinatarios_label"
+msgstr "Destinatarios"
+
+#. Default: "Perfiles o Unidades Organizacionales a los que se destina el Envio."
+#: BPDEnvio titulosDestinatarios
+msgid "gvSIGbpd_BPDEnvio_attr_titulosDestinatarios_help"
+msgstr "Perfiles o Unidades Organizacionales a los que se destina el Envio."
+
+#. Default: "Artefactos Enviados"
+#: BPDEnvio artefactosEnviados
+msgid "gvSIGbpd_BPDEnvio_rel_artefactosEnviados_label"
+msgstr "Artefactos Enviados"
+
+#. Default: "Artefactos que se envian en este paso a un Participante externo."
+#: BPDEnvio artefactosEnviados
+msgid "gvSIGbpd_BPDEnvio_rel_artefactosEnviados_help"
+msgstr "Artefactos que se envian en este paso a un Participante externo."
+
+#. Default: "Destinatarios"
+#: BPDEnvio destinatarios
+msgid "gvSIGbpd_BPDEnvio_rel_destinatarios_label"
+msgstr "Destinatarios"
+
+#. Default: "Perfiles o Unidades Organizacionales a los que se destina el Envio."
+#: BPDEnvio destinatarios
+msgid "gvSIGbpd_BPDEnvio_rel_destinatarios_help"
+msgstr "Perfiles o Unidades Organizacionales a los que se destina el Envio."
+
+#. Default: "Exito Final"
+#: BPDExitoFinal
+msgid "gvSIGbpd_BPDExitoFinal_label"
+msgstr "Exito Final"
+
+#. Default: "Indica el final del Proceso de Negocio con un resultado satisfactorio."
+#: BPDExitoFinal
+msgid "gvSIGbpd_BPDExitoFinal_help"
+msgstr "Indica el final del Proceso de Negocio con un resultado satisfactorio."
+
+#. Default: "Detalles del Paso"
+#: BPDExitoFinal detallesPaso
+msgid "gvSIGbpd_BPDExitoFinal_attr_detallesPaso_label"
+msgstr "Detalles del Paso"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDExitoFinal detallesPaso
+msgid "gvSIGbpd_BPDExitoFinal_attr_detallesPaso_help"
+msgstr "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+
+#. Default: "Fracaso Final"
+#: BPDFracasoFinal
+msgid "gvSIGbpd_BPDFracasoFinal_label"
+msgstr "Fracaso Final"
+
+#. Default: "Indica el final del Proceso de Negocio con un resultado fallido."
+#: BPDFracasoFinal
+msgid "gvSIGbpd_BPDFracasoFinal_help"
+msgstr "Indica el final del Proceso de Negocio con un resultado fallido."
+
+#. Default: "Detalles del Paso"
+#: BPDFracasoFinal detallesPaso
+msgid "gvSIGbpd_BPDFracasoFinal_attr_detallesPaso_label"
+msgstr "Detalles del Paso"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDFracasoFinal detallesPaso
+msgid "gvSIGbpd_BPDFracasoFinal_attr_detallesPaso_help"
+msgstr "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+
+#. Default: "Herramienta"
+#: BPDHerramienta
+msgid "gvSIGbpd_BPDHerramienta_label"
+msgstr "Herramienta"
+
+#. Default: "Una Herramienta es una aplicacion informatica aplicada en ciertos pasos de sus Procesos de Negocio, posiblemente para operar con algunos Artefactos."
+#: BPDHerramienta
+msgid "gvSIGbpd_BPDHerramienta_help"
+msgstr "Una Herramienta es una aplicacion informatica aplicada en ciertos pasos de sus Procesos de Negocio, posiblemente para operar con algunos Artefactos."
+
+#. Default: "Herramientas subordinadas"
+#: BPDHerramienta coleccionesHerramientas
+msgid "gvSIGbpd_BPDHerramienta_contents_coleccionesHerramientas_label"
+msgstr "Herramientas subordinadas"
+
+#. Default: "Colecciones de Herramientas de orden inferior, que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio, albergadas en el contexto de esta herramienta."
+#: BPDHerramienta coleccionesHerramientas
+msgid "gvSIGbpd_BPDHerramienta_contents_coleccionesHerramientas_help"
+msgstr "Colecciones de Herramientas de orden inferior, que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio, albergadas en el contexto de esta herramienta."
+
+#. Default: "Artefactos"
+#: BPDHerramienta artefactosDeHerramienta
+msgid "gvSIGbpd_BPDHerramienta_rel_artefactosDeHerramienta_label"
+msgstr "Artefactos"
+
+#. Default: "Artefactos que pueden ser manipulados con la Herramienta."
+#: BPDHerramienta artefactosDeHerramienta
+msgid "gvSIGbpd_BPDHerramienta_rel_artefactosDeHerramienta_help"
+msgstr "Artefactos que pueden ser manipulados con la Herramienta."
+
+#. Default: "Pasos Asistidos"
+#: BPDHerramienta pasosAsistidos
+msgid "gvSIGbpd_BPDHerramienta_rel_pasosAsistidos_label"
+msgstr "Pasos Asistidos"
+
+#. Default: "Pasos de procesos de negocio donde se aplica la Herramienta."
+#: BPDHerramienta pasosAsistidos
+msgid "gvSIGbpd_BPDHerramienta_rel_pasosAsistidos_help"
+msgstr "Pasos de procesos de negocio donde se aplica la Herramienta."
+
+#. Default: "Politicas de Negocio gobernantes"
+#: BPDHerramienta politicasDeNegocioGobernantes
+msgid "gvSIGbpd_BPDHerramienta_rel_politicasDeNegocioGobernantes_label"
+msgstr "Politicas de Negocio gobernantes"
+
+#. Default: "Politicas de Negocio que prescriben o gobiernan el uso de la Herramienta en la Organizacion."
+#: BPDHerramienta politicasDeNegocioGobernantes
+msgid "gvSIGbpd_BPDHerramienta_rel_politicasDeNegocioGobernantes_help"
+msgstr "Politicas de Negocio que prescriben o gobiernan el uso de la Herramienta en la Organizacion."
+
+#. Default: "Reglas de Negocio dirigentes"
+#: BPDHerramienta reglasDeNegocioDirigentes
+msgid "gvSIGbpd_BPDHerramienta_rel_reglasDeNegocioDirigentes_label"
+msgstr "Reglas de Negocio dirigentes"
+
+#. Default: "Reglas de Negocio que dirigen el uso de la Herramienta en la Organizacion."
+#: BPDHerramienta reglasDeNegocioDirigentes
+msgid "gvSIGbpd_BPDHerramienta_rel_reglasDeNegocioDirigentes_help"
+msgstr "Reglas de Negocio que dirigen el uso de la Herramienta en la Organizacion."
+
+#. Default: "Responsables"
+#: BPDHerramienta responsablesDeHerramienta
+msgid "gvSIGbpd_BPDHerramienta_rel_responsablesDeHerramienta_label"
+msgstr "Responsables"
+
+#. Default: "Perfiles o Unidades Organizacionales a cargo de asistir a la organizacion en su manejo de esta Herramienta."
+#: BPDHerramienta responsablesDeHerramienta
+msgid "gvSIGbpd_BPDHerramienta_rel_responsablesDeHerramienta_help"
+msgstr "Perfiles o Unidades Organizacionales a cargo de asistir a la organizacion en su manejo de esta Herramienta."
+
+#. Default: "Organizacion"
+#: BPDOrganizacion
+msgid "gvSIGbpd_BPDOrganizacion_label"
+msgstr "Organizacion"
+
+#. Default: "Raiz de contenidos para definicion y publicacion de procedimientos de gestion."
+#: BPDOrganizacion
+msgid "gvSIGbpd_BPDOrganizacion_help"
+msgstr "Raiz de contenidos para definicion y publicacion de procedimientos de gestion."
+
+#. Default: "Artefactos (colecciones)"
+#: BPDOrganizacion coleccionesArtefactos
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesArtefactos_label"
+msgstr "Artefactos (colecciones)"
+
+#. Default: "Colecciones de Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion."
+#: BPDOrganizacion coleccionesArtefactos
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesArtefactos_help"
+msgstr "Colecciones de Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion."
+
+#. Default: "Herramientas (colecciones)"
+#: BPDOrganizacion coleccionesHerramientas
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesHerramientas_label"
+msgstr "Herramientas (colecciones)"
+
+#. Default: "Colecciones de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio."
+#: BPDOrganizacion coleccionesHerramientas
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesHerramientas_help"
+msgstr "Colecciones de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio."
+
+#. Default: "Politicas de Negocio (colecciones)"
+#: BPDOrganizacion coleccionesPoliticasDeNegocio
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesPoliticasDeNegocio_label"
+msgstr "Politicas de Negocio (colecciones)"
+
+#. Default: "Colecciones de Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio."
+#: BPDOrganizacion coleccionesPoliticasDeNegocio
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesPoliticasDeNegocio_help"
+msgstr "Colecciones de Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio."
+
+#. Default: "Procesos de Negocio (colecciones)"
+#: BPDOrganizacion coleccionesProcesosDeNegocio
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesProcesosDeNegocio_label"
+msgstr "Procesos de Negocio (colecciones)"
+
+#. Default: "Colecciones de Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos."
+#: BPDOrganizacion coleccionesProcesosDeNegocio
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesProcesosDeNegocio_help"
+msgstr "Colecciones de Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos."
+
+#. Default: "Reglas de Negocio (colecciones)"
+#: BPDOrganizacion coleccionesReglasDeNegocio
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesReglasDeNegocio_label"
+msgstr "Reglas de Negocio (colecciones)"
+
+#. Default: "Colecciones de Reglas deNegocio que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion."
+#: BPDOrganizacion coleccionesReglasDeNegocio
+msgid "gvSIGbpd_BPDOrganizacion_contents_coleccionesReglasDeNegocio_help"
+msgstr "Colecciones de Reglas deNegocio que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion."
+
+#. Default: "Participante"
+#: BPDParticipante
+msgid "gvSIGbpd_BPDParticipante_label"
+msgstr "Participante"
+
+#. Default: "Interviene en los esfuerzos de la Organización. Es un caso general, que se concreta como una Unidad Organizacional o un Perfil de una persona."
+#: BPDParticipante
+msgid "gvSIGbpd_BPDParticipante_help"
+msgstr "Interviene en los esfuerzos de la Organización. Es un caso general, que se concreta como una Unidad Organizacional o un Perfil de una persona."
+
+#. Default: "Abreviatura"
+#: BPDParticipante abreviatura
+msgid "gvSIGbpd_BPDParticipante_attr_abreviatura_label"
+msgstr "Abreviatura"
+
+#. Default: "Para identificacion rapida de los Perfiles o Unidades Organizacionales mas significativos."
+#: BPDParticipante abreviatura
+msgid "gvSIGbpd_BPDParticipante_attr_abreviatura_help"
+msgstr "Para identificacion rapida de los Perfiles o Unidades Organizacionales mas significativos."
+
+#. Default: "Responsabilidades Clave"
+#: BPDParticipante responsabilidadesClave
+msgid "gvSIGbpd_BPDParticipante_attr_responsabilidadesClave_label"
+msgstr "Responsabilidades Clave"
+
+#. Default: "Los Participantes, en general,  se haran cargo principalmente de las responsabilidades especificadas."
+#: BPDParticipante responsabilidadesClave
+msgid "gvSIGbpd_BPDParticipante_attr_responsabilidadesClave_help"
+msgstr "Los Participantes, en general,  se haran cargo principalmente de las responsabilidades especificadas."
+
+#. Default: "Destinatario de Envios"
+#: BPDParticipante destinatarioDeEnvios
+msgid "gvSIGbpd_BPDParticipante_rel_destinatarioDeEnvios_label"
+msgstr "Destinatario de Envios"
+
+#. Default: "Envios que se destinan a este Perfil o Unidad Organizacional."
+#: BPDParticipante destinatarioDeEnvios
+msgid "gvSIGbpd_BPDParticipante_rel_destinatarioDeEnvios_help"
+msgstr "Envios que se destinan a este Perfil o Unidad Organizacional."
+
+#. Default: "Pasos Ejecutados"
+#: BPDParticipante pasosEjecutados
+msgid "gvSIGbpd_BPDParticipante_rel_pasosEjecutados_label"
+msgstr "Pasos Ejecutados"
+
+#. Default: "Pasos de Negocio que se encarga de ejecutar el Perfil o Unidad Organizacional"
+#: BPDParticipante pasosEjecutados
+msgid "gvSIGbpd_BPDParticipante_rel_pasosEjecutados_help"
+msgstr "Pasos de Negocio que se encarga de ejecutar el Perfil o Unidad Organizacional"
+
+#. Default: "Politicas de Negocio gobernantes"
+#: BPDParticipante politicasDeNegocioGobernantes
+msgid "gvSIGbpd_BPDParticipante_rel_politicasDeNegocioGobernantes_label"
+msgstr "Politicas de Negocio gobernantes"
+
+#. Default: "Las Politicas de Negocio que afectan a la labor del Perfil o Unidad Organizacional"
+#: BPDParticipante politicasDeNegocioGobernantes
+msgid "gvSIGbpd_BPDParticipante_rel_politicasDeNegocioGobernantes_help"
+msgstr "Las Politicas de Negocio que afectan a la labor del Perfil o Unidad Organizacional"
+
+#. Default: "Procesos Ejecutados"
+#: BPDParticipante procesosEjecutados
+msgid "gvSIGbpd_BPDParticipante_rel_procesosEjecutados_label"
+msgstr "Procesos Ejecutados"
+
+#. Default: "Procesos de Negocio que se encarga de ejecutar el Perfil o Unidad Organizacional."
+#: BPDParticipante procesosEjecutados
+msgid "gvSIGbpd_BPDParticipante_rel_procesosEjecutados_help"
+msgstr "Procesos de Negocio que se encarga de ejecutar el Perfil o Unidad Organizacional."
+
+#. Default: "Procesos Supervisados"
+#: BPDParticipante procesosSupervisados
+msgid "gvSIGbpd_BPDParticipante_rel_procesosSupervisados_label"
+msgstr "Procesos Supervisados"
+
+#. Default: "Procesos de Negocio que se encarga de supervisar el Perfil o Unidad Organizacional."
+#: BPDParticipante procesosSupervisados
+msgid "gvSIGbpd_BPDParticipante_rel_procesosSupervisados_help"
+msgstr "Procesos de Negocio que se encarga de supervisar el Perfil o Unidad Organizacional."
+
+#. Default: "Reglas de Negocio dirigentes"
+#: BPDParticipante reglasDeNegocioDirigentes
+msgid "gvSIGbpd_BPDParticipante_rel_reglasDeNegocioDirigentes_label"
+msgstr "Reglas de Negocio dirigentes"
+
+#. Default: "Las Reglas de Negocio que dirigen la labor de el Perfil o Unidad Organizacional."
+#: BPDParticipante reglasDeNegocioDirigentes
+msgid "gvSIGbpd_BPDParticipante_rel_reglasDeNegocioDirigentes_help"
+msgstr "Las Reglas de Negocio que dirigen la labor de el Perfil o Unidad Organizacional."
+
+#. Default: "Remitente de Recepciones"
+#: BPDParticipante remitenteDeRecepciones
+msgid "gvSIGbpd_BPDParticipante_rel_remitenteDeRecepciones_label"
+msgstr "Remitente de Recepciones"
+
+#. Default: "Recepciones originadas en este Perfil o Unidad Organizacional."
+#: BPDParticipante remitenteDeRecepciones
+msgid "gvSIGbpd_BPDParticipante_rel_remitenteDeRecepciones_help"
+msgstr "Recepciones originadas en este Perfil o Unidad Organizacional."
+
+#. Default: "Artefactos a su cargo"
+#: BPDParticipante responsableDeArtefactos
+msgid "gvSIGbpd_BPDParticipante_rel_responsableDeArtefactos_label"
+msgstr "Artefactos a su cargo"
+
+#. Default: "Artefactos que estan a cargo del Perfil o Unidad Organizacional."
+#: BPDParticipante responsableDeArtefactos
+msgid "gvSIGbpd_BPDParticipante_rel_responsableDeArtefactos_help"
+msgstr "Artefactos que estan a cargo del Perfil o Unidad Organizacional."
+
+#. Default: "Herramientas a su Cargo"
+#: BPDParticipante responsableDeHerramientas
+msgid "gvSIGbpd_BPDParticipante_rel_responsableDeHerramientas_label"
+msgstr "Herramientas a su Cargo"
+
+#. Default: "Herramientas que estan a cargo de el Perfil o Unidad Organizacional"
+#: BPDParticipante responsableDeHerramientas
+msgid "gvSIGbpd_BPDParticipante_rel_responsableDeHerramientas_help"
+msgstr "Herramientas que estan a cargo de el Perfil o Unidad Organizacional"
+
+#. Default: "BPDPasoConAnteriores"
+#: BPDPasoConAnteriores
+msgid "gvSIGbpd_BPDPasoConAnteriores_label"
+msgstr "BPDPasoConAnteriores"
+
+#. Default: "BPDPasoConAnteriores"
+#: BPDPasoConAnteriores
+msgid "gvSIGbpd_BPDPasoConAnteriores_help"
+msgstr "BPDPasoConAnteriores"
+
+#. Default: "Pasos Anteriores"
+#: BPDPasoConAnteriores titulosPasosAnteriores
+msgid "gvSIGbpd_BPDPasoConAnteriores_attr_titulosPasosAnteriores_label"
+msgstr "Pasos Anteriores"
+
+#. Default: "Pasos que se ejecutan antes de este paso. Este paso se ejecuta tras completarse alguno de sus pasos anteriores."
+#: BPDPasoConAnteriores titulosPasosAnteriores
+msgid "gvSIGbpd_BPDPasoConAnteriores_attr_titulosPasosAnteriores_help"
+msgstr "Pasos que se ejecutan antes de este paso. Este paso se ejecuta tras completarse alguno de sus pasos anteriores."
+
+#. Default: "Pasos Anteriores"
+#: BPDPasoConAnteriores pasosAnteriores
+msgid "gvSIGbpd_BPDPasoConAnteriores_rel_pasosAnteriores_label"
+msgstr "Pasos Anteriores"
+
+#. Default: "Pasos que se ejecutan antes de este paso. Este paso se ejecuta tras completarse alguno de sus pasos anteriores."
+#: BPDPasoConAnteriores pasosAnteriores
+msgid "gvSIGbpd_BPDPasoConAnteriores_rel_pasosAnteriores_help"
+msgstr "Pasos que se ejecutan antes de este paso. Este paso se ejecuta tras completarse alguno de sus pasos anteriores."
+
+#. Default: "BPDPasoConExcepciones"
+#: BPDPasoConExcepciones
+msgid "gvSIGbpd_BPDPasoConExcepciones_label"
+msgstr "BPDPasoConExcepciones"
+
+#. Default: "BPDPasoConExcepciones"
+#: BPDPasoConExcepciones
+msgid "gvSIGbpd_BPDPasoConExcepciones_help"
+msgstr "BPDPasoConExcepciones"
+
+#. Default: "Pasos Alternativos o Excepcion"
+#: BPDPasoConExcepciones titulosPasosSiguientesEnCasoExcepcion
+msgid "gvSIGbpd_BPDPasoConExcepciones_attr_titulosPasosSiguientesEnCasoExcepcion_label"
+msgstr "Pasos Alternativos o Excepcion"
+
+#. Default: "Pasos que se ejecutan como alternativa al flujo principal de pasos siguientes, o cuando surje una condicion excepcional."
+#: BPDPasoConExcepciones titulosPasosSiguientesEnCasoExcepcion
+msgid "gvSIGbpd_BPDPasoConExcepciones_attr_titulosPasosSiguientesEnCasoExcepcion_help"
+msgstr "Pasos que se ejecutan como alternativa al flujo principal de pasos siguientes, o cuando surje una condicion excepcional."
+
+#. Default: "Pasos Alternativos o en caso de Excepcion"
+#: BPDPasoConExcepciones pasosSiguientesEnCasoExcepcion
+msgid "gvSIGbpd_BPDPasoConExcepciones_rel_pasosSiguientesEnCasoExcepcion_label"
+msgstr "Pasos Alternativos o en caso de Excepcion"
+
+#. Default: "Pasos que se ejecutan como alternativa al flujo principal de pasos siguientes, o cuando surje una condicion excepcional."
+#: BPDPasoConExcepciones pasosSiguientesEnCasoExcepcion
+msgid "gvSIGbpd_BPDPasoConExcepciones_rel_pasosSiguientesEnCasoExcepcion_help"
+msgstr "Pasos que se ejecutan como alternativa al flujo principal de pasos siguientes, o cuando surje una condicion excepcional."
+
+#. Default: "BPDPasoConSiguientes"
+#: BPDPasoConSiguientes
+msgid "gvSIGbpd_BPDPasoConSiguientes_label"
+msgstr "BPDPasoConSiguientes"
+
+#. Default: "BPDPasoConSiguientes"
+#: BPDPasoConSiguientes
+msgid "gvSIGbpd_BPDPasoConSiguientes_help"
+msgstr "BPDPasoConSiguientes"
+
+#. Default: "Pasos Siguientes"
+#: BPDPasoConSiguientes titulosPasosSiguientes
+msgid "gvSIGbpd_BPDPasoConSiguientes_attr_titulosPasosSiguientes_label"
+msgstr "Pasos Siguientes"
+
+#. Default: "Pasos que se ejecutaran tras completarse este paso."
+#: BPDPasoConSiguientes titulosPasosSiguientes
+msgid "gvSIGbpd_BPDPasoConSiguientes_attr_titulosPasosSiguientes_help"
+msgstr "Pasos que se ejecutaran tras completarse este paso."
+
+#. Default: "Pasos Siguientes"
+#: BPDPasoConSiguientes pasosSiguientes
+msgid "gvSIGbpd_BPDPasoConSiguientes_rel_pasosSiguientes_label"
+msgstr "Pasos Siguientes"
+
+#. Default: "Pasos que se ejecutaran tras completarse este paso."
+#: BPDPasoConSiguientes pasosSiguientes
+msgid "gvSIGbpd_BPDPasoConSiguientes_rel_pasosSiguientes_help"
+msgstr "Pasos que se ejecutaran tras completarse este paso."
+
+#. Default: "Paso General"
+#: BPDPasoGeneral
+msgid "gvSIGbpd_BPDPasoGeneral_label"
+msgstr "Paso General"
+
+#. Default: "Abstraccion de un Paso de Proceso de Negocio con Perfil o Unidad Organizacional Ejecutor  y posiblemente aplicando herramientas, caso general, detallado como Paso Simple, Decision, Envio, Recepcion, ..."
+#: BPDPasoGeneral
+msgid "gvSIGbpd_BPDPasoGeneral_help"
+msgstr "Abstraccion de un Paso de Proceso de Negocio con Perfil o Unidad Organizacional Ejecutor  y posiblemente aplicando herramientas, caso general, detallado como Paso Simple, Decision, Envio, Recepcion, ..."
+
+#. Default: "Es Inicial"
+#: BPDPasoGeneral esInicial
+msgid "gvSIGbpd_BPDPasoGeneral_attr_esInicial_label"
+msgstr "Es Inicial"
+
+#. Default: "Indica si el Paso se ejecuta al comenzar el Proceso."
+#: BPDPasoGeneral esInicial
+msgid "gvSIGbpd_BPDPasoGeneral_attr_esInicial_help"
+msgstr "Indica si el Paso se ejecuta al comenzar el Proceso."
+
+#. Default: "Ejecutores"
+#: BPDPasoGeneral ejecutores
+msgid "gvSIGbpd_BPDPasoGeneral_rel_ejecutores_label"
+msgstr "Ejecutores"
+
+#. Default: "Perfiles y Unidades Organizacionales a cargo de ejecutar el Paso."
+#: BPDPasoGeneral ejecutores
+msgid "gvSIGbpd_BPDPasoGeneral_rel_ejecutores_help"
+msgstr "Perfiles y Unidades Organizacionales a cargo de ejecutar el Paso."
+
+#. Default: "Plazos a cumplir"
+#: BPDPasoGeneral requeridoEnPlazos
+msgid "gvSIGbpd_BPDPasoGeneral_rel_requeridoEnPlazos_label"
+msgstr "Plazos a cumplir"
+
+#. Default: "Plazos en los que este Paso debe ejecutarse."
+#: BPDPasoGeneral requeridoEnPlazos
+msgid "gvSIGbpd_BPDPasoGeneral_rel_requeridoEnPlazos_help"
+msgstr "Plazos en los que este Paso debe ejecutarse."
+
+#. Default: "BPDPasoGestorExcepciones"
+#: BPDPasoGestorExcepciones
+msgid "gvSIGbpd_BPDPasoGestorExcepciones_label"
+msgstr "BPDPasoGestorExcepciones"
+
+#. Default: "Incorpora la capacidad de servir como paso de continuacion alternativo de un paso anterior en que no se ha cumplido la condicion, o se ha agotado el plazo, o se ha dado alguna otra condicion excepcional."
+#: BPDPasoGestorExcepciones
+msgid "gvSIGbpd_BPDPasoGestorExcepciones_help"
+msgstr "Incorpora la capacidad de servir como paso de continuacion alternativo de un paso anterior en que no se ha cumplido la condicion, o se ha agotado el plazo, o se ha dado alguna otra condicion excepcional."
+
+#. Default: "Alternativo o Excepcion de Pasos"
+#: BPDPasoGestorExcepciones titulosPasosAnterioresEnCasoExcepcion
+msgid "gvSIGbpd_BPDPasoGestorExcepciones_attr_titulosPasosAnterioresEnCasoExcepcion_label"
+msgstr "Alternativo o Excepcion de Pasos"
+
+#. Default: "Pasos a los que sigue este paso como flujo alternativo, o en caso de excepcion."
+#: BPDPasoGestorExcepciones titulosPasosAnterioresEnCasoExcepcion
+msgid "gvSIGbpd_BPDPasoGestorExcepciones_attr_titulosPasosAnterioresEnCasoExcepcion_help"
+msgstr "Pasos a los que sigue este paso como flujo alternativo, o en caso de excepcion."
+
+#. Default: "Pasos anteriores en caso excepcion o flujo alternativo"
+#: BPDPasoGestorExcepciones pasosOriginandoExcepcion
+msgid "gvSIGbpd_BPDPasoGestorExcepciones_rel_pasosOriginandoExcepcion_label"
+msgstr "Pasos anteriores en caso excepcion o flujo alternativo"
+
+#. Default: "Pasos a los que sigue este paso como flujo alternativo, o en caso de excepcion."
+#: BPDPasoGestorExcepciones pasosOriginandoExcepcion
+msgid "gvSIGbpd_BPDPasoGestorExcepciones_rel_pasosOriginandoExcepcion_help"
+msgstr "Pasos a los que sigue este paso como flujo alternativo, o en caso de excepcion."
+
+#. Default: "Paso Minimo"
+#: BPDPasoMinimo
+msgid "gvSIGbpd_BPDPasoMinimo_label"
+msgstr "Paso Minimo"
+
+#. Default: "Abstraccion de un Paso de Proceso de Negocio, caso general, detallado como Paso Simple, Decision, SubProceso, Exito, Fracaso, Envio, Recepcion, ..."
+#: BPDPasoMinimo
+msgid "gvSIGbpd_BPDPasoMinimo_help"
+msgstr "Abstraccion de un Paso de Proceso de Negocio, caso general, detallado como Paso Simple, Decision, SubProceso, Exito, Fracaso, Envio, Recepcion, ..."
+
+#. Default: "Numero de Paso"
+#: BPDPasoMinimo numeroDePaso
+msgid "gvSIGbpd_BPDPasoMinimo_attr_numeroDePaso_label"
+msgstr "Numero de Paso"
+
+#. Default: "El numero de orden del Paso en la lista de Pasos de su Proceso. Util para su identificacion rapida. Notese que este numero puede cambiar al modificar la lista de Pasos del Proceso."
+#: BPDPasoMinimo numeroDePaso
+msgid "gvSIGbpd_BPDPasoMinimo_attr_numeroDePaso_help"
+msgstr "El numero de orden del Paso en la lista de Pasos de su Proceso. Util para su identificacion rapida. Notese que este numero puede cambiar al modificar la lista de Pasos del Proceso."
+
+#. Default: "Proceso de Negocio"
+#: BPDPasoMinimo tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDPasoMinimo_attr_tituloProcesoDeNegocio_label"
+msgstr "Proceso de Negocio"
+
+#. Default: "El titulo del Proceso de Negocio que contiene el Paso."
+#: BPDPasoMinimo tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDPasoMinimo_attr_tituloProcesoDeNegocio_help"
+msgstr "El titulo del Proceso de Negocio que contiene el Paso."
+
+#. Default: "Herramientas aplicadas"
+#: BPDPasoMinimo herramientasAplicadas
+msgid "gvSIGbpd_BPDPasoMinimo_rel_herramientasAplicadas_label"
+msgstr "Herramientas aplicadas"
+
+#. Default: "Herramientas a utilizar para ejecutar el paso de proceso de negocio o manejar los artefactos usados."
+#: BPDPasoMinimo herramientasAplicadas
+msgid "gvSIGbpd_BPDPasoMinimo_rel_herramientasAplicadas_help"
+msgstr "Herramientas a utilizar para ejecutar el paso de proceso de negocio o manejar los artefactos usados."
+
+#. Default: "Reglas de Negocio aplicadas"
+#: BPDPasoMinimo reglasDeNegocioAplicadas
+msgid "gvSIGbpd_BPDPasoMinimo_rel_reglasDeNegocioAplicadas_label"
+msgstr "Reglas de Negocio aplicadas"
+
+#. Default: "Reglas de Negocio aplicadas durante la ejecucion del Paso."
+#: BPDPasoMinimo reglasDeNegocioAplicadas
+msgid "gvSIGbpd_BPDPasoMinimo_rel_reglasDeNegocioAplicadas_help"
+msgstr "Reglas de Negocio aplicadas durante la ejecucion del Paso."
+
+#. Default: "Paso Simple"
+#: BPDPasoSimple
+msgid "gvSIGbpd_BPDPasoSimple_label"
+msgstr "Paso Simple"
+
+#. Default: "Una actuacion individual de la secuencia que compone un Proceso de Negocio."
+#: BPDPasoSimple
+msgid "gvSIGbpd_BPDPasoSimple_help"
+msgstr "Una actuacion individual de la secuencia que compone un Proceso de Negocio."
+
+#. Default: "Detalles del Paso"
+#: BPDPasoSimple detallesPaso
+msgid "gvSIGbpd_BPDPasoSimple_attr_detallesPaso_label"
+msgstr "Detalles del Paso"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDPasoSimple detallesPaso
+msgid "gvSIGbpd_BPDPasoSimple_attr_detallesPaso_help"
+msgstr "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+
+#. Default: "Perfil"
+#: BPDPerfil
+msgid "gvSIGbpd_BPDPerfil_label"
+msgstr "Perfil"
+
+#. Default: "Un Perfil representa un tipo de participante en los procesos de gestion de gvSIG. No identifica personas concretas, . Se definen los conocimientos y habilidades propias al Perfil."
+#: BPDPerfil
+msgid "gvSIGbpd_BPDPerfil_help"
+msgstr "Un Perfil representa un tipo de participante en los procesos de gestion de gvSIG. No identifica personas concretas, . Se definen los conocimientos y habilidades propias al Perfil."
+
+#. Default: "Conocimientos Poseidos"
+#: BPDPerfil conocimientosPoseidos
+msgid "gvSIGbpd_BPDPerfil_attr_conocimientosPoseidos_label"
+msgstr "Conocimientos Poseidos"
+
+#. Default: "Necesarios en el personal para que se ajuste al Perfil."
+#: BPDPerfil conocimientosPoseidos
+msgid "gvSIGbpd_BPDPerfil_attr_conocimientosPoseidos_help"
+msgstr "Necesarios en el personal para que se ajuste al Perfil."
+
+#. Default: "Habilidades Demostradas"
+#: BPDPerfil habilidadesDemostradas
+msgid "gvSIGbpd_BPDPerfil_attr_habilidadesDemostradas_label"
+msgstr "Habilidades Demostradas"
+
+#. Default: "Los individuos que se ajusta a este Perfil habran demostrado las habilidades indicadas."
+#: BPDPerfil habilidadesDemostradas
+msgid "gvSIGbpd_BPDPerfil_attr_habilidadesDemostradas_help"
+msgstr "Los individuos que se ajusta a este Perfil habran demostrado las habilidades indicadas."
+
+#. Default: "Seleccion de Personal"
+#: BPDPerfil seleccionDePersonal
+msgid "gvSIGbpd_BPDPerfil_attr_seleccionDePersonal_label"
+msgstr "Seleccion de Personal"
+
+#. Default: "Criterios para la seleccion de personal con este Perfil."
+#: BPDPerfil seleccionDePersonal
+msgid "gvSIGbpd_BPDPerfil_attr_seleccionDePersonal_help"
+msgstr "Criterios para la seleccion de personal con este Perfil."
+
+#. Default: "Plazo de Tiempo"
+#: BPDPlazo
+msgid "gvSIGbpd_BPDPlazo_label"
+msgstr "Plazo de Tiempo"
+
+#. Default: "Un Plazo de tiempo durante el que se espera que empiecen o completen ciertos pasos, tras lo cual se continua en cierto paso, o por otro paso en caso de expiracion del tiempo."
+#: BPDPlazo
+msgid "gvSIGbpd_BPDPlazo_help"
+msgstr "Un Plazo de tiempo durante el que se espera que empiecen o completen ciertos pasos, tras lo cual se continua en cierto paso, o por otro paso en caso de expiracion del tiempo."
+
+#. Default: "Agotar Plazo"
+#: BPDPlazo agotarPlazo
+msgid "gvSIGbpd_BPDPlazo_attr_agotarPlazo_label"
+msgstr "Agotar Plazo"
+
+#. Default: "Si se desea agotar el tiempo antes de continuar, aunque se haya satisfecho la ocurrencia del paso requerido."
+#: BPDPlazo agotarPlazo
+msgid "gvSIGbpd_BPDPlazo_attr_agotarPlazo_help"
+msgstr "Si se desea agotar el tiempo antes de continuar, aunque se haya satisfecho la ocurrencia del paso requerido."
+
+#. Default: "Detalles del Paso"
+#: BPDPlazo detallesPaso
+msgid "gvSIGbpd_BPDPlazo_attr_detallesPaso_label"
+msgstr "Detalles del Paso"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDPlazo detallesPaso
+msgid "gvSIGbpd_BPDPlazo_attr_detallesPaso_help"
+msgstr "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+
+#. Default: "Es Inicial"
+#: BPDPlazo esInicial
+msgid "gvSIGbpd_BPDPlazo_attr_esInicial_label"
+msgstr "Es Inicial"
+
+#. Default: "Indica si el Paso puede ser el primero en ejecutar  en el Proceso."
+#: BPDPlazo esInicial
+msgid "gvSIGbpd_BPDPlazo_attr_esInicial_help"
+msgstr "Indica si el Paso puede ser el primero en ejecutar  en el Proceso."
+
+#. Default: "Tiempo de Espera"
+#: BPDPlazo tiempoDeEspera
+msgid "gvSIGbpd_BPDPlazo_attr_tiempoDeEspera_label"
+msgstr "Tiempo de Espera"
+
+#. Default: "El Plazo se abre para el tiempo especificado. Al transcurrir el tiempo indicado, el Proceso continuara en el paso siguiente tras expiracion."
+#: BPDPlazo tiempoDeEspera
+msgid "gvSIGbpd_BPDPlazo_attr_tiempoDeEspera_help"
+msgstr "El Plazo se abre para el tiempo especificado. Al transcurrir el tiempo indicado, el Proceso continuara en el paso siguiente tras expiracion."
+
+#. Default: "Unidad de Tiempo"
+#: BPDPlazo unidadDeTiempo
+msgid "gvSIGbpd_BPDPlazo_attr_unidadDeTiempo_label"
+msgstr "Unidad de Tiempo"
+
+#. Default: "La unidad de tiempo en que se define el Tiempo de Espera del Plazo."
+#: BPDPlazo unidadDeTiempo
+msgid "gvSIGbpd_BPDPlazo_attr_unidadDeTiempo_help"
+msgstr "La unidad de tiempo en que se define el Tiempo de Espera del Plazo."
+
+#. Default: "Meses"
+#: BPDPlazo unidadDeTiempo
+msgid "gvSIGbpd_BPDPlazo_attr_unidadDeTiempo_option_Meses"
+msgstr "Meses"
+
+#. Default: "Semanas"
+#: BPDPlazo unidadDeTiempo
+msgid "gvSIGbpd_BPDPlazo_attr_unidadDeTiempo_option_Semanas"
+msgstr "Semanas"
+
+#. Default: "Dias"
+#: BPDPlazo unidadDeTiempo
+msgid "gvSIGbpd_BPDPlazo_attr_unidadDeTiempo_option_Dias"
+msgstr "Dias"
+
+#. Default: "Horas"
+#: BPDPlazo unidadDeTiempo
+msgid "gvSIGbpd_BPDPlazo_attr_unidadDeTiempo_option_Horas"
+msgstr "Horas"
+
+#. Default: "Minutos"
+#: BPDPlazo unidadDeTiempo
+msgid "gvSIGbpd_BPDPlazo_attr_unidadDeTiempo_option_Minutos"
+msgstr "Minutos"
+
+#. Default: "Pasos requeridos"
+#: BPDPlazo pasosRequeridos
+msgid "gvSIGbpd_BPDPlazo_rel_pasosRequeridos_label"
+msgstr "Pasos requeridos"
+
+#. Default: "Pasos que deben ejecutarse dentro del Plazo. Son los pasos que se espera que acontezcan en el tiempo de espera indicado."
+#: BPDPlazo pasosRequeridos
+msgid "gvSIGbpd_BPDPlazo_rel_pasosRequeridos_help"
+msgstr "Pasos que deben ejecutarse dentro del Plazo. Son los pasos que se espera que acontezcan en el tiempo de espera indicado."
+
+#. Default: "Politica de Negocio"
+#: BPDPoliticaDeNegocio
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_label"
+msgstr "Politica de Negocio"
+
+#. Default: "Directiva general a desarrollar mediante Reglas y realizar mediante Procesos de Negocio."
+#: BPDPoliticaDeNegocio
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_help"
+msgstr "Directiva general a desarrollar mediante Reglas y realizar mediante Procesos de Negocio."
+
+#. Default: "Politicas de Negocio mas detalladas"
+#: BPDPoliticaDeNegocio coleccionesPoliticasDeNegocio
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_contents_coleccionesPoliticasDeNegocio_label"
+msgstr "Politicas de Negocio mas detalladas"
+
+#. Default: "Colecciones de Politicas de Negocio subordinadas o mas detalladas, que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio, definidas en el contexto de esta Politica de Negocio."
+#: BPDPoliticaDeNegocio coleccionesPoliticasDeNegocio
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_contents_coleccionesPoliticasDeNegocio_help"
+msgstr "Colecciones de Politicas de Negocio subordinadas o mas detalladas, que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio, definidas en el contexto de esta Politica de Negocio."
+
+#. Default: "Artefactos Gobernados"
+#: BPDPoliticaDeNegocio artefactosGobernados
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_artefactosGobernados_label"
+msgstr "Artefactos Gobernados"
+
+#. Default: "Artefactos cuya utilizacion esta prescrita o gobernada por la Politica de Negocio."
+#: BPDPoliticaDeNegocio artefactosGobernados
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_artefactosGobernados_help"
+msgstr "Artefactos cuya utilizacion esta prescrita o gobernada por la Politica de Negocio."
+
+#. Default: "Herramientas Gobernadas"
+#: BPDPoliticaDeNegocio herramientasGobernadas
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_herramientasGobernadas_label"
+msgstr "Herramientas Gobernadas"
+
+#. Default: "Herramientas cuya utilizacion esta prescrita o gobernada por la Politica de Negocio."
+#: BPDPoliticaDeNegocio herramientasGobernadas
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_herramientasGobernadas_help"
+msgstr "Herramientas cuya utilizacion esta prescrita o gobernada por la Politica de Negocio."
+
+#. Default: "Participantes gobernados"
+#: BPDPoliticaDeNegocio participantesGobernados
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_participantesGobernados_label"
+msgstr "Participantes gobernados"
+
+#. Default: "Perfiles y Unidades Organizacionales que aplican la Politica de Negocio durante su labor."
+#: BPDPoliticaDeNegocio participantesGobernados
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_participantesGobernados_help"
+msgstr "Perfiles y Unidades Organizacionales que aplican la Politica de Negocio durante su labor."
+
+#. Default: "Procesos de Negocio gobernados"
+#: BPDPoliticaDeNegocio procesosDeNegocioGobernados
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_procesosDeNegocioGobernados_label"
+msgstr "Procesos de Negocio gobernados"
+
+#. Default: "Procesos de Negocio que respetan o se esfuerzan en hacer cumplir la Politica de Negocio."
+#: BPDPoliticaDeNegocio procesosDeNegocioGobernados
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_procesosDeNegocioGobernados_help"
+msgstr "Procesos de Negocio que respetan o se esfuerzan en hacer cumplir la Politica de Negocio."
+
+#. Default: "Reglas de Negocio derivadas"
+#: BPDPoliticaDeNegocio reglasDeNegocioDerivadas
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_reglasDeNegocioDerivadas_label"
+msgstr "Reglas de Negocio derivadas"
+
+#. Default: "Reglas de Negocio que refinan la Politica de Negocio en terminos decidibles."
+#: BPDPoliticaDeNegocio reglasDeNegocioDerivadas
+msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_reglasDeNegocioDerivadas_help"
+msgstr "Reglas de Negocio que refinan la Politica de Negocio en terminos decidibles."
+
+#. Default: "Proceso de Negocio"
+#: BPDProcesoDeNegocio
+msgid "gvSIGbpd_BPDProcesoDeNegocio_label"
+msgstr "Proceso de Negocio"
+
+#. Default: "Caso general de Proceso de Negocio, de los que se definien concretamente ProcesoDeNegocioSimple y ..."
+#: BPDProcesoDeNegocio
+msgid "gvSIGbpd_BPDProcesoDeNegocio_help"
+msgstr "Caso general de Proceso de Negocio, de los que se definien concretamente ProcesoDeNegocioSimple y ..."
+
+#. Default: "Detalles del Proceso de Negocio"
+#: BPDProcesoDeNegocio detallesProceso
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_detallesProceso_label"
+msgstr "Detalles del Proceso de Negocio"
+
+#. Default: "Detalles acerca de las caracteristicas del Proceso de Negocio."
+#: BPDProcesoDeNegocio detallesProceso
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_detallesProceso_help"
+msgstr "Detalles acerca de las caracteristicas del Proceso de Negocio."
+
+#. Default: "Es Continuo"
+#: BPDProcesoDeNegocio esContinuo
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_esContinuo_label"
+msgstr "Es Continuo"
+
+#. Default: "El Proceso se ejercita continuadamente, comenzando una nueva instancia al completar la anterior, sin necesidad de iniciacion explicita por su Responsable o la Organizacion."
+#: BPDProcesoDeNegocio esContinuo
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_esContinuo_help"
+msgstr "El Proceso se ejercita continuadamente, comenzando una nueva instancia al completar la anterior, sin necesidad de iniciacion explicita por su Responsable o la Organizacion."
+
+#. Default: "Es Planificado"
+#: BPDProcesoDeNegocio esPlaneado
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_label"
+msgstr "Es Planificado"
+
+#. Default: "Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos)."
+#: BPDProcesoDeNegocio esPlaneado
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_help"
+msgstr "Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos)."
+
+#. Default: "Es Repetible"
+#: BPDProcesoDeNegocio esRepetible
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_esRepetible_label"
+msgstr "Es Repetible"
+
+#. Default: "El Proceso se puede aplicar varias veces una tras otra sobre la misma instancia de informacion, por ejemplo, hasta conseguir un Resultado de calidad aceptable."
+#: BPDProcesoDeNegocio esRepetible
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_esRepetible_help"
+msgstr "El Proceso se puede aplicar varias veces una tras otra sobre la misma instancia de informacion, por ejemplo, hasta conseguir un Resultado de calidad aceptable."
+
+#. Default: "Post Condicion"
+#: BPDProcesoDeNegocio postCondicion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_label"
+msgstr "Post Condicion"
+
+#. Default: "La condicion que se cumplira cuando el Proceso concluya con exito."
+#: BPDProcesoDeNegocio postCondicion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_help"
+msgstr "La condicion que se cumplira cuando el Proceso concluya con exito."
+
+#. Default: "Pre Condicion"
+#: BPDProcesoDeNegocio preCondicion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_label"
+msgstr "Pre Condicion"
+
+#. Default: "La condicion que debera cumplirse para que pueda comenzar el Proceso"
+#: BPDProcesoDeNegocio preCondicion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_help"
+msgstr "La condicion que debera cumplirse para que pueda comenzar el Proceso"
+
+#. Default: "Proposito"
+#: BPDProcesoDeNegocio proposito
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_proposito_label"
+msgstr "Proposito"
+
+#. Default: "Perseguido por el Proceso"
+#: BPDProcesoDeNegocio proposito
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_proposito_help"
+msgstr "Perseguido por el Proceso"
+
+#. Default: "Responsable del Mantenimiento"
+#: BPDProcesoDeNegocio responsableMantenimiento
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_responsableMantenimiento_label"
+msgstr "Responsable del Mantenimiento"
+
+#. Default: "Responsable de Mantenimiento"
+#: BPDProcesoDeNegocio responsableMantenimiento
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_responsableMantenimiento_help"
+msgstr "Responsable de Mantenimiento"
+
+#. Default: "Seleccion de Personal"
+#: BPDProcesoDeNegocio seleccionDePersonal
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_label"
+msgstr "Seleccion de Personal"
+
+#. Default: "Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico."
+#: BPDProcesoDeNegocio seleccionDePersonal
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_help"
+msgstr "Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico."
+
+#. Default: "Procesos de Negocio anidados"
+#: BPDProcesoDeNegocio coleccionesProcesosDeNegocio
+msgid "gvSIGbpd_BPDProcesoDeNegocio_contents_coleccionesProcesosDeNegocio_label"
+msgstr "Procesos de Negocio anidados"
+
+#. Default: "Colecciones de Procesos de Negocio de orden inferior, definidos en el contexto de este Proceso de negocio, realizando cursos de accion persiguiendo metas subordinadas."
+#: BPDProcesoDeNegocio coleccionesProcesosDeNegocio
+msgid "gvSIGbpd_BPDProcesoDeNegocio_contents_coleccionesProcesosDeNegocio_help"
+msgstr "Colecciones de Procesos de Negocio de orden inferior, definidos en el contexto de este Proceso de negocio, realizando cursos de accion persiguiendo metas subordinadas."
+
+#. Default: "Ejecutores del Proceso"
+#: BPDProcesoDeNegocio ejecutores
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_ejecutores_label"
+msgstr "Ejecutores del Proceso"
+
+#. Default: "Los Perfiles o Unidades Organizacionales a cargo de ejecutar el Proceso de Negocio."
+#: BPDProcesoDeNegocio ejecutores
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_ejecutores_help"
+msgstr "Los Perfiles o Unidades Organizacionales a cargo de ejecutar el Proceso de Negocio."
+
+#. Default: "Politicas de Negocio Gobernantes"
+#: BPDProcesoDeNegocio politicasDeNegocioGobernantes
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_politicasDeNegocioGobernantes_label"
+msgstr "Politicas de Negocio Gobernantes"
+
+#. Default: "Politicas de Negocio a respetar durante la ejecucion del Proceso de Negocio."
+#: BPDProcesoDeNegocio politicasDeNegocioGobernantes
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_politicasDeNegocioGobernantes_help"
+msgstr "Politicas de Negocio a respetar durante la ejecucion del Proceso de Negocio."
+
+#. Default: "Reglas de Negocio Dirigentes"
+#: BPDProcesoDeNegocio reglasDeNegocioDirigentes
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_reglasDeNegocioDirigentes_label"
+msgstr "Reglas de Negocio Dirigentes"
+
+#. Default: "Reglas de Negocio a tomar en cuenta durante durante la ejecucion del Proceso de Negocio."
+#: BPDProcesoDeNegocio reglasDeNegocioDirigentes
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_reglasDeNegocioDirigentes_help"
+msgstr "Reglas de Negocio a tomar en cuenta durante durante la ejecucion del Proceso de Negocio."
+
+#. Default: "Supervisor"
+#: BPDProcesoDeNegocio supervisor
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_supervisor_label"
+msgstr "Supervisor"
+
+#. Default: "El Perfil o Unidad Organizacional a cargo de velar por que el cumplimiento del Proceso de Negocio se realize de acuerdo con la regulacion aplicable."
+#: BPDProcesoDeNegocio supervisor
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_supervisor_help"
+msgstr "El Perfil o Unidad Organizacional a cargo de velar por que el cumplimiento del Proceso de Negocio se realize de acuerdo con la regulacion aplicable."
+
+#. Default: "Usos como Sub-Proceso de Negocio"
+#: BPDProcesoDeNegocio usadoComoSubProcesos
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_usadoComoSubProcesos_label"
+msgstr "Usos como Sub-Proceso de Negocio"
+
+#. Default: "Pasos de otros Procesos de Negocio donde este proceso se ejecuta de principio a fin, como un Paso Sub-Proceso."
+#: BPDProcesoDeNegocio usadoComoSubProcesos
+msgid "gvSIGbpd_BPDProcesoDeNegocio_rel_usadoComoSubProcesos_help"
+msgstr "Pasos de otros Procesos de Negocio donde este proceso se ejecuta de principio a fin, como un Paso Sub-Proceso."
+
+#. Default: "Proceso de Negocio"
+#: BPDProcesoDeNegocioSimple
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_label"
+msgstr "Proceso de Negocio"
+
+#. Default: "Un Proceso de negocio  describiendo como alcanzar un objetivo concreto, como un conjunto de informacioones de partida, una serie de pasos, y unas informaciones de salida."
+#: BPDProcesoDeNegocioSimple
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_help"
+msgstr "Un Proceso de negocio  describiendo como alcanzar un objetivo concreto, como un conjunto de informacioones de partida, una serie de pasos, y unas informaciones de salida."
+
+#. Default: "Entradas (colecciones)"
+#: BPDProcesoDeNegocioSimple coleccionesEntradas
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesEntradas_label"
+msgstr "Entradas (colecciones)"
+
+#. Default: "Colecciones de Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio."
+#: BPDProcesoDeNegocioSimple coleccionesEntradas
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesEntradas_help"
+msgstr "Colecciones de Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio."
+
+#. Default: "Pasos (colecciones)"
+#: BPDProcesoDeNegocioSimple coleccionesPasos
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesPasos_label"
+msgstr "Pasos (colecciones)"
+
+#. Default: "Colecciones de Acciones individuales en que transcurre la ejecucion del Proceso de Negocio."
+#: BPDProcesoDeNegocioSimple coleccionesPasos
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesPasos_help"
+msgstr "Colecciones de Acciones individuales en que transcurre la ejecucion del Proceso de Negocio."
+
+#. Default: "Salidas (colecciones)"
+#: BPDProcesoDeNegocioSimple coleccionesSalidas
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesSalidas_label"
+msgstr "Salidas (colecciones)"
+
+#. Default: "Colecciones de Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio."
+#: BPDProcesoDeNegocioSimple coleccionesSalidas
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesSalidas_help"
+msgstr "Colecciones de Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio."
+
+#. Default: "Recepcion"
+#: BPDRecepcion
+msgid "gvSIGbpd_BPDRecepcion_label"
+msgstr "Recepcion"
+
+#. Default: "Representa un Paso de Proceso en que se espera y recibe una informacion externa."
+#: BPDRecepcion
+msgid "gvSIGbpd_BPDRecepcion_help"
+msgstr "Representa un Paso de Proceso en que se espera y recibe una informacion externa."
+
+#. Default: "Detalles del Paso"
+#: BPDRecepcion detallesPaso
+msgid "gvSIGbpd_BPDRecepcion_attr_detallesPaso_label"
+msgstr "Detalles del Paso"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDRecepcion detallesPaso
+msgid "gvSIGbpd_BPDRecepcion_attr_detallesPaso_help"
+msgstr "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+
+#. Default: "Remitente"
+#: BPDRecepcion tituloRemitente
+msgid "gvSIGbpd_BPDRecepcion_attr_tituloRemitente_label"
+msgstr "Remitente"
+
+#. Default: "El Perfil o Unidad Organizacional que originan la Recepcion."
+#: BPDRecepcion tituloRemitente
+msgid "gvSIGbpd_BPDRecepcion_attr_tituloRemitente_help"
+msgstr "El Perfil o Unidad Organizacional que originan la Recepcion."
+
+#. Default: "Artefactos Recibidos"
+#: BPDRecepcion titulosArtefactosRecibidos
+msgid "gvSIGbpd_BPDRecepcion_attr_titulosArtefactosRecibidos_label"
+msgstr "Artefactos Recibidos"
+
+#. Default: "Artefactos que se reciben de un Participante externo en este paso."
+#: BPDRecepcion titulosArtefactosRecibidos
+msgid "gvSIGbpd_BPDRecepcion_attr_titulosArtefactosRecibidos_help"
+msgstr "Artefactos que se reciben de un Participante externo en este paso."
+
+#. Default: "Artefactos Recibidos"
+#: BPDRecepcion artefactosRecibidos
+msgid "gvSIGbpd_BPDRecepcion_rel_artefactosRecibidos_label"
+msgstr "Artefactos Recibidos"
+
+#. Default: "Artefactos que se reciben de un Participante externo en este paso."
+#: BPDRecepcion artefactosRecibidos
+msgid "gvSIGbpd_BPDRecepcion_rel_artefactosRecibidos_help"
+msgstr "Artefactos que se reciben de un Participante externo en este paso."
+
+#. Default: "Remitente"
+#: BPDRecepcion remitente
+msgid "gvSIGbpd_BPDRecepcion_rel_remitente_label"
+msgstr "Remitente"
+
+#. Default: "El Perfil o Unidad Organizacional que originan la Recepcion."
+#: BPDRecepcion remitente
+msgid "gvSIGbpd_BPDRecepcion_rel_remitente_help"
+msgstr "El Perfil o Unidad Organizacional que originan la Recepcion."
+
+#. Default: "Referencia Cualificada"
+#: BPDReferenciaCualificada
+msgid "gvSIGbpd_BPDReferenciaCualificada_label"
+msgstr "Referencia Cualificada"
+
+#. Default: "Permite referir a otros elementos de la aplicacion, incluyendo ademas un texto cualificando la referencia."
+#: BPDReferenciaCualificada
+msgid "gvSIGbpd_BPDReferenciaCualificada_help"
+msgstr "Permite referir a otros elementos de la aplicacion, incluyendo ademas un texto cualificando la referencia."
+
+#. Default: "Elementos cualificadamente Referidos"
+#: BPDReferenciaCualificada referidosCualificados
+msgid "gvSIGbpd_BPDReferenciaCualificada_rel_referidosCualificados_label"
+msgstr "Elementos cualificadamente Referidos"
+
+#. Default: "Elementos referidos desde esta Referencia Cualificada."
+#: BPDReferenciaCualificada referidosCualificados
+msgid "gvSIGbpd_BPDReferenciaCualificada_rel_referidosCualificados_help"
+msgstr "Elementos referidos desde esta Referencia Cualificada."
+
+#. Default: "Regla de Negocio"
+#: BPDReglaDeNegocio
+msgid "gvSIGbpd_BPDReglaDeNegocio_label"
+msgstr "Regla de Negocio"
+
+#. Default: "Regla que desarrolla Politicas de Negocio,  posiblemente aplicada en la ejecucion de Procesos de Negocio, o afectando la operacion de Unidaddes Organizacionales, Perfiles, Artefactos y Herramientas."
+#: BPDReglaDeNegocio
+msgid "gvSIGbpd_BPDReglaDeNegocio_help"
+msgstr "Regla que desarrolla Politicas de Negocio,  posiblemente aplicada en la ejecucion de Procesos de Negocio, o afectando la operacion de Unidaddes Organizacionales, Perfiles, Artefactos y Herramientas."
+
+#. Default: "Reglas de Negocio mas detalladas"
+#: BPDReglaDeNegocio coleccionesReglasDeNegocio
+msgid "gvSIGbpd_BPDReglaDeNegocio_contents_coleccionesReglasDeNegocio_label"
+msgstr "Reglas de Negocio mas detalladas"
+
+#. Default: "Colecciones de Reglas de Negocio mas detalladas que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion, definidas como un refinamiento de esta Regla de Negocio."
+#: BPDReglaDeNegocio coleccionesReglasDeNegocio
+msgid "gvSIGbpd_BPDReglaDeNegocio_contents_coleccionesReglasDeNegocio_help"
+msgstr "Colecciones de Reglas de Negocio mas detalladas que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion, definidas como un refinamiento de esta Regla de Negocio."
+
+#. Default: "Artefactos dirigidos"
+#: BPDReglaDeNegocio artefactosDirigidos
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_artefactosDirigidos_label"
+msgstr "Artefactos dirigidos"
+
+#. Default: "Artefactos cuya utilizacion esta prescrita o gobernada por la Regla de Negocio."
+#: BPDReglaDeNegocio artefactosDirigidos
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_artefactosDirigidos_help"
+msgstr "Artefactos cuya utilizacion esta prescrita o gobernada por la Regla de Negocio."
+
+#. Default: "Herramientas dirigidas"
+#: BPDReglaDeNegocio herramientasDirigidas
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_herramientasDirigidas_label"
+msgstr "Herramientas dirigidas"
+
+#. Default: "Herramientas cuya utilizacion esta dirigida por la Regla de Negocio."
+#: BPDReglaDeNegocio herramientasDirigidas
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_herramientasDirigidas_help"
+msgstr "Herramientas cuya utilizacion esta dirigida por la Regla de Negocio."
+
+#. Default: "Participantes dirigidos"
+#: BPDReglaDeNegocio participantesDirigidos
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_participantesDirigidos_label"
+msgstr "Participantes dirigidos"
+
+#. Default: "Perfiles y Unidades Organizacionales que aplican la Regla de Negocio durante su labor."
+#: BPDReglaDeNegocio participantesDirigidos
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_participantesDirigidos_help"
+msgstr "Perfiles y Unidades Organizacionales que aplican la Regla de Negocio durante su labor."
+
+#. Default: "Pasos dirigidos"
+#: BPDReglaDeNegocio pasosAplicandoLaRegla
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_pasosAplicandoLaRegla_label"
+msgstr "Pasos dirigidos"
+
+#. Default: "Pasos de Procesos de Negocio donde se aplica la Regla de Negocio"
+#: BPDReglaDeNegocio pasosAplicandoLaRegla
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_pasosAplicandoLaRegla_help"
+msgstr "Pasos de Procesos de Negocio donde se aplica la Regla de Negocio"
+
+#. Default: "Politicas de Negocio base"
+#: BPDReglaDeNegocio politicasDeNegocioBase
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_politicasDeNegocioBase_label"
+msgstr "Politicas de Negocio base"
+
+#. Default: "Politicas de Negocio de las que se deriva la Regla de Negocio"
+#: BPDReglaDeNegocio politicasDeNegocioBase
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_politicasDeNegocioBase_help"
+msgstr "Politicas de Negocio de las que se deriva la Regla de Negocio"
+
+#. Default: "Procesos de Negocio dirigidos"
+#: BPDReglaDeNegocio procesosDeNegocioDirigidos
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_procesosDeNegocioDirigidos_label"
+msgstr "Procesos de Negocio dirigidos"
+
+#. Default: "Procesos de Negocio que toman en cuenta la Regla de Negocio durante su ejecucion."
+#: BPDReglaDeNegocio procesosDeNegocioDirigidos
+msgid "gvSIGbpd_BPDReglaDeNegocio_rel_procesosDeNegocioDirigidos_help"
+msgstr "Procesos de Negocio que toman en cuenta la Regla de Negocio durante su ejecucion."
+
+#. Default: "Salida de Proceso de Negocio"
+#: BPDSalida
+msgid "gvSIGbpd_BPDSalida_label"
+msgstr "Salida de Proceso de Negocio"
+
+#. Default: "Informaciones que puede o debe producir el esfuerzo realizado en el Proceso de Negocio."
+#: BPDSalida
+msgid "gvSIGbpd_BPDSalida_help"
+msgstr "Informaciones que puede o debe producir el esfuerzo realizado en el Proceso de Negocio."
+
+#. Default: "Es Requerida"
+#: BPDSalida esRequerido
+msgid "gvSIGbpd_BPDSalida_attr_esRequerido_label"
+msgstr "Es Requerida"
+
+#. Default: "Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso."
+#: BPDSalida esRequerido
+msgid "gvSIGbpd_BPDSalida_attr_esRequerido_help"
+msgstr "Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso."
+
+#. Default: "Proceso de Negocio"
+#: BPDSalida tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDSalida_attr_tituloProcesoDeNegocio_label"
+msgstr "Proceso de Negocio"
+
+#. Default: "El titulo del Proceso de Negocio que contiene la Salida."
+#: BPDSalida tituloProcesoDeNegocio
+msgid "gvSIGbpd_BPDSalida_attr_tituloProcesoDeNegocio_help"
+msgstr "El titulo del Proceso de Negocio que contiene la Salida."
+
+#. Default: "Artefactos de Salida"
+#: BPDSalida titulosArtefactosDeSalida
+msgid "gvSIGbpd_BPDSalida_attr_titulosArtefactosDeSalida_label"
+msgstr "Artefactos de Salida"
+
+#. Default: "Artefactos producidos como Salida al finalizar exitosamente el Proceso de Negocio."
+#: BPDSalida titulosArtefactosDeSalida
+msgid "gvSIGbpd_BPDSalida_attr_titulosArtefactosDeSalida_help"
+msgstr "Artefactos producidos como Salida al finalizar exitosamente el Proceso de Negocio."
+
+#. Default: "Artefactos de Salida"
+#: BPDSalida artefactosDeSalida
+msgid "gvSIGbpd_BPDSalida_rel_artefactosDeSalida_label"
+msgstr "Artefactos de Salida"
+
+#. Default: "Artefactos producidos como Salida al finalizar exitosamente el Proceso de Negocio."
+#: BPDSalida artefactosDeSalida
+msgid "gvSIGbpd_BPDSalida_rel_artefactosDeSalida_help"
+msgstr "Artefactos producidos como Salida al finalizar exitosamente el Proceso de Negocio."
+
+#. Default: "Sub Proceso"
+#: BPDSubProceso
+msgid "gvSIGbpd_BPDSubProceso_label"
+msgstr "Sub Proceso"
+
+#. Default: "Un Proceso de Negocio definido aparte, se ejercita de principio a fin como un paso parte de otro Proceso de Negocio de mayor alcance."
+#: BPDSubProceso
+msgid "gvSIGbpd_BPDSubProceso_help"
+msgstr "Un Proceso de Negocio definido aparte, se ejercita de principio a fin como un paso parte de otro Proceso de Negocio de mayor alcance."
+
+#. Default: "Detalles del SubProceso"
+#: BPDSubProceso detallesPaso
+msgid "gvSIGbpd_BPDSubProceso_attr_detallesPaso_label"
+msgstr "Detalles del SubProceso"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDSubProceso detallesPaso
+msgid "gvSIGbpd_BPDSubProceso_attr_detallesPaso_help"
+msgstr "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+
+#. Default: "Proceso de Negocio usado"
+#: BPDSubProceso tituloProcesoUsado
+msgid "gvSIGbpd_BPDSubProceso_attr_tituloProcesoUsado_label"
+msgstr "Proceso de Negocio usado"
+
+#. Default: "Proceso de Negocio que se ejecuta como parte del Proceso de Negocio actual."
+#: BPDSubProceso tituloProcesoUsado
+msgid "gvSIGbpd_BPDSubProceso_attr_tituloProcesoUsado_help"
+msgstr "Proceso de Negocio que se ejecuta como parte del Proceso de Negocio actual."
+
+#. Default: "Proceso de Negocio usado"
+#: BPDSubProceso procesoUsado
+msgid "gvSIGbpd_BPDSubProceso_rel_procesoUsado_label"
+msgstr "Proceso de Negocio usado"
+
+#. Default: "Proceso de Negocio que se ejecuta como parte del Proceso de Negocio de mayor alcance."
+#: BPDSubProceso procesoUsado
+msgid "gvSIGbpd_BPDSubProceso_rel_procesoUsado_help"
+msgstr "Proceso de Negocio que se ejecuta como parte del Proceso de Negocio de mayor alcance."
+
+#. Default: "Unidad Organizacional"
+#: BPDUnidadOrganizacional
+msgid "gvSIGbpd_BPDUnidadOrganizacional_label"
+msgstr "Unidad Organizacional"
+
+#. Default: "Parte de la estructura jerarquica de descomposicion de la Organizacion en unidades."
+#: BPDUnidadOrganizacional
+msgid "gvSIGbpd_BPDUnidadOrganizacional_help"
+msgstr "Parte de la estructura jerarquica de descomposicion de la Organizacion en unidades."
+
+#. Default: "Perfiles (colecciones)"
+#: BPDUnidadOrganizacional coleccionesPerfiles
+msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesPerfiles_label"
+msgstr "Perfiles (colecciones)"
+
+#. Default: "Colecciones de Perfiles tipificando las clases de individuos participantes en los Procesos de Negocio."
+#: BPDUnidadOrganizacional coleccionesPerfiles
+msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesPerfiles_help"
+msgstr "Colecciones de Perfiles tipificando las clases de individuos participantes en los Procesos de Negocio."
+
+#. Default: "Unidades Organizacionales (colecciones)"
+#: BPDUnidadOrganizacional coleccionesUnidadesOrganizacionales
+msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesUnidadesOrganizacionales_label"
+msgstr "Unidades Organizacionales (colecciones)"
+
+#. Default: "Colecciones de UnidadesOrganizacionales mostrando la descomposicion organica en unidades, departamentos, secciones, etc. de orden inferior participantes en los Procesos de Negocio."
+#: BPDUnidadOrganizacional coleccionesUnidadesOrganizacionales
+msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesUnidadesOrganizacionales_help"
+msgstr "Colecciones de UnidadesOrganizacionales mostrando la descomposicion organica en unidades, departamentos, secciones, etc. de orden inferior participantes en los Procesos de Negocio."
+
+
+
+
+
+
+
+
+#. Default: "Adjuntos"
+#: ProcesoDeNegocio.py
+msgid "gvSIGbpd_adjuntos_section_msgid"
+msgstr  "Adjuntos"
+
+
+
+
+#. Default: "Anexos"
+#: ProcesoDeNegocio.py
+msgid "gvSIGbpd_anexos_section_msgid"
+msgstr  "Anexos"
+
+
+
+#. Default: "Documentacion anexa que complementa la presente definicion, con contenidos adicionales como paginas, imagenes, archivos, enlaces y referencias a otros elementos Plone."
+#: ProcesoDeNegocio.py
+msgid "gvSIGbpd_adjuntos_section_description_msgid"
+msgstr  "Documentacion anexa que complementa la presente definicion, con contenidos adicionales como paginas, imagenes, archivos, enlaces y referencias a otros elementos Plone."
+
+
+
+
+
+
+#. Default: "Conceptos estandar del"
+#: Footer_view_gvSIGbpd.py
+msgid "gvSIGbpd_footer_phrase1_with_parameters"
+msgstr  "Conceptos estandar del "
+
+
+
+#. Default: "para Estrategia, Reglas y Procesos de Negocio"
+#: Footer_view_gvSIGbpd.py
+msgid "gvSIGbpd_footer_phrase2_with_parameters"
+msgstr  "para Estrategia, Reglas y Procesos de Negocio"
+
+
+#. Default: "Aplicacion desarrollada segun"
+#: Footer_view_gvSIGbpd.py
+msgid "gvSIGbpd_footer_phrase_mda1_with_parameters"
+msgstr  "desarrollo segun"
