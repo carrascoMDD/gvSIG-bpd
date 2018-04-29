@@ -54,12 +54,13 @@ schema = Schema((
         label2='Tools',
         additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
         label='Herramientas',
+        represents_aggregation=True,
         description2='Tools applied in the Organisation to handle certain Artefacts, and assist in the execution of Business Process Steps.',
         multiValued=1,
         owner_class_name="BPDColeccionHerramientas",
         expression="context.objectValues(['BPDHerramienta'])",
         computed_types=['BPDHerramienta'],
-        represents_aggregation=True,
+        non_framework_elements=False,
         description='Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio.'
     ),
 
@@ -111,7 +112,7 @@ class BPDColeccionHerramientas(OrderedBaseFolder, BPDColeccionArquetipos):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -125,10 +126,19 @@ class BPDColeccionHerramientas(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -143,7 +153,7 @@ class BPDColeccionHerramientas(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

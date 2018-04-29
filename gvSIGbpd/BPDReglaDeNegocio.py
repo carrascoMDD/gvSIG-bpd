@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -55,15 +55,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDReglaDeNegocio_contents_coleccionesReglasDeNegocio_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Reglas de Negocio mas detalladas que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion, definidas como un refinamiento de esta Regla de Negocio.',
+        contains_collections=True,
         label2='More specific Business Rules',
         label='Reglas de Negocio mas detalladas',
+        represents_aggregation=True,
         description2='Collections of Subordinated Business Rules derived from Business Policies, and driving the Business Process in the Organisation, defined as a refinement of this Business Rule.',
         multiValued=1,
         owner_class_name="BPDReglaDeNegocio",
         expression="context.objectValues(['BPDColeccionReglasDeNegocio'])",
         computed_types=['BPDColeccionReglasDeNegocio'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Reglas de Negocio mas detalladas que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion, definidas como un refinamiento de esta Regla de Negocio.'
     ),
 
     RelationField(
@@ -292,7 +294,7 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -306,10 +308,19 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -324,7 +335,7 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

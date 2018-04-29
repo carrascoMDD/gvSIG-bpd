@@ -1,0 +1,167 @@
+# Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: gvSIGbpd\n"
+"POT-Creation-Date: Mon Sep 21 05:48:15 2009\n"
+"PO-Revision-Date: Mon Sep 21 05:48:15 2009\n"
+"Last-Translator: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
+"Language-Team: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: gvSIGbpd\n"
+"X-Is-Fallback-For: en-au en-bz en-ca en-ie en-jm en-nz en-ph en-za en-tt en-gb en-us en-zw\n"
+
+#. Default: "Artefacto"
+#: BPDArtefacto
+msgid "Artefacto"
+msgstr "Artefact"
+
+#. Default: "Coleccion de Artefactos"
+#: BPDColeccionArtefactos
+msgid "Coleccion de Artefactos"
+msgstr "Artefacts Collection"
+
+#. Default: "Coleccion de Entradas"
+#: BPDColeccionEntradas
+msgid "Coleccion de Entradas"
+msgstr "Inputs collection"
+
+#. Default: "Coleccion de Herramientas"
+#: BPDColeccionHerramientas
+msgid "Coleccion de Herramientas"
+msgstr "Tools collection"
+
+#. Default: "Coleccion de Pasos"
+#: BPDColeccionPasos
+msgid "Coleccion de Pasos"
+msgstr "Steps collection"
+
+#. Default: "Coleccion de Perfiles"
+#: BPDColeccionPerfiles
+msgid "Coleccion de Perfiles"
+msgstr "Participant Profiles collection"
+
+#. Default: "Coleccion de Politicas de Negocio"
+#: BPDColeccionPoliticasDeNegocio
+msgid "Coleccion de Politicas de Negocio"
+msgstr "Business Policies collection"
+
+#. Default: "Coleccion de Procesos de Negocio"
+#: BPDColeccionProcesosDeNegocio
+msgid "Coleccion de Procesos de Negocio"
+msgstr "Business Process collection"
+
+#. Default: "Coleccion de Reglas de Negocio"
+#: BPDColeccionReglasDeNegocio
+msgid "Coleccion de Reglas de Negocio"
+msgstr "Business Rules collection"
+
+#. Default: "Coleccion de Salidas"
+#: BPDColeccionSalidas
+msgid "Coleccion de Salidas"
+msgstr "Outputs collection"
+
+#. Default: "Coleccion de Unidades Organizacionales"
+#: BPDColeccionUnidadesOrganizacionales
+msgid "Coleccion de Unidades Organizacionales"
+msgstr "Organisational Units Collection"
+
+#. Default: "Decision"
+#: BPDDecision
+msgid "Decision"
+msgstr "Decision"
+
+#. Default: "Entrada"
+#: BPDEntrada
+msgid "Entrada"
+msgstr "Input"
+
+#. Default: "Envio"
+#: BPDEnvio
+msgid "Envio"
+msgstr "Send"
+
+#. Default: "Exito Final"
+#: BPDExitoFinal
+msgid "Exito Final"
+msgstr "Success"
+
+#. Default: "Fracaso Final"
+#: BPDFracasoFinal
+msgid "Fracaso Final"
+msgstr "Failure"
+
+#. Default: "Herramienta"
+#: BPDHerramienta
+msgid "Herramienta"
+msgstr "Tool"
+
+#. Default: "Organizacion"
+#: BPDOrganizacion
+msgid "Organizacion"
+msgstr "Organisation"
+
+#. Default: "BPDPasoGestorExcepciones"
+#: BPDPasoGestorExcepciones
+msgid "BPDPasoGestorExcepciones"
+msgstr "BPDPasoGestorExcepciones"
+
+#. Default: "Paso Simple"
+#: BPDPasoSimple
+msgid "Paso Simple"
+msgstr "Simple Step"
+
+#. Default: "Perfil"
+#: BPDPerfil
+msgid "Perfil"
+msgstr "Profile"
+
+#. Default: "Plazo de Tiempo"
+#: BPDPlazo
+msgid "Plazo de Tiempo"
+msgstr "Deadline"
+
+#. Default: "Politica de Negocio"
+#: BPDPoliticaDeNegocio
+msgid "Politica de Negocio"
+msgstr "Business Policy"
+
+#. Default: "Proceso de Negocio"
+#: BPDProcesoDeNegocioSimple
+msgid "Proceso de Negocio"
+msgstr "Business Process"
+
+#. Default: "Recepcion"
+#: BPDRecepcion
+msgid "Recepcion"
+msgstr "Receive"
+
+#. Default: "Referencia Cualificada"
+#: BPDReferenciaCualificada
+msgid "Referencia Cualificada"
+msgstr "Qualified Reference"
+
+#. Default: "Regla de Negocio"
+#: BPDReglaDeNegocio
+msgid "Regla de Negocio"
+msgstr "Business Rule"
+
+#. Default: "Salida de Proceso de Negocio"
+#: BPDSalida
+msgid "Salida de Proceso de Negocio"
+msgstr "business process Output"
+
+#. Default: "Sub Proceso"
+#: BPDSubProceso
+msgid "Sub Proceso"
+msgstr "Sub Process"
+
+#. Default: "Unidad Organizacional"
+#: BPDUnidadOrganizacional
+msgid "Unidad Organizacional"
+msgstr "Organisational Unit"

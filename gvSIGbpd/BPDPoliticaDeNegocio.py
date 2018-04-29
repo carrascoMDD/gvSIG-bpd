@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -55,15 +55,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDPoliticaDeNegocio_contents_coleccionesPoliticasDeNegocio_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Politicas de Negocio subordinadas o mas detalladas, que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio, definidas en el contexto de esta Politica de Negocio.',
+        contains_collections=True,
         label2='More specific Business Policies',
         label='Politicas de Negocio mas detalladas',
+        represents_aggregation=True,
         description2='Collections of Subordinated Business Policies  governing the Organisation and its Business Processes, and constitute the basis for the Business Rules, defined in the context of this Business Policy.',
         multiValued=1,
         owner_class_name="BPDPoliticaDeNegocio",
         expression="context.objectValues(['BPDColeccionPoliticasDeNegocio'])",
         computed_types=['BPDColeccionPoliticasDeNegocio'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Politicas de Negocio subordinadas o mas detalladas, que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio, definidas en el contexto de esta Politica de Negocio.'
     ),
 
     RelationField(
@@ -268,7 +270,7 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -282,10 +284,19 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -300,7 +311,7 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

@@ -54,12 +54,13 @@ schema = Schema((
         label2='Business Policies',
         additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
         label='Politicas de Negocio',
+        represents_aggregation=True,
         description2='Business Policies  governing the Organisation and its Business Processes, and constitute the basis for the Business Rules.',
         multiValued=1,
         owner_class_name="BPDColeccionPoliticasDeNegocio",
         expression="context.objectValues(['BPDPoliticaDeNegocio'])",
         computed_types=['BPDPoliticaDeNegocio'],
-        represents_aggregation=True,
+        non_framework_elements=False,
         description='Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio.'
     ),
 
@@ -111,7 +112,7 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -125,10 +126,19 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -143,7 +153,7 @@ class BPDColeccionPoliticasDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

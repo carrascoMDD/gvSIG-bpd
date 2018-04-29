@@ -54,12 +54,13 @@ schema = Schema((
         label2='Steps',
         additional_columns=['titulosPasosAnteriores', 'titulosPasosSiguientes', 'titulosPasosSiguientesEnCasoExcepcion', 'detallesPaso'],
         label='Pasos',
+        represents_aggregation=True,
         description2='Individual actions during the course of the Business Process.',
         multiValued=1,
         owner_class_name="BPDColeccionPasos",
         expression="context.objectValues(['BPDDecision', 'BPDEnvio', 'BPDExitoFinal', 'BPDFracasoFinal', 'BPDPasoSimple', 'BPDPlazo', 'BPDRecepcion', 'BPDSubProceso'])",
         computed_types=['BPDDecision', 'BPDEnvio', 'BPDExitoFinal', 'BPDFracasoFinal', 'BPDPasoSimple', 'BPDPlazo', 'BPDRecepcion', 'BPDSubProceso'],
-        represents_aggregation=True,
+        non_framework_elements=False,
         description='Acciones individuales en que transcurre la ejecucion del Proceso de Negocio.'
     ),
 
@@ -111,7 +112,7 @@ class BPDColeccionPasos(OrderedBaseFolder, BPDColeccionArquetipos):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -125,10 +126,19 @@ class BPDColeccionPasos(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -143,7 +153,7 @@ class BPDColeccionPasos(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

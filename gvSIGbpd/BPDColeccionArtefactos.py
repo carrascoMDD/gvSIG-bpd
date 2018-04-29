@@ -54,12 +54,13 @@ schema = Schema((
         label2='Artefacts',
         additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
         label='Artefactos',
+        represents_aggregation=True,
         description2='Artefacts produced, consumed, consulted, edited, or otherwise object of the Organisation effort.',
         multiValued=1,
         owner_class_name="BPDColeccionArtefactos",
         expression="context.objectValues(['BPDArtefacto'])",
         computed_types=['BPDArtefacto'],
-        represents_aggregation=True,
+        non_framework_elements=False,
         description='Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion.'
     ),
 
@@ -111,7 +112,7 @@ class BPDColeccionArtefactos(OrderedBaseFolder, BPDColeccionArquetipos):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -125,10 +126,19 @@ class BPDColeccionArtefactos(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -143,7 +153,7 @@ class BPDColeccionArtefactos(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

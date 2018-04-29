@@ -42,10 +42,10 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Acquisition  import aq_inner, aq_parent
+from Products.CMFCore.utils  import getToolByName
 from Products.CMFCore.utils import getToolByName
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
-from Products.CMFCore.utils  import getToolByName
+from Acquisition  import aq_inner, aq_parent
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -295,16 +295,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDElemento_contents_archivos_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Elementos Plone convencionales conteniendo un Fichero de contenido arbitrario.',
+        contains_collections=False,
         label2='Files',
         label='Ficheros',
+        represents_aggregation=True,
         description2='Conventional Plone elements containing a File of arbitrary contents.',
         multiValued=1,
         owner_class_name="BPDElemento",
-        expression="context.objectValues(['File'])",
-        computed_types=['File'],
-        represents_aggregation=True,
-        contains_collections=False
+        expression="context.objectValues(['ATFile'])",
+        computed_types=['ATFile'],
+        non_framework_elements=True,
+        description='Elementos Plone convencionales conteniendo un Fichero de contenido arbitrario.'
     ),
 
     StringField(
@@ -336,7 +337,8 @@ schema = Schema((
         containment="Not Specified",
         position="2",
         owner_class_name="BPDElemento",
-        exclude_from_views="[ 'Textual', 'Tabular',  ]"
+        exclude_from_views="[ 'Textual', 'Tabular',  ]",
+        exclude_from_copyconfig="True"
     ),
 
     ComputedField(
@@ -350,16 +352,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDElemento_contents_documentos_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Elementos del tipo documento convencional en Plone.',
+        contains_collections=False,
         label2='Documents',
         label='Documentos',
+        represents_aggregation=True,
         description2='Elements of the Plone Document type.',
         multiValued=1,
         owner_class_name="BPDElemento",
-        expression="context.objectValues(['Document'])",
-        computed_types=['Document'],
-        represents_aggregation=True,
-        contains_collections=False
+        expression="context.objectValues(['ATDocument'])",
+        computed_types=['ATDocument'],
+        non_framework_elements=True,
+        description='Elementos del tipo documento convencional en Plone.'
     ),
 
     ComputedField(
@@ -373,16 +376,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDElemento_contents_enlaces_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Elementos Plone conteniendo una referencia a una pagina Web (URLs como http://www.gvSIG.org)',
+        contains_collections=False,
         label2='Link',
         label='Enlace',
+        represents_aggregation=True,
         description2='Plone Elements containing a reference to a Web page (URLs like http://www.gvSIG.org)',
         multiValued=1,
         owner_class_name="BPDElemento",
-        expression="context.objectValues(['Link'])",
-        computed_types=['Link'],
-        represents_aggregation=True,
-        contains_collections=False
+        expression="context.objectValues(['ATLink'])",
+        computed_types=['ATLink'],
+        non_framework_elements=True,
+        description='Elementos Plone conteniendo una referencia a una pagina Web (URLs como http://www.gvSIG.org)'
     ),
 
     ComputedField(
@@ -396,16 +400,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDElemento_contents_imagenes_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Elementos Plone convencionales conteniendo una Imagen.',
+        contains_collections=False,
         label2='Images',
         label='Imagenes',
+        represents_aggregation=True,
         description2='Conventional Plone elements containing an Image.',
         multiValued=1,
         owner_class_name="BPDElemento",
-        expression="context.objectValues(['Image'])",
-        computed_types=['Image'],
-        represents_aggregation=True,
-        contains_collections=False
+        expression="context.objectValues(['ATImage'])",
+        computed_types=['ATImage'],
+        non_framework_elements=True,
+        description='Elementos Plone convencionales conteniendo una Imagen.'
     ),
 
     ComputedField(
@@ -419,16 +424,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDElemento_contents_noticias_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Elementos de Plone conteniendo una Noticia.',
+        contains_collections=False,
         label2='News Items',
         label='Noticias',
+        represents_aggregation=True,
         description2='Conventional Plone elements containing a news posting.',
         multiValued=1,
         owner_class_name="BPDElemento",
-        expression="context.objectValues(['News_Item'])",
-        computed_types=['News_Item'],
-        represents_aggregation=True,
-        contains_collections=False
+        expression="context.objectValues(['ATNewsItem'])",
+        computed_types=['ATNewsItem'],
+        non_framework_elements=True,
+        description='Elementos de Plone conteniendo una Noticia.'
     ),
 
     ComputedField(
@@ -438,21 +444,23 @@ schema = Schema((
             label_msgid='gvSIGbpd_BPDElemento_attr_pathDelRaiz_label',
             i18n_domain='gvSIGbpd',
         ),
-        scale="0",
         duplicates="0",
-        expression="context.fPathDelRaiz()",
         ea_localid="253",
         derived="0",
         precision=0,
         collection="false",
         styleex="volatile=0;",
+        ea_guid="{941F79AF-536C-4d2b-B35B-845573440804}",
+        scale="0",
+        expression="context.fPathDelRaiz()",
         length="0",
         exclude_from_traversalconfig="True",
         containment="Not Specified",
-        ea_guid="{941F79AF-536C-4d2b-B35B-845573440804}",
         position="3",
         owner_class_name="BPDElemento",
-        exclude_from_views="[ 'Textual', 'Tabular',  ]"
+        exclude_from_views="[ 'Textual', 'Tabular',  ]",
+        exclude_from_exportconfig="True",
+        exclude_from_copyconfig="True"
     ),
 
     TextField(
@@ -514,7 +522,8 @@ schema = Schema((
         containment="Not Specified",
         position="1",
         owner_class_name="BPDElemento",
-        exclude_from_views="[ 'Textual', 'Tabular',  ]"
+        exclude_from_views="[ 'Textual', 'Tabular',  ]",
+        exclude_from_copyconfig="True"
     ),
 
 ),
@@ -557,6 +566,13 @@ class BPDElemento(BPDElemento_CopyConfig, BPDElemento_Meta, BPDElemento_ExportCo
         """
         
         return getToolByName( self, 'ModelDDvlPlone_tool').fCookedBodyForElement( None, self, stx_level, setlevel, None)
+
+    security.declarePublic('fAllowImport')
+    def fAllowImport(self):
+        """
+        """
+        
+        return True
 
     security.declarePublic('fAllowPaste')
     def fAllowPaste(self):

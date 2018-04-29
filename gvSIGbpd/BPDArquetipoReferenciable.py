@@ -112,16 +112,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDArquetipoReferenciable_contents_referenciasCualificadas_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Referencias a otros elementos, cualificadas con un titulo y una descripcion.',
+        contains_collections=False,
         label2='Qualified References',
         label='Referencias Cualificadas',
+        represents_aggregation=True,
         description2='References to other elements, qualified with a title and a description.',
         multiValued=1,
         owner_class_name="BPDArquetipoReferenciable",
         expression="context.objectValues(['BPDReferenciaCualificada'])",
         computed_types=['BPDReferenciaCualificada'],
-        represents_aggregation=True,
-        contains_collections=False
+        non_framework_elements=False,
+        description='Referencias a otros elementos, cualificadas con un titulo y una descripcion.'
     ),
 
     ComputedField(
@@ -217,7 +218,7 @@ class BPDArquetipoReferenciable(BPDArquetipo):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -231,10 +232,19 @@ class BPDArquetipoReferenciable(BPDArquetipo):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -249,7 +259,7 @@ class BPDArquetipoReferenciable(BPDArquetipo):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

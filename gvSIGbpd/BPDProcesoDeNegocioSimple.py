@@ -53,15 +53,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesEntradas_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio.',
+        contains_collections=True,
         label2='Inputs (collections)',
         label='Entradas (colecciones)',
+        represents_aggregation=True,
         description2='Collections of Informations that must or may be available to start the Business Process.',
         multiValued=1,
         owner_class_name="BPDProcesoDeNegocioSimple",
         expression="context.objectValues(['BPDColeccionEntradas'])",
         computed_types=['BPDColeccionEntradas'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio.'
     ),
 
     ComputedField(
@@ -75,15 +77,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesSalidas_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio.',
+        contains_collections=True,
         label2='Outputs (collections)',
         label='Salidas (colecciones)',
+        represents_aggregation=True,
         description2='Collections of Informations that may or will be made available upon successful completion of the Business Process.',
         multiValued=1,
         owner_class_name="BPDProcesoDeNegocioSimple",
         expression="context.objectValues(['BPDColeccionSalidas'])",
         computed_types=['BPDColeccionSalidas'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Informaciones que pueden estar o  estaran disponibles cuando haya concluido exitosamente el Proceso de Negocio.'
     ),
 
     ComputedField(
@@ -97,15 +101,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesPasos_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Acciones individuales en que transcurre la ejecucion del Proceso de Negocio.',
+        contains_collections=True,
         label2='Steps (collections)',
         label='Pasos (colecciones)',
+        represents_aggregation=True,
         description2='Collections of individual actions during the course of the Business Process.',
         multiValued=1,
         owner_class_name="BPDProcesoDeNegocioSimple",
         expression="context.objectValues(['BPDColeccionPasos'])",
         computed_types=['BPDColeccionPasos'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Acciones individuales en que transcurre la ejecucion del Proceso de Negocio.'
     ),
 
 ),
@@ -156,7 +162,7 @@ class BPDProcesoDeNegocioSimple(OrderedBaseFolder, BPDProcesoDeNegocio):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -170,10 +176,19 @@ class BPDProcesoDeNegocioSimple(OrderedBaseFolder, BPDProcesoDeNegocio):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -188,7 +203,7 @@ class BPDProcesoDeNegocioSimple(OrderedBaseFolder, BPDProcesoDeNegocio):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

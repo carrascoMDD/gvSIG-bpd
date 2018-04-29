@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -185,7 +185,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -199,10 +199,19 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -217,7 +226,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

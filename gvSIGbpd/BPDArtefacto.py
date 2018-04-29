@@ -54,15 +54,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDArtefacto_contents_coleccionesArtefactos_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Artefactos de orden inferior a este artefacto, que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion, definidos en el contexto de este Artefacto.',
+        contains_collections=True,
         label2='Subordinated Artefacts',
         label='Artefactos subordinados',
+        represents_aggregation=True,
         description2='Collections of Lower level Artefacts produced, consumed, consulted, edited, or otherwise object of the Organisation effort, and defined within the context of this Artefact.',
         multiValued=1,
         owner_class_name="BPDArtefacto",
         expression="context.objectValues(['BPDColeccionArtefactos'])",
         computed_types=['BPDColeccionArtefactos'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Artefactos de orden inferior a este artefacto, que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion, definidos en el contexto de este Artefacto.'
     ),
 
     RelationField(
@@ -349,7 +351,7 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -363,10 +365,19 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -381,7 +392,7 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

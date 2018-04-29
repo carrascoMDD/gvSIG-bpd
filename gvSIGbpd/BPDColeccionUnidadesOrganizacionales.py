@@ -54,12 +54,13 @@ schema = Schema((
         label2='Organisational Units',
         additional_columns=['abreviatura', 'responsabilidadesClave'],
         label='Unidades Organizacionales',
+        represents_aggregation=True,
         description2='Organisational Units corresponding to the Organisation decomposition into units, departments, sections, ... at a lower level, participants in the Business Processes.',
         multiValued=1,
         owner_class_name="BPDColeccionUnidadesOrganizacionales",
         expression="context.objectValues(['BPDOrganizacion', 'BPDUnidadOrganizacional'])",
         computed_types=['BPDOrganizacion', 'BPDUnidadOrganizacional'],
-        represents_aggregation=True,
+        non_framework_elements=False,
         description='UnidadesOrganizacionales mostrando la descomposicion organica en unidades, departamentos, secciones, etc. de orden inferior participantes en los Procesos de Negocio.'
     ),
 
@@ -111,7 +112,7 @@ class BPDColeccionUnidadesOrganizacionales(OrderedBaseFolder, BPDColeccionArquet
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -125,10 +126,19 @@ class BPDColeccionUnidadesOrganizacionales(OrderedBaseFolder, BPDColeccionArquet
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -143,7 +153,7 @@ class BPDColeccionUnidadesOrganizacionales(OrderedBaseFolder, BPDColeccionArquet
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

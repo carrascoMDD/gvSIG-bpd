@@ -134,9 +134,10 @@ class BPDElemento_Operaciones:
         if not unRaiz:
             return ''
        
-        unPathString = '/'.join( unRaiz.getPhysicalPath( ))
+        unPathString = unRaiz.fPhysicalPathString( )
         return unPathString
         
+    
     #security.declarePrivate('fPathDelRaiz')
     #def fPathDelRaiz(self):
         #unRaiz = self.getRaiz()
@@ -148,21 +149,20 @@ class BPDElemento_Operaciones:
 
 
 
-
+    # ACV 20090913 Return the standard path, not the variation we were using before, without the root site name
+    # Remove the parameter
     security.declarePrivate('fPhysicalPathString')
-    def fPhysicalPathString(self, theElemento):
-        if not theElemento:
-            return ''
-        
-        unPhysicalPath = theElemento.getPhysicalPath()
+    def fPhysicalPathString(self, ):
+        unPhysicalPath = self.getPhysicalPath()
         if not unPhysicalPath:
             return ''
      
-        if unPhysicalPath[ 0] == '':
-            unPhysicalPath = unPhysicalPath[1:]
+        #if unPhysicalPath[ 0] == '':
+            #unPhysicalPath = unPhysicalPath[1:]
         
-        unFoldersPath = unPhysicalPath[1:]
-        unPathString = '/' + '/'.join( unFoldersPath)
+        #unFoldersPath = unPhysicalPath[1:]
+        #unPathString = '/' + '/'.join( unFoldersPath)
+        unPathString = '/'.join( unPhysicalPath)
         return unPathString
 
 

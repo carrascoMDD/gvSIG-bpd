@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# File: BPDElemento_ExportConfig.py
+# File: BPDElemento_CopyConfig.py
 #
 # Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
@@ -40,15 +40,15 @@ from Products.gvSIGbpd.config import *
 
 
 
-class BPDElemento_ExportConfig:            
+class BPDElemento_CopyConfig:            
 
     """
     """
     security = ClassSecurityInfo()
     
     
-    security.declarePublic('exportConfig')
-    def exportConfig( self):
+    security.declarePublic('copyConfig')
+    def copyConfig( self):
         return [
     {   'portal_types': [ 'BPDArtefacto', ],
         'attrs':        [
@@ -64,9 +64,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'codigo',
                 'type': 'string',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'estado',
                 'type': 'selection',
             },
@@ -80,9 +77,6 @@ class BPDElemento_ExportConfig:
                 'type': 'selection',
             },
             {   'name': 'version',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
                 'type': 'string',
             },
         ],
@@ -168,7 +162,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -184,7 +178,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -194,7 +188,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -204,7 +198,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -214,7 +208,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -224,7 +218,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -245,17 +239,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -265,7 +253,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'artefactos',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDArtefacto', ],
                         'reuse_config': 'Default',
@@ -274,7 +262,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -284,7 +272,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -294,7 +282,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -304,7 +292,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -325,17 +313,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -345,7 +327,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -355,7 +337,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -365,7 +347,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'entradas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDEntrada', ],
                         'reuse_config': 'Default',
@@ -374,7 +356,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -384,7 +366,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -405,17 +387,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -425,7 +401,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -435,7 +411,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -445,7 +421,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'herramientas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDHerramienta', ],
                         'reuse_config': 'Default',
@@ -454,7 +430,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -464,7 +440,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -485,17 +461,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -505,7 +475,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -515,7 +485,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -525,7 +495,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -535,7 +505,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -545,7 +515,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'pasos',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDDecision', 'BPDEnvio', 'BPDExitoFinal', 'BPDFracasoFinal', 'BPDPasoSimple', 'BPDPlazo', 'BPDRecepcion', 'BPDSubProceso', ],
                         'reuse_config': 'Default',
@@ -565,17 +535,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -585,7 +549,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -595,7 +559,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -605,7 +569,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -615,7 +579,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -625,7 +589,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'perfiles',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDPerfil', ],
                         'reuse_config': 'Default',
@@ -645,17 +609,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -665,7 +623,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -675,7 +633,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -685,7 +643,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -695,7 +653,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -705,7 +663,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'politicasDeNegocio',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDPoliticaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -725,17 +683,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -745,7 +697,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -755,7 +707,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -765,7 +717,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -775,7 +727,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -785,7 +737,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'procedimientos',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDProcesoDeNegocioSimple', ],
                         'reuse_config': 'Default',
@@ -805,17 +757,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -825,7 +771,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -835,7 +781,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -845,7 +791,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -855,7 +801,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -865,7 +811,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'reglasDeNegocio',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReglaDeNegocio', ],
                         'reuse_config': 'Default',
@@ -885,17 +831,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -905,7 +845,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -915,7 +855,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -925,7 +865,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -935,7 +875,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -945,7 +885,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'salidas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDSalida', ],
                         'reuse_config': 'Default',
@@ -965,17 +905,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -985,7 +919,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -995,7 +929,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -1005,7 +939,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -1015,7 +949,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -1025,7 +959,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'unidadesOrganizacionales',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDOrganizacion', 'BPDUnidadOrganizacional', ],
                         'reuse_config': 'Default',
@@ -1045,17 +979,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'condicionSiguientePaso',
                 'type': 'Text',
             },
             {   'name': 'esInicial',
                 'type': 'Boolean',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -1136,7 +1064,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -1152,7 +1080,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -1162,7 +1090,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -1172,7 +1100,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -1182,7 +1110,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -1192,7 +1120,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -1213,9 +1141,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'esRequerida',
                 'type': 'Boolean',
             },
@@ -1224,9 +1149,6 @@ class BPDElemento_ExportConfig:
             },
             {   'name': 'valorDefecto',
                 'type': 'Text',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -1253,7 +1175,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -1269,7 +1191,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -1279,7 +1201,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -1289,7 +1211,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -1299,7 +1221,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -1309,7 +1231,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -1330,14 +1252,8 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'esInicial',
                 'type': 'Boolean',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -1432,7 +1348,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -1448,7 +1364,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -1458,7 +1374,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -1468,7 +1384,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -1478,7 +1394,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -1488,7 +1404,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -1509,12 +1425,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'relation_name':    'pasosAnteriores',
@@ -1563,7 +1473,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -1579,7 +1489,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -1589,7 +1499,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -1599,7 +1509,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -1609,7 +1519,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -1619,7 +1529,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -1640,12 +1550,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'relation_name':    'pasosAnteriores',
@@ -1694,7 +1598,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -1710,7 +1614,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -1720,7 +1624,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -1730,7 +1634,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -1740,7 +1644,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -1750,7 +1654,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -1774,9 +1678,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'codigo',
                 'type': 'string',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'estado',
                 'type': 'selection',
             },
@@ -1790,9 +1691,6 @@ class BPDElemento_ExportConfig:
                 'type': 'selection',
             },
             {   'name': 'version',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
                 'type': 'string',
             },
         ],
@@ -1857,7 +1755,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -1873,7 +1771,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -1883,7 +1781,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -1893,7 +1791,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -1903,7 +1801,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -1913,7 +1811,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -1937,14 +1835,8 @@ class BPDElemento_ExportConfig:
             {   'name': 'abreviatura',
                 'type': 'string',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'responsabilidadesClave',
                 'type': 'Text',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -2090,7 +1982,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -2106,7 +1998,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -2116,7 +2008,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -2126,7 +2018,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -2136,7 +2028,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -2146,7 +2038,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -2190,14 +2082,8 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'esInicial',
                 'type': 'Boolean',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -2278,7 +2164,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -2294,7 +2180,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -2304,7 +2190,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -2314,7 +2200,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -2324,7 +2210,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -2334,7 +2220,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -2358,9 +2244,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'abreviatura',
                 'type': 'string',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'conocimientosPoseidos',
                 'type': 'Text',
             },
@@ -2372,9 +2255,6 @@ class BPDElemento_ExportConfig:
             },
             {   'name': 'seleccionDePersonal',
                 'type': 'Text',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -2457,7 +2337,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -2473,7 +2353,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -2483,7 +2363,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -2493,7 +2373,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -2503,7 +2383,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -2513,7 +2393,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -2537,9 +2417,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'agotarPlazo',
                 'type': 'Boolean',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'esInicial',
                 'type': 'Boolean',
             },
@@ -2548,9 +2425,6 @@ class BPDElemento_ExportConfig:
             },
             {   'name': 'unidadDeTiempo',
                 'type': 'selection',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -2624,7 +2498,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -2640,7 +2514,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -2650,7 +2524,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -2660,7 +2534,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -2670,7 +2544,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -2680,7 +2554,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -2704,9 +2578,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'codigo',
                 'type': 'string',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'estado',
                 'type': 'selection',
             },
@@ -2720,9 +2591,6 @@ class BPDElemento_ExportConfig:
                 'type': 'selection',
             },
             {   'name': 'version',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
                 'type': 'string',
             },
         ],
@@ -2773,7 +2641,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -2783,7 +2651,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -2793,7 +2661,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -2803,7 +2671,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -2813,7 +2681,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -2823,7 +2691,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -2867,9 +2735,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'codigo',
                 'type': 'string',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'esContinuo',
                 'type': 'Boolean',
             },
@@ -2907,9 +2772,6 @@ class BPDElemento_ExportConfig:
                 'type': 'Text',
             },
             {   'name': 'version',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
                 'type': 'string',
             },
         ],
@@ -2987,7 +2849,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -2997,7 +2859,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -3007,7 +2869,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -3017,7 +2879,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -3027,7 +2889,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -3037,7 +2899,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -3078,14 +2940,8 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'esInicial',
                 'type': 'Boolean',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -3180,7 +3036,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -3196,7 +3052,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -3206,7 +3062,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -3216,7 +3072,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -3226,7 +3082,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -3236,7 +3092,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -3257,17 +3113,11 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
-            },
         ],
         'traversals':   [
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -3277,7 +3127,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -3287,7 +3137,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -3297,7 +3147,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -3307,7 +3157,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -3338,9 +3188,6 @@ class BPDElemento_ExportConfig:
             {   'name': 'codigo',
                 'type': 'string',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'estado',
                 'type': 'selection',
             },
@@ -3354,9 +3201,6 @@ class BPDElemento_ExportConfig:
                 'type': 'selection',
             },
             {   'name': 'version',
-                'type': 'string',
-            },
-            {   'name': 'versionInterna',
                 'type': 'string',
             },
         ],
@@ -3414,7 +3258,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -3424,7 +3268,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -3434,7 +3278,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -3444,7 +3288,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -3454,7 +3298,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -3464,7 +3308,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -3505,14 +3349,8 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'esRequerido',
                 'type': 'Boolean',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -3539,7 +3377,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -3555,7 +3393,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -3565,7 +3403,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -3575,7 +3413,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -3585,7 +3423,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -3595,7 +3433,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -3616,14 +3454,8 @@ class BPDElemento_ExportConfig:
             {   'name': 'text',
                 'type': 'Text',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'esInicial',
                 'type': 'Boolean',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -3711,7 +3543,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -3727,7 +3559,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -3737,7 +3569,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -3747,7 +3579,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -3757,7 +3589,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -3767,7 +3599,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],
@@ -3791,14 +3623,8 @@ class BPDElemento_ExportConfig:
             {   'name': 'abreviatura',
                 'type': 'string',
             },
-            {   'name': 'codigoIdioma',
-                'type': 'string',
-            },
             {   'name': 'responsabilidadesClave',
                 'type': 'Text',
-            },
-            {   'name': 'versionInterna',
-                'type': 'string',
             },
         ],
         'traversals':   [
@@ -3899,7 +3725,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':     'referenciasCualificadas',
                 'contains_collections': False,
-                'tabular_tree':         True,
+                'tabular_tree':         False,
                 'subitems':             [
                     {   'portal_types': [ 'BPDReferenciaCualificada', ],
                         'reuse_config': 'Default',
@@ -3915,7 +3741,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'archivos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATFile', ],
@@ -3925,7 +3751,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'documentos',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATDocument', ],
@@ -3935,7 +3761,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'enlaces',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATLink', ],
@@ -3945,7 +3771,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'imagenes',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATImage', ],
@@ -3955,7 +3781,7 @@ class BPDElemento_ExportConfig:
             },
             {   'aggregation_name':       'noticias',
                 'contains_collections':   False,
-                'tabular_tree':           True,
+                'tabular_tree':           False,
                 'non_framework_elements': True,
                 'subitems':               [
                     {   'portal_types': [ 'ATNewsItem', ],

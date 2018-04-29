@@ -54,12 +54,13 @@ schema = Schema((
         label2='Business Processes',
         additional_columns=['proposito', 'responsableMantenimiento', 'detallesProceso', 'codigo', 'estado', 'nivelDeImposicion'],
         label='Procesos de Negocio',
+        represents_aggregation=True,
         description2='Business Processes realising courses of action through which the Organisation pursues specific goals.',
         multiValued=1,
         owner_class_name="BPDColeccionProcesosDeNegocio",
         expression="context.objectValues(['BPDProcesoDeNegocioSimple'])",
         computed_types=['BPDProcesoDeNegocioSimple'],
-        represents_aggregation=True,
+        non_framework_elements=False,
         description='Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos.'
     ),
 
@@ -111,7 +112,7 @@ class BPDColeccionProcesosDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -125,10 +126,19 @@ class BPDColeccionProcesosDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -143,7 +153,7 @@ class BPDColeccionProcesosDeNegocio(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

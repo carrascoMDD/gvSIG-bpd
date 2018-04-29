@@ -54,12 +54,13 @@ schema = Schema((
         label2='Participant Profiles',
         additional_columns=['abreviatura', 'responsabilidadesClave'],
         label='Perfiles',
+        represents_aggregation=True,
         description2='Participant Profiles characterising the individual participants in organisation efforts.',
         multiValued=1,
         owner_class_name="BPDColeccionPerfiles",
         expression="context.objectValues(['BPDPerfil'])",
         computed_types=['BPDPerfil'],
-        represents_aggregation=True,
+        non_framework_elements=False,
         description='Perfiles tipificando las clases de individuos participantes en los esfuerzos de la Organizaci\xc3\xb3n.'
     ),
 
@@ -111,7 +112,7 @@ class BPDColeccionPerfiles(OrderedBaseFolder, BPDColeccionArquetipos):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -125,10 +126,19 @@ class BPDColeccionPerfiles(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -143,7 +153,7 @@ class BPDColeccionPerfiles(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

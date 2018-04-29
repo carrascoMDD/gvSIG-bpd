@@ -297,15 +297,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDProcesoDeNegocio_contents_coleccionesProcesosDeNegocio_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Procesos de Negocio de orden inferior, definidos en el contexto de este Proceso de negocio, realizando cursos de accion persiguiendo metas subordinadas.',
+        contains_collections=True,
         label2='Nested Business Processes',
         label='Procesos de Negocio anidados',
+        represents_aggregation=True,
         description2='Collections of Lower level Business Processes, defined in the context of this Business Process realising courses of action pusuing subordinate goals.',
         multiValued=1,
         owner_class_name="BPDProcesoDeNegocio",
         expression="context.objectValues(['BPDColeccionProcesosDeNegocio'])",
         computed_types=['BPDColeccionProcesosDeNegocio'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Procesos de Negocio de orden inferior, definidos en el contexto de este Proceso de negocio, realizando cursos de accion persiguiendo metas subordinadas.'
     ),
 
     ComputedField(
@@ -517,7 +519,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -531,10 +533,19 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -549,7 +560,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

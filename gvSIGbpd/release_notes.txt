@@ -1,0 +1,204 @@
+gvSIG Business Process Definition RELEASE NOTES
+===============================================
+
+
+|
+|
+
+
+
+
+version 1.0.0.2
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+
+IMPO01 Import elements from zip archive with XML file and binary content
+
+REFA 12 Refactoring: Copy more than one element from the same container
+
+
+
+
+|
+|
+
+**KNOWN BUGS**
+
+Derivation in the Textual view of a business process, of composite string field with business process step details does not convert its element strings to Unicode
+
+
+|
+|
+
+
+**POSTPONED**
+
+CHGS03 Implement changes of editorial impact on gvSIG-bpd
+
+EXPO02 Export textual views of an element and its contents as  HTML pages in a (g)zip archive
+
+FEAT04 Show transitively reachable influencers or influenced elements
+
+IBMM01 Integrate into gvSIG-bpd the ModelDDploneBMM application to define business motivation models
+
+IMOF01 Integrate into gvSIG-bpd the ModelDDploneMOF application to define o.o. information structures
+
+IPAG01 Integrate with gvSIG Plone service to assemble as a single page a complete network of gvSIG-bpd specification
+
+IRDB01 Integrate into gvSIG-bpd the ModelDDploneRDB application to define o.o. information structures
+
+PLAT01 Port to Plone 3.x
+
+REFA 02 Refactoring: Move elements to a different containing collection
+
+
+|
+|
+
+
+------------------------------
+
+
+
+version 1.0.0.1
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+EXPO01 Export element as XML and zipped with binary content
+
+INIT01 Add Product ModelDDvlPlone as pre-requisite of gvSIG-bpd
+
+INIT02 Automatically initialize root BPDOrganizacion instances
+
+REFA 10 Refactoring: Create a Tool from an Artefact and vice-versa
+
+UI BPDProcesoDeNegocioSimple::Fields not sorted as specified in the model
+
+INIT 03 Automatically create instance of ModelDDvlPloneTool
+
+REFA 09 Intercept and handle Plone paste action
+
+REFA 01 Refactoring: Create a Business Policy from a Business Rule and vice-versa
+
+REFA 06 Refactoring: Create Sends from Outputs and vice-versa
+
+REFA 11 Refactoring: Create an Organizational Unit from an Profile and vice-versa
+
+REFA 05 Refactoring: Create Receptions from Inputs and vice-versa
+
+
+|
+|
+
+
+------------------------------
+
+
+
+version 1.0
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+
+
+ETTY25 Exception Handler Step
+
+ETTY24 Step with Exceptions
+
+ETTY23 Step with Next steps
+
+ETTY22 Step with Previous steps
+
+|
+|
+
+
+------------------------------
+
+
+
+version 0.9
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+ETTY00 Model
+
+ETTY01 Organization
+
+ETTY02 Business Policy
+
+ETTY03 Business Rule
+
+ETTY04 Business Process
+
+ETTY05 Participant
+
+ETTY06 Profile
+
+ETTY07 Organizational Unit
+
+ETTY08 Artefact
+
+ETTY09 Tool
+
+ETTY10 Input
+
+ETTY11 Output
+
+ETTY12 Minimal Step
+
+ETTY13 General Step
+
+ETTY14 Final Success
+
+ETTY15 Final Failure
+
+ETTY16 Deadline
+
+ETTY17 Simple Step
+
+ETTY18 Decision
+
+ETTY19 SubProcess
+
+ETTY20 Reception
+
+ETTY21 Send
+
+ETTY26 Element
+
+ETTY27 With Adoption
+
+ETTY28 Adoption State
+
+ETTY29 Enforcement Level
+
+UI01 Define model traversals for User Interface Views
+
+I19N01 Translate all model elements into English language
+
+|
+|
+
+------------------------------

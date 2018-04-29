@@ -54,12 +54,13 @@ schema = Schema((
         label2='Inputs',
         additional_columns=['esRequerido', 'fuenteDeInformacion', 'valorDefecto', 'titulosArtefactosDeEntrada'],
         label='Entradas',
+        represents_aggregation=True,
         description2='Informations that must or may be available to start the Business Process.',
         multiValued=1,
         owner_class_name="BPDColeccionEntradas",
         expression="context.objectValues(['BPDEntrada'])",
         computed_types=['BPDEntrada'],
-        represents_aggregation=True,
+        non_framework_elements=False,
         description='Informaciones que pueden o deben estar disponibles para poder dar comienzo al Proceso de Negocio.'
     ),
 
@@ -111,7 +112,7 @@ class BPDColeccionEntradas(OrderedBaseFolder, BPDColeccionArquetipos):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -125,10 +126,19 @@ class BPDColeccionEntradas(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -143,7 +153,7 @@ class BPDColeccionEntradas(OrderedBaseFolder, BPDColeccionArquetipos):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

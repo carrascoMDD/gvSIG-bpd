@@ -54,15 +54,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDHerramienta_contents_coleccionesHerramientas_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Herramientas de orden inferior, que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio, albergadas en el contexto de esta herramienta.',
+        contains_collections=True,
         label2='Subordinated Tools',
         label='Herramientas subordinadas',
+        represents_aggregation=True,
         description2='Collections of Subordinated Tools applied in the Organisation to handle certain Artefacts, and assist in the execution of Business Process Steps, hosted in the context of this tool.',
         multiValued=1,
         owner_class_name="BPDHerramienta",
         expression="context.objectValues(['BPDColeccionHerramientas'])",
         computed_types=['BPDColeccionHerramientas'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Herramientas de orden inferior, que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio, albergadas en el contexto de esta herramienta.'
     ),
 
     RelationField(
@@ -260,7 +262,7 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -274,10 +276,19 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -292,7 +303,7 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),

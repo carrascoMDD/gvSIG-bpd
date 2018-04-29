@@ -50,15 +50,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDOrganizacion_contents_coleccionesPoliticasDeNegocio_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio.',
+        contains_collections=True,
         label2='Business Policies (collections)',
         label='Politicas de Negocio (colecciones)',
+        represents_aggregation=True,
         description2='Collections of Business Policies  governing the Organisation and its Business Processes, and constitute the basis for the Business Rules.',
         multiValued=1,
         owner_class_name="BPDOrganizacion",
         expression="context.objectValues(['BPDColeccionPoliticasDeNegocio'])",
         computed_types=['BPDColeccionPoliticasDeNegocio'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Politicas de Negocio que gobiernan la Organizacion y sus Procesos de Negocio, y constituyen la base de las Reglas de Negocio.'
     ),
 
     ComputedField(
@@ -72,15 +74,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDOrganizacion_contents_coleccionesReglasDeNegocio_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Reglas deNegocio que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion.',
+        contains_collections=True,
         label2='Business Rules (collections)',
         label='Reglas de Negocio (colecciones)',
+        represents_aggregation=True,
         description2='Collections of Business Rules derived from Business Policies, and driving the Business Process in the Organisation.',
         multiValued=1,
         owner_class_name="BPDOrganizacion",
         expression="context.objectValues(['BPDColeccionReglasDeNegocio'])",
         computed_types=['BPDColeccionReglasDeNegocio'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Reglas deNegocio que se derivan de las politicas de Negocio, y dirigen los Procesos de Negocio de la Organizacion.'
     ),
 
     ComputedField(
@@ -94,15 +98,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDOrganizacion_contents_coleccionesProcesosDeNegocio_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos.',
+        contains_collections=True,
         label2='Business Processes (collections)',
         label='Procesos de Negocio (colecciones)',
+        represents_aggregation=True,
         description2='Collections of Business Processes realising courses of action through which the Organisation pursues specific goals.',
         multiValued=1,
         owner_class_name="BPDOrganizacion",
         expression="context.objectValues(['BPDColeccionProcesosDeNegocio'])",
         computed_types=['BPDColeccionProcesosDeNegocio'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Procesos de Negocio realizando cursos de accion con los que la Organizacion persigue propositos especificos.'
     ),
 
     ComputedField(
@@ -116,15 +122,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDOrganizacion_contents_coleccionesArtefactos_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion.',
+        contains_collections=True,
         label2='Artefacts (collections)',
         label='Artefactos (colecciones)',
+        represents_aggregation=True,
         description2='Collections of Artefacts produced, consumed, consulted, edited, or otherwise object of the Organisation effort.',
         multiValued=1,
         owner_class_name="BPDOrganizacion",
         expression="context.objectValues(['BPDColeccionArtefactos'])",
         computed_types=['BPDColeccionArtefactos'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Artefactos que se producen, consumen, consultan, editan, y en general son el objeto del esfuerzo de la Organizacion.'
     ),
 
     ComputedField(
@@ -138,15 +146,17 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDOrganizacion_contents_coleccionesHerramientas_help',
             i18n_domain='gvSIGbpd',
         ),
-        description='Colecciones de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio.',
+        contains_collections=True,
         label2='Tools (collections)',
         label='Herramientas (colecciones)',
+        represents_aggregation=True,
         description2='Collections of Tools applied in the Organisation to handle certain Artefacts, and assist in the execution of Business Process Steps.',
         multiValued=1,
         owner_class_name="BPDOrganizacion",
         expression="context.objectValues(['BPDColeccionHerramientas'])",
         computed_types=['BPDColeccionHerramientas'],
-        represents_aggregation=True
+        non_framework_elements=False,
+        description='Colecciones de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio.'
     ),
 
 ),
@@ -197,7 +207,7 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': 'python:0'
        },
 
 
@@ -211,10 +221,19 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
 
 
        {'action': "string:${object_url}/MDDExport",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/MDDImport",
+        'category': "object_buttons",
+        'id': 'mddimport',
+        'name': 'Import',
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -229,7 +248,7 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
 
 
        {'action': "string:${object_url}/TextualRest",
-        'category': "object",
+        'category': "object_buttons",
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
