@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # File: BPDElemento_TraversalConfig.py
-## Copyright (c) 2010 by Conselleria de Infraestructuras y Transporte de la
+## Copyright (c) 2011 by Conselleria de Infraestructuras y Transporte de la
 # Generalidad Valenciana
 #
 # GNU General Public License (GPL)

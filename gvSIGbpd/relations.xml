@@ -823,6 +823,272 @@
 				<inverseRuleset uidref="EAID_D2313814_1528_4b50_A281_343D88B1EF7A"/>
 			</InverseImplicator>
 		</Ruleset>
+		<Ruleset id="BPDReferidosCualificados" uid="EAID_25913DAD_3B79_4c6e_B022_1642AC0BD9EF">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDReferenciaCualificada
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDArquetipoReferenciable
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDSalida
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDArquetipoConAdopcion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPoliticaDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDArtefacto
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCondicionante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPreCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPostCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDParticipante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUnidadOrganizacional
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDOrganizacion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPerfil
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDDatosDePrueba
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDHerramienta
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEscenario
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCaracteristica
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDReglaDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCasoDePrueba
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocioSimple
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProgramado
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDResolucionDatos
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPrograma
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEpisodio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDListaDePruebas
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEntrada
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUsoArtefacto
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDExtensionProceso
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUsoCaracteristica
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoMinimo
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPlazo
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDFracasoFinal
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDExitoFinal
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPuntoExtension
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoGeneral
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEnvio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDRecepcion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDDecision
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoSimple
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDSubProceso
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDReferentesCualificados"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDReferentesCualificados" uid="BPDReferentesCualificados">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDArquetipoReferenciable
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDSalida
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDArquetipoConAdopcion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPoliticaDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDArtefacto
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCondicionante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPreCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPostCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDParticipante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUnidadOrganizacional
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDOrganizacion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPerfil
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDDatosDePrueba
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDHerramienta
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEscenario
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCaracteristica
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDReglaDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCasoDePrueba
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocioSimple
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProgramado
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDResolucionDatos
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPrograma
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEpisodio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDListaDePruebas
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEntrada
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUsoArtefacto
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDExtensionProceso
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUsoCaracteristica
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoMinimo
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPlazo
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDFracasoFinal
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDExitoFinal
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPuntoExtension
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoGeneral
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEnvio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDRecepcion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDDecision
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoSimple
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDSubProceso
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDReferenciaCualificada
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_25913DAD_3B79_4c6e_B022_1642AC0BD9EF"/>
+			</InverseImplicator>
+		</Ruleset>
 		<Ruleset id="ListasDePruebas_CasosDePrueba" uid="EAID_0A402351_878B_4de9_B577_85AAB790ECAF">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
@@ -1687,38 +1953,6 @@
 				<inverseRuleset uidref="EAID_8AA49A7B_97E2_42d9_B124_184451251D20"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDHerramientasAplicadasEnProcesos" uid="EAID_E700AD02_0DC3_49b4_B47F_EC801D74C273">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDProcesoDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocioSimple
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDHerramienta
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDProcesosAsistidos"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDProcesosAsistidos" uid="BPDProcesosAsistidos">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDHerramienta
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDProcesoDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocioSimple
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_E700AD02_0DC3_49b4_B47F_EC801D74C273"/>
-			</InverseImplicator>
-		</Ruleset>
 		<Ruleset id="DatosDePrueba_ElementosProceso" uid="EAID_3BA0B025_7EBD_462d_AFE3_1DD83581986C">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
@@ -1791,6 +2025,38 @@
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
 				<inverseRuleset uidref="EAID_3BA0B025_7EBD_462d_AFE3_1DD83581986C"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDHerramientasAplicadasEnProcesos" uid="EAID_E700AD02_0DC3_49b4_B47F_EC801D74C273">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDProcesoDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocioSimple
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDHerramienta
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDProcesosAsistidos"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDProcesosAsistidos" uid="BPDProcesosAsistidos">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDHerramienta
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDProcesoDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocioSimple
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_E700AD02_0DC3_49b4_B47F_EC801D74C273"/>
 			</InverseImplicator>
 		</Ruleset>
 		<Ruleset id="BPDEjecutoresDelProceso" uid="EAID_7565F145_8DDC_41f2_823C_03F9C5E29509">
@@ -2061,6 +2327,43 @@
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
 				<inverseRuleset uidref="EAID_9D57B611_DD6B_495b_8241_02C0A9539E49"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDProcesoUsado" uid="EAID_F8B215D9_9439_4e13_B7E7_732823E94C5D">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDSubProceso
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDProcesoDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocioSimple
+				</allowedTargetType>
+			</TypeConstraint>
+			<CardinalityConstraint id="cardinality">
+				<maxTargetCardinality>
+					1
+				</maxTargetCardinality>
+			</CardinalityConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDUsadoComoSubProcesos"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDUsadoComoSubProcesos" uid="BPDUsadoComoSubProcesos">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDProcesoDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocioSimple
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDSubProceso
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_F8B215D9_9439_4e13_B7E7_732823E94C5D"/>
 			</InverseImplicator>
 		</Ruleset>
 		<Ruleset id="Pasos_De_Episodio" uid="EAID_72C4B566_47CF_4b66_B188_5CD8DF0AE0BB">
@@ -2915,8 +3218,17 @@
 				<inverseRuleset uidref="EAID_39BAB125_ECA4_441a_BD53_29542AAAA160"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDEjecutoresDelPaso" uid="EAID_4BC2DD58_A233_4026_90D7_EDCF8426A8E6">
+		<Ruleset id="BPDPasosSiguientes" uid="EAID_EA7EA53B_66AC_407d_A5C1_4B9B9DF1CBF1">
 			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDPasoConSiguientes
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPlazo
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPuntoExtension
+				</allowedSourceType>
 				<allowedSourceType>
 					BPDPasoGeneral
 				</allowedSourceType>
@@ -2936,36 +3248,20 @@
 					BPDSubProceso
 				</allowedSourceType>
 				<allowedTargetType>
-					BPDParticipante
+					BPDPasoConAnteriores
 				</allowedTargetType>
 				<allowedTargetType>
-					BPDUnidadOrganizacional
+					BPDPlazo
 				</allowedTargetType>
 				<allowedTargetType>
-					BPDOrganizacion
+					BPDFracasoFinal
 				</allowedTargetType>
 				<allowedTargetType>
-					BPDPerfil
+					BPDExitoFinal
 				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDPasosEjecutados"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDPasosEjecutados" uid="BPDPasosEjecutados">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDParticipante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUnidadOrganizacional
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDOrganizacion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPerfil
-				</allowedSourceType>
+				<allowedTargetType>
+					BPDPuntoExtension
+				</allowedTargetType>
 				<allowedTargetType>
 					BPDPasoGeneral
 				</allowedTargetType>
@@ -2986,224 +3282,74 @@
 				</allowedTargetType>
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_4BC2DD58_A233_4026_90D7_EDCF8426A8E6"/>
+				<inverseRuleset uidref="BPDPasosAnteriores"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDProcesoUsado" uid="EAID_F8B215D9_9439_4e13_B7E7_732823E94C5D">
+		<Ruleset id="BPDPasosAnteriores" uid="BPDPasosAnteriores">
 			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDPasoConAnteriores
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPlazo
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDFracasoFinal
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDExitoFinal
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPuntoExtension
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoGeneral
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEnvio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDRecepcion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDDecision
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoSimple
+				</allowedSourceType>
 				<allowedSourceType>
 					BPDSubProceso
 				</allowedSourceType>
 				<allowedTargetType>
-					BPDProcesoDeNegocio
+					BPDPasoConSiguientes
 				</allowedTargetType>
 				<allowedTargetType>
-					BPDProcesoDeNegocioSimple
+					BPDPlazo
 				</allowedTargetType>
-			</TypeConstraint>
-			<CardinalityConstraint id="cardinality">
-				<maxTargetCardinality>
-					1
-				</maxTargetCardinality>
-			</CardinalityConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDUsadoComoSubProcesos"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDUsadoComoSubProcesos" uid="BPDUsadoComoSubProcesos">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDProcesoDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocioSimple
-				</allowedSourceType>
+				<allowedTargetType>
+					BPDPuntoExtension
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoGeneral
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEnvio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDRecepcion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDDecision
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoSimple
+				</allowedTargetType>
 				<allowedTargetType>
 					BPDSubProceso
 				</allowedTargetType>
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_F8B215D9_9439_4e13_B7E7_732823E94C5D"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDTiposDeCaracteristicas" uid="EAID_8498C077_9F4B_47d8_91A6_2DC50E6DE770">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDCaracteristica
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDArtefacto
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDCaracteristicasDelTipo"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDCaracteristicasDelTipo" uid="BPDCaracteristicasDelTipo">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDArtefacto
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDCaracteristica
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_8498C077_9F4B_47d8_91A6_2DC50E6DE770"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDReglasDeNegocioDirigentes" uid="EAID_C91901C3_E7F1_4d12_BE57_785D6F18E491">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDProcesoDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocioSimple
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDReglaDeNegocio
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDProcesosDeNegocioDirigidos"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDProcesosDeNegocioDirigidos" uid="BPDProcesosDeNegocioDirigidos">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDReglaDeNegocio
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDProcesoDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocioSimple
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_C91901C3_E7F1_4d12_BE57_785D6F18E491"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDResponsablesDeHerramienta" uid="EAID_0F92D727_996B_483f_885D_A3235800CDDC">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDHerramienta
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDParticipante
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUnidadOrganizacional
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDOrganizacion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPerfil
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDHerramientasACargo"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDHerramientasACargo" uid="BPDHerramientasACargo">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDParticipante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUnidadOrganizacional
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDOrganizacion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPerfil
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDHerramienta
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_0F92D727_996B_483f_885D_A3235800CDDC"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDArtefactosRecibidos" uid="EAID_4DF2394A_C715_49f4_AED0_696B787FC619">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDRecepcion
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDArtefacto
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDPasosQueRecibenElArtefacto"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDPasosQueRecibenElArtefacto" uid="BPDPasosQueRecibenElArtefacto">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDArtefacto
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDRecepcion
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_4DF2394A_C715_49f4_AED0_696B787FC619"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDHerramientasDirigidas" uid="EAID_98E0294B_7D70_4b24_9862_B6E09A7FEFE7">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDReglaDeNegocio
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDHerramienta
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDHerramientasAfectadasPorReglasDeNegocio"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDHerramientasAfectadasPorReglasDeNegocio" uid="BPDHerramientasAfectadasPorReglasDeNegocio">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDHerramienta
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDReglaDeNegocio
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_98E0294B_7D70_4b24_9862_B6E09A7FEFE7"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDArtefactosEnviados" uid="EAID_F37068EE_9CD7_44b6_9A96_E361EDBCEA24">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDEnvio
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDArtefacto
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDPasosQueEnvianElArtefacto"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDPasosQueEnvianElArtefacto" uid="BPDPasosQueEnvianElArtefacto">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDArtefacto
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDEnvio
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_F37068EE_9CD7_44b6_9A96_E361EDBCEA24"/>
+				<inverseRuleset uidref="EAID_EA7EA53B_66AC_407d_A5C1_4B9B9DF1CBF1"/>
 			</InverseImplicator>
 		</Ruleset>
 		<Ruleset id="BPDCaracteristicasUsadas" uid="EAID_D45907D1_F90E_4659_91C3_3679CD57FBE3">
@@ -3942,184 +4088,6 @@
 				<inverseRuleset uidref="EAID_258C4EF1_584A_4b3b_8B45_E2CFD7B90B44"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDPasosSiguientes" uid="EAID_EA7EA53B_66AC_407d_A5C1_4B9B9DF1CBF1">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDPasoConSiguientes
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPlazo
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPuntoExtension
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoGeneral
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEnvio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDRecepcion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDDecision
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoSimple
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDSubProceso
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDPasoConAnteriores
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPlazo
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDFracasoFinal
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDExitoFinal
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPuntoExtension
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoGeneral
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEnvio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDRecepcion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDDecision
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoSimple
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDSubProceso
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDPasosAnteriores"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDPasosAnteriores" uid="BPDPasosAnteriores">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDPasoConAnteriores
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPlazo
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDFracasoFinal
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDExitoFinal
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPuntoExtension
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoGeneral
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEnvio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDRecepcion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDDecision
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoSimple
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDSubProceso
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDPasoConSiguientes
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPlazo
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPuntoExtension
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoGeneral
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEnvio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDRecepcion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDDecision
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoSimple
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDSubProceso
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_EA7EA53B_66AC_407d_A5C1_4B9B9DF1CBF1"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDDestinatarios" uid="EAID_79678F2F_47E0_4f33_82D5_92339403DE55">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDEnvio
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDParticipante
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUnidadOrganizacional
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDOrganizacion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPerfil
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDDestinatarioDeEnvios"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDDestinatarioDeEnvios" uid="BPDDestinatarioDeEnvios">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDParticipante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUnidadOrganizacional
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDOrganizacion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPerfil
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDEnvio
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_79678F2F_47E0_4f33_82D5_92339403DE55"/>
-			</InverseImplicator>
-		</Ruleset>
 		<Ruleset id="BPDArtefactosDeEntrada" uid="EAID_39C72EE0_A090_4b80_9342_3BAEC4F92FCF">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
@@ -4146,36 +4114,548 @@
 				<inverseRuleset uidref="EAID_39C72EE0_A090_4b80_9342_3BAEC4F92FCF"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDArtefactosUsados" uid="EAID_5767BE88_E729_42a2_AA4E_F6EF08750354">
+		<Ruleset id="BPDReferidos" uid="EAID_E712759E_7534_4565_A4C0_819CCDFED656">
 			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDArquetipoReferenciable
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDSalida
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDArquetipoConAdopcion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPoliticaDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDArtefacto
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCondicionante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPreCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPostCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDParticipante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUnidadOrganizacional
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDOrganizacion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPerfil
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDDatosDePrueba
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDHerramienta
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEscenario
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCaracteristica
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDReglaDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCasoDePrueba
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocioSimple
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProgramado
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDResolucionDatos
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPrograma
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEpisodio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDListaDePruebas
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEntrada
+				</allowedSourceType>
 				<allowedSourceType>
 					BPDUsoArtefacto
 				</allowedSourceType>
-				<allowedTargetType>
-					BPDArtefacto
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDUsosDeArtefactos"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDUsosDeArtefactos" uid="BPDUsosDeArtefactos">
-			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
-					BPDArtefacto
+					BPDExtensionProceso
 				</allowedSourceType>
-				<allowedTargetType>
-					BPDUsoArtefacto
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_5767BE88_E729_42a2_AA4E_F6EF08750354"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDRemitente" uid="EAID_8E09B12D_60FE_4fb9_8D92_9792703FFDAC">
-			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDUsoCaracteristica
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoMinimo
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPlazo
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDFracasoFinal
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDExitoFinal
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPuntoExtension
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoGeneral
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEnvio
+				</allowedSourceType>
 				<allowedSourceType>
 					BPDRecepcion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDDecision
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoSimple
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDSubProceso
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDArquetipoReferenciable
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDSalida
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDArquetipoConAdopcion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPoliticaDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDArtefacto
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCondicionante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPreCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPostCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDParticipante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUnidadOrganizacional
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDOrganizacion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPerfil
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDDatosDePrueba
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDHerramienta
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEscenario
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCaracteristica
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDReglaDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCasoDePrueba
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocioSimple
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProgramado
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDResolucionDatos
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPrograma
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEpisodio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDListaDePruebas
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEntrada
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUsoArtefacto
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDExtensionProceso
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUsoCaracteristica
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoMinimo
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPlazo
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDFracasoFinal
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDExitoFinal
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPuntoExtension
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoGeneral
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEnvio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDRecepcion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDDecision
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoSimple
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDSubProceso
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDReferentes"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDReferentes" uid="BPDReferentes">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDArquetipoReferenciable
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDSalida
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDArquetipoConAdopcion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPoliticaDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDArtefacto
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCondicionante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPreCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPostCondicion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDParticipante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUnidadOrganizacional
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDOrganizacion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPerfil
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDDatosDePrueba
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDHerramienta
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEscenario
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCaracteristica
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDReglaDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDCasoDePrueba
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocioSimple
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProgramado
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDResolucionDatos
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPrograma
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEpisodio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDListaDePruebas
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEntrada
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUsoArtefacto
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDExtensionProceso
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUsoCaracteristica
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoMinimo
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPlazo
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDFracasoFinal
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDExitoFinal
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPuntoExtension
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoGeneral
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEnvio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDRecepcion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDDecision
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoSimple
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDSubProceso
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDArquetipoReferenciable
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDSalida
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDArquetipoConAdopcion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPoliticaDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDArtefacto
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCondicionante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPreCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPostCondicion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDParticipante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUnidadOrganizacional
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDOrganizacion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPerfil
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDDatosDePrueba
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDHerramienta
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEscenario
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCaracteristica
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDReglaDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDCasoDePrueba
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocioSimple
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProgramado
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDResolucionDatos
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPrograma
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEpisodio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDListaDePruebas
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEntrada
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUsoArtefacto
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDExtensionProceso
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUsoCaracteristica
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoMinimo
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPlazo
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDFracasoFinal
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDExitoFinal
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPuntoExtension
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoGeneral
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEnvio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDRecepcion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDDecision
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoSimple
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDSubProceso
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_E712759E_7534_4565_A4C0_819CCDFED656"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDReglasDeNegocioDirigentes" uid="EAID_C91901C3_E7F1_4d12_BE57_785D6F18E491">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDProcesoDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocioSimple
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDReglaDeNegocio
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDProcesosDeNegocioDirigidos"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDProcesosDeNegocioDirigidos" uid="BPDProcesosDeNegocioDirigidos">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDReglaDeNegocio
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDProcesoDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocioSimple
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_C91901C3_E7F1_4d12_BE57_785D6F18E491"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDResponsablesDeHerramienta" uid="EAID_0F92D727_996B_483f_885D_A3235800CDDC">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDHerramienta
 				</allowedSourceType>
 				<allowedTargetType>
 					BPDParticipante
@@ -4190,16 +4670,11 @@
 					BPDPerfil
 				</allowedTargetType>
 			</TypeConstraint>
-			<CardinalityConstraint id="cardinality">
-				<maxTargetCardinality>
-					1
-				</maxTargetCardinality>
-			</CardinalityConstraint>
 			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDRemitenteDeRecepciones"/>
+				<inverseRuleset uidref="BPDHerramientasACargo"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDRemitenteDeRecepciones" uid="BPDRemitenteDeRecepciones">
+		<Ruleset id="BPDHerramientasACargo" uid="BPDHerramientasACargo">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
 					BPDParticipante
@@ -4214,37 +4689,163 @@
 					BPDPerfil
 				</allowedSourceType>
 				<allowedTargetType>
+					BPDHerramienta
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_0F92D727_996B_483f_885D_A3235800CDDC"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDArtefactosRecibidos" uid="EAID_4DF2394A_C715_49f4_AED0_696B787FC619">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDRecepcion
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDArtefacto
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDPasosQueRecibenElArtefacto"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDPasosQueRecibenElArtefacto" uid="BPDPasosQueRecibenElArtefacto">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDArtefacto
+				</allowedSourceType>
+				<allowedTargetType>
 					BPDRecepcion
 				</allowedTargetType>
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_8E09B12D_60FE_4fb9_8D92_9792703FFDAC"/>
+				<inverseRuleset uidref="EAID_4DF2394A_C715_49f4_AED0_696B787FC619"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDArtefactosDeSalida" uid="EAID_945E1BC4_09D4_439a_9701_7E17401E0D10">
+		<Ruleset id="BPDHerramientasDirigidas" uid="EAID_98E0294B_7D70_4b24_9862_B6E09A7FEFE7">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
-					BPDSalida
+					BPDReglaDeNegocio
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDHerramienta
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDHerramientasAfectadasPorReglasDeNegocio"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDHerramientasAfectadasPorReglasDeNegocio" uid="BPDHerramientasAfectadasPorReglasDeNegocio">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDHerramienta
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDReglaDeNegocio
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_98E0294B_7D70_4b24_9862_B6E09A7FEFE7"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDArtefactosEnviados" uid="EAID_F37068EE_9CD7_44b6_9A96_E361EDBCEA24">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDEnvio
 				</allowedSourceType>
 				<allowedTargetType>
 					BPDArtefacto
 				</allowedTargetType>
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDSalidasDeProcesosDeNegocio"/>
+				<inverseRuleset uidref="BPDPasosQueEnvianElArtefacto"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDSalidasDeProcesosDeNegocio" uid="BPDSalidasDeProcesosDeNegocio">
+		<Ruleset id="BPDPasosQueEnvianElArtefacto" uid="BPDPasosQueEnvianElArtefacto">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
 					BPDArtefacto
 				</allowedSourceType>
 				<allowedTargetType>
-					BPDSalida
+					BPDEnvio
 				</allowedTargetType>
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_945E1BC4_09D4_439a_9701_7E17401E0D10"/>
+				<inverseRuleset uidref="EAID_F37068EE_9CD7_44b6_9A96_E361EDBCEA24"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDEjecutoresDelPaso" uid="EAID_4BC2DD58_A233_4026_90D7_EDCF8426A8E6">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDPasoGeneral
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDEnvio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDRecepcion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDDecision
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPasoSimple
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDSubProceso
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDParticipante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUnidadOrganizacional
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDOrganizacion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPerfil
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDPasosEjecutados"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDPasosEjecutados" uid="BPDPasosEjecutados">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDParticipante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUnidadOrganizacional
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDOrganizacion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPerfil
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDPasoGeneral
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDEnvio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDRecepcion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDDecision
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPasoSimple
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDSubProceso
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_4BC2DD58_A233_4026_90D7_EDCF8426A8E6"/>
 			</InverseImplicator>
 		</Ruleset>
 		<Ruleset id="BPDElementosOriginales" uid="EAID_519C7402_E99A_45b0_8548_5B4D08B26167">
@@ -4945,6 +5546,177 @@
 				<inverseRuleset uidref="EAID_519C7402_E99A_45b0_8548_5B4D08B26167"/>
 			</InverseImplicator>
 		</Ruleset>
+		<Ruleset id="BPDTiposDeCaracteristicas" uid="EAID_8498C077_9F4B_47d8_91A6_2DC50E6DE770">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDCaracteristica
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDArtefacto
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDCaracteristicasDelTipo"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDCaracteristicasDelTipo" uid="BPDCaracteristicasDelTipo">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDArtefacto
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDCaracteristica
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_8498C077_9F4B_47d8_91A6_2DC50E6DE770"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDArtefactosUsados" uid="EAID_5767BE88_E729_42a2_AA4E_F6EF08750354">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDUsoArtefacto
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDArtefacto
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDUsosDeArtefactos"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDUsosDeArtefactos" uid="BPDUsosDeArtefactos">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDArtefacto
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDUsoArtefacto
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_5767BE88_E729_42a2_AA4E_F6EF08750354"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDRemitente" uid="EAID_8E09B12D_60FE_4fb9_8D92_9792703FFDAC">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDRecepcion
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDParticipante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUnidadOrganizacional
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDOrganizacion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPerfil
+				</allowedTargetType>
+			</TypeConstraint>
+			<CardinalityConstraint id="cardinality">
+				<maxTargetCardinality>
+					1
+				</maxTargetCardinality>
+			</CardinalityConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDRemitenteDeRecepciones"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDRemitenteDeRecepciones" uid="BPDRemitenteDeRecepciones">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDParticipante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUnidadOrganizacional
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDOrganizacion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPerfil
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDRecepcion
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_8E09B12D_60FE_4fb9_8D92_9792703FFDAC"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDArtefactosDeSalida" uid="EAID_945E1BC4_09D4_439a_9701_7E17401E0D10">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDSalida
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDArtefacto
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDSalidasDeProcesosDeNegocio"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDSalidasDeProcesosDeNegocio" uid="BPDSalidasDeProcesosDeNegocio">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDArtefacto
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDSalida
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_945E1BC4_09D4_439a_9701_7E17401E0D10"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDDestinatarios" uid="EAID_79678F2F_47E0_4f33_82D5_92339403DE55">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDEnvio
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDParticipante
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDUnidadOrganizacional
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDOrganizacion
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDPerfil
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDDestinatarioDeEnvios"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDDestinatarioDeEnvios" uid="BPDDestinatarioDeEnvios">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDParticipante
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDUnidadOrganizacional
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDOrganizacion
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDPerfil
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDEnvio
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_79678F2F_47E0_4f33_82D5_92339403DE55"/>
+			</InverseImplicator>
+		</Ruleset>
 		<Ruleset id="BPDResponsablesDeArtefacto" uid="EAID_B85A760C_2318_4014_8858_8F5F1EF36D53">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
@@ -5041,158 +5813,11 @@
 				<inverseRuleset uidref="EAID_EAFC3D92_93A9_47cf_80F1_4E0DFD1B3434"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDReferidos" uid="EAID_E712759E_7534_4565_A4C0_819CCDFED656">
+		<Ruleset id="BPDParticipantesGobernados" uid="EAID_4AE63ACA_CBAC_40c6_BC2C_6CE2E07AC5C2">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
-					BPDArquetipoReferenciable
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDSalida
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDArquetipoConAdopcion
-				</allowedSourceType>
-				<allowedSourceType>
 					BPDPoliticaDeNegocio
 				</allowedSourceType>
-				<allowedSourceType>
-					BPDArtefacto
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCondicionante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPreCondicion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCondicion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPostCondicion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDParticipante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUnidadOrganizacional
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDOrganizacion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPerfil
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDDatosDePrueba
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDHerramienta
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEscenario
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCaracteristica
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDReglaDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCasoDePrueba
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocioSimple
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProgramado
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDResolucionDatos
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPrograma
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEpisodio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDListaDePruebas
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEntrada
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUsoArtefacto
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDExtensionProceso
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUsoCaracteristica
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoMinimo
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPlazo
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDFracasoFinal
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDExitoFinal
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPuntoExtension
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoGeneral
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEnvio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDRecepcion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDDecision
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoSimple
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDSubProceso
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDArquetipoReferenciable
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDSalida
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDArquetipoConAdopcion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPoliticaDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDArtefacto
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCondicionante
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPreCondicion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCondicion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPostCondicion
-				</allowedTargetType>
 				<allowedTargetType>
 					BPDParticipante
 				</allowedTargetType>
@@ -5204,126 +5829,15 @@
 				</allowedTargetType>
 				<allowedTargetType>
 					BPDPerfil
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDDatosDePrueba
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDHerramienta
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEscenario
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCaracteristica
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDReglaDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCasoDePrueba
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocioSimple
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProgramado
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDResolucionDatos
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPrograma
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEpisodio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDListaDePruebas
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEntrada
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUsoArtefacto
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDExtensionProceso
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUsoCaracteristica
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoMinimo
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPlazo
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDFracasoFinal
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDExitoFinal
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPuntoExtension
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoGeneral
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEnvio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDRecepcion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDDecision
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoSimple
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDSubProceso
 				</allowedTargetType>
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDReferentes"/>
+				<inverseRuleset uidref="BPDAfectadoPorPoliticasDeNegocio"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDReferentes" uid="BPDReferentes">
+		<Ruleset id="BPDAfectadoPorPoliticasDeNegocio" uid="BPDAfectadoPorPoliticasDeNegocio">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
-					BPDArquetipoReferenciable
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDSalida
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDArquetipoConAdopcion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPoliticaDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDArtefacto
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCondicionante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPreCondicion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCondicion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPostCondicion
-				</allowedSourceType>
-				<allowedSourceType>
 					BPDParticipante
 				</allowedSourceType>
 				<allowedSourceType>
@@ -5335,216 +5849,70 @@
 				<allowedSourceType>
 					BPDPerfil
 				</allowedSourceType>
-				<allowedSourceType>
-					BPDDatosDePrueba
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDHerramienta
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEscenario
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCaracteristica
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDReglaDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCasoDePrueba
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocioSimple
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProgramado
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDResolucionDatos
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPrograma
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEpisodio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDListaDePruebas
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEntrada
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUsoArtefacto
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDExtensionProceso
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUsoCaracteristica
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoMinimo
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPlazo
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDFracasoFinal
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDExitoFinal
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPuntoExtension
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoGeneral
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEnvio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDRecepcion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDDecision
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoSimple
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDSubProceso
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDArquetipoReferenciable
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDSalida
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDArquetipoConAdopcion
-				</allowedTargetType>
 				<allowedTargetType>
 					BPDPoliticaDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDArtefacto
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCondicionante
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPreCondicion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCondicion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPostCondicion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDParticipante
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUnidadOrganizacional
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDOrganizacion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPerfil
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDDatosDePrueba
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDHerramienta
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEscenario
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCaracteristica
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDReglaDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCasoDePrueba
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocioSimple
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProgramado
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDResolucionDatos
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPrograma
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEpisodio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDListaDePruebas
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEntrada
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUsoArtefacto
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDExtensionProceso
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUsoCaracteristica
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoMinimo
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPlazo
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDFracasoFinal
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDExitoFinal
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPuntoExtension
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoGeneral
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEnvio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDRecepcion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDDecision
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoSimple
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDSubProceso
 				</allowedTargetType>
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_E712759E_7534_4565_A4C0_819CCDFED656"/>
+				<inverseRuleset uidref="EAID_4AE63ACA_CBAC_40c6_BC2C_6CE2E07AC5C2"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDPoliticasDeNegocioGobernantes" uid="EAID_5A9AFE73_CDE3_48b3_868A_4C7D89735F1B">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDProcesoDeNegocio
+				</allowedSourceType>
+				<allowedSourceType>
+					BPDProcesoDeNegocioSimple
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDPoliticaDeNegocio
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDProcesosDeNegocioGobernados"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDProcesosDeNegocioGobernados" uid="BPDProcesosDeNegocioGobernados">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDPoliticaDeNegocio
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDProcesoDeNegocio
+				</allowedTargetType>
+				<allowedTargetType>
+					BPDProcesoDeNegocioSimple
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_5A9AFE73_CDE3_48b3_868A_4C7D89735F1B"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDReglasDeNegocioDerivadas" uid="EAID_52C7DDEA_FACB_428f_B7F1_BE1F06809B6B">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDPoliticaDeNegocio
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDReglaDeNegocio
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="BPDPoliticasDeNegocioBase"/>
+			</InverseImplicator>
+		</Ruleset>
+		<Ruleset id="BPDPoliticasDeNegocioBase" uid="BPDPoliticasDeNegocioBase">
+			<TypeConstraint id="type_constraint">
+				<allowedSourceType>
+					BPDReglaDeNegocio
+				</allowedSourceType>
+				<allowedTargetType>
+					BPDPoliticaDeNegocio
+				</allowedTargetType>
+			</TypeConstraint>
+			<InverseImplicator id="inverse_relation">
+				<inverseRuleset uidref="EAID_52C7DDEA_FACB_428f_B7F1_BE1F06809B6B"/>
 			</InverseImplicator>
 		</Ruleset>
 		<Ruleset id="BPDElementosTraducidos" uid="EAID_EC1BA18A_A21A_4cf0_AF32_85919793C962">
@@ -6262,108 +6630,6 @@
 				<inverseRuleset uidref="EAID_EC1BA18A_A21A_4cf0_AF32_85919793C962"/>
 			</InverseImplicator>
 		</Ruleset>
-		<Ruleset id="BPDPoliticasDeNegocioGobernantes" uid="EAID_5A9AFE73_CDE3_48b3_868A_4C7D89735F1B">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDProcesoDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocioSimple
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDPoliticaDeNegocio
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDProcesosDeNegocioGobernados"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDProcesosDeNegocioGobernados" uid="BPDProcesosDeNegocioGobernados">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDPoliticaDeNegocio
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDProcesoDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocioSimple
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_5A9AFE73_CDE3_48b3_868A_4C7D89735F1B"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDReglasDeNegocioDerivadas" uid="EAID_52C7DDEA_FACB_428f_B7F1_BE1F06809B6B">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDPoliticaDeNegocio
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDReglaDeNegocio
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDPoliticasDeNegocioBase"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDPoliticasDeNegocioBase" uid="BPDPoliticasDeNegocioBase">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDReglaDeNegocio
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDPoliticaDeNegocio
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_52C7DDEA_FACB_428f_B7F1_BE1F06809B6B"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDParticipantesGobernados" uid="EAID_4AE63ACA_CBAC_40c6_BC2C_6CE2E07AC5C2">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDPoliticaDeNegocio
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDParticipante
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUnidadOrganizacional
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDOrganizacion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPerfil
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDAfectadoPorPoliticasDeNegocio"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDAfectadoPorPoliticasDeNegocio" uid="BPDAfectadoPorPoliticasDeNegocio">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDParticipante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUnidadOrganizacional
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDOrganizacion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPerfil
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDPoliticaDeNegocio
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_4AE63ACA_CBAC_40c6_BC2C_6CE2E07AC5C2"/>
-			</InverseImplicator>
-		</Ruleset>
 		<Ruleset id="BPDReglasDeNegocioAplicadas" uid="EAID_218A5062_4D2C_4767_9A53_6BEEEE2F89C2">
 			<TypeConstraint id="type_constraint">
 				<allowedSourceType>
@@ -6524,272 +6790,6 @@
 			</TypeConstraint>
 			<InverseImplicator id="inverse_relation">
 				<inverseRuleset uidref="EAID_D236FB1E_5ED4_4f6b_87D0_A0729C1CDD36"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDReferidosCualificados" uid="EAID_25913DAD_3B79_4c6e_B022_1642AC0BD9EF">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDReferenciaCualificada
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDArquetipoReferenciable
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDSalida
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDArquetipoConAdopcion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPoliticaDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDArtefacto
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCondicionante
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPreCondicion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCondicion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPostCondicion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDParticipante
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUnidadOrganizacional
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDOrganizacion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPerfil
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDDatosDePrueba
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDHerramienta
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEscenario
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCaracteristica
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDReglaDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDCasoDePrueba
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProcesoDeNegocioSimple
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDProgramado
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDResolucionDatos
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPrograma
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEpisodio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDListaDePruebas
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEntrada
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUsoArtefacto
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDExtensionProceso
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDUsoCaracteristica
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoMinimo
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPlazo
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDFracasoFinal
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDExitoFinal
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPuntoExtension
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoGeneral
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDEnvio
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDRecepcion
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDDecision
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDPasoSimple
-				</allowedTargetType>
-				<allowedTargetType>
-					BPDSubProceso
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="BPDReferentesCualificados"/>
-			</InverseImplicator>
-		</Ruleset>
-		<Ruleset id="BPDReferentesCualificados" uid="BPDReferentesCualificados">
-			<TypeConstraint id="type_constraint">
-				<allowedSourceType>
-					BPDArquetipoReferenciable
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDSalida
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDArquetipoConAdopcion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPoliticaDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDArtefacto
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCondicionante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPreCondicion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCondicion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPostCondicion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDParticipante
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUnidadOrganizacional
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDOrganizacion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPerfil
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDDatosDePrueba
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDHerramienta
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEscenario
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCaracteristica
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDReglaDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDCasoDePrueba
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProcesoDeNegocioSimple
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDProgramado
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDResolucionDatos
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPrograma
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEpisodio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDListaDePruebas
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEntrada
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUsoArtefacto
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDExtensionProceso
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDUsoCaracteristica
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoMinimo
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPlazo
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDFracasoFinal
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDExitoFinal
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPuntoExtension
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoGeneral
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDEnvio
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDRecepcion
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDDecision
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDPasoSimple
-				</allowedSourceType>
-				<allowedSourceType>
-					BPDSubProceso
-				</allowedSourceType>
-				<allowedTargetType>
-					BPDReferenciaCualificada
-				</allowedTargetType>
-			</TypeConstraint>
-			<InverseImplicator id="inverse_relation">
-				<inverseRuleset uidref="EAID_25913DAD_3B79_4c6e_B022_1642AC0BD9EF"/>
 			</InverseImplicator>
 		</Ruleset>
 	</RulesetCollection>
