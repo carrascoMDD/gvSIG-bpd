@@ -31,6 +31,86 @@ Summary of use cases implemented after delivery of version 1.0 (build20090611044
 - Standard Plone actions are intercepted or aliased to maintain a tight contron on application instances.
   
   
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+
+
+version 1.0.0.5
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+USEX 02 Present at the bottom of each page the Footer with credits for the application project
+
+USEX 04 Intercept the actions select_default_page and selectViewTemplate
+
+
+|
+|
+
+**KNOWN BUGS**
+
+ - None unresolved -
+
+|
+|
+
+
+**POSTPONED**
+
+*To 1.1*
+
+COMU 02 Edit and publish pages to present the gvSIG-bpd product to OSOR communities
+
+DOCU 01 Edit and publish gvSIG-bpd user documentation
+
+DOCU 02 Edit and publish gvSIG-bpd install documentation
+
+DOCU 03 Edit and publish gvSIG-bpd administration documentation
+
+|
+|
+
+*To 1.2*
+
+IMOF01 Integrate into gvSIG-bpd the ModelDDploneMOF application to define o.o. information structures
+
+|
+|
+
+*To 1.3*
+
+IRDB01 Integrate into gvSIG-bpd the ModelDDploneRDB appto define 
+
+
+|
+|
+
+*To 1.4*
+
+IBMM01 Integrate into gvSIG-bpd the ModelDDploneBMM application to define business motivation models
+
+
+|
+|
+
+*To 1.5*
+
+IPAG01 Integrate with gvSIG Plone service to assemble as a single page a complete network of gvSIG-bpd specification
+
+
 
 
 |

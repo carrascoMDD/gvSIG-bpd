@@ -652,6 +652,45 @@ class BPDElemento_Operaciones:
 #
 
 
+   
+
+
+    security.declarePublic( 'fTranslateI18NManyIntoDict')
+    def fTranslateI18NManyIntoDict( self, 
+        theI18NDomainsStringsAndDefaults, 
+        theResultDict                   =None):
+        """Internationalization: build or update a dictionaty with the translations of all requested strings from the specified domain into the language preferred by the connected user, or return the supplied default.
+        
+        """
+        
+        unResultDict = theResultDict
+        
+        if not theI18NDomainsStringsAndDefaults:
+            return unResultDict
+        
+        if ( unResultDict == None):
+            unResultDict = { }
+        
+        aTranslationService = getToolByName( self, 'translation_service', None)
+        
+        for aDomainStringsAndDefaults in theI18NDomainsStringsAndDefaults:
+            aI18NDomain             = aDomainStringsAndDefaults[ 0] or cI18NDomainDefault
+            unasStringsAndDefaults  = aDomainStringsAndDefaults[ 1]
+            
+            for unaStringAndDefault in unasStringsAndDefaults:
+                unaString = unaStringAndDefault[ 0]
+                unDefault = unaStringAndDefault[ 1]
+                if unaString:
+                    aTranslation = u''
+                    if aTranslationService:
+                        aTranslation = aTranslationService.utranslate( aI18NDomain, unaString, mapping=None, context=self , target_language= None, default=unDefault)            
+                    if not aTranslation:
+                        aTranslation = self.fAsUnicode( unDefault)
+                    unResultDict[ unaString] = aTranslation
+                        
+        return unResultDict
+            
+
     security.declarePrivate( 'fTranslationI18NDomain')
     def fTranslationI18NDomain( self, theI18NDomain):
 
@@ -672,22 +711,22 @@ class BPDElemento_Operaciones:
 
 
     security.declarePrivate( 'fTranslateI18N')
-    def fTranslateI18N( self, theI18NDomain, theString, theDefault):
+    def fTranslateI18N( self, theI18NDomain, theString, theDefault, theTranslationService=None):
         if not theString:
             return u''
 
         aI18NDomain = self.fTranslationI18NDomain( theI18NDomain)
         if not aI18NDomain:
             return unicode( theDefault)
+        
+        
+        aTranslationService = theTranslationService
+        if not aTranslationService:
+            aTranslationService = getToolByName( self, 'translation_service', None)
+        
              
         aTranslation = unicode( theDefault)
         
-        aTranslationService = None
-        try:
-            aTranslationService = self.translation_service
-        except:
-            None
-            
         if aTranslationService:
             aTranslation = aTranslationService.utranslate( aI18NDomain, theString, mapping=None, context=self , target_language= None, default=theDefault)                       
             if not aTranslation:

@@ -39,6 +39,7 @@ from Products.gvSIGbpd.BPDConVersiones import BPDConVersiones
 from Products.gvSIGbpd.BPDElemento_ExportConfig import BPDElemento_ExportConfig
 from Products.gvSIGbpd.BPDElemento_MappingConfig import BPDElemento_MappingConfig
 from Products.gvSIGbpd.BPDElemento_TraversalConfig import BPDElemento_TraversalConfig
+from Products.gvSIGbpd.BPDElemento_Credits import BPDElemento_Credits
 from Products.gvSIGbpd.BPDElemento_Operaciones import BPDElemento_Operaciones
 from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATContentTypes.content.document import ATDocument
@@ -438,6 +439,7 @@ BPDElemento_schema = getattr(BPDElemento_CopyConfig, 'schema', Schema(())).copy(
     getattr(BPDElemento_ExportConfig, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_MappingConfig, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_TraversalConfig, 'schema', Schema(())).copy() + \
+    getattr(BPDElemento_Credits, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_Operaciones, 'schema', Schema(())).copy() + \
     getattr(ATCTMixin, 'schema', Schema(())).copy() + \
     schema.copy()
@@ -445,11 +447,11 @@ BPDElemento_schema = getattr(BPDElemento_CopyConfig, 'schema', Schema(())).copy(
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducciones, BPDElemento_Meta, BPDConVersiones, BPDElemento_ExportConfig, BPDElemento_MappingConfig, BPDElemento_TraversalConfig, BPDElemento_Operaciones, ATCTMixin):
+class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducciones, BPDElemento_Meta, BPDConVersiones, BPDElemento_ExportConfig, BPDElemento_MappingConfig, BPDElemento_TraversalConfig, BPDElemento_Credits, BPDElemento_Operaciones, ATCTMixin):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BPDElemento_CopyConfig,'__implements__',()),) + (getattr(BPDConRegistroActividad,'__implements__',()),) + (getattr(BPDConTraducciones,'__implements__',()),) + (getattr(BPDElemento_Meta,'__implements__',()),) + (getattr(BPDConVersiones,'__implements__',()),) + (getattr(BPDElemento_ExportConfig,'__implements__',()),) + (getattr(BPDElemento_MappingConfig,'__implements__',()),) + (getattr(BPDElemento_TraversalConfig,'__implements__',()),) + (getattr(BPDElemento_Operaciones,'__implements__',()),) + (getattr(ATCTMixin,'__implements__',()),)
+    __implements__ = (getattr(BPDElemento_CopyConfig,'__implements__',()),) + (getattr(BPDConRegistroActividad,'__implements__',()),) + (getattr(BPDConTraducciones,'__implements__',()),) + (getattr(BPDElemento_Meta,'__implements__',()),) + (getattr(BPDConVersiones,'__implements__',()),) + (getattr(BPDElemento_ExportConfig,'__implements__',()),) + (getattr(BPDElemento_MappingConfig,'__implements__',()),) + (getattr(BPDElemento_TraversalConfig,'__implements__',()),) + (getattr(BPDElemento_Credits,'__implements__',()),) + (getattr(BPDElemento_Operaciones,'__implements__',()),) + (getattr(ATCTMixin,'__implements__',()),)
 
 
 
@@ -490,9 +492,9 @@ class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducc
 
 
 
-    allowed_content_types = ['Image', 'Document', 'File', 'Link', 'News Item'] + list(getattr(BPDElemento_CopyConfig, 'allowed_content_types', [])) + list(getattr(BPDConRegistroActividad, 'allowed_content_types', [])) + list(getattr(BPDConTraducciones, 'allowed_content_types', [])) + list(getattr(BPDElemento_Meta, 'allowed_content_types', [])) + list(getattr(BPDConVersiones, 'allowed_content_types', [])) + list(getattr(BPDElemento_ExportConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_MappingConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_TraversalConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Operaciones, 'allowed_content_types', [])) + list(getattr(ATCTMixin, 'allowed_content_types', []))
+    allowed_content_types = ['Image', 'Document', 'File', 'Link', 'News Item'] + list(getattr(BPDElemento_CopyConfig, 'allowed_content_types', [])) + list(getattr(BPDConRegistroActividad, 'allowed_content_types', [])) + list(getattr(BPDConTraducciones, 'allowed_content_types', [])) + list(getattr(BPDElemento_Meta, 'allowed_content_types', [])) + list(getattr(BPDConVersiones, 'allowed_content_types', [])) + list(getattr(BPDElemento_ExportConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_MappingConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_TraversalConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Credits, 'allowed_content_types', [])) + list(getattr(BPDElemento_Operaciones, 'allowed_content_types', [])) + list(getattr(ATCTMixin, 'allowed_content_types', []))
 
-    aliases = updateAliases( ATDocument, {'placeful_workflow_configuration': 'Tabular', 'folder_factories': 'Tabular', 'content_status_modify': 'Tabular', 'object_paste': 'MDDPaste', 'object_rename': 'Editar', 'relations_form': 'Tabular', 'delete_confirmation': 'Eliminar', 'content_status_history': 'Tabular'})
+    aliases = updateAliases( ATDocument, {'placeful_workflow_configuration': 'Tabular', 'select_default_page': 'Textual', 'folder_factories': 'Tabular', 'selectViewTemplate': 'MDDSelectViewTemplate', 'content_status_modify': 'Tabular', 'object_paste': 'MDDPaste', 'object_rename': 'Editar', 'relations_form': 'Tabular', 'delete_confirmation': 'Eliminar', 'content_status_history': 'Tabular'})
 
     _at_rename_after_creation = True
 
