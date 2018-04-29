@@ -2,6 +2,111 @@ gvSIG Business Process Definition RELEASE NOTES
 ===============================================
 
 
+|
+|
+
+
+Summary of use cases implemented after delivery of version 1.0 (build200906110445)
+==================================================================================
+
+- The application now automatically creates in the Plone Site an instance of ModelDDvlPloneTool,
+  if one does not exist yet.
+  
+- Export an element as .zip archives with information in a character encoded (utf8) .xml file, 
+  and plone binary content as separate files.
+
+- Import into an element as .zip archives with .xml file and binary content.
+
+- Cut/Copy/Paste/Delete on elements, or groups of elements.
+
+- When pasting a Business Rule into a collection of Business Policies,
+  refactor the Business Rule into a Business Policy,
+  and vice-versa. Same for Reception/Input, Sends/Outputs,
+  Tool/Artefact, Organizational Unit/Profile.
+  
+- Create a new Version as a copy of a whole root organization and its contents, 
+  maintaining traceability links from elements in the new version 
+  to elements in the previous version.  
+  
+- Standard Plone actions are intercepted or aliased to maintain a tight contron on application instances.
+  
+  
+
+
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+
+
+version 1.0.0.4
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+
+
+MODE01 Model changes in support of ModelDDvlPlone framework 	SUC 11extension04 Manage traceability links when copying or moving
+
+With WORKAROUND: Does not uncatalog root organization
+
+
+
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+
+version 1.0.0.4
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+
+
+
+|
+|
+
+**KNOWN BUGS**
+
+ - None unresolved -
+
+|
+|
+
+
+**POSTPONED**
+
+
+
+
+
+|
+|
+
+
+------------------------------
 
 |
 |

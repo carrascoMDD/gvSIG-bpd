@@ -122,6 +122,7 @@ def initialize(context):
     import BPDPasoMinimo
     import BPDColeccionArtefactos
     import BPDColeccionEntradas
+    import BPDPasoConRestriccionesTiempo
     import BPDColeccionUnidadesOrganizacionales
     import BPDPasoConSiguientes
     import BPDOrganizacion

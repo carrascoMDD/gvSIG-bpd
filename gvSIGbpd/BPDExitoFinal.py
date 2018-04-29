@@ -56,6 +56,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDExitoFinal_attr_detallesPaso_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Detalles acerca de las caracteristicas del Paso de Proceso de Negocio.",
         duplicates="0",
         label2="Step details",
@@ -223,12 +224,21 @@ class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, 
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

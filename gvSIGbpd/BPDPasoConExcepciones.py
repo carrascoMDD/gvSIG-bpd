@@ -51,6 +51,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDPasoConExcepciones_attr_titulosPasosSiguientesEnCasoExcepcion_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Pasos que se ejecutan como alternativa al flujo principal de pasos siguientes, o cuando surje una condicion excepcional.",
         duplicates="0",
         label2="Alternate or Exceptional Next Steps",
@@ -59,14 +60,14 @@ schema = Schema((
         collection="false",
         styleex="volatile=0;",
         description2="Steps that will execute as an alternative to the main flow of next steps, or when an exceptional condition arises.",
-        containment="Not Specified",
         ea_guid="{1FA73A97-84BC-4683-B4A4-7C409954B00B}",
+        exclude_from_values_form="True",
+        label="Pasos Alternativos o Excepcion",
+        containment="Not Specified",
         position="0",
         owner_class_name="BPDPasoConExcepciones",
-        label="Pasos Alternativos o Excepcion",
         expression="', '.join( [a.Title() for a in context.getPasosSiguientesEnCasoExcepcion()])",
-        computed_types="string",
-        exclude_from_values_form="True"
+        computed_types="string"
     ),
 
     RelationField(

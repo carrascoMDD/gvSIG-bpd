@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -55,6 +55,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDSubProceso_attr_detallesPaso_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Detalles acerca de las caracteristicas del Paso de Proceso de Negocio.",
         duplicates="0",
         label2="SubProcess Step details",
@@ -87,6 +88,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDSubProceso_attr_tituloProcesoUsado_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Proceso de Negocio que se ejecuta como parte del Proceso de Negocio actual.",
         duplicates="0",
         label2="Used Business Process",
@@ -281,12 +283,21 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

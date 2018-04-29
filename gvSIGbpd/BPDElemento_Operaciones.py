@@ -674,16 +674,13 @@ class BPDElemento_Operaciones:
     security.declarePrivate( 'fTranslateI18N')
     def fTranslateI18N( self, theI18NDomain, theString, theDefault):
         if not theString:
-            return ''
-
-        if not theContextualElement:
-            return theDefault
+            return u''
 
         aI18NDomain = self.fTranslationI18NDomain( theI18NDomain)
         if not aI18NDomain:
-            return theDefault
+            return unicode( theDefault)
              
-        aTranslation = theDefault
+        aTranslation = unicode( theDefault)
         
         aTranslationService = None
         try:
@@ -694,10 +691,10 @@ class BPDElemento_Operaciones:
         if aTranslationService:
             aTranslation = aTranslationService.utranslate( aI18NDomain, theString, mapping=None, context=self , target_language= None, default=theDefault)                       
             if not aTranslation:
-                aTranslation = theDefault
+                aTranslation = unicode( theDefault)
 
         if not aTranslation:
-            aTranslation = theString
+            aTranslation = unicode( theString)
 
         return aTranslation
 
@@ -1093,14 +1090,54 @@ class BPDElemento_Operaciones:
         
         unIsMoveOperation = op == 1
         
-        return unModelDDvlPloneTool.fPaste( 
+        unPasteResult =  unModelDDvlPloneTool.fPaste( 
             theTimeProfilingResults     =None,
             theContainerObject          =self, 
             theObjectsToPaste           =someObjectsToPaste,
             theIsMoveOperation          =unIsMoveOperation,
             theAdditionalParams         =None,
         )
-    
+        
+        
+        unSuccess = False
+        if not unPasteResult:
+            unPortalStatusMsg = self.fTranslateI18N( 'ModelDDvlPlone', cError_During_Paste, cError_During_Paste + '-')
+        else:
+            unSuccess = unPasteResult.get( 'success', False)
+            if not unSuccess:
+                unPortalStatusMsg = ('%s %s%s %s%s %s%s #Total pasted=%d #MDD pasted=%d #Plone pasted=%d %s%s') % ( 
+                    self.fTranslateI18N( 'ModelDDvlPlone', cError_During_Paste, cError_During_Paste + '-'),
+                    
+                    ( unPasteResult.get( 'status', '') and self.fTranslateI18N( 'ModelDDvlPlone', 'status', 'status-')) or u'',
+                    self.fAsUnicode( unPasteResult.get( 'status', '')),
+                    
+                    ( unPasteResult.get( 'condition', '') and self.fTranslateI18N( 'ModelDDvlPlone', 'condition', 'condition-')) or u'',
+                    self.fAsUnicode( unPasteResult.get( 'condition', '')),
+                    
+                    ( unPasteResult.get( 'exception', '') and self.fTranslateI18N( 'ModelDDvlPlone', 'exception', 'exception-')) or u'',
+                    self.fAsUnicode( unPasteResult.get( 'exception', '')),
+                    
+                    unPasteResult.get( 'num_elements_pasted',       0),
+                    unPasteResult.get( 'num_mdd_elements_pasted',   0),
+                    unPasteResult.get( 'num_plone_elements_pasted', 0),
+
+                    ( unPasteResult.get( 'error_reports', '') and self.fTranslateI18N( 'ModelDDvlPlone', 'error_reports', 'error_reports-')) or u'',
+                    self.fAsUnicode( self.fModelDDvlPloneTool().fPrettyPrint( unPasteResult.get( 'error_reports', []))),
+                )
+            else:
+                unPortalStatusMsg = ('#Total pasted=%d #MDD pasted=%d #Plone pasted=%d %s%s') % ( 
+                    unPasteResult.get( 'num_elements_pasted',       0),
+                    unPasteResult.get( 'num_mdd_elements_pasted',   0),
+                    unPasteResult.get( 'num_plone_elements_pasted', 0),
+
+                    ( unPasteResult.get( 'error_reports', '') and self.fTranslateI18N( 'ModelDDvlPlone', 'error_reports', 'error_reports-')) or u'',
+                    self.fAsUnicode( self.fModelDDvlPloneTool().fPrettyPrint( unPasteResult.get( 'error_reports', []))),
+                )
+                
+                
+            return REQUEST.RESPONSE.redirect(  '%s/Tabular?portal_status_message=%s' % ( self.absolute_url() + unPortalStatusMsg))
+                   
+
         # return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
         # aRequest.response.redirect( '%s/MDDpaste' % self.absolute_url())
         

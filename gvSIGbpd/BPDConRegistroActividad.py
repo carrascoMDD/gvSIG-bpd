@@ -290,6 +290,7 @@ schema = Schema((
         collection="false",
         styleex="volatile=0;IsLiteral=0;",
         description2="Counter of changes over time. Useful to learn if any changes happened since the reading of the element information.",
+        do_not_copy="True",
         ea_guid="{624ACD6A-7313-481d-B567-DFCEF2B81620}",
         read_only="True",
         scale="0",
@@ -300,8 +301,7 @@ schema = Schema((
         exclude_from_traversalconfig="True",
         containment="Not Specified",
         position="8",
-        owner_class_name="BPDConRegistroActividad",
-        exclude_from_copyconfig="True"
+        owner_class_name="BPDConRegistroActividad"
     ),
 
     StringField(
@@ -333,8 +333,7 @@ schema = Schema((
         exclude_from_traversalconfig="True",
         containment="Not Specified",
         position="9",
-        owner_class_name="BPDConRegistroActividad",
-        exclude_from_copyconfig="True"
+        owner_class_name="BPDConRegistroActividad"
     ),
 
     BooleanField(

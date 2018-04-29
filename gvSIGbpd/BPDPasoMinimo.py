@@ -31,8 +31,8 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.gvSIGbpd.BPDPasoEstimado import BPDPasoEstimado
 from Products.gvSIGbpd.BPDArquetipoReferenciable import BPDArquetipoReferenciable
+from Products.gvSIGbpd.BPDPasoConRestriccionesTiempo import BPDPasoConRestriccionesTiempo
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
@@ -147,6 +147,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDPasoMinimo_attr_tituloProcesoDeNegocio_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="El titulo del Proceso de Negocio que contiene el Paso.",
         duplicates="0",
         label2="Business Process",
@@ -174,18 +175,18 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-BPDPasoMinimo_schema = getattr(BPDPasoEstimado, 'schema', Schema(())).copy() + \
-    getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
+BPDPasoMinimo_schema = getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
+    getattr(BPDPasoConRestriccionesTiempo, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDPasoMinimo(OrderedBaseFolder, BPDPasoEstimado, BPDArquetipoReferenciable):
+class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable, BPDPasoConRestriccionesTiempo):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoEstimado,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),) + (getattr(BPDPasoConRestriccionesTiempo,'__implements__',()),)
 
 
 
@@ -216,7 +217,7 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDPasoEstimado, BPDArquetipoReferenciabl
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoEstimado, 'allowed_content_types', [])) + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', [])) + list(getattr(BPDPasoConRestriccionesTiempo, 'allowed_content_types', []))
 
     actions =  (
 
@@ -293,12 +294,21 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDPasoEstimado, BPDArquetipoReferenciabl
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

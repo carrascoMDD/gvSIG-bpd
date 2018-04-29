@@ -615,12 +615,21 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

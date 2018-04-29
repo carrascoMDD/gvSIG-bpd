@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -366,12 +366,21 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

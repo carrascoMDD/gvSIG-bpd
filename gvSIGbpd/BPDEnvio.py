@@ -83,6 +83,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDEnvio_attr_detallesPaso_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Detalles acerca de las caracteristicas del Paso de Proceso de Negocio.",
         duplicates="0",
         label2="Step details",
@@ -144,6 +145,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDEnvio_attr_titulosArtefactosEnviados_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Artefactos que se envian en este paso a un Participante externo.",
         duplicates="0",
         label2="Sent Artefacts",
@@ -172,6 +174,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDEnvio_attr_titulosDestinatarios_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Perfiles o Unidades Organizacionales a los que se destina el Envio.",
         duplicates="0",
         label2="Receivers",
@@ -333,12 +336,21 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

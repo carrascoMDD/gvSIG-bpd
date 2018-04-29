@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gvSIGbpd\n"
-"POT-Creation-Date: Sat Oct 03 12:23:01 2009\n"
-"PO-Revision-Date: Sat Oct 03 12:23:01 2009\n"
+"POT-Creation-Date: Thu Oct 22 22:50:49 2009\n"
+"PO-Revision-Date: Thu Oct 22 22:50:49 2009\n"
 "Last-Translator: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
 "Language-Team: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
 "MIME-Version: 1.0\n"
@@ -1446,6 +1446,311 @@ msgstr "Alternative next steps or on Exception"
 msgid "gvSIGbpd_BPDPasoConExcepciones_rel_pasosSiguientesEnCasoExcepcion_help"
 msgstr "Steps that will execute as an alternative to the main flow of next steps, or when an exceptional condition arises."
 
+#. Default: "Paso General"
+#: BPDPasoConRestriccionesTiempo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_label"
+msgstr "BPDPasoConRestriccionesTiempo"
+
+#. Default: "Abstraccion de un Paso de Proceso de Negocio con Perfil o Unidad Organizacional Ejecutor  y posiblemente aplicando herramientas, caso general, detallado como Paso Simple, Decision, Envio, Recepcion, ..."
+#: BPDPasoConRestriccionesTiempo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_help"
+msgstr "BPDPasoConRestriccionesTiempo"
+
+#. Default: "Tiempo desde Momento de Comenzo"
+#: BPDPasoConRestriccionesTiempo desplazamientoMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_desplazamientoMomentoDeComienzo_label"
+msgstr "Time from Start Moment"
+
+#. Default: "Indica un tiempo (en unidades segun campo asociado) con respecto al cual comenzara el paso."
+#: BPDPasoConRestriccionesTiempo desplazamientoMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_desplazamientoMomentoDeComienzo_help"
+msgstr "Indicates an amount of time, measured in the unit indicated by companion field,  with respect to the Start Reference Moment, to define the moment on which the step shall start or fail its deadline."
+
+#. Default: "Tiempo desde Momento de Fin"
+#: BPDPasoConRestriccionesTiempo desplazamientoMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_desplazamientoMomentoDeFin_label"
+msgstr "Time from End Moment"
+
+#. Default: "Indica un tiempo (en unidades segun campo asociado= con respecto al cual debe terminar el paso."
+#: BPDPasoConRestriccionesTiempo desplazamientoMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_desplazamientoMomentoDeFin_help"
+msgstr "Indicates an amount of time, measured in the unit indicated by companion field,  with respect to the Reference Moment, to define the moment on which the step complete or fail its deadline."
+
+#. Default: "Momento de Referencia deComienzo"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeComienzo_label"
+msgstr "Reference Start Moment"
+
+#. Default: "Indica con respecto a que momento se especifica el comienzo del paso. Relativo al comienzo del proceso, o al princicipio o el fin de pasos anteriores, a una fecha fija, o eventos de cierto tipo y condiciones."
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeComienzo_help"
+msgstr "Indicates the moment on which starting the step depends. Relative to the start of the process, the start or end of previous steps, a fixed date, or events of certain types conforming to certain conditions."
+
+#. Default: "Ninguno"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeComienzo_option_Ninguno"
+msgstr "None"
+
+#. Default: "ComienzoProceso"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeComienzo_option_ComienzoProceso"
+msgstr "ProcessStart"
+
+#. Default: "ComienzoPaso"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeComienzo_option_ComienzoPaso"
+msgstr "StepStart"
+
+#. Default: "FinPaso"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeComienzo_option_FinPaso"
+msgstr "StepEnd"
+
+#. Default: "FechaFija"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeComienzo_option_FechaFija"
+msgstr "FixedDate"
+
+#. Default: "Evento"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeComienzo_option_Evento"
+msgstr "Event"
+
+#. Default: "Momento de Referencia de Final"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeFin_label"
+msgstr "Reference End Moment"
+
+#. Default: "Indica con respecto a que momento la ejecucion del paso debera estar completada. Relativo al comienzo del proceso, o al princicipio o el fin de pasos anteriores, a una fecha fija, o eventos de cierto tipo y condiciones."
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeFin_help"
+msgstr "Indicates the moment on which the step shall have completed its execution. Relative to the start of the process, the start or end of previous steps, a fixed date, or events of certain types conforming to certain conditions."
+
+#. Default: "Ninguno"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeFin_option_Ninguno"
+msgstr "None"
+
+#. Default: "ComienzoProceso"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeFin_option_ComienzoProceso"
+msgstr "ProcessStart"
+
+#. Default: "ComienzoPaso"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeFin_option_ComienzoPaso"
+msgstr "StepStart"
+
+#. Default: "FinPaso"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeFin_option_FinPaso"
+msgstr "StepEnd"
+
+#. Default: "FechaFija"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeFin_option_FechaFija"
+msgstr "FixedDate"
+
+#. Default: "Evento"
+#: BPDPasoConRestriccionesTiempo momentoDeReferenciaDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_momentoDeReferenciaDeFin_option_Evento"
+msgstr "Event"
+
+#. Default: "Unidad de tiempo desde el Momento de Comienzo"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_label"
+msgstr "Unit of Time from Start Moment"
+
+#. Default: "Indica la unidad de tiempo con que se mide el retraso con respecto al momento en que el paso debe comienzar. Relativo al comienzo del proceso, o al princicipio o el fin de pasos anteriores, a una fecha fija, o eventos de cierto tipo y condiciones."
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_help"
+msgstr "Indicates the time unit measuring delay to start the step. Relative to the start of the process, the start or end of previous steps, a fixed date, or events with certain types and conditions."
+
+#. Default: "Ninguno"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Ninguno"
+msgstr "None"
+
+#. Default: "Anos"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Anos"
+msgstr "Years"
+
+#. Default: "Semestres"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Semestres"
+msgstr "Semesters"
+
+#. Default: "Trimestres"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Trimestres"
+msgstr "Trimesters"
+
+#. Default: "Meses"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Meses"
+msgstr "Months"
+
+#. Default: "Quncenas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Quncenas"
+msgstr "Forthnights"
+
+#. Default: "Semanas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Semanas"
+msgstr "Weeks"
+
+#. Default: "EntreSemanas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_EntreSemanas"
+msgstr "WeekDays"
+
+#. Default: "FinesSemana"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_FinesSemana"
+msgstr "WeekEnds"
+
+#. Default: "Dias"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Dias"
+msgstr "Days"
+
+#. Default: "Jornadas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Jornadas"
+msgstr "Jornadas"
+
+#. Default: "MediasJornadas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_MediasJornadas"
+msgstr "MediasJornadas"
+
+#. Default: "Horas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Horas"
+msgstr "Hours"
+
+#. Default: "MediasHoras"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_MediasHoras"
+msgstr "HalfHours"
+
+#. Default: "CuartosHora"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_CuartosHora"
+msgstr "QuarterHours"
+
+#. Default: "Minutos"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Minutos"
+msgstr "Minutes"
+
+#. Default: "Segundos"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Segundos"
+msgstr "Seconds"
+
+#. Default: "Decimas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeComienzo
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeComienzo_option_Decimas"
+msgstr "Tenths"
+
+#. Default: "Unidad del tiempo desde el Momento de Fin"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_label"
+msgstr "Unit of time from End Moment"
+
+#. Default: "Indica la unidad con que se mide el retraso con respecto al momento en que el paso debe terminar. Relativo al comienzo del proceso, o al princicipio o el fin de pasos anteriores, a una fecha fija, o eventos de cierto tipo y condiciones."
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_help"
+msgstr "Indicates the unit measuring delay to end the step. Relative to the start of the process, the start or end of previous steps, a fixed date, or events with certain types and conditions."
+
+#. Default: "Ninguno"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Ninguno"
+msgstr "None"
+
+#. Default: "Anos"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Anos"
+msgstr "Years"
+
+#. Default: "Semestres"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Semestres"
+msgstr "Semesters"
+
+#. Default: "Trimestres"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Trimestres"
+msgstr "Trimesters"
+
+#. Default: "Meses"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Meses"
+msgstr "Months"
+
+#. Default: "Quncenas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Quncenas"
+msgstr "Forthnights"
+
+#. Default: "Semanas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Semanas"
+msgstr "Weeks"
+
+#. Default: "EntreSemanas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_EntreSemanas"
+msgstr "WeekDays"
+
+#. Default: "FinesSemana"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_FinesSemana"
+msgstr "WeekEnds"
+
+#. Default: "Dias"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Dias"
+msgstr "Days"
+
+#. Default: "Jornadas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Jornadas"
+msgstr "Jornadas"
+
+#. Default: "MediasJornadas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_MediasJornadas"
+msgstr "MediasJornadas"
+
+#. Default: "Horas"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Horas"
+msgstr "Hours"
+
+#. Default: "MediasHoras"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_MediasHoras"
+msgstr "HalfHours"
+
+#. Default: "CuartosHora"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_CuartosHora"
+msgstr "QuarterHours"
+
+#. Default: "Minutos"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Minutos"
+msgstr "Minutes"
+
+#. Default: "Segundos"
+#: BPDPasoConRestriccionesTiempo unidadMomentoDeFin
+msgid "gvSIGbpd_BPDPasoConRestriccionesTiempo_attr_unidadMomentoDeFin_option_Segundos"
+msgstr "Seconds"
+
 #. Default: "BPDPasoConSiguientes"
 #: BPDPasoConSiguientes
 msgid "gvSIGbpd_BPDPasoConSiguientes_label"
@@ -1486,26 +1791,6 @@ msgstr "BPDPasoEstimado"
 msgid "gvSIGbpd_BPDPasoEstimado_help"
 msgstr "BPDPasoEstimado"
 
-#. Default: "Tiempo desde Momento de Comenzo"
-#: BPDPasoEstimado desplazamientoMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_desplazamientoMomentoDeComienzo_label"
-msgstr "Time from Start Moment"
-
-#. Default: "Indica un tiempo (en unidades segun campo asociado) con respecto al cual comenzara el paso."
-#: BPDPasoEstimado desplazamientoMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_desplazamientoMomentoDeComienzo_help"
-msgstr "Indicates an amount of time, measured in the unit indicated by companion field,  with respect to the Start Reference Moment, to define the moment on which the step shall start or fail its deadline."
-
-#. Default: "Tiempo desde Momento de Fin"
-#: BPDPasoEstimado desplazamientoMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_desplazamientoMomentoDeFin_label"
-msgstr "Time from End Moment"
-
-#. Default: "Indica un tiempo (en unidades segun campo asociado= con respecto al cual debe terminar el paso."
-#: BPDPasoEstimado desplazamientoMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_desplazamientoMomentoDeFin_help"
-msgstr "Indicates an amount of time, measured in the unit indicated by companion field,  with respect to the Reference Moment, to define the moment on which the step complete or fail its deadline."
-
 #. Default: "Maximo Esfuerzo Estimado"
 #: BPDPasoEstimado maximoEsfuerzoEstimado
 msgid "gvSIGbpd_BPDPasoEstimado_attr_maximoEsfuerzoEstimado_label"
@@ -1525,86 +1810,6 @@ msgstr "Minimum Estimated Effort"
 #: BPDPasoEstimado minimoEsfuerzoEstimado
 msgid "gvSIGbpd_BPDPasoEstimado_attr_minimoEsfuerzoEstimado_help"
 msgstr "Indicates de Estimated Minimum amount of Effort that may be required for the process step. Measured in the units specified by the attribute Units for Minimal Estimated Effort."
-
-#. Default: "Momento de Referencia deComienzo"
-#: BPDPasoEstimado momentoDeReferenciaDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeComienzo_label"
-msgstr "Reference Start Moment"
-
-#. Default: "Indica con respecto a que momento se especifica el comienzo del paso. Relativo al comienzo del proceso, o al princicipio o el fin de pasos anteriores, a una fecha fija, o eventos de cierto tipo y condiciones."
-#: BPDPasoEstimado momentoDeReferenciaDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeComienzo_help"
-msgstr "Indicates the moment on which starting the step depends. Relative to the start of the process, the start or end of previous steps, a fixed date, or events of certain types conforming to certain conditions."
-
-#. Default: "Ninguno"
-#: BPDPasoEstimado momentoDeReferenciaDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeComienzo_option_Ninguno"
-msgstr "None"
-
-#. Default: "ComienzoProceso"
-#: BPDPasoEstimado momentoDeReferenciaDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeComienzo_option_ComienzoProceso"
-msgstr "ProcessStart"
-
-#. Default: "ComienzoPaso"
-#: BPDPasoEstimado momentoDeReferenciaDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeComienzo_option_ComienzoPaso"
-msgstr "StepStart"
-
-#. Default: "FinPaso"
-#: BPDPasoEstimado momentoDeReferenciaDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeComienzo_option_FinPaso"
-msgstr "StepEnd"
-
-#. Default: "FechaFija"
-#: BPDPasoEstimado momentoDeReferenciaDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeComienzo_option_FechaFija"
-msgstr "FixedDate"
-
-#. Default: "Evemto"
-#: BPDPasoEstimado momentoDeReferenciaDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeComienzo_option_Evemto"
-msgstr "Event"
-
-#. Default: "Momento de Referencia de Final"
-#: BPDPasoEstimado momentoDeReferenciaDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeFin_label"
-msgstr "Reference End Moment"
-
-#. Default: "Indica con respecto a que momento la ejecucion del paso debera estar completada. Relativo al comienzo del proceso, o al princicipio o el fin de pasos anteriores, a una fecha fija, o eventos de cierto tipo y condiciones."
-#: BPDPasoEstimado momentoDeReferenciaDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeFin_help"
-msgstr "Indicates the moment on which the step shall have completed its execution. Relative to the start of the process, the start or end of previous steps, a fixed date, or events of certain types conforming to certain conditions."
-
-#. Default: "Ninguno"
-#: BPDPasoEstimado momentoDeReferenciaDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeFin_option_Ninguno"
-msgstr "None"
-
-#. Default: "ComienzoProceso"
-#: BPDPasoEstimado momentoDeReferenciaDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeFin_option_ComienzoProceso"
-msgstr "ProcessStart"
-
-#. Default: "ComienzoPaso"
-#: BPDPasoEstimado momentoDeReferenciaDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeFin_option_ComienzoPaso"
-msgstr "StepStart"
-
-#. Default: "FinPaso"
-#: BPDPasoEstimado momentoDeReferenciaDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeFin_option_FinPaso"
-msgstr "StepEnd"
-
-#. Default: "FechaFija"
-#: BPDPasoEstimado momentoDeReferenciaDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeFin_option_FechaFija"
-msgstr "FixedDate"
-
-#. Default: "Evemto"
-#: BPDPasoEstimado momentoDeReferenciaDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_momentoDeReferenciaDeFin_option_Evemto"
-msgstr "Event"
 
 #. Default: "Unidad para el Esfuerzo Maximo Estimado"
 #: BPDPasoEstimado unidadMaximoEsfuerzoEstimado
@@ -1695,246 +1900,6 @@ msgstr "Person-Hours"
 #: BPDPasoEstimado unidadMinimoEsfuerzoEstimado
 msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMinimoEsfuerzoEstimado_option_Minutos-Persona"
 msgstr "Person-Minutes"
-
-#. Default: "Unidad de tiempo desde el Momento de Comienzo"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_label"
-msgstr "Unit of Time from Start Moment"
-
-#. Default: "Indica la unidad de tiempo con que se mide el retraso con respecto al momento en que el paso debe comienzar. Relativo al comienzo del proceso, o al princicipio o el fin de pasos anteriores, a una fecha fija, o eventos de cierto tipo y condiciones."
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_help"
-msgstr "Indicates the time unit measuring delay to start the step. Relative to the start of the process, the start or end of previous steps, a fixed date, or events with certain types and conditions."
-
-#. Default: "Ninguno"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Ninguno"
-msgstr "None"
-
-#. Default: "Siglos"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Siglos"
-msgstr "Centuries"
-
-#. Default: "Decadas"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Decadas"
-msgstr "Decades"
-
-#. Default: "Lustros"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Lustros"
-msgstr "Lustros"
-
-#. Default: "Busiestos"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Busiestos"
-msgstr "Bisiestos"
-
-#. Default: "Anos"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Anos"
-msgstr "Years"
-
-#. Default: "Semestres"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Semestres"
-msgstr "Semesters"
-
-#. Default: "Trimestres"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Trimestres"
-msgstr "Trimesters"
-
-#. Default: "Meses"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Meses"
-msgstr "Months"
-
-#. Default: "Quncenas"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Quncenas"
-msgstr "Forthnights"
-
-#. Default: "Semanas"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Semanas"
-msgstr "Weeks"
-
-#. Default: "EntreSemanas"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_EntreSemanas"
-msgstr "WeekDays"
-
-#. Default: "FinesSemana"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_FinesSemana"
-msgstr "WeekEnds"
-
-#. Default: "Dias"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Dias"
-msgstr "Days"
-
-#. Default: "Jornadas"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Jornadas"
-msgstr "Jornadas"
-
-#. Default: "MediasJornadas"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_MediasJornadas"
-msgstr "MediasJornadas"
-
-#. Default: "Horas"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Horas"
-msgstr "Hours"
-
-#. Default: "MediasHoras"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_MediasHoras"
-msgstr "HalfHours"
-
-#. Default: "CuartosHora"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_CuartosHora"
-msgstr "QuarterHours"
-
-#. Default: "Minutos"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Minutos"
-msgstr "Minutes"
-
-#. Default: "Segundos"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Segundos"
-msgstr "Seconds"
-
-#. Default: "Decimas"
-#: BPDPasoEstimado unidadMomentoDeComienzo
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeComienzo_option_Decimas"
-msgstr "Tenths"
-
-#. Default: "Unidad del tiempo desde el Momento de Fin"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_label"
-msgstr "Unit of time from End Moment"
-
-#. Default: "Indica la unidad con que se mide el retraso con respecto al momento en que el paso debe terminar. Relativo al comienzo del proceso, o al princicipio o el fin de pasos anteriores, a una fecha fija, o eventos de cierto tipo y condiciones."
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_help"
-msgstr "Indicates the unit measuring delay to end the step. Relative to the start of the process, the start or end of previous steps, a fixed date, or events with certain types and conditions."
-
-#. Default: "Ninguno"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Ninguno"
-msgstr "None"
-
-#. Default: "Milenios"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Milenios"
-msgstr "Milennia"
-
-#. Default: "Siglos"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Siglos"
-msgstr "Centuries"
-
-#. Default: "Decadas"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Decadas"
-msgstr "Decades"
-
-#. Default: "Lustros"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Lustros"
-msgstr "Lustros"
-
-#. Default: "Busiestos"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Busiestos"
-msgstr "Bisiestos"
-
-#. Default: "Anos"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Anos"
-msgstr "Years"
-
-#. Default: "Semestres"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Semestres"
-msgstr "Semesters"
-
-#. Default: "Trimestres"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Trimestres"
-msgstr "Trimesters"
-
-#. Default: "Meses"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Meses"
-msgstr "Months"
-
-#. Default: "Quncenas"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Quncenas"
-msgstr "Forthnights"
-
-#. Default: "Semanas"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Semanas"
-msgstr "Weeks"
-
-#. Default: "EntreSemanas"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_EntreSemanas"
-msgstr "WeekDays"
-
-#. Default: "FinesSemana"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_FinesSemana"
-msgstr "WeekEnds"
-
-#. Default: "Dias"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Dias"
-msgstr "Days"
-
-#. Default: "Jornadas"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Jornadas"
-msgstr "Jornadas"
-
-#. Default: "MediasJornadas"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_MediasJornadas"
-msgstr "MediasJornadas"
-
-#. Default: "Horas"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Horas"
-msgstr "Hours"
-
-#. Default: "MediasHoras"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_MediasHoras"
-msgstr "HalfHours"
-
-#. Default: "CuartosHora"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_CuartosHora"
-msgstr "QuarterHours"
-
-#. Default: "Minutos"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Minutos"
-msgstr "Minutes"
-
-#. Default: "Segundos"
-#: BPDPasoEstimado unidadMomentoDeFin
-msgid "gvSIGbpd_BPDPasoEstimado_attr_unidadMomentoDeFin_option_Segundos"
-msgstr "Seconds"
 
 #. Default: "Paso General"
 #: BPDPasoGeneral

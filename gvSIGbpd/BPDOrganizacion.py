@@ -254,9 +254,9 @@ schema = Schema((
         description='Colecciones de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio.'
     ),
 
-    StringField(
+    TextField(
         name='comentarioVersionInterna',
-        widget=StringWidget(
+        widget=TextAreaWidget(
             label="Comentario de Version (uso interno)",
             label2="Version Comment (internal)",
             description="Comentario a la version para uso interno de la aplicacion.",
@@ -439,12 +439,21 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 
@@ -472,6 +481,13 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         """
         
         return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('cb_isMoveable')
+    def cb_isMoveable(self):
+        """
+        """
+        
+        return self._at_rename_after_creation or  ('portal_factory' in self.getPhysicalPath()) or ((  not self.getEsRaiz()) and self.fAllowWrite())
 
     security.declarePublic('getEsRaiz')
     def getEsRaiz(self):

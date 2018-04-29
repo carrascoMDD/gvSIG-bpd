@@ -31,6 +31,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDPasoEstimado import BPDPasoEstimado
 from Products.gvSIGbpd.BPDPasoConAnteriores import BPDPasoConAnteriores
 from Products.gvSIGbpd.BPDPasoConExcepciones import BPDPasoConExcepciones
 from Products.gvSIGbpd.BPDPasoGestorExcepciones import BPDPasoGestorExcepciones
@@ -111,10 +112,14 @@ schema = Schema((
     RelationField(
         name='requeridoEnPlazos',
         inverse_relation_label="Pasos requeridos",
+        containment="Unspecified",
         inverse_relation_description="Pasos que deben ejecutarse dentro del Plazo. Son los pasos que se espera que acontezcan en el tiempo de espera indicado.",
         description="Plazos en los que este Paso debe ejecutarse.",
         relationship='BPDRequeridosEnPlazos',
+        inverse_relation_field_name='pasosRequeridos',
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Deadlines to meet",
+        inverse_relation_description2="Steps that must execute whithin the Deadline. It is what the Deadline actually expects and waits to happen.",
         widget=ReferenceBrowserWidget(
             label="Plazos a cumplir",
             label2="Deadlines to meet",
@@ -124,18 +129,13 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDPasoGeneral_rel_requeridoEnPlazos_help',
             i18n_domain='gvSIGbpd',
         ),
-        description2="Deadlines by which this step must execute.",
-        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
-        inverse_relation_label2="Required steps",
-        dependency_supplier=True,
-        inverse_relation_field_name='pasosRequeridos',
-        inverse_relation_description2="Steps that must execute whithin the Deadline. It is what the Deadline actually expects and waits to happen.",
-        additional_columns=['detallesPaso'],
-        write_permission='Modify portal content',
         label="Plazos a cumplir",
+        description2="Deadlines by which this step must execute.",
         multiValued=1,
-        containment="Unspecified",
-        inverse_relationship='BPDPasosRequeridosEnPlazo'
+        inverse_relation_label2="Required steps",
+        inverse_relationship='BPDPasosRequeridosEnPlazo',
+        write_permission='Modify portal content',
+        additional_columns=['detallesPaso']
     ),
 
 ),
@@ -144,7 +144,8 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-BPDPasoGeneral_schema = getattr(BPDPasoConAnteriores, 'schema', Schema(())).copy() + \
+BPDPasoGeneral_schema = getattr(BPDPasoEstimado, 'schema', Schema(())).copy() + \
+    getattr(BPDPasoConAnteriores, 'schema', Schema(())).copy() + \
     getattr(BPDPasoConExcepciones, 'schema', Schema(())).copy() + \
     getattr(BPDPasoGestorExcepciones, 'schema', Schema(())).copy() + \
     getattr(BPDPasoMinimo, 'schema', Schema(())).copy() + \
@@ -154,11 +155,11 @@ BPDPasoGeneral_schema = getattr(BPDPasoConAnteriores, 'schema', Schema(())).copy
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepciones, BPDPasoGestorExcepciones, BPDPasoMinimo, BPDPasoConSiguientes):
+class BPDPasoGeneral(OrderedBaseFolder, BPDPasoEstimado, BPDPasoConAnteriores, BPDPasoConExcepciones, BPDPasoGestorExcepciones, BPDPasoMinimo, BPDPasoConSiguientes):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),) + (getattr(BPDPasoConExcepciones,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),) + (getattr(BPDPasoConSiguientes,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoEstimado,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),) + (getattr(BPDPasoConExcepciones,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),) + (getattr(BPDPasoConSiguientes,'__implements__',()),)
 
 
 
@@ -189,7 +190,7 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDPasoConExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoConSiguientes, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDPasoEstimado, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDPasoConExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoConSiguientes, 'allowed_content_types', []))
 
     actions =  (
 
@@ -266,12 +267,21 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

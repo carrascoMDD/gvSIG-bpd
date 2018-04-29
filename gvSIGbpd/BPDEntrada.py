@@ -145,6 +145,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDEntrada_attr_tituloProcesoDeNegocio_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="El titulo del Proceso de Negocio que contiene la Entrada",
         duplicates="0",
         label2="Business Process",
@@ -177,6 +178,7 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDEntrada_attr_titulosArtefactosDeEntrada_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Artefactos que deben estar disponibles para comenzar el Proceso de Negocio",
         duplicates="0",
         label2="Input Artefacts",
@@ -368,12 +370,21 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
        },
 
 
+       {'action': "string:${object_url}/MDDVersions",
+        'category': "object",
+        'id': 'mddversions',
+        'name': 'Versions',
+        'permissions': ("View",),
+        'condition': """python:1"""
+       },
+
+
        {'action': "string:${object_url}/MDDNewTranslation",
         'category': "object_buttons",
         'id': 'mddnewtranslation',
         'name': 'New Translation',
         'permissions': ("Modify portal content",),
-        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
+        'condition': """python:0 and object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

@@ -47,9 +47,9 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.CMFCore.utils  import getToolByName
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Acquisition  import aq_inner, aq_parent
+from Products.CMFCore.utils  import getToolByName
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -492,7 +492,7 @@ class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducc
 
     allowed_content_types = ['Image', 'Document', 'File', 'Link', 'News Item'] + list(getattr(BPDElemento_CopyConfig, 'allowed_content_types', [])) + list(getattr(BPDConRegistroActividad, 'allowed_content_types', [])) + list(getattr(BPDConTraducciones, 'allowed_content_types', [])) + list(getattr(BPDElemento_Meta, 'allowed_content_types', [])) + list(getattr(BPDConVersiones, 'allowed_content_types', [])) + list(getattr(BPDElemento_ExportConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_MappingConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_TraversalConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Operaciones, 'allowed_content_types', [])) + list(getattr(ATCTMixin, 'allowed_content_types', []))
 
-    aliases = updateAliases( ATDocument, {'relations_form':'Tabular','folder_factories':'Tabular','delete_confirmation': 'Eliminar','object_rename': 'Editar','content_status_modify':'Tabular','content_status_history':'Tabular','placeful_workflow_configuration': 'Tabular',})
+    aliases = updateAliases( ATDocument, {'placeful_workflow_configuration': 'Tabular', 'folder_factories': 'Tabular', 'content_status_modify': 'Tabular', 'object_paste': 'MDDPaste', 'object_rename': 'Editar', 'relations_form': 'Tabular', 'delete_confirmation': 'Eliminar', 'content_status_history': 'Tabular'})
 
     _at_rename_after_creation = True
 

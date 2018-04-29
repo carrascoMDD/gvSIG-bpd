@@ -51,22 +51,23 @@ schema = Schema((
             description_msgid='gvSIGbpd_BPDPasoConSiguientes_attr_titulosPasosSiguientes_help',
             i18n_domain='gvSIGbpd',
         ),
+        exclude_from_values_paragraph="True",
         description="Pasos que se ejecutaran tras completarse este paso.",
         duplicates="0",
         label2="Next Steps",
         ea_localid="294",
         derived="0",
         collection="false",
-        label="Pasos Siguientes",
+        styleex="volatile=0;",
         description2="Steps that will execute after the completion of this step.",
-        containment="Not Specified",
         ea_guid="{60BCA907-2644-4f7d-B722-2938608EF8CD}",
+        exclude_from_values_form="True",
+        label="Pasos Siguientes",
+        containment="Not Specified",
         position="0",
         owner_class_name="BPDPasoConSiguientes",
-        styleex="volatile=0;",
         expression="', '.join( [a.Title() for a in context.getPasosSiguientes()])",
-        computed_types="string",
-        exclude_from_values_form="True"
+        computed_types="string"
     ),
 
     RelationField(

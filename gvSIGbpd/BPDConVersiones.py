@@ -105,7 +105,7 @@ schema = Schema((
         position="1",
         owner_class_name="BPDConVersiones",
         expression="( context.getRaiz() and context.getRaiz().getVersionInterna()) or ''",
-        computed_types="string"
+        computed_types="text"
     ),
 
     StringField(
