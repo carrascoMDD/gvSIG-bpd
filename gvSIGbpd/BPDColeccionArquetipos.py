@@ -65,20 +65,20 @@ class BPDColeccionArquetipos(BPDElemento):
     actions =  (
 
 
-       {'action': "string:${object_url}/sharing",
-        'category': "object",
-        'id': 'local_roles',
-        'name': 'Sharing',
-        'permissions': ("ManageProperties",),
-        'condition': 'python:1'
-       },
-
-
        {'action': "string:$object_url/content_status_history",
         'category': "object",
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/Editar",
+        'category': "object",
+        'id': 'edit',
+        'name': 'Edit',
+        'permissions': ("ModifyPortalContent",),
         'condition': 'python:1'
        },
 
@@ -92,11 +92,11 @@ class BPDColeccionArquetipos(BPDElemento):
        },
 
 
-       {'action': "string:${object_url}/Textual",
+       {'action': "string:${object_url}/sharing",
         'category': "object",
-        'id': 'view',
-        'name': 'View',
-        'permissions': ("View",),
+        'id': 'local_roles',
+        'name': 'Sharing',
+        'permissions': ("ManageProperties",),
         'condition': 'python:1'
        },
 
@@ -110,11 +110,11 @@ class BPDColeccionArquetipos(BPDElemento):
        },
 
 
-       {'action': "string:${object_url}/Editar",
+       {'action': "string:${object_url}/Textual",
         'category': "object",
-        'id': 'edit',
-        'name': 'Edit',
-        'permissions': ("ModifyPortalContent",),
+        'id': 'view',
+        'name': 'View',
+        'permissions': ("View",),
         'condition': 'python:1'
        },
 

@@ -73,6 +73,66 @@ schema = Schema((
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
+    TextField(
+        name='preCondicion',
+        widget=TextAreaWidget(
+            label="Pre Condicion",
+            label2="Pre Condition",
+            description="La condicion que debera cumplirse para que pueda comenzar el Proceso",
+            description2="The conditioni that is required to be true, to allow the start of the Business Process execution.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="La condicion que debera cumplirse para que pueda comenzar el Proceso",
+        duplicates="0",
+        label2="Pre Condition",
+        ea_localid="236",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="The conditioni that is required to be true, to allow the start of the Business Process execution.",
+        ea_guid="{30ADBBDD-941A-4c1a-B6F7-0E033B19BF46}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Pre Condicion",
+        length="0",
+        containment="Not Specified",
+        position="5",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    TextField(
+        name='postCondicion',
+        widget=TextAreaWidget(
+            label="Post Condicion",
+            label2="Post Condition",
+            description="La condicion que se cumplira cuando el Proceso concluya con exito.",
+            description2="The condition that is guaranteed to be met, whent he Business Process completes successfully.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="La condicion que se cumplira cuando el Proceso concluya con exito.",
+        duplicates="0",
+        label2="Post Condition",
+        ea_localid="237",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="The condition that is guaranteed to be met, whent he Business Process completes successfully.",
+        ea_guid="{ADE0B368-5B74-4162-A5CE-F94276D53067}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Post Condicion",
+        length="0",
+        containment="Not Specified",
+        position="6",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
     StringField(
         name='responsableMantenimiento',
         widget=StringWidget(
@@ -100,6 +160,67 @@ schema = Schema((
         length="0",
         containment="Not Specified",
         position="1",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    TextField(
+        name='seleccionDePersonal',
+        widget=TextAreaWidget(
+            label="Seleccion de Personal",
+            label2="Human Resources Selection",
+            description="Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico.",
+            description2="Selection criteria for staffing the Performer Profiles with matching individuals, specifically for this Business Process.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico.",
+        duplicates="0",
+        label2="Human Resources Selection",
+        ea_localid="238",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Selection criteria for staffing the Performer Profiles with matching individuals, specifically for this Business Process.",
+        ea_guid="{D823D784-F46A-43bf-9FC4-56881646DC0E}",
+        write_permission='Modify portal content',
+        scale="0",
+        label="Seleccion de Personal",
+        length="0",
+        containment="Not Specified",
+        position="7",
+        owner_class_name="BPDProcesoDeNegocio"
+    ),
+
+    BooleanField(
+        name='esPlaneado',
+        widget=BooleanField._properties['widget'](
+            label="Es Planificado",
+            label2="Is Planned",
+            description="Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos).",
+            description2="Each Business Process instance shall be planned in advance (i.e., time and resources).",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos).",
+        duplicates="0",
+        label2="Is Planned",
+        ea_localid="233",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Each Business Process instance shall be planned in advance (i.e., time and resources).",
+        ea_guid="{825E14F7-ACB9-44fe-BD10-A6E3AD626823}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Es Planificado",
+        length="0",
+        containment="Not Specified",
+        position="2",
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
@@ -217,97 +338,6 @@ schema = Schema((
         owner_class_name="BPDProcesoDeNegocio",
         expression="context.fTFLVs([ 'esPlaneado', 'esContinuo','esRepetible', ])",
         computed_types="string"
-    ),
-
-    BooleanField(
-        name='esPlaneado',
-        widget=BooleanField._properties['widget'](
-            label="Es Planificado",
-            label2="Is Planned",
-            description="Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos).",
-            description2="Each Business Process instance shall be planned in advance (i.e., time and resources).",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_esPlaneado_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Cada instancia del Proceso de Negocio ha de ser planeada previamente (p.e., tiempo y recursos).",
-        duplicates="0",
-        label2="Is Planned",
-        ea_localid="233",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Each Business Process instance shall be planned in advance (i.e., time and resources).",
-        ea_guid="{825E14F7-ACB9-44fe-BD10-A6E3AD626823}",
-        write_permission='Modify portal content',
-        scale="0",
-        default="0",
-        label="Es Planificado",
-        length="0",
-        containment="Not Specified",
-        position="2",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    TextField(
-        name='postCondicion',
-        widget=TextAreaWidget(
-            label="Post Condicion",
-            label2="Post Condition",
-            description="La condicion que se cumplira cuando el Proceso concluya con exito.",
-            description2="The condition that is guaranteed to be met, whent he Business Process completes successfully.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="La condicion que se cumplira cuando el Proceso concluya con exito.",
-        duplicates="0",
-        label2="Post Condition",
-        ea_localid="237",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="The condition that is guaranteed to be met, whent he Business Process completes successfully.",
-        ea_guid="{ADE0B368-5B74-4162-A5CE-F94276D53067}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Post Condicion",
-        length="0",
-        containment="Not Specified",
-        position="6",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    TextField(
-        name='preCondicion',
-        widget=TextAreaWidget(
-            label="Pre Condicion",
-            label2="Pre Condition",
-            description="La condicion que debera cumplirse para que pueda comenzar el Proceso",
-            description2="The conditioni that is required to be true, to allow the start of the Business Process execution.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="La condicion que debera cumplirse para que pueda comenzar el Proceso",
-        duplicates="0",
-        label2="Pre Condition",
-        ea_localid="236",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="The conditioni that is required to be true, to allow the start of the Business Process execution.",
-        ea_guid="{30ADBBDD-941A-4c1a-B6F7-0E033B19BF46}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Pre Condicion",
-        length="0",
-        containment="Not Specified",
-        position="5",
-        owner_class_name="BPDProcesoDeNegocio"
     ),
 
     RelationField(
@@ -459,36 +489,6 @@ schema = Schema((
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
-    TextField(
-        name='seleccionDePersonal',
-        widget=TextAreaWidget(
-            label="Seleccion de Personal",
-            label2="Human Resources Selection",
-            description="Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico.",
-            description2="Selection criteria for staffing the Performer Profiles with matching individuals, specifically for this Business Process.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_seleccionDePersonal_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Criterios para seleccionar el personal de los Perfiles ejecutores de este proceso de negocio especifico.",
-        duplicates="0",
-        label2="Human Resources Selection",
-        ea_localid="238",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Selection criteria for staffing the Performer Profiles with matching individuals, specifically for this Business Process.",
-        ea_guid="{D823D784-F46A-43bf-9FC4-56881646DC0E}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Seleccion de Personal",
-        length="0",
-        containment="Not Specified",
-        position="7",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
 ),
 )
 
@@ -512,37 +512,10 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
     actions =  (
 
 
-       {'action': "string:${object_url}/sharing",
-        'category': "object",
-        'id': 'local_roles',
-        'name': 'Sharing',
-        'permissions': ("Manage properties",),
-        'condition': 'python:1'
-       },
-
-
        {'action': "string:$object_url/content_status_history",
         'category': "object",
         'id': 'content_status_history',
         'name': 'State',
-        'permissions': ("View",),
-        'condition': 'python:1'
-       },
-
-
-       {'action': "string:${object_url}/MDDExport",
-        'category': "object",
-        'id': 'mddexport',
-        'name': 'Export',
-        'permissions': ("View",),
-        'condition': 'python:1'
-       },
-
-
-       {'action': "string:${object_url}/Textual",
-        'category': "object",
-        'id': 'view',
-        'name': 'View',
         'permissions': ("View",),
         'condition': 'python:1'
        },
@@ -557,10 +530,37 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
        },
 
 
+       {'action': "string:${object_url}/MDDExport",
+        'category': "object",
+        'id': 'mddexport',
+        'name': 'Export',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/sharing",
+        'category': "object",
+        'id': 'local_roles',
+        'name': 'Sharing',
+        'permissions': ("Manage properties",),
+        'condition': 'python:1'
+       },
+
+
        {'action': "string:${object_url}/TextualRest",
         'category': "object",
         'id': 'textual_rest',
         'name': 'TextualRest',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/Textual",
+        'category': "object",
+        'id': 'view',
+        'name': 'View',
         'permissions': ("View",),
         'condition': 'python:1'
        },

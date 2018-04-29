@@ -35,12 +35,6 @@ from AccessControl                  import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.config import *
 
-schema = Schema((
-
-),
-)
-
-BPDElemento_Meta_schema = BaseSchema.copy() +     schema.copy()
 
 
 class BPDElemento_Meta:            
@@ -48,14 +42,6 @@ class BPDElemento_Meta:
     """
     """
     security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
-    archetype_name = 'BPDElemento_Meta'
-    
-    meta_type = 'BPDElemento_Meta'
-    portal_type = 'BPDElemento_Meta'
-
-    schema = BPDElemento_Meta_schema
 
     
     security.declarePrivate('fArchetypeSchemaByName')

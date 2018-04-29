@@ -3,8 +3,8 @@
 # Generalidad Valenciana 
 #
 # Authors: 
-# Conselleria de Infraestructuras y Transporte
-#          de la Generalidad Valenciana (Spain) Model Driven Development sl  Valencia (Spain) www.ModelDD.org 
+# Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana (Spain) 
+# Model Driven Development sl  Valencia (Spain) www.ModelDD.org 
 # Antonio Carrasco Valero                       carrasco@ModelDD.org
 #
 # Licensed under GPL

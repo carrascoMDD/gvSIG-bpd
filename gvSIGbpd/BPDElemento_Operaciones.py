@@ -2,8 +2,7 @@
 #
 # File: BPDElemento_Operaciones.py
 #
-# Copyright (c) 2008 by Conselleria de Infraestructuras y Transporte de la
-# Generalidad Valenciana
+# Copyright (c) 2009 by Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana
 #
 # GNU General Public License (GPL)
 #
@@ -24,7 +23,9 @@
 #
 #
 
-__author__ = """Antonio Carrasco Valero (Model Driven Development sl) <gvSIGbpd@gvSIG.org>"""
+__author__ = """Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana <gvSIGbpd@gvSIG.org>, 
+Model Driven Development sl <gvSIGbpd@ModelDD.org>,
+Antonio Carrasco Valero <carrasco@ModelDD.org>"""
 __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
@@ -36,18 +37,49 @@ from Acquisition        import aq_inner, aq_parent
 
 
 ##code-section module-header #fill in your manual code here
+
+       
+  
+
+import sys
+import traceback
+import logging
+
+
+from Acquisition                    import aq_get
+
+from Products.CMFCore               import permissions
+from Products.CMFCore.utils         import getToolByName
+
+
+from Products.ModelDDvlPloneTool.ModelDDvlPloneTool import cModelDDvlPloneToolName, ModelDDvlPloneTool
+
+
+#from OFS.CopySupport import CopyError as gCopyErrorExceptionString     
+#from OFS.CopySupport import eNoData as gNoDataExceptionDialog     
+#from OFS.CopySupport import eInvalid as gInvalidExceptionDialog     
+#from OFS.CopySupport import eNotFound as gNotFoundExceptionDialog     
+
+from ZODB.POSException import ConflictError  
+from OFS.CopySupport import CopyContainer
+from OFS     import Moniker        
+
+from marshal import loads
+from urllib  import unquote
+from zlib    import decompress
+
+
+
+cLogExceptions = True
+
+cLazyCreateModelDDvlPloneTool = True
+
 ##/code-section module-header
 
-schema = Schema((
 
-),
-)
 
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
-
-BPDElemento_Operaciones_schema = BaseSchema.copy() + \
-    schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
@@ -57,33 +89,21 @@ class BPDElemento_Operaciones:
     """
     security = ClassSecurityInfo()
 
-    # This name appears in the 'add' box
-    archetype_name = 'BPDElemento_Operaciones'
-
-    meta_type = 'BPDElemento_Operaciones'
-    portal_type = 'BPDElemento_Operaciones'
-    allowed_content_types = []
-    filter_content_types = 0
-    global_allow = 1
-    #content_icon = 'BPDElemento_Operaciones.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "BPDElemento_Operaciones"
-    typeDescMsgId = 'description_edit_bpdelemento_operaciones'
-    archetype_name2 = ''
-    typeDescription2 = ''''''
-    archetype_name_msgid = 'gvSIGbpd_BPDElemento_Operaciones_label'
-    typeDescription_msgid = 'gvSIGbpd_BPDElemento_Operaciones_help'
-
-    _at_rename_after_creation = True
-
-    schema = BPDElemento_Operaciones_schema
-
     ##code-section class-header #fill in your manual code here
     
     
  
+    security.declarePrivate('fPortalRoot')
+    def fPortalRoot(self):
+        aPortalTool = getToolByName( self, 'portal_url')
+        unPortal = aPortalTool.getPortalObject()
+        return unPortal       
+    
+    
+        
+        
+
+    
 # #############################################################
 # Owner accessors
 # 
@@ -93,8 +113,7 @@ class BPDElemento_Operaciones:
     security.declarePrivate('getRaiz')
     def getRaiz(self):
         if self.getEsRaiz():
-            return self
-            
+            return self            
         unContenedor =  aq_parent( aq_inner( self))
         
         if not unContenedor:
@@ -451,6 +470,422 @@ class BPDElemento_Operaciones:
         return unValueString
     
      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    security.declarePrivate('pHandle_manage_afterAdd')
+    def pHandle_manage_afterAdd(self, theItem, theContainer):   
+        
+        OrderedBaseFolder.manage_afterAdd(  self, theItem, theContainer)
+        
+        self.fLazyCrear( theItem, theContainer)
+
+        return self
+    
+             
+    security.declarePrivate(   'pSetElementPermissions')
+    def pSetElementPermissions(self, theElement):     
+        if not theElement:
+            return self
+
+        somePermissionsAndRoles = [ 
+            [ [ permissions.View, ],                [ 'Manager', 'Owner', 'Reviewer', ], ],
+            [ [ permissions.ListFolderContents, ],  [ 'Manager', 'Owner', 'Reviewer', ], ],
+            [ [ permissions.ModifyPortalContent, ], [ 'Manager', 'Owner', ], ],
+            [ [ permissions.AddPortalContent, ],    [ 'Manager', 'Owner', ], ],
+            [ [ permissions.AddPortalFolders, ],    [ 'Manager', 'Owner', ], ],
+            [ [ permissions.DeleteObjects, ],       [ 'Manager', 'Owner', ], ],
+            
+        ]
+        
+        for aPermissionsAndRoles in somePermissionsAndRoles:
+            somePermissions = aPermissionsAndRoles[ 0]
+            for unaPermission in somePermissions:
+                if unaPermission:
+                    unosRoles = aPermissionsAndRoles[ 1]
+                    if unosRoles:
+                        theElement.manage_permission( unaPermission, roles=unosRoles, acquire=1)
+                    
+        return self   
+    
+    
+    security.declarePrivate(   'fLazyCrear')
+    def fLazyCrear( self, theItem, theContainer):
+        
+        if not theItem:
+            return None
+        
+        
+        if not self.Title(): # 'portal_factory' in self.getPhysicalPath(): 
+            return None
+        
+        self.pSetElementPermissions( self)
+        
+        unModelDDvlPloneTool = self.fModelDDvlPloneTool( True)
+        if not unModelDDvlPloneTool:
+            return None
+        
+            
+        unResultadoNuevoElemento = unModelDDvlPloneTool.fRetrieveTypeConfig( 
+            theTimeProfilingResults     =None,
+            theElement                  =theItem, 
+            theParent                   =None,
+            theParentTraversalName      ='',
+            theTypeConfig               =None, 
+            theAllTypeConfigs           =None, 
+            theViewName                 ='', 
+            theRetrievalExtents         =[ 'traversals', ],
+            theWritePermissions         =[ 'object', 'attrs', 'aggregations', ],
+            theFeatureFilters           ={ 'relations': [], }, 
+            theInstanceFilters          =None,
+            theTranslationsCaches       =None,
+            theCheckedPermissionsCache  =None,
+            theAdditionalParams         =None,
+        )
+        if not unResultadoNuevoElemento:
+            return None     
+        
+        for unaTraversalResult in unResultadoNuevoElemento.get( 'traversals', []):
+            if ( unaTraversalResult[ 'traversal_kind'] == 'aggregation') and  unaTraversalResult[ 'contains_collections']:
+                if not unaTraversalResult[ 'elements']:
+                    if unaTraversalResult[ 'factories']:
+                        unaFactoryAndTranslations = unaTraversalResult[ 'factories'][ 0]
+                        if unaFactoryAndTranslations:
+                            unTypeName = unaFactoryAndTranslations[ 'meta_type']
+                            if unTypeName:
+                                unNewTitle = unaFactoryAndTranslations[ 'type_translations'][ 'archetype_name']
+                                unNewCollectionCreateResult = unModelDDvlPloneTool.fCrearElementoDeTipo( 
+                                    theTimeProfilingResults =None,
+                                    theContainerElement     =theItem, 
+                                    theTypeName             =unTypeName, 
+                                    theTitle                =unNewTitle, 
+                                    theDescription          ='',
+                                    theAdditionalParams     =None,
+                                    theAllowFactoryMethods  = False,
+                                )  
+                                
+                                if (not unNewCollectionCreateResult) or not ( unNewCollectionCreateResult[ 'effect'] == 'created'):
+                                    None
+
+    
+        return theItem
+    
+    
+
+    
+    
+    
+    
+    
+
+
+   
+    security.declarePrivate( 'fModelDDvlPloneTool')
+    def fModelDDvlPloneTool( self, theAllowCreation=False):
+        """Retrieve or create an instance of ModelDDvlPloneTool.
+        
+        """
+        try:
+    
+            unPortalRoot = self.fPortalRoot()
+            if not unPortalRoot:
+                return None
+            
+            aModelDDvlPloneTool = None
+            try:
+                aModelDDvlPloneTool = aq_get( unPortalRoot, cModelDDvlPloneToolName, None, 1)
+            except:
+                None  
+            if aModelDDvlPloneTool:
+                return aModelDDvlPloneTool
+            
+            if not ( theAllowCreation and cLazyCreateModelDDvlPloneTool):
+                return None
+     
+            
+            unaNuevaTool = ModelDDvlPloneTool( ) 
+            unPortalRoot._setObject( cModelDDvlPloneToolName,  unaNuevaTool)
+            aModelDDvlPloneTool = None
+            try:
+                aModelDDvlPloneTool = aq_get( unPortalRoot, cModelDDvlPloneToolName, None, 1)
+            except:
+                None  
+            if not aModelDDvlPloneTool:
+                return None
+                        
+            return aModelDDvlPloneTool
+        
+        except:
+            unaExceptionInfo = sys.exc_info()
+            unaExceptionFormattedTraceback = ''.join(traceback.format_exception( *unaExceptionInfo))
+            
+            unInformeExcepcion = 'Exception during Lazy Initialization operation fModelDDvlPloneTool\n' 
+            unInformeExcepcion += 'exception class %s\n' % unaExceptionInfo[1].__class__.__name__ 
+            unInformeExcepcion += 'exception message %s\n\n' % str( unaExceptionInfo[1].args)
+            unInformeExcepcion += unaExceptionFormattedTraceback   
+                     
+     
+            if cLogExceptions:
+                logging.getLogger( 'gvSIGbpd').error( unInformeExcepcion)
+    
+            return None
+             
+
+        
+        
+    security.declarePrivate( 'pHandle_manage_pasteObjects')        
+    def pHandle_manage_pasteObjects(self, cb_copy_data=None, REQUEST=None):
+        """Trap and override behavior of manage_pasteObjects implementation in CopySupport.py 
+        
+        """
+        
+        # Get the list of objects to be copied into this (self) container
+        # Copied from class CopyContainer in file Zope lib python OFS  CopySupport.py
+        if cb_copy_data is not None:
+            cp = cb_copy_data
+        elif REQUEST is not None and REQUEST.has_key('__cp'):
+            cp = REQUEST['__cp']
+        else:
+            cp = None
+        if cp is None:
+            return CopyContainer.manage_objectPaste( self, cb_copy_data, REQUEST)
+             
+        try:
+            op, mdatas = loads(decompress(unquote(cp))) # _cb_decode(cp)
+        except:
+            return CopyContainer.manage_objectPaste( self, cb_copy_data, REQUEST)
+
+    
+        oblist = []
+        app = self.getPhysicalRoot()
+        for mdata in mdatas:
+            m = Moniker.loadMoniker(mdata)
+            try:
+                ob = m.bind(app)
+            except:
+                return CopyContainer.manage_objectPaste( self, cb_copy_data, REQUEST)
+            # Do not verify here
+            # self._verifyObjectPaste(ob, validate_src=op+1)
+            oblist.append(ob)
+        # End of code copied from class CopyContainer
+            
+        someObjectsToPaste = oblist[:]
+        
+        if not someObjectsToPaste:
+            return CopyContainer.manage_objectPaste( self, cb_copy_data, REQUEST)
+        
+        someAwareObjects = []
+        for anObjectToPaste in someObjectsToPaste:
+            anExportConfig = None
+            try:
+                anExportConfig = anObjectToPaste.exportConfig()
+            except:
+                None
+            if anExportConfig:
+                someAwareObjects.append( anObjectToPaste)
+                
+        if not someAwareObjects:
+            return CopyContainer.manage_objectPaste( self, cb_copy_data, REQUEST)
+        
+        
+        aRequest = REQUEST
+        if not aRequest:
+            try:
+                aRequest = self.REQUEST
+            except:
+                None
+        if not aRequest:
+            """Default to Plone behavior.
+            
+            """
+            return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
+        
+        
+        unModelDDvlPloneTool = self.fModelDDvlPloneTool( True)
+        if not unModelDDvlPloneTool:
+            return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
+        
+        return unModelDDvlPloneTool.fPaste( 
+            theTimeProfilingResults     =None,
+            theContainerObject          =self, 
+            theObjectsToPaste           =someObjectsToPaste,
+            theAdditionalParams         =None,
+        )
+    
+        # return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
+        # aRequest.response.redirect( '%s/MDDpaste' % self.absolute_url())
+        
+        
+        
+       
+         
+    # From CopySupport.py   
+    # class CopyContainer
+    #def manage_pasteObjects(self, cb_copy_data=None, REQUEST=None):
+        #"""Paste previously copied objects into the current object.
+
+        #If calling manage_pasteObjects from python code, pass the result of a
+        #previous call to manage_cutObjects or manage_copyObjects as the first
+        #argument.
+
+        #Also sends IObjectCopiedEvent and IObjectClonedEvent
+        #or IObjectWillBeMovedEvent and IObjectMovedEvent.
+        #"""
+        #if cb_copy_data is not None:
+            #cp = cb_copy_data
+        #elif REQUEST is not None and REQUEST.has_key('__cp'):
+            #cp = REQUEST['__cp']
+        #else:
+            #cp = None
+        #if cp is None:
+            #raise CopyError, eNoData
+
+        #try:
+            #op, mdatas = _cb_decode(cp)
+        #except:
+            #raise CopyError, eInvalid
+
+        #oblist = []
+        #app = self.getPhysicalRoot()
+        #for mdata in mdatas:
+            #m = Moniker.loadMoniker(mdata)
+            #try:
+                #ob = m.bind(app)
+            #except ConflictError:
+                #raise
+            #except:
+                #raise CopyError, eNotFound
+            #self._verifyObjectPaste(ob, validate_src=op+1)
+            #oblist.append(ob)
+
+        #result = []
+        #if op == 0:
+            ## Copy operation
+            #for ob in oblist:
+                #orig_id = ob.getId()
+                #if not ob.cb_isCopyable():
+                    #raise CopyError, eNotSupported % escape(orig_id)
+
+                #try:
+                    #ob._notifyOfCopyTo(self, op=0)
+                #except ConflictError:
+                    #raise
+                #except:
+                    #raise CopyError, MessageDialog(
+                        #title="Copy Error",
+                        #message=sys.exc_info()[1],
+                        #action='manage_main')
+
+                #id = self._get_id(orig_id)
+                #result.append({'id': orig_id, 'new_id': id})
+
+                #orig_ob = ob
+                #ob = ob._getCopy(self)
+                #ob._setId(id)
+                #notify(ObjectCopiedEvent(ob, orig_ob))
+
+                #self._setObject(id, ob)
+                #ob = self._getOb(id)
+                #ob.wl_clearLocks()
+
+                #ob._postCopy(self, op=0)
+
+                #OFS.subscribers.compatibilityCall('manage_afterClone', ob, ob)
+
+                #notify(ObjectClonedEvent(ob))
+
+            #if REQUEST is not None:
+                #return self.manage_main(self, REQUEST, update_menu=1,
+                                        #cb_dataValid=1)
+
+        #elif op == 1:
+            ## Move operation
+            #for ob in oblist:
+                #orig_id = ob.getId()
+                #if not ob.cb_isMoveable():
+                    #raise CopyError, eNotSupported % escape(orig_id)
+
+                #try:
+                    #ob._notifyOfCopyTo(self, op=1)
+                #except ConflictError:
+                    #raise
+                #except:
+                    #raise CopyError, MessageDialog(
+                        #title="Move Error",
+                        #message=sys.exc_info()[1],
+                        #action='manage_main')
+
+                #if not sanity_check(self, ob):
+                    #raise CopyError, "This object cannot be pasted into itself"
+
+                #orig_container = aq_parent(aq_inner(ob))
+                #if aq_base(orig_container) is aq_base(self):
+                    #id = orig_id
+                #else:
+                    #id = self._get_id(orig_id)
+                #result.append({'id': orig_id, 'new_id': id})
+
+                #notify(ObjectWillBeMovedEvent(ob, orig_container, orig_id,
+                                              #self, id))
+
+                ## try to make ownership explicit so that it gets carried
+                ## along to the new location if needed.
+                #ob.manage_changeOwnershipType(explicit=1)
+
+                #try:
+                    #orig_container._delObject(orig_id, suppress_events=True)
+                #except TypeError:
+                    ## BBB: removed in Zope 2.11
+                    #orig_container._delObject(orig_id)
+                    #warnings.warn(
+                        #"%s._delObject without suppress_events is deprecated "
+                        #"and will be removed in Zope 2.11." %
+                        #orig_container.__class__.__name__, DeprecationWarning)
+                #ob = aq_base(ob)
+                #ob._setId(id)
+
+                #try:
+                    #self._setObject(id, ob, set_owner=0, suppress_events=True)
+                #except TypeError:
+                    ## BBB: removed in Zope 2.11
+                    #self._setObject(id, ob, set_owner=0)
+                    #warnings.warn(
+                        #"%s._setObject without suppress_events is deprecated "
+                        #"and will be removed in Zope 2.11." %
+                        #self.__class__.__name__, DeprecationWarning)
+                #ob = self._getOb(id)
+
+                #notify(ObjectMovedEvent(ob, orig_container, orig_id, self, id))
+                #notifyContainerModified(orig_container)
+                #if aq_base(orig_container) is not aq_base(self):
+                    #notifyContainerModified(self)
+
+                #ob._postCopy(self, op=1)
+                ## try to make ownership implicit if possible
+                #ob.manage_changeOwnershipType(explicit=0)
+
+            #if REQUEST is not None:
+                #REQUEST['RESPONSE'].setCookie('__cp', 'deleted',
+                                    #path='%s' % cookie_path(REQUEST),
+                                    #expires='Wed, 31-Dec-97 23:59:59 GMT')
+                #REQUEST['__cp'] = None
+                #return self.manage_main(self, REQUEST, update_menu=1,
+                                        #cb_dataValid=0)
+
+        #return result
+             
     
     ##/code-section class-header
 

@@ -133,6 +133,7 @@ class BPDPasoGestorExcepciones:
     typeDescription2 = ''''''
     archetype_name_msgid = 'gvSIGbpd_BPDPasoGestorExcepciones_label'
     factory_methods = None
+    factory_enablers = None
 
     _at_rename_after_creation = True
 

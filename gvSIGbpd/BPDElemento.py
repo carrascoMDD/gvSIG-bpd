@@ -31,8 +31,10 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDElemento_CopyConfig import BPDElemento_CopyConfig
 from Products.gvSIGbpd.BPDElemento_Meta import BPDElemento_Meta
 from Products.gvSIGbpd.BPDElemento_ExportConfig import BPDElemento_ExportConfig
+from Products.gvSIGbpd.BPDElemento_MappingConfig import BPDElemento_MappingConfig
 from Products.gvSIGbpd.BPDElemento_TraversalConfig import BPDElemento_TraversalConfig
 from Products.gvSIGbpd.BPDElemento_Operaciones import BPDElemento_Operaciones
 from Products.ATContentTypes.content.base import ATCTMixin
@@ -40,10 +42,10 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.CMFCore.utils  import getToolByName
+from Acquisition  import aq_inner, aq_parent
 from Products.CMFCore.utils import getToolByName
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
-from Acquisition  import aq_inner, aq_parent
+from Products.CMFCore.utils  import getToolByName
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -521,8 +523,10 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-BPDElemento_schema = getattr(BPDElemento_Meta, 'schema', Schema(())).copy() + \
+BPDElemento_schema = getattr(BPDElemento_CopyConfig, 'schema', Schema(())).copy() + \
+    getattr(BPDElemento_Meta, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_ExportConfig, 'schema', Schema(())).copy() + \
+    getattr(BPDElemento_MappingConfig, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_TraversalConfig, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_Operaciones, 'schema', Schema(())).copy() + \
     getattr(ATCTMixin, 'schema', Schema(())).copy() + \
@@ -531,13 +535,13 @@ BPDElemento_schema = getattr(BPDElemento_Meta, 'schema', Schema(())).copy() + \
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDElemento(BPDElemento_Meta, BPDElemento_ExportConfig, BPDElemento_TraversalConfig, BPDElemento_Operaciones, ATCTMixin):
+class BPDElemento(BPDElemento_CopyConfig, BPDElemento_Meta, BPDElemento_ExportConfig, BPDElemento_MappingConfig, BPDElemento_TraversalConfig, BPDElemento_Operaciones, ATCTMixin):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BPDElemento_Meta,'__implements__',()),) + (getattr(BPDElemento_ExportConfig,'__implements__',()),) + (getattr(BPDElemento_TraversalConfig,'__implements__',()),) + (getattr(BPDElemento_Operaciones,'__implements__',()),) + (getattr(ATCTMixin,'__implements__',()),)
+    __implements__ = (getattr(BPDElemento_CopyConfig,'__implements__',()),) + (getattr(BPDElemento_Meta,'__implements__',()),) + (getattr(BPDElemento_ExportConfig,'__implements__',()),) + (getattr(BPDElemento_MappingConfig,'__implements__',()),) + (getattr(BPDElemento_TraversalConfig,'__implements__',()),) + (getattr(BPDElemento_Operaciones,'__implements__',()),) + (getattr(ATCTMixin,'__implements__',()),)
 
-    allowed_content_types = ['Image', 'Document', 'File', 'Link', 'News Item'] + list(getattr(BPDElemento_Meta, 'allowed_content_types', [])) + list(getattr(BPDElemento_ExportConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_TraversalConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Operaciones, 'allowed_content_types', [])) + list(getattr(ATCTMixin, 'allowed_content_types', []))
+    allowed_content_types = ['Image', 'Document', 'File', 'Link', 'News Item'] + list(getattr(BPDElemento_CopyConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Meta, 'allowed_content_types', [])) + list(getattr(BPDElemento_ExportConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_MappingConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_TraversalConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Operaciones, 'allowed_content_types', [])) + list(getattr(ATCTMixin, 'allowed_content_types', []))
     _at_rename_after_creation = True
 
     schema = BPDElemento_schema
@@ -546,6 +550,20 @@ class BPDElemento(BPDElemento_Meta, BPDElemento_ExportConfig, BPDElemento_Traver
     ##/code-section class-header
 
     # Methods
+
+    security.declarePublic('CookedBody')
+    def CookedBody(self,setlevel=0,stx_level=None):
+        """
+        """
+        
+        return getToolByName( self, 'ModelDDvlPlone_tool').fCookedBodyForElement( None, self, stx_level, setlevel, None)
+
+    security.declarePublic('fAllowPaste')
+    def fAllowPaste(self):
+        """
+        """
+        
+        return True
 
     security.declarePublic('getContenedor')
     def getContenedor(self):
@@ -561,19 +579,19 @@ class BPDElemento(BPDElemento_Meta, BPDElemento_ExportConfig, BPDElemento_Traver
         
         return aq_parent( aq_parent( aq_inner( self)))
 
+    security.declarePublic('getEditableBody')
+    def getEditableBody(self):
+        """
+        """
+        
+        return getToolByName( self, 'ModelDDvlPlone_tool').fEditableBodyForElement( None, self, None)
+
     security.declarePublic('getEsColeccion')
     def getEsColeccion(self):
         """
         """
         
         return False
-
-    security.declarePublic('getNombreProyecto')
-    def getNombreProyecto(self):
-        """
-        """
-        
-        return "gvSIGbpd"
 
     security.declarePublic('getEsRaiz')
     def getEsRaiz(self):
@@ -582,19 +600,12 @@ class BPDElemento(BPDElemento_Meta, BPDElemento_ExportConfig, BPDElemento_Traver
         
         return not aq_parent( aq_inner( self)) or ( (self.meta_type == "BPDOrganizacion") and not( aq_parent( aq_inner( self)).meta_type == "BPDColeccionUnidadesOrganizacionales"))
 
-    security.declarePublic('CookedBody')
-    def CookedBody(self,setlevel=0,stx_level=None):
+    security.declarePublic('getNombreProyecto')
+    def getNombreProyecto(self):
         """
         """
         
-        return getToolByName( self, 'ModelDDvlPlone_tool').fCookedBodyForElement( None, self, stx_level, setlevel, None)
-
-    security.declarePublic('getEditableBody')
-    def getEditableBody(self):
-        """
-        """
-        
-        return getToolByName( self, 'ModelDDvlPlone_tool').fEditableBodyForElement( None, self, None)
+        return "gvSIGbpd"
 # end of class BPDElemento
 
 ##code-section module-footer #fill in your manual code here

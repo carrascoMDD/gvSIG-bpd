@@ -37,12 +37,6 @@ from AccessControl                  import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.config import *
 
-#schema = Schema((
-
-#),
-#)
-
-#BPDElemento_TraversalConfig_schema = BaseSchema.copy() +     #schema.copy()
 
 
 class BPDElemento_TraversalConfig:            
@@ -50,14 +44,6 @@ class BPDElemento_TraversalConfig:
     """
     """
     security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
-    archetype_name = 'BPDElemento_TraversalConfig'
-    
-    meta_type = 'BPDElemento_TraversalConfig'
-    portal_type = 'BPDElemento_TraversalConfig'
-
-    #schema = BPDElemento_TraversalConfig_schema
 
     security.declarePublic('traversalConfig')
     def traversalConfig( self):

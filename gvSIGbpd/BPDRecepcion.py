@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -227,42 +227,16 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
     typeDescription2 = '''Represents a Business Process Step to wait to receive some information from the outside of the boudaries of the Business Process.'''
     archetype_name_msgid = 'gvSIGbpd_BPDRecepcion_label'
     factory_methods = None
+    factory_enablers = None
 
 
     actions =  (
-
-
-       {'action': "string:${object_url}/sharing",
-        'category': "object",
-        'id': 'local_roles',
-        'name': 'Sharing',
-        'permissions': ("Manage properties",),
-        'condition': 'python:1'
-       },
 
 
        {'action': "string:$object_url/content_status_history",
         'category': "object",
         'id': 'content_status_history',
         'name': 'State',
-        'permissions': ("View",),
-        'condition': 'python:1'
-       },
-
-
-       {'action': "string:${object_url}/MDDExport",
-        'category': "object",
-        'id': 'mddexport',
-        'name': 'Export',
-        'permissions': ("View",),
-        'condition': 'python:1'
-       },
-
-
-       {'action': "string:${object_url}/Textual",
-        'category': "object",
-        'id': 'view',
-        'name': 'View',
         'permissions': ("View",),
         'condition': 'python:1'
        },
@@ -277,10 +251,37 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
        },
 
 
+       {'action': "string:${object_url}/MDDExport",
+        'category': "object",
+        'id': 'mddexport',
+        'name': 'Export',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/sharing",
+        'category': "object",
+        'id': 'local_roles',
+        'name': 'Sharing',
+        'permissions': ("Manage properties",),
+        'condition': 'python:1'
+       },
+
+
        {'action': "string:${object_url}/TextualRest",
         'category': "object",
         'id': 'textual_rest',
         'name': 'TextualRest',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/Textual",
+        'category': "object",
+        'id': 'view',
+        'name': 'View',
         'permissions': ("View",),
         'condition': 'python:1'
        },
@@ -296,6 +297,13 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
     ##/code-section class-header
 
     # Methods
+
+    security.declarePublic('manage_afterAdd')
+    def manage_afterAdd(self,item,container):
+        """
+        """
+        
+        return self.pHandle_manage_afterAdd(  item, container)
 
 registerType(BPDRecepcion, PROJECTNAME)
 # end of class BPDRecepcion

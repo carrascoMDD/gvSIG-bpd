@@ -277,42 +277,16 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
     typeDescription2 = '''A period of time during which to wait for the happening of the start or finish of a certain Business Process Step, continuing with different steps, depending upon the Deadline expiring or not.'''
     archetype_name_msgid = 'gvSIGbpd_BPDPlazo_label'
     factory_methods = None
+    factory_enablers = None
 
 
     actions =  (
-
-
-       {'action': "string:${object_url}/sharing",
-        'category': "object",
-        'id': 'local_roles',
-        'name': 'Sharing',
-        'permissions': ("Manage properties",),
-        'condition': 'python:1'
-       },
 
 
        {'action': "string:$object_url/content_status_history",
         'category': "object",
         'id': 'content_status_history',
         'name': 'State',
-        'permissions': ("View",),
-        'condition': 'python:1'
-       },
-
-
-       {'action': "string:${object_url}/MDDExport",
-        'category': "object",
-        'id': 'mddexport',
-        'name': 'Export',
-        'permissions': ("View",),
-        'condition': 'python:1'
-       },
-
-
-       {'action': "string:${object_url}/Textual",
-        'category': "object",
-        'id': 'view',
-        'name': 'View',
         'permissions': ("View",),
         'condition': 'python:1'
        },
@@ -327,10 +301,37 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
        },
 
 
+       {'action': "string:${object_url}/MDDExport",
+        'category': "object",
+        'id': 'mddexport',
+        'name': 'Export',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/sharing",
+        'category': "object",
+        'id': 'local_roles',
+        'name': 'Sharing',
+        'permissions': ("Manage properties",),
+        'condition': 'python:1'
+       },
+
+
        {'action': "string:${object_url}/TextualRest",
         'category': "object",
         'id': 'textual_rest',
         'name': 'TextualRest',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/Textual",
+        'category': "object",
+        'id': 'view',
+        'name': 'View',
         'permissions': ("View",),
         'condition': 'python:1'
        },
@@ -346,6 +347,13 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
     ##/code-section class-header
 
     # Methods
+
+    security.declarePublic('manage_afterAdd')
+    def manage_afterAdd(self,item,container):
+        """
+        """
+        
+        return self.pHandle_manage_afterAdd(  item, container)
 
 registerType(BPDPlazo, PROJECTNAME)
 # end of class BPDPlazo
