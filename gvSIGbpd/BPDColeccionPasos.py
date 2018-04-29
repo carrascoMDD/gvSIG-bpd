@@ -52,7 +52,7 @@ schema = Schema((
         ),
         contains_collections=False,
         label2='Steps',
-        additional_columns=['titulosPasosAnteriores', 'titulosPasosSiguientes', 'titulosPasosSiguientesEnCasoExcepcion', 'detallesPaso'],
+        additional_columns=['titulosPasosAnteriores', 'titulosPasosSiguientes', 'titulosPasosSiguientesEnCasoExcepcion', 'detallesPaso', 'sumarioProgramas'],
         label='Pasos',
         represents_aggregation=True,
         description2='Individual actions during the course of the Business Process.',

@@ -31,7 +31,10 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDCondicional import BPDCondicional
+from Products.gvSIGbpd.BPDConDatosDePrueba import BPDConDatosDePrueba
 from Products.gvSIGbpd.BPDPasoGeneral import BPDPasoGeneral
+from Products.gvSIGbpd.BPDConResolucionesDatos import BPDConResolucionesDatos
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
@@ -290,17 +293,20 @@ schema = Schema((
 ##/code-section after-local-schema
 
 BPDEnvio_schema = OrderedBaseFolderSchema.copy() + \
+    getattr(BPDCondicional, 'schema', Schema(())).copy() + \
+    getattr(BPDConDatosDePrueba, 'schema', Schema(())).copy() + \
     getattr(BPDPasoGeneral, 'schema', Schema(())).copy() + \
+    getattr(BPDConResolucionesDatos, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
+class BPDEnvio(OrderedBaseFolder, BPDCondicional, BPDConDatosDePrueba, BPDPasoGeneral, BPDConResolucionesDatos):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDCondicional,'__implements__',()),) + (getattr(BPDConDatosDePrueba,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),) + (getattr(BPDConResolucionesDatos,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Envio'
@@ -339,7 +345,7 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDCondicional, 'allowed_content_types', [])) + list(getattr(BPDConDatosDePrueba, 'allowed_content_types', [])) + list(getattr(BPDPasoGeneral, 'allowed_content_types', [])) + list(getattr(BPDConResolucionesDatos, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdenvio.gif'

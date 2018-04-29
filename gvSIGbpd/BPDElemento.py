@@ -48,9 +48,9 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.CMFCore.utils  import getToolByName
-from Acquisition  import aq_inner, aq_parent
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Acquisition  import aq_inner, aq_parent
+from Products.CMFCore.utils  import getToolByName
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -691,6 +691,13 @@ class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducc
         """
         
         return ['elementosDerivados','versionAnterior','siguientesVersiones','elementoUsado','elementosTraducidos','originalDeTraduccion','elementosOriginales','elementosCopia','traduccionesDeIdiomaCanonico','idiomaCanonico']
+
+    security.declarePublic('fExtraLinks')
+    def fExtraLinks(self):
+        """
+        """
+        
+        return []
 # end of class BPDElemento
 
 ##code-section module-footer #fill in your manual code here

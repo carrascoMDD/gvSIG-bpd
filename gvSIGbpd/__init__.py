@@ -85,10 +85,12 @@ def initialize(context):
     import BPDSalida
     import BPDConRegistroActividad
     import BPDPoliticaDeNegocio
+    import BPDProgramable
     import BPDFracasoFinal
     import BPDEnvio
     import BPDArquetipoConAdopcion
     import BPDConTraducciones
+    import BPDEscenario
     import BPDParticipante
     import BPDExitoFinal
     import BPDColeccionHerramientas
@@ -98,8 +100,14 @@ def initialize(context):
     import BPDProcesoDeNegocioSimple
     import BPDPasoEstimado
     import BPDRecepcion
+    import BPDProgramado
+    import BPDListaDePruebas
+    import BPDCasoDePrueba
+    import BPDPreCondicion
+    import BPDPrograma
     import BPDColeccionArquetipos
     import BPDPuntoExtension
+    import BPDColeccionCasosDePrueba
     import BPDEntrada
     import BPDPasoConAnteriores
     import BPDColeccionSalidas
@@ -109,14 +117,22 @@ def initialize(context):
     import BPDElemento
     import BPDPasoSimple
     import BPDCaracteristica
+    import BPDResolucionDatos
+    import BPDConDatosDePrueba
     import BPDSubProceso
     import BPDPasoConExcepciones
     import BPDUsoArtefacto
     import BPDExtensionProceso
     import BPDPerfil
+    import BPDCondicion
     import BPDReglaDeNegocio
+    import BPDEpisodio
+    import BPDPrePostCondicional
     import BPDArtefacto
     import BPDProcesoDeNegocio
+    import BPDPostCondicion
+    import BPDCondicionante
+    import BPDCondicional
     import BPDArquetipoReferenciable
     import BPDUsoCaracteristica
     import BPDConVersiones
@@ -124,10 +140,13 @@ def initialize(context):
     import BPDColeccionReglasDeNegocio
     import BPDReferenciaCualificada
     import BPDPasoGestorExcepciones
+    import BPDColeccionListasDePruebas
     import BPDPasoMinimo
     import BPDColeccionArtefactos
     import BPDColeccionEntradas
+    import BPDConResolucionesDatos
     import BPDPasoConRestriccionesTiempo
+    import BPDDatosDePrueba
     import BPDColeccionUnidadesOrganizacionales
     import BPDPasoConSiguientes
     import BPDOrganizacion

@@ -33,6 +33,7 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.BPDPasoConSiguientes import BPDPasoConSiguientes
 from Products.gvSIGbpd.BPDPasoConAnteriores import BPDPasoConAnteriores
+from Products.gvSIGbpd.BPDPrePostCondicional import BPDPrePostCondicional
 from Products.gvSIGbpd.BPDPasoGestorExcepciones import BPDPasoGestorExcepciones
 from Products.gvSIGbpd.BPDPasoConExcepciones import BPDPasoConExcepciones
 from Products.gvSIGbpd.BPDPasoMinimo import BPDPasoMinimo
@@ -246,6 +247,7 @@ schema = Schema((
 BPDPlazo_schema = OrderedBaseFolderSchema.copy() + \
     getattr(BPDPasoConSiguientes, 'schema', Schema(())).copy() + \
     getattr(BPDPasoConAnteriores, 'schema', Schema(())).copy() + \
+    getattr(BPDPrePostCondicional, 'schema', Schema(())).copy() + \
     getattr(BPDPasoGestorExcepciones, 'schema', Schema(())).copy() + \
     getattr(BPDPasoConExcepciones, 'schema', Schema(())).copy() + \
     getattr(BPDPasoMinimo, 'schema', Schema(())).copy() + \
@@ -254,11 +256,11 @@ BPDPlazo_schema = OrderedBaseFolderSchema.copy() + \
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BPDPasoGestorExcepciones, BPDPasoConExcepciones, BPDPasoMinimo):
+class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BPDPrePostCondicional, BPDPasoGestorExcepciones, BPDPasoConExcepciones, BPDPasoMinimo):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoConSiguientes,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoConExcepciones,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoConSiguientes,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),) + (getattr(BPDPrePostCondicional,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoConExcepciones,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Plazo de Tiempo'
@@ -297,7 +299,7 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoConSiguientes, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoConExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDPasoConSiguientes, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDPrePostCondicional, 'allowed_content_types', [])) + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoConExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdplazo.gif'

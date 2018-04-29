@@ -114,6 +114,30 @@ schema = Schema((
         description='Colecciones de Acciones individuales en que transcurre la ejecucion del Proceso de Negocio.'
     ),
 
+    ComputedField(
+        name='escenarios',
+        widget=ComputedWidget(
+            label="Escenarios",
+            label2="Scenarios",
+            description="Secuencias de pasos del proceso de negocio, describiendo  los posibles flujos de ejecucion del proceso.",
+            description2="Secuences of steps in the business process, describing the possible execution flows of the process.",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocioSimple_contents_escenarios_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocioSimple_contents_escenarios_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        contains_collections=False,
+        label2='Scenarios',
+        label='Escenarios',
+        represents_aggregation=True,
+        description2='Secuences of steps in the business process, describing the possible execution flows of the process.',
+        multiValued=1,
+        owner_class_name="BPDProcesoDeNegocioSimple",
+        expression="context.objectValues(['BPDEscenario'])",
+        computed_types=['BPDEscenario'],
+        non_framework_elements=False,
+        description='Secuencias de pasos del proceso de negocio, describiendo  los posibles flujos de ejecucion del proceso.'
+    ),
+
 ),
 )
 
@@ -170,7 +194,7 @@ class BPDProcesoDeNegocioSimple(OrderedBaseFolder, BPDProcesoDeNegocio):
 
 
 
-    allowed_content_types = ['BPDColeccionPasos', 'BPDColeccionSalidas', 'BPDColeccionEntradas'] + list(getattr(BPDProcesoDeNegocio, 'allowed_content_types', []))
+    allowed_content_types = ['BPDEscenario', 'BPDColeccionPasos', 'BPDColeccionSalidas', 'BPDColeccionEntradas'] + list(getattr(BPDProcesoDeNegocio, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdprocesodenegociosimple.gif'

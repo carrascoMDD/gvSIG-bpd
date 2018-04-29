@@ -31,7 +31,11 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDProgramable import BPDProgramable
+from Products.gvSIGbpd.BPDConDatosDePrueba import BPDConDatosDePrueba
 from Products.gvSIGbpd.BPDArquetipoReferenciable import BPDArquetipoReferenciable
+from Products.gvSIGbpd.BPDConResolucionesDatos import BPDConResolucionesDatos
+from Products.gvSIGbpd.BPDCondicional import BPDCondicional
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
@@ -297,17 +301,21 @@ schema = Schema((
 ##/code-section after-local-schema
 
 BPDEntrada_schema = OrderedBaseFolderSchema.copy() + \
+    getattr(BPDProgramable, 'schema', Schema(())).copy() + \
+    getattr(BPDConDatosDePrueba, 'schema', Schema(())).copy() + \
     getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
+    getattr(BPDConResolucionesDatos, 'schema', Schema(())).copy() + \
+    getattr(BPDCondicional, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
+class BPDEntrada(OrderedBaseFolder, BPDProgramable, BPDConDatosDePrueba, BPDArquetipoReferenciable, BPDConResolucionesDatos, BPDCondicional):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDProgramable,'__implements__',()),) + (getattr(BPDConDatosDePrueba,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),) + (getattr(BPDConResolucionesDatos,'__implements__',()),) + (getattr(BPDCondicional,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Entrada'
@@ -346,7 +354,7 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDProgramable, 'allowed_content_types', [])) + list(getattr(BPDConDatosDePrueba, 'allowed_content_types', [])) + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', [])) + list(getattr(BPDConResolucionesDatos, 'allowed_content_types', [])) + list(getattr(BPDCondicional, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdentrada.gif'

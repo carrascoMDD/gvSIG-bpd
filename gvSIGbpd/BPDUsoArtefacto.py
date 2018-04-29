@@ -31,6 +31,8 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDConDatosDePrueba import BPDConDatosDePrueba
+from Products.gvSIGbpd.BPDConResolucionesDatos import BPDConResolucionesDatos
 from Products.gvSIGbpd.BPDArquetipoReferenciable import BPDArquetipoReferenciable
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
@@ -302,17 +304,19 @@ schema = Schema((
 ##/code-section after-local-schema
 
 BPDUsoArtefacto_schema = OrderedBaseFolderSchema.copy() + \
+    getattr(BPDConDatosDePrueba, 'schema', Schema(())).copy() + \
+    getattr(BPDConResolucionesDatos, 'schema', Schema(())).copy() + \
     getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDUsoArtefacto(OrderedBaseFolder, BPDArquetipoReferenciable):
+class BPDUsoArtefacto(OrderedBaseFolder, BPDConDatosDePrueba, BPDConResolucionesDatos, BPDArquetipoReferenciable):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDConDatosDePrueba,'__implements__',()),) + (getattr(BPDConResolucionesDatos,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Uso de Artefacto'
@@ -351,7 +355,7 @@ class BPDUsoArtefacto(OrderedBaseFolder, BPDArquetipoReferenciable):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDConDatosDePrueba, 'allowed_content_types', [])) + list(getattr(BPDConResolucionesDatos, 'allowed_content_types', [])) + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdusoartefacto.gif'

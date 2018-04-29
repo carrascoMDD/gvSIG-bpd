@@ -1,0 +1,646 @@
+gvSIG Business Process Definition RELEASE NOTES
+===============================================
+
+|
+|
+
+version 1.0.1
+---------------
+
+Version For tag. No other changes.
+
+
+|
+|
+
+--------------------------------------------
+
+|
+|
+
+version 1.0.0.7
+---------------
+
+
+sk Id  	Task Summary  	Start Date  	End Date  	Percent Complete
+606	BUG: Fails to paste Plone content elements (i.e. ATImage instances)	2009-12-07 17:00	  2009-12-14 17:00	100%
+579	PERF04 Avoid high number of log entries when (re)installing the gvSIG-bpd product, which uses Relations, from Zope catalogs complaining about entries not found for missing relation instances	2009-11-24 17:00	  2009-12-01 17:00	100%
+586	RELS02 Add relationship Send step delivers to zero or many Reception step	2009-11-26 00:00	  2009-12-03 00:00	100%
+
+
+|
+|
+
+--------------------------------------------------------
+
+|
+|
+
+
+**As by v200911211405**
+
+|
+|
+
+
+Summary of use cases implemented after delivery of version 1.0 (build200906110445)
+==================================================================================
+
+
+- Add concept of Extension Point in the sequence of Business Process Steps, and
+
+- the concept of Business Process extension
+
+- Add the concept of Feature of Artefact
+
+- Add the concepts of Using an Artefact or a Feature from a Business Process Step
+
+- Add the relations: a Tool instructions are Business Processes, and a Business Process applies Tools.
+
+- Search for words in all string fields, not just the fields named "Title", "Description" and "Text"
+
+- Reorder aggregated elements by Drag&Drop.
+
+
+
+**Use Cases already reported as implemented after delivery of version 1.0 (build200907160507**
+
+
+
+
+
+- The application now automatically creates in the Plone Site an instance of ModelDDvlPloneTool,
+  if one does not exist yet.
+  
+- Export an element as .zip archives with information in a character encoded (utf8) .xml file, 
+  and plone binary content as separate files.
+
+- Import into an element as .zip archives with .xml file and binary content.
+
+- Cut/Copy/Paste/Delete on elements, or groups of elements.
+
+- When pasting a Business Rule into a collection of Business Policies,
+  refactor the Business Rule into a Business Policy,
+  and vice-versa. Same for Reception/Input, Sends/Outputs,
+  Tool/Artefact, Organizational Unit/Profile.
+  
+- Create a new Version as a copy of a whole root organization and its contents, 
+  maintaining traceability links from elements in the new version 
+  to elements in the previous version.  
+  
+- Standard Plone actions are intercepted or aliased to maintain a tight contron on application instances.
+  
+  
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+
+version 1.0.0.6
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+Error Exception when creating a new version of a root organization
+
+Error when Refactoring a Business Process Input as an Output
+
+ETTY 04x01 Relationship &quot;Extends&quot; between Business Processes
+
+ETTY 04x02 Add to Business Processes features to specify the management of Artefacts
+
+ETTY 04x03 Add Text field to Business Process  different from the Purpose field
+
+ETTY 04x04 Add to Business Processes features to specify the management of Artefact Features
+
+ETTY 33 Extension Point Step
+
+ETTY 34 Feature
+
+ETTY10x01 Input Add features to specify minimum and maximum multiplicity or artefacts
+
+ETTY11x01 Output Add features to specify minimum and maximum multiplicity or artefacts
+
+ETTY13x1 Add to General Step features to specify the usage  production and consumption of Artefacts
+
+ETTY13x2 Add to General Step features to specify the usage  production and consumption of Features in Artefacts
+
+ETTY20x01 Reception Add features to specify minimum and maximum multiplicity or artefacts
+
+ETTY21x01 SendAdd features to specify minimum and maximum multiplicity or artefacts
+
+IMPO01x1 Import elements from XML file not in a zip archive with binary content
+
+Import a whole root organization fails to create relations
+
+SUC04 Search elements including text and string fields other than description and text
+
+USEX 06  In Textual View  hide titles of previous Process Steps
+
+USEX 07 In Textual View for an Artifact  display the title of the related Inputs\' Business Process owner
+
+USEX 08 Add object action to reorder aggregated elements by drag and drop
+
+
+|
+|
+
+**KNOWN BUGS Pending to be resolved in this iteration**
+
+-None at this time-
+
+|
+|
+
+
+
+**POSTPONED**
+
+
+*To 1.1*
+
+COMU 02 Edit and publish pages to present the gvSIG-bpd product to OSOR communities
+
+DOCU 01 Edit and publish gvSIG-bpd user documentation
+
+DOCU 02 Edit and publish gvSIG-bpd install documentation
+
+DOCU 03 Edit and publish gvSIG-bpd administration documentation
+
+DOCU04 Edit and publish gvSIG-bpd testing documentation and supporting artefacts
+
+|
+|
+
+*Until further scheduling*
+
+EXPO02 Export textual views of an element and its contents as  HTML pages in a (g)zip archive
+
+FEAT04 Show transitively reachable influencers or influenced elements
+
+IPAG01 Integrate with gvSIG Plone service to assemble as a single page a complete network of gvSIG-bpd specification
+
+IMOF01 Integrate into gvSIG-bpd the ModelDDploneMOF application to define o.o. information structures
+
+IRDB01 Integrate into gvSIG-bpd the ModelDDploneRDB appto define 
+
+IBMM01 Integrate into gvSIG-bpd the ModelDDploneBMM application to define business motivation models
+
+PERF 01 Accelerate processing times for Paste  Import  New Version and New Translation
+
+SUC02 Search business process definition contents within the containing root Organization
+
+SUC03 Change the Status  Enforcement Level  Adoption or Retirement Dates of multiple Business Processes in a single action
+
+USEX 09 Add Drag and Drop support to link Previous and Next Business Process Steps 
+
+USEX05 Add action to create a step before or after the current one
+
+USEX10 When creating step  link with previous and next
+
+
+
+
+
+
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+version 1.0.0.5
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+USEX 02 Present at the bottom of each page the Footer with credits for the application project
+
+USEX 04 Intercept the actions select_default_page and selectViewTemplate
+
+
+|
+|
+
+**KNOWN BUGS**
+
+ - None unresolved -
+
+|
+|
+
+
+**POSTPONED**
+
+*To 1.1*
+
+COMU 02 Edit and publish pages to present the gvSIG-bpd product to OSOR communities
+
+DOCU 01 Edit and publish gvSIG-bpd user documentation
+
+DOCU 02 Edit and publish gvSIG-bpd install documentation
+
+DOCU 03 Edit and publish gvSIG-bpd administration documentation
+
+|
+|
+
+*To 1.2*
+
+IMOF01 Integrate into gvSIG-bpd the ModelDDploneMOF application to define o.o. information structures
+
+|
+|
+
+*To 1.3*
+
+IRDB01 Integrate into gvSIG-bpd the ModelDDploneRDB appto define 
+
+
+|
+|
+
+*To 1.4*
+
+IBMM01 Integrate into gvSIG-bpd the ModelDDploneBMM application to define business motivation models
+
+
+|
+|
+
+*To 1.5*
+
+IPAG01 Integrate with gvSIG Plone service to assemble as a single page a complete network of gvSIG-bpd specification
+
+
+
+
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+
+
+version 1.0.0.4
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+
+
+MODE01 Model changes in support of ModelDDvlPlone framework 	SUC 11extension04 Manage traceability links when copying or moving
+
+With WORKAROUND: Does not uncatalog root organization
+
+
+
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+
+version 1.0.0.4
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+
+
+
+|
+|
+
+**KNOWN BUGS**
+
+ - None unresolved -
+
+|
+|
+
+
+**POSTPONED**
+
+
+
+
+
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+version 1.0.0.3
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+DEPL01 Deploy preproduction server at ModelDD.org 
+
+Derivation in the Textual view of a business process  of composite string field with business process step details does not convert its element 
+strings to Unicode
+
+ETTY 26v02 Element with owner path and fully qualified name
+
+ETTY 30 Auditable entities
+
+ETTY 31 Steps with Step Estimations
+
+ETTY 32 Steps with Start and End timing constraints
+
+ETTY26x1 Element with registry of fields pending translation and translation review
+
+FWRK 01 Supporting relationships for framework SUC SUC 22 Create a new version of a Model Instance
+
+FWRK 02 Supporting fields and relationships for framework SUC 21 Create Translation of a Model Instance into a new Language.
+
+REFA 02 Refactoring: Move elements to a different containing collection
+
+REFA 03 Refactoring: Create sub-process and business process from a subset of process steps
+
+REFA 04 Refactoring: Inline steps from a sub-process in the current process
+
+REFA 07 Refactoring: Create Business Rule from Condition Step text
+
+REFA 08 Refactoring: Embed the text of a Business Rule into a Condition Step
+
+REFA 13 Refactoring: Allow to copy the root organization
+
+SUC01 Create a new version of a root organization
+
+UI BPDProcesoDeNegocioSimple::Fields not sorted as specified in the model
+
+USEX 03 Conflicting default Plone actions must be intercepted  aliased  or disabled
+
+
+
+|
+|
+
+**KNOWN BUGS**
+
+ - None unresolved -
+
+|
+|
+
+
+**POSTPONED**
+
+USEX 02 Present at the bottom of each page the Footer with credits for the application project
+
+TEST01 Test complete application
+
+CHGS03 Implement changes of editorial impact on gvSIG-bpd
+
+|
+|
+
+
+------------------------------
+
+|
+|
+
+
+version 1.0.0.2
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+
+IMPO01 Import elements from zip archive with XML file and binary content
+
+REFA 12 Refactoring: Copy more than one element from the same container
+
+
+
+
+|
+|
+
+**KNOWN BUGS**
+
+Derivation in the Textual view of a business process, of composite string field with business process step details does not convert its element strings to Unicode
+
+
+|
+|
+
+
+**POSTPONED**
+
+CHGS03 Implement changes of editorial impact on gvSIG-bpd
+
+EXPO02 Export textual views of an element and its contents as  HTML pages in a (g)zip archive
+
+FEAT04 Show transitively reachable influencers or influenced elements
+
+IBMM01 Integrate into gvSIG-bpd the ModelDDploneBMM application to define business motivation models
+
+IMOF01 Integrate into gvSIG-bpd the ModelDDploneMOF application to define o.o. information structures
+
+IPAG01 Integrate with gvSIG Plone service to assemble as a single page a complete network of gvSIG-bpd specification
+
+IRDB01 Integrate into gvSIG-bpd the ModelDDploneRDB application to define o.o. information structures
+
+PLAT01 Port to Plone 3.x
+
+REFA 02 Refactoring: Move elements to a different containing collection
+
+
+|
+|
+
+------------------------------
+
+|
+|
+
+
+version 1.0.0.1
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+EXPO01 Export element as XML and zipped with binary content
+
+INIT01 Add Product ModelDDvlPlone as pre-requisite of gvSIG-bpd
+
+INIT02 Automatically initialize root BPDOrganizacion instances
+
+REFA 10 Refactoring: Create a Tool from an Artefact and vice-versa
+
+UI BPDProcesoDeNegocioSimple::Fields not sorted as specified in the model
+
+INIT 03 Automatically create instance of ModelDDvlPloneTool
+
+REFA 09 Intercept and handle Plone paste action
+
+REFA 01 Refactoring: Create a Business Policy from a Business Rule and vice-versa
+
+REFA 06 Refactoring: Create Sends from Outputs and vice-versa
+
+REFA 11 Refactoring: Create an Organizational Unit from an Profile and vice-versa
+
+REFA 05 Refactoring: Create Receptions from Inputs and vice-versa
+
+
+|
+|
+
+
+------------------------------
+
+
+
+version 1.0
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+
+
+ETTY25 Exception Handler Step
+
+ETTY24 Step with Exceptions
+
+ETTY23 Step with Next steps
+
+ETTY22 Step with Previous steps
+
+|
+|
+
+
+------------------------------
+
+
+
+version 0.9
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+ETTY00 Model
+
+ETTY01 Organization
+
+ETTY02 Business Policy
+
+ETTY03 Business Rule
+
+ETTY04 Business Process
+
+ETTY05 Participant
+
+ETTY06 Profile
+
+ETTY07 Organizational Unit
+
+ETTY08 Artefact
+
+ETTY09 Tool
+
+ETTY10 Input
+
+ETTY11 Output
+
+ETTY12 Minimal Step
+
+ETTY13 General Step
+
+ETTY14 Final Success
+
+ETTY15 Final Failure
+
+ETTY16 Deadline
+
+ETTY17 Simple Step
+
+ETTY18 Decision
+
+ETTY19 SubProcess
+
+ETTY20 Reception
+
+ETTY21 Send
+
+ETTY26 Element
+
+ETTY27 With Adoption
+
+ETTY28 Adoption State
+
+ETTY29 Enforcement Level
+
+UI01 Define model traversals for User Interface Views
+
+I19N01 Translate all model elements into English language
+
+|
+|
+
+------------------------------

@@ -31,13 +31,14 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDPrePostCondicional import BPDPrePostCondicional
 from Products.gvSIGbpd.BPDPasoGeneral import BPDPasoGeneral
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -146,17 +147,18 @@ schema = Schema((
 ##/code-section after-local-schema
 
 BPDSubProceso_schema = OrderedBaseFolderSchema.copy() + \
+    getattr(BPDPrePostCondicional, 'schema', Schema(())).copy() + \
     getattr(BPDPasoGeneral, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
+class BPDSubProceso(OrderedBaseFolder, BPDPrePostCondicional, BPDPasoGeneral):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPrePostCondicional,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Sub Proceso'
@@ -195,7 +197,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDPrePostCondicional, 'allowed_content_types', [])) + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdsubproceso.gif'

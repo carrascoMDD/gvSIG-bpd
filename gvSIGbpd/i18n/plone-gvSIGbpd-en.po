@@ -24,10 +24,20 @@ msgstr "Artefact"
 msgid "Caracteristica"
 msgstr "Feature"
 
+#. Default: "Caso de Prueba"
+#: BPDCasoDePrueba
+msgid "Caso de Prueba"
+msgstr "Test Case"
+
 #. Default: "Coleccion de Artefactos"
 #: BPDColeccionArtefactos
 msgid "Coleccion de Artefactos"
 msgstr "Artefacts Collection"
+
+#. Default: "Coleccion de Casos de Prueba"
+#: BPDColeccionCasosDePrueba
+msgid "Coleccion de Casos de Prueba"
+msgstr "Test Cases collection"
 
 #. Default: "Coleccion de Entradas"
 #: BPDColeccionEntradas
@@ -38,6 +48,11 @@ msgstr "Inputs collection"
 #: BPDColeccionHerramientas
 msgid "Coleccion de Herramientas"
 msgstr "Tools collection"
+
+#. Default: "Coleccion de Listas de Pruebas"
+#: BPDColeccionListasDePruebas
+msgid "Coleccion de Listas de Pruebas"
+msgstr "Test Suites collection"
 
 #. Default: "Coleccion de Pasos"
 #: BPDColeccionPasos
@@ -74,6 +89,16 @@ msgstr "Outputs collection"
 msgid "Coleccion de Unidades Organizacionales"
 msgstr "Organisational Units Collection"
 
+#. Default: "Condicion"
+#: BPDCondicion
+msgid "Condicion"
+msgstr "Condition"
+
+#. Default: "Datos de Prueba"
+#: BPDDatosDePrueba
+msgid "Datos de Prueba"
+msgstr "Test Data"
+
 #. Default: "Decision"
 #: BPDDecision
 msgid "Decision"
@@ -88,6 +113,11 @@ msgstr "Input"
 #: BPDEnvio
 msgid "Envio"
 msgstr "Send"
+
+#. Default: "Escenario"
+#: BPDEscenario
+msgid "Escenario"
+msgstr "Scenario"
 
 #. Default: "Exito Final"
 #: BPDExitoFinal
@@ -108,6 +138,11 @@ msgstr "Failure"
 #: BPDHerramienta
 msgid "Herramienta"
 msgstr "Tool"
+
+#. Default: "Lista de Pruebas"
+#: BPDListaDePruebas
+msgid "Lista de Pruebas"
+msgstr "Test Suite"
 
 #. Default: "Organizacion"
 #: BPDOrganizacion
@@ -139,10 +174,25 @@ msgstr "Deadline"
 msgid "Politica de Negocio"
 msgstr "Business Policy"
 
+#. Default: "Post Condicion"
+#: BPDPostCondicion
+msgid "Post Condicion"
+msgstr "Post-Condition"
+
+#. Default: "Pre Condicion"
+#: BPDPreCondicion
+msgid "Pre Condicion"
+msgstr "Pre-Condition"
+
 #. Default: "Proceso de Negocio"
 #: BPDProcesoDeNegocioSimple
 msgid "Proceso de Negocio"
 msgstr "Business Process"
+
+#. Default: "Programa"
+#: BPDPrograma
+msgid "Programa"
+msgstr "Program"
 
 #. Default: "Punto de Extension"
 #: BPDPuntoExtension
@@ -163,6 +213,11 @@ msgstr "Qualified Reference"
 #: BPDReglaDeNegocio
 msgid "Regla de Negocio"
 msgstr "Business Rule"
+
+#. Default: "Resolucion de Datos"
+#: BPDResolucionDatos
+msgid "Resolucion de Datos"
+msgstr "Data Resolution"
 
 #. Default: "Salida de Proceso de Negocio"
 #: BPDSalida

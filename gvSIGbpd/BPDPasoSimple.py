@@ -32,11 +32,12 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.BPDPasoGeneral import BPDPasoGeneral
+from Products.gvSIGbpd.BPDPrePostCondicional import BPDPrePostCondicional
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -70,7 +71,7 @@ schema = Schema((
         label="Detalles del Paso",
         length="0",
         containment="Not Specified",
-        position="1",
+        position="0",
         owner_class_name="BPDPasoSimple",
         expression="context.fTFLVsUnless([ ['esInicial',False,],[ 'ejecutores',None,],[ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
         computed_types="string"
@@ -84,16 +85,17 @@ schema = Schema((
 
 BPDPasoSimple_schema = OrderedBaseFolderSchema.copy() + \
     getattr(BPDPasoGeneral, 'schema', Schema(())).copy() + \
+    getattr(BPDPrePostCondicional, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral):
+class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral, BPDPrePostCondicional):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),) + (getattr(BPDPrePostCondicional,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Paso Simple'
@@ -132,7 +134,7 @@ class BPDPasoSimple(OrderedBaseFolder, BPDPasoGeneral):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', [])) + list(getattr(BPDPrePostCondicional, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdpasosimple.gif'

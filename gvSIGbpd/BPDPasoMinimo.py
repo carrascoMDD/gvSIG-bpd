@@ -31,6 +31,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDProgramable import BPDProgramable
 from Products.gvSIGbpd.BPDArquetipoReferenciable import BPDArquetipoReferenciable
 from Products.gvSIGbpd.BPDPasoConRestriccionesTiempo import BPDPasoConRestriccionesTiempo
 from Products.Relations.field import RelationField
@@ -43,6 +44,39 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import Reference
 ##/code-section module-header
 
 schema = Schema((
+
+    ComputedField(
+        name='detallesPaso',
+        widget=ComputedField._properties['widget'](
+            label="Detalles del Paso",
+            label2="Step details",
+            description="Detalles acerca de las caracteristicas del Paso de Proceso de Negocio.",
+            description2="Details about the features of the Business Process Step",
+            label_msgid='gvSIGbpd_BPDPasoMinimo_attr_detallesPaso_label',
+            description_msgid='gvSIGbpd_BPDPasoMinimo_attr_detallesPaso_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        exclude_from_values_paragraph="True",
+        description="Detalles acerca de las caracteristicas del Paso de Proceso de Negocio.",
+        duplicates="0",
+        label2="Step details",
+        ea_localid="641",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Details about the features of the Business Process Step",
+        ea_guid="{2D390F68-F8AD-4b54-8212-3FB8C5F43904}",
+        exclude_from_values_form="True",
+        scale="0",
+        label="Detalles del Paso",
+        length="0",
+        containment="Not Specified",
+        position="1",
+        owner_class_name="BPDPasoMinimo",
+        expression="context.fTFLVsUnless([ [ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
+        computed_types="string"
+    ),
 
     ComputedField(
         name='numeroDePaso',
@@ -74,6 +108,36 @@ schema = Schema((
         owner_class_name="BPDPasoMinimo",
         expression="context.getNumeroOrdenEnPropietario()",
         computed_types="int"
+    ),
+
+    RelationField(
+        name='episodios',
+        inverse_relation_label="Episodios",
+        inverse_relation_description="Episodios en los que se ejecuta el Paso.",
+        description="Secuencia de Pasos del Proceso de Negocio a ejecutar como comportamiento del Episodio.",
+        relationship='pasos_episodios',
+        label2="Steps",
+        widget=ReferenceBrowserWidget(
+            label="Pasos",
+            label2="Steps",
+            description="Secuencia de Pasos del Proceso de Negocio a ejecutar como comportamiento del Episodio.",
+            description2="Sequence of Business Process Steps to execute as the behavior of the Episode.",
+            label_msgid='gvSIGbpd_BPDPasoMinimo_rel_episodios_label',
+            description_msgid='gvSIGbpd_BPDPasoMinimo_rel_episodios_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description2="Sequence of Business Process Steps to execute as the behavior of the Episode.",
+        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
+        inverse_relation_label2="Episodes",
+        dependency_supplier=True,
+        inverse_relation_field_name='pasos',
+        inverse_relation_description2="Episodes executing the Step.",
+        additional_columns=['detallesPaso',],
+        write_permission='Modify portal content',
+        label="Pasos",
+        multiValued=1,
+        containment="Unspecified",
+        inverse_relationship='Pasos_De_Episodio'
     ),
 
     RelationField(
@@ -163,7 +227,7 @@ schema = Schema((
         label="Proceso de Negocio",
         length="0",
         containment="Not Specified",
-        position="3",
+        position="4",
         owner_class_name="BPDPasoMinimo",
         expression="context.getPropietario().Title()",
         computed_types="string"
@@ -191,7 +255,7 @@ schema = Schema((
         description2="Artefacts Used in the Business Process Step",
         containment="Not Specified",
         ea_guid="{0B25CA4F-EE74-4ee0-9FEB-19F4EDBD5352}",
-        position="1",
+        position="2",
         owner_class_name="BPDPasoMinimo",
         styleex="volatile=0;",
         expression="', '.join( [ a.fTFLVsUnless([ ['title','',], ['titulosArtefactosUsados','',],]) for a in  context.getUsosArtefactos()])",
@@ -220,7 +284,7 @@ schema = Schema((
         description2="Artefact Featuress Used in the Business Process Step",
         containment="Not Specified",
         ea_guid="{16A5583E-8246-491a-BA03-9461528824C6}",
-        position="2",
+        position="3",
         owner_class_name="BPDPasoMinimo",
         label="Caracteristicas Usadas",
         expression="', '.join( [ a.fTFLVsUnless([ ['title','',], ['titulosCaracteristicasUsadas','',],]) for a in  context.getUsosCaracteristicas()])",
@@ -283,18 +347,19 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-BPDPasoMinimo_schema = getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
+BPDPasoMinimo_schema = getattr(BPDProgramable, 'schema', Schema(())).copy() + \
+    getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
     getattr(BPDPasoConRestriccionesTiempo, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable, BPDPasoConRestriccionesTiempo):
+class BPDPasoMinimo(OrderedBaseFolder, BPDProgramable, BPDArquetipoReferenciable, BPDPasoConRestriccionesTiempo):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),) + (getattr(BPDPasoConRestriccionesTiempo,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDProgramable,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),) + (getattr(BPDPasoConRestriccionesTiempo,'__implements__',()),)
 
 
 
@@ -328,7 +393,7 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable, BPDPasoConRest
 
 
 
-    allowed_content_types = ['BPDUsoArtefacto', 'BPDUsoCaracteristica'] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', [])) + list(getattr(BPDPasoConRestriccionesTiempo, 'allowed_content_types', []))
+    allowed_content_types = ['BPDUsoArtefacto', 'BPDUsoCaracteristica'] + list(getattr(BPDProgramable, 'allowed_content_types', [])) + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', [])) + list(getattr(BPDPasoConRestriccionesTiempo, 'allowed_content_types', []))
 
     actions =  (
 

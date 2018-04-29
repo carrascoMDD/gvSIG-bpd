@@ -31,18 +31,53 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDCondicional import BPDCondicional
 from Products.gvSIGbpd.BPDArquetipoReferenciable import BPDArquetipoReferenciable
+from Products.gvSIGbpd.BPDConResolucionesDatos import BPDConResolucionesDatos
+from Products.gvSIGbpd.BPDProgramable import BPDProgramable
+from Products.gvSIGbpd.BPDConDatosDePrueba import BPDConDatosDePrueba
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
 schema = Schema((
+
+    BooleanField(
+        name='esRequerida',
+        widget=BooleanField._properties['widget'](
+            label="Es Requerida",
+            label2="Is Required",
+            description="Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso.",
+            description2="Whether the Output shall be always produced when the Business Process completes successfully.",
+            label_msgid='gvSIGbpd_BPDSalida_attr_esRequerida_label',
+            description_msgid='gvSIGbpd_BPDSalida_attr_esRequerida_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso.",
+        duplicates="0",
+        label2="Is Required",
+        ea_localid="207",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Whether the Output shall be always produced when the Business Process completes successfully.",
+        ea_guid="{9F00AC88-2BF9-4b83-B010-B3511669553D}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="1",
+        label="Es Requerida",
+        length="0",
+        containment="Not Specified",
+        position="0",
+        owner_class_name="BPDSalida"
+    ),
 
     IntegerField(
         name='multiplicidadMinima',
@@ -103,37 +138,6 @@ schema = Schema((
         length="0",
         containment="Not Specified",
         position="4",
-        owner_class_name="BPDSalida"
-    ),
-
-    BooleanField(
-        name='esRequerida',
-        widget=BooleanField._properties['widget'](
-            label="Es Requerida",
-            label2="Is Required",
-            description="Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso.",
-            description2="Whether the Output shall be always produced when the Business Process completes successfully.",
-            label_msgid='gvSIGbpd_BPDSalida_attr_esRequerida_label',
-            description_msgid='gvSIGbpd_BPDSalida_attr_esRequerida_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Indica que la Salida se producira siempre que concluya exitosamente la ejecucion del Proceso.",
-        duplicates="0",
-        label2="Is Required",
-        ea_localid="207",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Whether the Output shall be always produced when the Business Process completes successfully.",
-        ea_guid="{9F00AC88-2BF9-4b83-B010-B3511669553D}",
-        write_permission='Modify portal content',
-        scale="0",
-        default="1",
-        label="Es Requerida",
-        length="0",
-        containment="Not Specified",
-        position="0",
         owner_class_name="BPDSalida"
     ),
 
@@ -236,17 +240,21 @@ schema = Schema((
 ##/code-section after-local-schema
 
 BPDSalida_schema = OrderedBaseFolderSchema.copy() + \
+    getattr(BPDCondicional, 'schema', Schema(())).copy() + \
     getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
+    getattr(BPDConResolucionesDatos, 'schema', Schema(())).copy() + \
+    getattr(BPDProgramable, 'schema', Schema(())).copy() + \
+    getattr(BPDConDatosDePrueba, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
+class BPDSalida(OrderedBaseFolder, BPDCondicional, BPDArquetipoReferenciable, BPDConResolucionesDatos, BPDProgramable, BPDConDatosDePrueba):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDCondicional,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),) + (getattr(BPDConResolucionesDatos,'__implements__',()),) + (getattr(BPDProgramable,'__implements__',()),) + (getattr(BPDConDatosDePrueba,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Salida de Proceso de Negocio'
@@ -285,7 +293,7 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDCondicional, 'allowed_content_types', [])) + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', [])) + list(getattr(BPDConResolucionesDatos, 'allowed_content_types', [])) + list(getattr(BPDProgramable, 'allowed_content_types', [])) + list(getattr(BPDConDatosDePrueba, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdsalida.gif'

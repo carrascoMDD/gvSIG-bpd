@@ -31,6 +31,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDCondicional import BPDCondicional
 from Products.gvSIGbpd.BPDPasoGeneral import BPDPasoGeneral
 from Products.gvSIGbpd.config import *
 
@@ -42,37 +43,6 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import Reference
 ##/code-section module-header
 
 schema = Schema((
-
-    TextField(
-        name='condicionSiguientePaso',
-        widget=TextAreaWidget(
-            label="Condicion",
-            label2="Condition",
-            description="Condicion que se evalua para determinar el siguiente Paso por el que continua el Proceso de Negocio.",
-            description2="Criteria for selection of the next Step to execute when the Decision completes.",
-            label_msgid='gvSIGbpd_BPDDecision_attr_condicionSiguientePaso_label',
-            description_msgid='gvSIGbpd_BPDDecision_attr_condicionSiguientePaso_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Condicion que se evalua para determinar el siguiente Paso por el que continua el Proceso de Negocio.",
-        searchable=1,
-        duplicates="0",
-        label2="Condition",
-        ea_localid="218",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Criteria for selection of the next Step to execute when the Decision completes.",
-        ea_guid="{F3C63933-CCBA-4ceb-BB89-4D31D31DE0FB}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Condicion",
-        length="0",
-        containment="Not Specified",
-        position="0",
-        owner_class_name="BPDDecision"
-    ),
 
     ComputedField(
         name='detallesPaso',
@@ -114,17 +84,18 @@ schema = Schema((
 ##/code-section after-local-schema
 
 BPDDecision_schema = OrderedBaseFolderSchema.copy() + \
+    getattr(BPDCondicional, 'schema', Schema(())).copy() + \
     getattr(BPDPasoGeneral, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDDecision(OrderedBaseFolder, BPDPasoGeneral):
+class BPDDecision(OrderedBaseFolder, BPDCondicional, BPDPasoGeneral):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDCondicional,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Decision'
@@ -163,14 +134,14 @@ class BPDDecision(OrderedBaseFolder, BPDPasoGeneral):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDCondicional, 'allowed_content_types', [])) + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpddecision.gif'
     immediate_view                   = 'Textual'
     default_view                     = 'Textual'
     suppl_views                      = ('Textual', 'Tabular', )
-    typeDescription                  = "Decision"
+    typeDescription                  = "Una decision a tomar, que determina si el proceso continua con los pasos siguientes, o con los alternativos/excepcionales."
     typeDescMsgId                    =  'gvSIGbpd_BPDDecision_help'
     archetype_name2                  = 'Decision'
     typeDescription2                 = '''A Decision to take to select the next Business Process Step, from the ones composing the Business Process.'''

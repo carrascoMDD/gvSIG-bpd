@@ -469,6 +469,56 @@ msgstr "Feature Usages"
 msgid "gvSIGbpd_BPDCaracteristica_rel_usosDeLaCaracteristica_help"
 msgstr "Uses of the Artefact Feature in Business Process Steps, to Create, Read, Update, Delete or Link."
 
+#. Default: "Caso de Prueba"
+#: BPDCasoDePrueba
+msgid "gvSIGbpd_BPDCasoDePrueba_label"
+msgstr "Test Case"
+
+#. Default: "Definicion de un conjunto de valores concretos para el Escenario relacionado"
+#: BPDCasoDePrueba
+msgid "gvSIGbpd_BPDCasoDePrueba_help"
+msgstr "Definition of a concrete data set of values for the related Scenario."
+
+#. Default: "Casos de Prueba mas detallados"
+#: BPDCasoDePrueba coleccionesCasosDePrueba
+msgid "gvSIGbpd_BPDCasoDePrueba_contents_coleccionesCasosDePrueba_label"
+msgstr "More specific Test Cases"
+
+#. Default: "Casos de Prueba mas especificos definiendo conjuntos de valores concretos para los Escenarios relacionados."
+#: BPDCasoDePrueba coleccionesCasosDePrueba
+msgid "gvSIGbpd_BPDCasoDePrueba_contents_coleccionesCasosDePrueba_help"
+msgstr "More specific Test Cases defining concrete data sets of values for the related Scenarios."
+
+#. Default: "Datos de Prueba"
+#: BPDCasoDePrueba datosDePrueba
+msgid "gvSIGbpd_BPDCasoDePrueba_contents_datosDePrueba_label"
+msgstr "Test Data"
+
+#. Default: "Definiciones de valores concretos para el Caso de Prueba contenedor."
+#: BPDCasoDePrueba datosDePrueba
+msgid "gvSIGbpd_BPDCasoDePrueba_contents_datosDePrueba_help"
+msgstr "Definitions of concrete values for the container Test Case."
+
+#. Default: "Casos de Prueba"
+#: BPDCasoDePrueba escenario
+msgid "gvSIGbpd_BPDCasoDePrueba_rel_escenario_label"
+msgstr "Test Cases"
+
+#. Default: "Casos de Prueba definiendo conjuntos de valores concretos para el Escenario contenedor."
+#: BPDCasoDePrueba escenario
+msgid "gvSIGbpd_BPDCasoDePrueba_rel_escenario_help"
+msgstr "Test Cases defining concrete data sets of values for the container Scenario."
+
+#. Default: "Listas de Pruebas"
+#: BPDCasoDePrueba listasDePruebas
+msgid "gvSIGbpd_BPDCasoDePrueba_rel_listasDePruebas_label"
+msgstr "Test Suites"
+
+#. Default: "Listas de Pruebas en cuya secuencia se ejercita este Caso de Prueba."
+#: BPDCasoDePrueba listasDePruebas
+msgid "gvSIGbpd_BPDCasoDePrueba_rel_listasDePruebas_help"
+msgstr "Test Suites exercising this Test Case as part of their sequences."
+
 #. Default: "BPDColeccionArquetipos"
 #: BPDColeccionArquetipos
 msgid "gvSIGbpd_BPDColeccionArquetipos_label"
@@ -498,6 +548,26 @@ msgstr "Artefacts"
 #: BPDColeccionArtefactos artefactos
 msgid "gvSIGbpd_BPDColeccionArtefactos_contents_artefactos_help"
 msgstr "Artefacts produced, consumed, consulted, edited, or otherwise object of the Organisation effort."
+
+#. Default: "Coleccion de Casos de Prueba"
+#: BPDColeccionCasosDePrueba
+msgid "gvSIGbpd_BPDColeccionCasosDePrueba_label"
+msgstr "Test Cases collection"
+
+#. Default: "Coleccion de Casos de Prueba definiendo conjuntos de valores concretos para los Escenarios relacionados."
+#: BPDColeccionCasosDePrueba
+msgid "gvSIGbpd_BPDColeccionCasosDePrueba_help"
+msgstr "Collection of Test Cases defining concrete data sets of values for the related Scenarios."
+
+#. Default: "Casos de Prueba"
+#: BPDColeccionCasosDePrueba casosDePrueba
+msgid "gvSIGbpd_BPDColeccionCasosDePrueba_contents_casosDePrueba_label"
+msgstr "Test Cases"
+
+#. Default: "Casos de Prueba definiendo conjuntos de valores concretos para los Escenarios relacionados."
+#: BPDColeccionCasosDePrueba casosDePrueba
+msgid "gvSIGbpd_BPDColeccionCasosDePrueba_contents_casosDePrueba_help"
+msgstr "Test Cases defining concrete data sets of values for the related Scenarios."
 
 #. Default: "Coleccion de Entradas"
 #: BPDColeccionEntradas
@@ -538,6 +608,26 @@ msgstr "Tools"
 #: BPDColeccionHerramientas herramientas
 msgid "gvSIGbpd_BPDColeccionHerramientas_contents_herramientas_help"
 msgstr "Tools applied in the Organisation to handle certain Artefacts, and assist in the execution of Business Process Steps."
+
+#. Default: "Coleccion de Listas de Pruebas"
+#: BPDColeccionListasDePruebas
+msgid "gvSIGbpd_BPDColeccionListasDePruebas_label"
+msgstr "Test Suites collection"
+
+#. Default: "Coleccion de Listas de Pruebas ensamblando secuencias de Casos de Prueba para ser ejecutados en secuencia."
+#: BPDColeccionListasDePruebas
+msgid "gvSIGbpd_BPDColeccionListasDePruebas_help"
+msgstr "Collection of Test Suites assembling sequences of Test Cases to be executed."
+
+#. Default: "Listas de Pruebas"
+#: BPDColeccionListasDePruebas listasDePruebas
+msgid "gvSIGbpd_BPDColeccionListasDePruebas_contents_listasDePruebas_label"
+msgstr "Test Suites"
+
+#. Default: "Listas de Pruebas ensamblando secuencias de Casos de Prueba para ser ejecutados en secuencia."
+#: BPDColeccionListasDePruebas listasDePruebas
+msgid "gvSIGbpd_BPDColeccionListasDePruebas_contents_listasDePruebas_help"
+msgstr "Test Suites assembling sequences of Test Cases to be executed."
 
 #. Default: "Coleccion de Pasos"
 #: BPDColeccionPasos
@@ -679,6 +769,36 @@ msgstr "Organisational Units"
 msgid "gvSIGbpd_BPDColeccionUnidadesOrganizacionales_contents_unidadesOrganizacionales_help"
 msgstr "Organisational Units corresponding to the Organisation decomposition into units, departments, sections, ... at a lower level, participants in the Business Processes."
 
+#. Default: "BPDConDatosDePrueba"
+#: BPDConDatosDePrueba
+msgid "gvSIGbpd_BPDConDatosDePrueba_label"
+msgstr "BPDConDatosDePrueba"
+
+#. Default: "BPDConDatosDePrueba"
+#: BPDConDatosDePrueba
+msgid "gvSIGbpd_BPDConDatosDePrueba_help"
+msgstr "BPDConDatosDePrueba"
+
+#. Default: "Resumen del Resoluciones de Datos"
+#: BPDConDatosDePrueba sumarioDatosDePruebas
+msgid "gvSIGbpd_BPDConDatosDePrueba_attr_sumarioDatosDePruebas_label"
+msgstr "Data Resolutions Summary"
+
+#. Default: "Un resumen de las resoluciones de items de informacion definidos para este elemento."
+#: BPDConDatosDePrueba sumarioDatosDePruebas
+msgid "gvSIGbpd_BPDConDatosDePrueba_attr_sumarioDatosDePruebas_help"
+msgstr "A summary of the data item resolutions defined for this element."
+
+#. Default: "Elementos de Proceso"
+#: BPDConDatosDePrueba datosDePruebas
+msgid "gvSIGbpd_BPDConDatosDePrueba_rel_datosDePruebas_label"
+msgstr "Process Elements"
+
+#. Default: "Elementos del Proceso de Negocio para los que se definen Datos de Prueba en el Caso de Prueba."
+#: BPDConDatosDePrueba datosDePruebas
+msgid "gvSIGbpd_BPDConDatosDePrueba_rel_datosDePruebas_help"
+msgstr "Business Process elements for which Test Data is defined in the Test Case."
+
 #. Default: "BPDConRegistroActividad"
 #: BPDConRegistroActividad
 msgid "gvSIGbpd_BPDConRegistroActividad_label"
@@ -788,6 +908,36 @@ msgstr "Modification User"
 #: BPDConRegistroActividad usuarioModificador
 msgid "gvSIGbpd_BPDConRegistroActividad_attr_usuarioModificador_help"
 msgstr "User who modified the element."
+
+#. Default: "BPDConResolucionesDatos"
+#: BPDConResolucionesDatos
+msgid "gvSIGbpd_BPDConResolucionesDatos_label"
+msgstr "BPDConResolucionesDatos"
+
+#. Default: "BPDConResolucionesDatos"
+#: BPDConResolucionesDatos
+msgid "gvSIGbpd_BPDConResolucionesDatos_help"
+msgstr "BPDConResolucionesDatos"
+
+#. Default: "Resumen del Resoluciones de Datos"
+#: BPDConResolucionesDatos sumarioResolucionesDatos
+msgid "gvSIGbpd_BPDConResolucionesDatos_attr_sumarioResolucionesDatos_label"
+msgstr "Data Resolutions Summary"
+
+#. Default: "Un resumen de las resoluciones de items de informacion definidos para este elemento."
+#: BPDConResolucionesDatos sumarioResolucionesDatos
+msgid "gvSIGbpd_BPDConResolucionesDatos_attr_sumarioResolucionesDatos_help"
+msgstr "A summary of the data item resolutions defined for this element."
+
+#. Default: "Resoluciones de Datos"
+#: BPDConResolucionesDatos resolucionesDatos
+msgid "gvSIGbpd_BPDConResolucionesDatos_contents_resolucionesDatos_label"
+msgstr "Data Item Resolutions"
+
+#. Default: "Resolucion de items de informacion con valores actuales de datos."
+#: BPDConResolucionesDatos resolucionesDatos
+msgid "gvSIGbpd_BPDConResolucionesDatos_contents_resolucionesDatos_help"
+msgstr "Resolution of data items with actual data values."
 
 #. Default: "BPDConTraducciones"
 #: BPDConTraducciones
@@ -999,25 +1149,85 @@ msgstr "Previous Versions"
 msgid "gvSIGbpd_BPDConVersiones_rel_versionesAnteriores_help"
 msgstr "Versions before this element's version."
 
+#. Default: "Condicion"
+#: BPDCondicion
+msgid "gvSIGbpd_BPDCondicion_label"
+msgstr "Condition"
+
+#. Default: "Una condicion a considerar, que determina si un element cumplimenta correctamente condiciones impuestas para su validez, como en un paso condicional de un proceso, una entrada o una salida de un proceso, ...."
+#: BPDCondicion
+msgid "gvSIGbpd_BPDCondicion_help"
+msgstr "A condition to consider, that determines if an element complies with conditions imposed on its validity, like a conditional step in a business process, a business process input or output, ..."
+
+#. Default: "BPDCondicional"
+#: BPDCondicional
+msgid "gvSIGbpd_BPDCondicional_label"
+msgstr "BPDCondicional"
+
+#. Default: "BPDCondicional"
+#: BPDCondicional
+msgid "gvSIGbpd_BPDCondicional_help"
+msgstr "BPDCondicional"
+
+#. Default: "Condiciones"
+#: BPDCondicional condiciones
+msgid "gvSIGbpd_BPDCondicional_contents_condiciones_label"
+msgstr "Conditions"
+
+#. Default: "Condiciones que restringen la validad del elemento condicional."
+#: BPDCondicional condiciones
+msgid "gvSIGbpd_BPDCondicional_contents_condiciones_help"
+msgstr "Conditions that restrict the validity of the conditional element."
+
+#. Default: "Condicion"
+#: BPDCondicionante
+msgid "gvSIGbpd_BPDCondicionante_label"
+msgstr "Condition"
+
+#. Default: "Una condicion a considerar, que determina si un element cumplimenta correctamente condiciones impuestas para su validez, como en un paso condicional de un proceso, una entrada o una salida de un proceso, ...."
+#: BPDCondicionante
+msgid "gvSIGbpd_BPDCondicionante_help"
+msgstr "A condition to consider, that determines if an element complies with conditions imposed on its validity, like a conditional step in a business process, a business process input or output, ..."
+
+#. Default: "Condicion"
+#: BPDCondicionante condicion
+msgid "gvSIGbpd_BPDCondicionante_attr_condicion_label"
+msgstr "Condition"
+
+#. Default: "Condicion que se evalua para determinar el siguiente Paso por el que continua el Proceso de Negocio."
+#: BPDCondicionante condicion
+msgid "gvSIGbpd_BPDCondicionante_attr_condicion_help"
+msgstr "Criteria for selection of the next Step to execute when the Decision completes."
+
+#. Default: "Datos de Prueba"
+#: BPDDatosDePrueba
+msgid "gvSIGbpd_BPDDatosDePrueba_label"
+msgstr "Test Data"
+
+#. Default: "Definicion de valores concretos para el Caso de Prueba contenedor."
+#: BPDDatosDePrueba
+msgid "gvSIGbpd_BPDDatosDePrueba_help"
+msgstr "Definition of concrete values for the container Test Case."
+
+#. Default: "Datos de Pruebas"
+#: BPDDatosDePrueba elementosDeProceso
+msgid "gvSIGbpd_BPDDatosDePrueba_rel_elementosDeProceso_label"
+msgstr "Test Data"
+
+#. Default: "Datos de Pruebas definidos para este elemento de proceso en varios Casos de Pruebas."
+#: BPDDatosDePrueba elementosDeProceso
+msgid "gvSIGbpd_BPDDatosDePrueba_rel_elementosDeProceso_help"
+msgstr "Test Data defined for this process element in various Test Cases."
+
 #. Default: "Decision"
 #: BPDDecision
 msgid "gvSIGbpd_BPDDecision_label"
 msgstr "Decision"
 
-#. Default: "BPDDecision"
+#. Default: "Una decision a tomar, que determina si el proceso continua con los pasos siguientes, o con los alternativos/excepcionales."
 #: BPDDecision
 msgid "gvSIGbpd_BPDDecision_help"
 msgstr "A Decision to take to select the next Business Process Step, from the ones composing the Business Process."
-
-#. Default: "Condicion"
-#: BPDDecision condicionSiguientePaso
-msgid "gvSIGbpd_BPDDecision_attr_condicionSiguientePaso_label"
-msgstr "Condition"
-
-#. Default: "Condicion que se evalua para determinar el siguiente Paso por el que continua el Proceso de Negocio."
-#: BPDDecision condicionSiguientePaso
-msgid "gvSIGbpd_BPDDecision_attr_condicionSiguientePaso_help"
-msgstr "Criteria for selection of the next Step to execute when the Decision completes."
 
 #. Default: "Detalles del Paso"
 #: BPDDecision detallesPaso
@@ -1369,6 +1579,56 @@ msgstr "Receptions"
 msgid "gvSIGbpd_BPDEnvio_rel_recepciones_help"
 msgstr "Reception steps carried out by other roles, to which this send step delivers information from this role."
 
+#. Default: "Episodio"
+#: BPDEpisodio
+msgid "gvSIGbpd_BPDEpisodio_label"
+msgstr "Episode"
+
+#. Default: "Uno de los pasos en la secuencia de pasos del proceso de negocio, describiendo uno de los posibles flujos de ejecucion del proceso."
+#: BPDEpisodio
+msgid "gvSIGbpd_BPDEpisodio_help"
+msgstr "One of the steps in the secuence of steps in the business process, describing one of the possible execution flows of the process."
+
+#. Default: "Episodios"
+#: BPDEpisodio pasos
+msgid "gvSIGbpd_BPDEpisodio_rel_pasos_label"
+msgstr "Episodes"
+
+#. Default: "Episodios en los que se ejecuta el Paso."
+#: BPDEpisodio pasos
+msgid "gvSIGbpd_BPDEpisodio_rel_pasos_help"
+msgstr "Episodes executing the Step."
+
+#. Default: "Escenario"
+#: BPDEscenario
+msgid "gvSIGbpd_BPDEscenario_label"
+msgstr "Scenario"
+
+#. Default: "Una secuencia de pasos del proceso de negocio, describiendo uno de los posibles flujos de ejecucion del proceso."
+#: BPDEscenario
+msgid "gvSIGbpd_BPDEscenario_help"
+msgstr "A secuence of steps in the business process, describing one of the possible execution flows of the process."
+
+#. Default: "Episodios"
+#: BPDEscenario episodios
+msgid "gvSIGbpd_BPDEscenario_contents_episodios_label"
+msgstr "Episodes"
+
+#. Default: "La secuencia de pasos en que se desarrolla un escenario, describiendo uno de los posibles flujos de ejecucion del proceso."
+#: BPDEscenario episodios
+msgid "gvSIGbpd_BPDEscenario_contents_episodios_help"
+msgstr "The sequence of steps in an scenario, describing one of the possible execution flows of the process."
+
+#. Default: "Escenario"
+#: BPDEscenario casosDePrueba
+msgid "gvSIGbpd_BPDEscenario_rel_casosDePrueba_label"
+msgstr "Scenario"
+
+#. Default: "Escenario para el que se definen los conjuntos de valores."
+#: BPDEscenario casosDePrueba
+msgid "gvSIGbpd_BPDEscenario_rel_casosDePrueba_help"
+msgstr "Scenario for which concreate value sets are defined."
+
 #. Default: "Exito Final"
 #: BPDExitoFinal
 msgid "gvSIGbpd_BPDExitoFinal_label"
@@ -1398,16 +1658,6 @@ msgstr "Extend Business Process"
 #: BPDExtensionProceso
 msgid "gvSIGbpd_BPDExtensionProceso_help"
 msgstr "Indicates the the Business Process introduces additional behavior to other Business Process(es)."
-
-#. Default: "Condicion"
-#: BPDExtensionProceso condicion
-msgid "gvSIGbpd_BPDExtensionProceso_attr_condicion_label"
-msgstr "Condition"
-
-#. Default: "Criterio para determinar si el Proceso de Negocio puede realmente extender el Proceso de Negocio extendido."
-#: BPDExtensionProceso condicion
-msgid "gvSIGbpd_BPDExtensionProceso_attr_condicion_help"
-msgstr "Criteria to determine whether this Business Process can actually extend the extended Business Process."
 
 #. Default: "Proceso de Negocio"
 #: BPDExtensionProceso tituloProcesoDeNegocio
@@ -1548,6 +1798,36 @@ msgstr "Profiles or Organisational Units Responsible for the Tool"
 #: BPDHerramienta responsablesDeHerramienta
 msgid "gvSIGbpd_BPDHerramienta_rel_responsablesDeHerramienta_help"
 msgstr "Participant Profiles or Organisational Units generally in charge of handling, administering or assisting the Teams in their usage of the Tool."
+
+#. Default: "Lista de Pruebas"
+#: BPDListaDePruebas
+msgid "gvSIGbpd_BPDListaDePruebas_label"
+msgstr "Test Suite"
+
+#. Default: "Ensamblaje de Casos de Prueba para ser ejecutados en secuencia."
+#: BPDListaDePruebas
+msgid "gvSIGbpd_BPDListaDePruebas_help"
+msgstr "Assembly of Test Cases to be executed in sequence."
+
+#. Default: "Listas de Pruebas mas detalladas"
+#: BPDListaDePruebas coleccionesListasDePruebas
+msgid "gvSIGbpd_BPDListaDePruebas_contents_coleccionesListasDePruebas_label"
+msgstr "More specific Test Suites"
+
+#. Default: "Colecciones de Listas de Pruebas mas detalladas ensamblando secuencias de Casos de Prueba para ser ejecutados en secuencia."
+#: BPDListaDePruebas coleccionesListasDePruebas
+msgid "gvSIGbpd_BPDListaDePruebas_contents_coleccionesListasDePruebas_help"
+msgstr "Collections of more specific Test Suites assembling sequences of Test Cases to be executed."
+
+#. Default: "Casos de Prueba"
+#: BPDListaDePruebas casosDePrueba
+msgid "gvSIGbpd_BPDListaDePruebas_rel_casosDePrueba_label"
+msgstr "Test Cases"
+
+#. Default: "Casos de Prueba ensablados en esta Lista de Prueba, para ser ejercitados en secuencia."
+#: BPDListaDePruebas casosDePrueba
+msgid "gvSIGbpd_BPDListaDePruebas_rel_casosDePrueba_help"
+msgstr "Test Cases assembled in this Test Suite, to be exercised in sequence."
 
 #. Default: "Organizacion"
 #: BPDOrganizacion
@@ -2344,6 +2624,16 @@ msgstr "BPDPasoMinimo"
 msgid "gvSIGbpd_BPDPasoMinimo_help"
 msgstr "BPDPasoMinimo"
 
+#. Default: "Detalles del Paso"
+#: BPDPasoMinimo detallesPaso
+msgid "gvSIGbpd_BPDPasoMinimo_attr_detallesPaso_label"
+msgstr "Step details"
+
+#. Default: "Detalles acerca de las caracteristicas del Paso de Proceso de Negocio."
+#: BPDPasoMinimo detallesPaso
+msgid "gvSIGbpd_BPDPasoMinimo_attr_detallesPaso_help"
+msgstr "Details about the features of the Business Process Step"
+
 #. Default: "Numero de Paso"
 #: BPDPasoMinimo numeroDePaso
 msgid "gvSIGbpd_BPDPasoMinimo_attr_numeroDePaso_label"
@@ -2403,6 +2693,16 @@ msgstr "Use Features"
 #: BPDPasoMinimo usosCaracteristicas
 msgid "gvSIGbpd_BPDPasoMinimo_contents_usosCaracteristicas_help"
 msgstr "Artefact Features used in the Business Process Step, to Create, Read, Update, Delete or Link."
+
+#. Default: "Pasos"
+#: BPDPasoMinimo episodios
+msgid "gvSIGbpd_BPDPasoMinimo_rel_episodios_label"
+msgstr "Steps"
+
+#. Default: "Secuencia de Pasos del Proceso de Negocio a ejecutar como comportamiento del Episodio."
+#: BPDPasoMinimo episodios
+msgid "gvSIGbpd_BPDPasoMinimo_rel_episodios_help"
+msgstr "Sequence of Business Process Steps to execute as the behavior of the Episode."
 
 #. Default: "Herramientas aplicadas"
 #: BPDPasoMinimo herramientasAplicadas
@@ -2649,6 +2949,76 @@ msgstr "Derived Business Rules"
 msgid "gvSIGbpd_BPDPoliticaDeNegocio_rel_reglasDeNegocioDerivadas_help"
 msgstr "Business Rules derived from the Business Policy."
 
+#. Default: "Post Condicion"
+#: BPDPostCondicion
+msgid "gvSIGbpd_BPDPostCondicion_label"
+msgstr "Post-Condition"
+
+#. Default: "Una condicion a considerar, que determina si un element cumplimenta correctamente condiciones impuestas para su validez, como en un paso condicional de un proceso, una entrada o una salida de un proceso, ...."
+#: BPDPostCondicion
+msgid "gvSIGbpd_BPDPostCondicion_help"
+msgstr "A condition to consider, that determines if an element complies with conditions imposed on its validity, like a conditional step in a business process, a business process input or output, ..."
+
+#. Default: "Condicion"
+#: BPDPostCondicion condicion
+msgid "gvSIGbpd_BPDPostCondicion_attr_condicion_label"
+msgstr "Condition"
+
+#. Default: "Condicion que se evalua para determinar el siguiente Paso por el que continua el Proceso de Negocio."
+#: BPDPostCondicion condicion
+msgid "gvSIGbpd_BPDPostCondicion_attr_condicion_help"
+msgstr "Criteria for selection of the next Step to execute when the Decision completes."
+
+#. Default: "Pre Condicion"
+#: BPDPreCondicion
+msgid "gvSIGbpd_BPDPreCondicion_label"
+msgstr "Pre-Condition"
+
+#. Default: "Una condicion a considerar, que determina si un element cumplimenta correctamente condiciones impuestas para su validez, como en un paso condicional de un proceso, una entrada o una salida de un proceso, ...."
+#: BPDPreCondicion
+msgid "gvSIGbpd_BPDPreCondicion_help"
+msgstr "A condition to consider, that determines if an element complies with conditions imposed on its validity, like a conditional step in a business process, a business process input or output, ..."
+
+#. Default: "Condicion"
+#: BPDPreCondicion condicion
+msgid "gvSIGbpd_BPDPreCondicion_attr_condicion_label"
+msgstr "Condition"
+
+#. Default: "Condicion que se evalua para determinar el siguiente Paso por el que continua el Proceso de Negocio."
+#: BPDPreCondicion condicion
+msgid "gvSIGbpd_BPDPreCondicion_attr_condicion_help"
+msgstr "Criteria for selection of the next Step to execute when the Decision completes."
+
+#. Default: "BPDPrePostCondicional"
+#: BPDPrePostCondicional
+msgid "gvSIGbpd_BPDPrePostCondicional_label"
+msgstr "BPDPrePostCondicional"
+
+#. Default: "BPDPrePostCondicional"
+#: BPDPrePostCondicional
+msgid "gvSIGbpd_BPDPrePostCondicional_help"
+msgstr "BPDPrePostCondicional"
+
+#. Default: "Post Condiciones"
+#: BPDPrePostCondicional postCondiciones
+msgid "gvSIGbpd_BPDPrePostCondicional_contents_postCondiciones_label"
+msgstr "Post-Conditions"
+
+#. Default: "Condiciones que han de cumplirse para que pueda considerarse valido el elemento post condicionado."
+#: BPDPrePostCondicional postCondiciones
+msgid "gvSIGbpd_BPDPrePostCondicional_contents_postCondiciones_help"
+msgstr "Conditions that must hold true for the post-conditioned element to be valid."
+
+#. Default: "Pre Condiciones"
+#: BPDPrePostCondicional preCondiciones
+msgid "gvSIGbpd_BPDPrePostCondicional_contents_preCondiciones_label"
+msgstr "Pre-Conditions"
+
+#. Default: "Condiciones que han de cumplirse para que pueda considerarse valido el elemento pre condicionado."
+#: BPDPrePostCondicional preCondiciones
+msgid "gvSIGbpd_BPDPrePostCondicional_contents_preCondiciones_help"
+msgstr "Conditions that must hold true for the pre-conditioned element to be valid."
+
 #. Default: "Proceso de Negocio"
 #: BPDProcesoDeNegocio
 msgid "gvSIGbpd_BPDProcesoDeNegocio_label"
@@ -2699,25 +3069,40 @@ msgstr "Is  Repeteable"
 msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_esRepetible_help"
 msgstr "Whether the Business Process may iterate and execute multiple times on the same instance of information, por example, until obtaining a sufficiently satisfactory result."
 
-#. Default: "Post Condicion"
-#: BPDProcesoDeNegocio postCondicion
-msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_label"
-msgstr "Post Condition"
+#. Default: "Nivel de Abstraccion"
+#: BPDProcesoDeNegocio nivelDeAbstraccion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_label"
+msgstr "Abstracion Level"
 
-#. Default: "La condicion que se cumplira cuando el Proceso concluya con exito. Puede expresar reglas de corelacion entre las varias Salidas del Proceso."
-#: BPDProcesoDeNegocio postCondicion
-msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_help"
-msgstr "The condition that is guaranteed to be met, whent he Business Process completes successfully. May express corelation rules over the varios Process Outputs."
+#. Default: "La abstraccion bajo la que se ha construido el proceso:como caso de negocio, como caso de uso, como escenario, o caso de prueba."
+#: BPDProcesoDeNegocio nivelDeAbstraccion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_help"
+msgstr "Abstraction selected when assembling the process:as a business case, as a use case, as an scenario or a test case,"
 
-#. Default: "Pre Condicion"
-#: BPDProcesoDeNegocio preCondicion
-msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_label"
-msgstr "Pre Condition"
+#. Default: "Indefinido"
+#: BPDProcesoDeNegocio nivelDeAbstraccion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Indefinido"
+msgstr "Undefined"
 
-#. Default: "La condicion que debera cumplirse para que pueda comenzar el Proceso. Puede expresar reglas de corelacion entre las varias Entradas del Proceso."
-#: BPDProcesoDeNegocio preCondicion
-msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_help"
-msgstr "The condition that is required to be true, to allow the start of the Business Process execution. May express corelation rules over the varios Process Inputs."
+#. Default: "Caso de Negocio"
+#: BPDProcesoDeNegocio nivelDeAbstraccion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Caso de Negocio"
+msgstr "Business Case"
+
+#. Default: "Caso de Uso"
+#: BPDProcesoDeNegocio nivelDeAbstraccion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Caso de Uso"
+msgstr "Use Case"
+
+#. Default: "Escenario"
+#: BPDProcesoDeNegocio nivelDeAbstraccion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Escenario"
+msgstr "Scenario"
+
+#. Default: "Caso de Prueba"
+#: BPDProcesoDeNegocio nivelDeAbstraccion
+msgid "gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Caso de Prueba"
+msgstr "Test Case"
 
 #. Default: "Proposito"
 #: BPDProcesoDeNegocio proposito
@@ -2898,6 +3283,106 @@ msgstr "Outputs (collections)"
 #: BPDProcesoDeNegocioSimple coleccionesSalidas
 msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_coleccionesSalidas_help"
 msgstr "Collections of Informations that may or will be made available upon successful completion of the Business Process."
+
+#. Default: "Escenarios"
+#: BPDProcesoDeNegocioSimple escenarios
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_escenarios_label"
+msgstr "Scenarios"
+
+#. Default: "Secuencias de pasos del proceso de negocio, describiendo  los posibles flujos de ejecucion del proceso."
+#: BPDProcesoDeNegocioSimple escenarios
+msgid "gvSIGbpd_BPDProcesoDeNegocioSimple_contents_escenarios_help"
+msgstr "Secuences of steps in the business process, describing the possible execution flows of the process."
+
+#. Default: "Programa"
+#: BPDPrograma
+msgid "gvSIGbpd_BPDPrograma_label"
+msgstr "Program"
+
+#. Default: "Un programa especificado para el elemento contenedor."
+#: BPDPrograma
+msgid "gvSIGbpd_BPDPrograma_help"
+msgstr "The program specified for the container element."
+
+#. Default: "BPDProgramable"
+#: BPDProgramable
+msgid "gvSIGbpd_BPDProgramable_label"
+msgstr "BPDProgramable"
+
+#. Default: "BPDProgramable"
+#: BPDProgramable
+msgid "gvSIGbpd_BPDProgramable_help"
+msgstr "BPDProgramable"
+
+#. Default: "Resumenes de Programas"
+#: BPDProgramable sumarioProgramas
+msgid "gvSIGbpd_BPDProgramable_attr_sumarioProgramas_label"
+msgstr "Programs Summary"
+
+#. Default: "Un resumen de los tipos del programas y el  codigo fuente de los programas especificados en este elemento."
+#: BPDProgramable sumarioProgramas
+msgid "gvSIGbpd_BPDProgramable_attr_sumarioProgramas_help"
+msgstr "A summary of the programs types and  source codes of the programs specified for this element."
+
+#. Default: "Programas"
+#: BPDProgramable programas
+msgid "gvSIGbpd_BPDProgramable_contents_programas_label"
+msgstr "Programs"
+
+#. Default: "Programas implementando el comportamiento de este elemento."
+#: BPDProgramable programas
+msgid "gvSIGbpd_BPDProgramable_contents_programas_help"
+msgstr "Programs implementing the behavior of this element."
+
+#. Default: "Programado"
+#: BPDProgramado
+msgid "gvSIGbpd_BPDProgramado_label"
+msgstr "Programmed"
+
+#. Default: "Un programa especificado para el elemento contenedor."
+#: BPDProgramado
+msgid "gvSIGbpd_BPDProgramado_help"
+msgstr "The program specified for the container element."
+
+#. Default: "Fuente del Programa"
+#: BPDProgramado fuentePrograma
+msgid "gvSIGbpd_BPDProgramado_attr_fuentePrograma_label"
+msgstr "Program Source"
+
+#. Default: "El codigo fuente del programa especificado en este elemento, expresado en el tipo de program especificado: Python Plone Docstring, or ... To Be Extended"
+#: BPDProgramado fuentePrograma
+msgid "gvSIGbpd_BPDProgramado_attr_fuentePrograma_help"
+msgstr "The source code of the program specified for this element, expressed in the specified program kind: Python Plone Docstring, or ... To Be Extended"
+
+#. Default: "Resumen del Programa"
+#: BPDProgramado sumarioPrograma
+msgid "gvSIGbpd_BPDProgramado_attr_sumarioPrograma_label"
+msgstr "Program Summary"
+
+#. Default: "Un resumen del tipo del programa y el  codigo fuente del programa especificado en este elemento."
+#: BPDProgramado sumarioPrograma
+msgid "gvSIGbpd_BPDProgramado_attr_sumarioPrograma_help"
+msgstr "A summary of the program type and  source code of the program specified for this element."
+
+#. Default: "Tipo Programa"
+#: BPDProgramado tipoPrograma
+msgid "gvSIGbpd_BPDProgramado_attr_tipoPrograma_label"
+msgstr "Program Kind"
+
+#. Default: "El tipo del programa especificado en este elemento: Python Plone Docstring, or ... To Be Extended"
+#: BPDProgramado tipoPrograma
+msgid "gvSIGbpd_BPDProgramado_attr_tipoPrograma_help"
+msgstr "The kind of program specified for this element: Python Plone Docstring, or ... To Be Extended"
+
+#. Default: "No Especificado"
+#: BPDProgramado tipoPrograma
+msgid "gvSIGbpd_BPDProgramado_attr_tipoPrograma_option_No Especificado"
+msgstr "Unspecified"
+
+#. Default: "Python-Plone docstring"
+#: BPDProgramado tipoPrograma
+msgid "gvSIGbpd_BPDProgramado_attr_tipoPrograma_option_Python-Plone docstring"
+msgstr "Python-Plone docstring"
 
 #. Default: "Punto de Extension"
 #: BPDPuntoExtension
@@ -3149,6 +3634,16 @@ msgstr "Guided Business Processes"
 msgid "gvSIGbpd_BPDReglaDeNegocio_rel_procesosDeNegocioDirigidos_help"
 msgstr "Business Process applying or enforcing during their execution this Business Rule."
 
+#. Default: "Resolucion de Datos"
+#: BPDResolucionDatos
+msgid "gvSIGbpd_BPDResolucionDatos_label"
+msgstr "Data Resolution"
+
+#. Default: "Un programa especificado para resolver valores de datos para items de informacion en el contenedor"
+#: BPDResolucionDatos
+msgid "gvSIGbpd_BPDResolucionDatos_help"
+msgstr "A program specified to resolve data values for data items in the container."
+
 #. Default: "Salida de Proceso de Negocio"
 #: BPDSalida
 msgid "gvSIGbpd_BPDSalida_label"
@@ -3268,6 +3763,26 @@ msgstr "Organisational Unit"
 #: BPDUnidadOrganizacional
 msgid "gvSIGbpd_BPDUnidadOrganizacional_help"
 msgstr "Part of the organisational decomposition into units."
+
+#. Default: "Casos de Prueba (colecciones)"
+#: BPDUnidadOrganizacional coleccionesCasosDePrueba
+msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesCasosDePrueba_label"
+msgstr "Test Cases (collections)"
+
+#. Default: "Colecciones de Casos de Prueba definiendo conjuntos de valores concretos para los Escenarios relacionados."
+#: BPDUnidadOrganizacional coleccionesCasosDePrueba
+msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesCasosDePrueba_help"
+msgstr "Collections of Test Cases defining concrete data sets of values for the related Scenarios."
+
+#. Default: "Listas de Pruebas (colecciones)"
+#: BPDUnidadOrganizacional coleccionesListasDePruebas
+msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesListasDePruebas_label"
+msgstr "Test Suites (collections)"
+
+#. Default: "Colecciones de Listas de Pruebas ensamblando secuencias de Casos de Prueba para ser ejecutados en secuencia."
+#: BPDUnidadOrganizacional coleccionesListasDePruebas
+msgid "gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesListasDePruebas_help"
+msgstr "Collections of Test Suites assembling sequences of Test Cases to be executed."
 
 #. Default: "Perfiles (colecciones)"
 #: BPDUnidadOrganizacional coleccionesPerfiles
@@ -3518,51 +4033,3 @@ msgstr "Used Features"
 #: BPDUsoCaracteristica caracteristicasUsadas
 msgid "gvSIGbpd_BPDUsoCaracteristica_rel_caracteristicasUsadas_help"
 msgstr "Artefact Features used in the Business Process Step, to Create, Read, Update, Delete or Link."
-
-
-
-
-
-
-#. Default: "Adjuntos"
-#: ProcesoDeNegocio.py
-msgid "gvSIGbpd_adjuntos_section_msgid"
-msgstr  "Attached"
-
-
-
-
-#. Default: "Anexos"
-#: ProcesoDeNegocio.py
-msgid "gvSIGbpd_anexos_section_msgid"
-msgstr  "Annexes"
-
-
-
-#. Default: "Documentacion anexa que complementa la presente definicion, con contenidos adicionales como paginas, imagenes, archivos, enlaces y referencias a otros elementos Plone."
-#: ProcesoDeNegocio.py
-msgid "gvSIGbpd_adjuntos_section_description_msgid"
-msgstr  "Annexed information complementing this definicion, with additional contents like pages, images, files, links and references to other Plone elements."
-
-
-
-
-#. Default: "Conceptos estandar del"
-#: Footer_view_gvSIGbpd.py
-msgid "gvSIGbpd_footer_phrase1_with_parameters"
-msgstr  "Standard concepts from"
-
-
-
-#. Default: "para Estrategia, Reglas y Procesos de Negocio"
-#: Footer_view_gvSIGbpd.py
-msgid "gvSIGbpd_footer_phrase2_with_parameters"
-msgstr  "for Business Strategy, Rules and Processes"
-
-
-
-
-#. Default: "Aplicacion desarrollada segun"
-#: Footer_view_gvSIGbpd.py
-msgid "gvSIGbpd_footer_phrase_mda1_with_parameters"
-msgstr  "developed with a"

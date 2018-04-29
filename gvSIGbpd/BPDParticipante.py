@@ -31,7 +31,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.gvSIGbpd.BPDArquetipoReferenciable import BPDArquetipoReferenciable
+from Products.gvSIGbpd.BPDArquetipoConAdopcion import BPDArquetipoConAdopcion
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
@@ -375,17 +375,17 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-BPDParticipante_schema = getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
+BPDParticipante_schema = getattr(BPDArquetipoConAdopcion, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
+class BPDParticipante(OrderedBaseFolder, BPDArquetipoConAdopcion):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoConAdopcion,'__implements__',()),)
 
 
 
@@ -419,7 +419,7 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
 
     actions =  (
 

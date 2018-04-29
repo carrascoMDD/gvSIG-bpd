@@ -1,0 +1,311 @@
+# Copyright (c) 2008, 2009 by Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana
+#
+# GNU General Public License (GPL)
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+# Authors: 
+# Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana 
+# Model Driven Development sl  Valencia (Spain) www.ModelDD.org 
+# Antonio Carrasco Valero                       carrasco@ModelDD.org
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gvSIGtraducciones\n"
+"POT-Creation-Date: Fri Mar 20 11:10:50 2009\n"
+"PO-Revision-Date: Fri Mar 20 11:10:50 2009\n"
+"Last-Translator: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
+"Language-Team: Conselleria de Infraestructuras y Transporte de la Generalidad Valenciana, Model Driven Development sl, Antonio Carrasco Valero <gvSIGbpd@gvSIG.org, gvSIGbpd@ModelDD.org, carrasco@ModelDD.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: gvSIGbpd_credits\n"
+"X-Is-Fallback-For: es-ar es-bo es-co es-cr es-cl es-do es-ec es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-es es-uy es-ve\n"
+
+
+
+
+#. Default: "Creditos"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Title"
+msgstr "Creditos"
+
+#. Default: "Proyecto"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_ProjectTitle_PropertyName"
+msgstr "Proyecto"
+
+
+#. Default: "gvSIGbpd"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_ProjectTitle_PropertyValue"
+msgstr "gvSIGbpd"
+
+#. Default: "Aplicacion colaborativa para la especificacion y publicacion de definiciones de estructuras organizacionales, procesos de negocio, politicas de negocio, reglas de negocio, artefactos y herramientas"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_ProjectTitle_Description_PropertyValue"
+msgstr "Aplicacion colaborativa para la especificacion y publicacion de definiciones de estructuras organizacionales, procesos de negocio, politicas de negocio, reglas de negocio, artefactos y herramientas"
+
+#. Default: "Copyright"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Copyright_PropertyName"
+msgstr "Copyright"
+
+
+#. Default: "Licencia"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_License_PropertyName"
+msgstr "Licencia"
+
+
+
+
+
+
+#. Default: "Autores"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Autores_PropertyName"
+msgstr "Autores"
+
+#. Default: "institucion del gobierno autonomico de la Comunidad Valenciana en España, Europa"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Author_Conselleria_Institucion_PropertyValue"
+msgstr "conselleria del gobierno autonomico de la Comunidad Valenciana de España en Europa"
+
+
+#. Default: "empresa"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Author_ModelDrivenDevelopmentSL_Empresa_PropertyValue"
+msgstr "empresa"
+
+
+
+#. Default: "desarrollador"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Author_AntonioCarrascoValero_Desarrollador_PropertyValue"
+msgstr "desarrollador"
+
+
+
+#. Default: "Promotor y Director"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_SponsorProjectTitle_PropertyName"
+msgstr "Promotor y Director"
+
+
+
+
+#. Default: "gvSIG es un programa aplicado a la gestion de informacion geoespacial. Distribuida como programa libre y gratis en codigo abierto Free Libre Open Source Software (FLOSS). Desarrollado como una aplicación programada en el lenguage Java. Disponible en el sistema operativo libre y gratis en codigo abierto GNU/Linux, y los propietarios Apple Macintosh (R) y Microsoft Windows (R). Localizado a muchos idiomas y paises. gvSIg ahora facilita la disponibilidad en mas lenguages y paises, con esta aplicacion gvSIGtraducciones para traduccion colaborativa de textos del interfaz de usuario."
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_SponsorProjectTitle_Description_PropertyValue"
+msgstr "gvSIG es un programa aplicado a la gestion de informacion geoespacial. Distribuida como programa libre y gratis en codigo abierto Free Libre Open Source Software (FLOSS). Desarrollado como una aplicación programada en el lenguage Java. Disponible en el sistema operativo libre y gratis en codigo abierto GNU/Linux, y los propietarios Apple Macintosh (R) y Microsoft Windows (R). Localizado a muchos idiomas y paises. gvSIg ahora facilita la disponibilidad en mas lenguages y paises, con esta aplicacion gvSIGtraducciones para traduccion colaborativa de textos del interfaz de usuario."
+
+
+
+#. Default: "Estandares"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Standards_PropertyName"
+msgstr "Estandares"
+
+#. Default: "desarrollado segun las practicas de desarrollo dirigido por modelos recomendados por la"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Standards_Intro_PropertyValue"
+msgstr "desarrollado segun las practicas de desarrollo dirigido por modelos recomendados por la"
+
+
+
+#. Default: "Garantia"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Warranty_PropertyName"
+msgstr "Garantia"
+
+#. Default: "Este programa es distribuido en la esperanza que sera util, pero sin ninguna garantia; sin ni siquera la garantia implicita de mercantibilidad o adecuacion a algun proposito particular. Por favor, vea la licencia 'GNU General Public License' (GPL) para mas detalles."
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Warranty_PropertyValue"
+msgstr "Este programa es distribuido en la esperanza que sera util, pero sin ninguna garantia; sin ni siquera la garantia implicita de mercantibilidad o adecuacion a algun proposito particular. Por favor, vea la licencia 'GNU General Public License' (GPL) para mas detalles."
+
+#. Default: "Desarrollado siguiendo las recomendaciones en"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Standards_Intro_PropertyName"
+msgstr "Desarrollado siguiendo las recomendaciones en"
+
+
+
+
+#. Default: "Coordinacion de Requisitos"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_RequirementsCoordination_PropertyName"
+msgstr "Coordinacion de Requisitos"
+
+
+#. Default: "Requisitos del Dominio del Negocio"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_RequirementsCoordination_Business_Title"
+msgstr "Requisitos del Dominio del Negocio"
+
+
+
+
+#. Default: "Requisitos de la Organizacion"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_RequirementsCoordination_Organization_Title"
+msgstr "Requisitos de la Organizacion"
+
+
+
+
+
+#. Default: "Requisitos de la Plataforma"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_RequirementsCoordination_Platform_Title"
+msgstr "Requisitos de la Plataforma"
+
+
+
+
+
+#. Default: "Requisitos para Administracion"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_RequirementsCoordination_Administration_Title"
+msgstr "Requisitos para Administracion"
+
+
+
+
+
+#. Default: "Jefe del Departamento de Organizacion e Informatica de la CIT"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_SponsorProjectTitle_Jefe_Title"
+msgstr "Jefe del Departamento de Organizacion e Informatica de la CIT"
+
+
+
+#. Default: "Coordinador General de gvSIG"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_SponsorProjectTitle_CoordinadorGeneral_Title"
+msgstr "Coordinador General de gvSIG"
+
+
+
+#. Default: "Coordinador Tecnico de gvSIG"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_SponsorProjectTitle_CoordinadorTecnico_Title"
+msgstr "Coordinador Tecnico de gvSIG"
+
+
+
+#. Default: "por la"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_PorLa"
+msgstr "por la"
+
+
+#. Default: "por"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_por"
+msgstr "por"
+
+
+#. Default: "Plataforma"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Platform_PropertyName"
+msgstr "Plataforma"
+
+
+
+
+#. Default: "Componentes"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Components_PropertyName"
+msgstr "Componentes"
+
+
+
+
+#. Default: "Instalados"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Components_Installed_PropertyName"
+msgstr "Instalados"
+
+
+#. Default: "No Instalados"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Components_NotInstalled_PropertyName"
+msgstr "No Instalados"
+
+
+#. Default: "Ausentes"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Components_Missing_PropertyName"
+msgstr "Ausentes"
+
+#. Default: "Erroneos"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Components_Error_PropertyName"
+msgstr "Erroneos"
+
+
+#. Default: "Opcionales"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Components_Optional_PropertyName"
+msgstr "Opcionales"
+
+#. Default: "De terceras partes"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Components_ThirdParty_PropertyName"
+msgstr "De terceras partes"
+
+#. Default: "Desarrollado por"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_DevelopedBy_PropertyName"
+msgstr "Desarrollado por"
+
+
+
+
+
+#. Default: "Servidor de Aplicaciones, Gestor de Contenidos y Lenguage de Programacion"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Platform_Intro_PropertyName"
+msgstr "Servidor de Aplicaciones, Gestor de Contenidos y Lenguage de Programacion"
+
+
+#. Default: "Estandares adoptados para especificacion de estrategias, reglas y procesos de negocio"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Standards_BusinessSpecification_Intro"
+msgstr "Estandares adoptados para especificacion de estrategias, reglas y procesos de negocio"
+
+
+#. Default: "Especificacion adoptada para Modelos de Motivacion del Negocio (Business Motivation Model - BMM)"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Standards_BMM"
+msgstr "Modelos de Motivacion del Negocio (Business Motivation Model - BMM)"
+
+#. Default: "Especificacion adoptada para Definicion de Procesos de Negocio (Business Process Definition Metamodel - BPDM)"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Standards_BPDM"
+msgstr "Definicion de Procesos de Negocio (Business Process Definition Metamodel - BPDM)"
+
+#. Default: "Especificacion adoptada para Notacion de Modelado de Procesos de Negocio (Business Process Modeling Notation - BPMN)"
+#: gvSIGbpd_creditos_i18n_view
+msgid "gvSIGbpd_credits_Standards_BPMN"
+msgstr "Notacion de Modelado de Procesos de Negocio (Business Process Modeling Notation - BPMN)"
+
+

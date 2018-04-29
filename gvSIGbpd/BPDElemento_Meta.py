@@ -115,9 +115,12 @@ class BPDElemento_Meta:
         return [ 
             'BPDArtefacto',
             'BPDCaracteristica',
+            'BPDCasoDePrueba',
             'BPDColeccionArtefactos',
+            'BPDColeccionCasosDePrueba',
             'BPDColeccionEntradas',
             'BPDColeccionHerramientas',
+            'BPDColeccionListasDePruebas',
             'BPDColeccionPasos',
             'BPDColeccionPerfiles',
             'BPDColeccionPoliticasDeNegocio',
@@ -125,24 +128,32 @@ class BPDElemento_Meta:
             'BPDColeccionReglasDeNegocio',
             'BPDColeccionSalidas',
             'BPDColeccionUnidadesOrganizacionales',
+            'BPDCondicion',
+            'BPDDatosDePrueba',
             'BPDDecision',
             'BPDEntrada',
             'BPDEnvio',
+            'BPDEscenario',
             'BPDExitoFinal',
             'BPDExtensionProceso',
             'BPDFracasoFinal',
             'BPDHerramienta',
+            'BPDListaDePruebas',
             'BPDOrganizacion',
             'BPDPasoGestorExcepciones',
             'BPDPasoSimple',
             'BPDPerfil',
             'BPDPlazo',
             'BPDPoliticaDeNegocio',
+            'BPDPostCondicion',
+            'BPDPreCondicion',
             'BPDProcesoDeNegocioSimple',
+            'BPDPrograma',
             'BPDPuntoExtension',
             'BPDRecepcion',
             'BPDReferenciaCualificada',
             'BPDReglaDeNegocio',
+            'BPDResolucionDatos',
             'BPDSalida',
             'BPDSubProceso',
             'BPDUnidadOrganizacional',
@@ -168,9 +179,17 @@ class BPDElemento_Meta:
                 from Products.gvSIGbpd.BPDCaracteristica         import BPDCaracteristica
                 return BPDCaracteristica            
 
+            if theMetaTypeName == 'BPDCasoDePrueba':
+                from Products.gvSIGbpd.BPDCasoDePrueba         import BPDCasoDePrueba
+                return BPDCasoDePrueba            
+
             if theMetaTypeName == 'BPDColeccionArtefactos':
                 from Products.gvSIGbpd.BPDColeccionArtefactos         import BPDColeccionArtefactos
                 return BPDColeccionArtefactos            
+
+            if theMetaTypeName == 'BPDColeccionCasosDePrueba':
+                from Products.gvSIGbpd.BPDColeccionCasosDePrueba         import BPDColeccionCasosDePrueba
+                return BPDColeccionCasosDePrueba            
 
             if theMetaTypeName == 'BPDColeccionEntradas':
                 from Products.gvSIGbpd.BPDColeccionEntradas         import BPDColeccionEntradas
@@ -179,6 +198,10 @@ class BPDElemento_Meta:
             if theMetaTypeName == 'BPDColeccionHerramientas':
                 from Products.gvSIGbpd.BPDColeccionHerramientas         import BPDColeccionHerramientas
                 return BPDColeccionHerramientas            
+
+            if theMetaTypeName == 'BPDColeccionListasDePruebas':
+                from Products.gvSIGbpd.BPDColeccionListasDePruebas         import BPDColeccionListasDePruebas
+                return BPDColeccionListasDePruebas            
 
             if theMetaTypeName == 'BPDColeccionPasos':
                 from Products.gvSIGbpd.BPDColeccionPasos         import BPDColeccionPasos
@@ -208,6 +231,14 @@ class BPDElemento_Meta:
                 from Products.gvSIGbpd.BPDColeccionUnidadesOrganizacionales         import BPDColeccionUnidadesOrganizacionales
                 return BPDColeccionUnidadesOrganizacionales            
 
+            if theMetaTypeName == 'BPDCondicion':
+                from Products.gvSIGbpd.BPDCondicion         import BPDCondicion
+                return BPDCondicion            
+
+            if theMetaTypeName == 'BPDDatosDePrueba':
+                from Products.gvSIGbpd.BPDDatosDePrueba         import BPDDatosDePrueba
+                return BPDDatosDePrueba            
+
             if theMetaTypeName == 'BPDDecision':
                 from Products.gvSIGbpd.BPDDecision         import BPDDecision
                 return BPDDecision            
@@ -219,6 +250,10 @@ class BPDElemento_Meta:
             if theMetaTypeName == 'BPDEnvio':
                 from Products.gvSIGbpd.BPDEnvio         import BPDEnvio
                 return BPDEnvio            
+
+            if theMetaTypeName == 'BPDEscenario':
+                from Products.gvSIGbpd.BPDEscenario         import BPDEscenario
+                return BPDEscenario            
 
             if theMetaTypeName == 'BPDExitoFinal':
                 from Products.gvSIGbpd.BPDExitoFinal         import BPDExitoFinal
@@ -235,6 +270,10 @@ class BPDElemento_Meta:
             if theMetaTypeName == 'BPDHerramienta':
                 from Products.gvSIGbpd.BPDHerramienta         import BPDHerramienta
                 return BPDHerramienta            
+
+            if theMetaTypeName == 'BPDListaDePruebas':
+                from Products.gvSIGbpd.BPDListaDePruebas         import BPDListaDePruebas
+                return BPDListaDePruebas            
 
             if theMetaTypeName == 'BPDOrganizacion':
                 from Products.gvSIGbpd.BPDOrganizacion         import BPDOrganizacion
@@ -260,9 +299,21 @@ class BPDElemento_Meta:
                 from Products.gvSIGbpd.BPDPoliticaDeNegocio         import BPDPoliticaDeNegocio
                 return BPDPoliticaDeNegocio            
 
+            if theMetaTypeName == 'BPDPostCondicion':
+                from Products.gvSIGbpd.BPDPostCondicion         import BPDPostCondicion
+                return BPDPostCondicion            
+
+            if theMetaTypeName == 'BPDPreCondicion':
+                from Products.gvSIGbpd.BPDPreCondicion         import BPDPreCondicion
+                return BPDPreCondicion            
+
             if theMetaTypeName == 'BPDProcesoDeNegocioSimple':
                 from Products.gvSIGbpd.BPDProcesoDeNegocioSimple         import BPDProcesoDeNegocioSimple
                 return BPDProcesoDeNegocioSimple            
+
+            if theMetaTypeName == 'BPDPrograma':
+                from Products.gvSIGbpd.BPDPrograma         import BPDPrograma
+                return BPDPrograma            
 
             if theMetaTypeName == 'BPDPuntoExtension':
                 from Products.gvSIGbpd.BPDPuntoExtension         import BPDPuntoExtension
@@ -279,6 +330,10 @@ class BPDElemento_Meta:
             if theMetaTypeName == 'BPDReglaDeNegocio':
                 from Products.gvSIGbpd.BPDReglaDeNegocio         import BPDReglaDeNegocio
                 return BPDReglaDeNegocio            
+
+            if theMetaTypeName == 'BPDResolucionDatos':
+                from Products.gvSIGbpd.BPDResolucionDatos         import BPDResolucionDatos
+                return BPDResolucionDatos            
 
             if theMetaTypeName == 'BPDSalida':
                 from Products.gvSIGbpd.BPDSalida         import BPDSalida

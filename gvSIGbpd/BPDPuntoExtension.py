@@ -35,6 +35,7 @@ from Products.gvSIGbpd.BPDPasoConSiguientes import BPDPasoConSiguientes
 from Products.gvSIGbpd.BPDPasoMinimo import BPDPasoMinimo
 from Products.gvSIGbpd.BPDPasoGestorExcepciones import BPDPasoGestorExcepciones
 from Products.gvSIGbpd.BPDPasoConAnteriores import BPDPasoConAnteriores
+from Products.gvSIGbpd.BPDCondicional import BPDCondicional
 from Products.gvSIGbpd.BPDPasoConExcepciones import BPDPasoConExcepciones
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
@@ -185,17 +186,18 @@ BPDPuntoExtension_schema = OrderedBaseFolderSchema.copy() + \
     getattr(BPDPasoMinimo, 'schema', Schema(())).copy() + \
     getattr(BPDPasoGestorExcepciones, 'schema', Schema(())).copy() + \
     getattr(BPDPasoConAnteriores, 'schema', Schema(())).copy() + \
+    getattr(BPDCondicional, 'schema', Schema(())).copy() + \
     getattr(BPDPasoConExcepciones, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDPuntoExtension(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoMinimo, BPDPasoGestorExcepciones, BPDPasoConAnteriores, BPDPasoConExcepciones):
+class BPDPuntoExtension(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoMinimo, BPDPasoGestorExcepciones, BPDPasoConAnteriores, BPDCondicional, BPDPasoConExcepciones):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoConSiguientes,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),) + (getattr(BPDPasoConExcepciones,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoConSiguientes,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),) + (getattr(BPDCondicional,'__implements__',()),) + (getattr(BPDPasoConExcepciones,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Punto de Extension'
@@ -234,7 +236,7 @@ class BPDPuntoExtension(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoMinimo, 
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoConSiguientes, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDPasoConExcepciones, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDPasoConSiguientes, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDCondicional, 'allowed_content_types', [])) + list(getattr(BPDPasoConExcepciones, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdpuntoextension.gif'

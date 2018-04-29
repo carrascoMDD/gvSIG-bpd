@@ -31,80 +31,21 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDConResolucionesDatos import BPDConResolucionesDatos
+from Products.gvSIGbpd.BPDConDatosDePrueba import BPDConDatosDePrueba
 from Products.gvSIGbpd.BPDPasoGeneral import BPDPasoGeneral
+from Products.gvSIGbpd.BPDCondicional import BPDCondicional
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
 schema = Schema((
-
-    IntegerField(
-        name='multiplicidadMinima',
-        widget=IntegerField._properties['widget'](
-            label="Multiplicidad Minima",
-            label2="Minimum Multiplicity",
-            description="Numero minimo de elementos a recibir. Introduzca 0 para indicar que la Recepcion procedera con exito, aunque no se haya recibido ningun artefacto.",
-            description2="Minimum number of elements to receive. Enter 0 to indicate that the Reception will proceed with success, even if no Artefact of the type has been received.",
-            label_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMinima_label',
-            description_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMinima_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Numero minimo de elementos a recibir. Introduzca 0 para indicar que la Recepcion procedera con exito, aunque no se haya recibido ningun artefacto.",
-        duplicates="0",
-        label2="Minimum Multiplicity",
-        ea_localid="409",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Minimum number of elements to receive. Enter 0 to indicate that the Reception will proceed with success, even if no Artefact of the type has been received.",
-        ea_guid="{956FE7FC-8E01-433d-B5E4-AAFC70075229}",
-        write_permission='Modify portal content',
-        scale="0",
-        default="0",
-        label="Multiplicidad Minima",
-        length="0",
-        containment="Not Specified",
-        position="3",
-        owner_class_name="BPDRecepcion"
-    ),
-
-    IntegerField(
-        name='multiplicidadMaxima',
-        widget=IntegerField._properties['widget'](
-            label="Multiplicidad Maxima",
-            label2="Maximum Multiplicity",
-            description="Numero maximo de elementos a recibir. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a recibir.",
-            description2="Maximum number of elements to receive. Enter -1 to indicate that there is no upper limit in the number of elements to receive.",
-            label_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMaxima_label',
-            description_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMaxima_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Numero maximo de elementos a recibir. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a recibir.",
-        duplicates="0",
-        label2="Maximum Multiplicity",
-        ea_localid="408",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Maximum number of elements to receive. Enter -1 to indicate that there is no upper limit in the number of elements to receive.",
-        ea_guid="{C8CCCF9F-3C22-453d-A75B-D5CFB83A899E}",
-        write_permission='Modify portal content',
-        scale="0",
-        default="-1",
-        label="Multiplicidad Maxima",
-        length="0",
-        containment="Not Specified",
-        position="5",
-        owner_class_name="BPDRecepcion"
-    ),
 
     TextField(
         name='condicion',
@@ -167,6 +108,68 @@ schema = Schema((
         owner_class_name="BPDRecepcion",
         expression="context.fTFLVsUnless([ [ 'esInicial',False,],['tituloRemitente','',],['titulosArtefactosRecibidos','',],['ejecutores',None,],[ 'titulosArtefactosUsados','',],[ 'titulosCaracteristicasUsadas','',],])",
         computed_types="string"
+    ),
+
+    IntegerField(
+        name='multiplicidadMaxima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Maxima",
+            label2="Maximum Multiplicity",
+            description="Numero maximo de elementos a recibir. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a recibir.",
+            description2="Maximum number of elements to receive. Enter -1 to indicate that there is no upper limit in the number of elements to receive.",
+            label_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMaxima_label',
+            description_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMaxima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero maximo de elementos a recibir. Introduzca -1 para indicar que no hay limite superior para el numero de Artefactos a recibir.",
+        duplicates="0",
+        label2="Maximum Multiplicity",
+        ea_localid="408",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Maximum number of elements to receive. Enter -1 to indicate that there is no upper limit in the number of elements to receive.",
+        ea_guid="{C8CCCF9F-3C22-453d-A75B-D5CFB83A899E}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="-1",
+        label="Multiplicidad Maxima",
+        length="0",
+        containment="Not Specified",
+        position="5",
+        owner_class_name="BPDRecepcion"
+    ),
+
+    IntegerField(
+        name='multiplicidadMinima',
+        widget=IntegerField._properties['widget'](
+            label="Multiplicidad Minima",
+            label2="Minimum Multiplicity",
+            description="Numero minimo de elementos a recibir. Introduzca 0 para indicar que la Recepcion procedera con exito, aunque no se haya recibido ningun artefacto.",
+            description2="Minimum number of elements to receive. Enter 0 to indicate that the Reception will proceed with success, even if no Artefact of the type has been received.",
+            label_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMinima_label',
+            description_msgid='gvSIGbpd_BPDRecepcion_attr_multiplicidadMinima_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Numero minimo de elementos a recibir. Introduzca 0 para indicar que la Recepcion procedera con exito, aunque no se haya recibido ningun artefacto.",
+        duplicates="0",
+        label2="Minimum Multiplicity",
+        ea_localid="409",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Minimum number of elements to receive. Enter 0 to indicate that the Reception will proceed with success, even if no Artefact of the type has been received.",
+        ea_guid="{956FE7FC-8E01-433d-B5E4-AAFC70075229}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="0",
+        label="Multiplicidad Minima",
+        length="0",
+        containment="Not Specified",
+        position="3",
+        owner_class_name="BPDRecepcion"
     ),
 
     RelationField(
@@ -320,17 +323,20 @@ schema = Schema((
 ##/code-section after-local-schema
 
 BPDRecepcion_schema = OrderedBaseFolderSchema.copy() + \
+    getattr(BPDConResolucionesDatos, 'schema', Schema(())).copy() + \
+    getattr(BPDConDatosDePrueba, 'schema', Schema(())).copy() + \
     getattr(BPDPasoGeneral, 'schema', Schema(())).copy() + \
+    getattr(BPDCondicional, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
+class BPDRecepcion(OrderedBaseFolder, BPDConResolucionesDatos, BPDConDatosDePrueba, BPDPasoGeneral, BPDCondicional):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDConResolucionesDatos,'__implements__',()),) + (getattr(BPDConDatosDePrueba,'__implements__',()),) + (getattr(BPDPasoGeneral,'__implements__',()),) + (getattr(BPDCondicional,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Recepcion'
@@ -369,7 +375,7 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDConResolucionesDatos, 'allowed_content_types', [])) + list(getattr(BPDConDatosDePrueba, 'allowed_content_types', [])) + list(getattr(BPDPasoGeneral, 'allowed_content_types', [])) + list(getattr(BPDCondicional, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdrecepcion.gif'

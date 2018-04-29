@@ -31,7 +31,9 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDProgramable import BPDProgramable
 from Products.gvSIGbpd.BPDArquetipoConAdopcion import BPDArquetipoConAdopcion
+from Products.gvSIGbpd.BPDPrePostCondicional import BPDPrePostCondicional
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
@@ -42,6 +44,40 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import  Referenc
 ##/code-section module-header
 
 schema = Schema((
+
+    StringField(
+        name='nivelDeAbstraccion',
+        widget=SelectionWidget(
+            label="Nivel de Abstraccion",
+            label2="Abstracion Level",
+            description="La abstraccion bajo la que se ha construido el proceso:como caso de negocio, como caso de uso, como escenario, o caso de prueba.",
+            description2="Abstraction selected when assembling the process:as a business case, as a use case, as an scenario or a test case,",
+            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_label',
+            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="La abstraccion bajo la que se ha construido el proceso:como caso de negocio, como caso de uso, como escenario, o caso de prueba.",
+        vocabulary=[ 'Indefinido','Caso de Negocio', 'Caso de Uso', 'Escenario', 'Caso de Prueba',],
+        duplicates="0",
+        vocabulary_msgids=['gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Indefinido', 'gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Caso de Negocio', 'gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Caso de Uso', 'gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Escenario', 'gvSIGbpd_BPDProcesoDeNegocio_attr_nivelDeAbstraccion_option_Caso de Prueba'],
+        label2="Abstracion Level",
+        ea_localid="595",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Abstraction selected when assembling the process:as a business case, as a use case, as an scenario or a test case,",
+        ea_guid="{36E078D2-5812-46c9-97D3-E836162F57C3}",
+        write_permission='Modify portal content',
+        scale="0",
+        default="Indefinido",
+        label="Nivel de Abstraccion",
+        length="0",
+        containment="Not Specified",
+        position="4",
+        owner_class_name="BPDProcesoDeNegocio",
+        vocabulary2=['Undefined', 'Business Case','Use Case','Scenario','Test Case',]
+    ),
 
     ComputedField(
         name='coleccionesProcesosDeNegocio',
@@ -192,7 +228,7 @@ schema = Schema((
         length="0",
         exclude_from_values_paragraph_when="False",
         containment="Not Specified",
-        position="4",
+        position="5",
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
@@ -248,68 +284,6 @@ schema = Schema((
         containment="Unspecified",
         inverse_relationship='BPDInstrucciones',
         dependency_supplier=True
-    ),
-
-    TextField(
-        name='postCondicion',
-        widget=TextAreaWidget(
-            label="Post Condicion",
-            label2="Post Condition",
-            description="La condicion que se cumplira cuando el Proceso concluya con exito. Puede expresar reglas de corelacion entre las varias Salidas del Proceso.",
-            description2="The condition that is guaranteed to be met, whent he Business Process completes successfully. May express corelation rules over the varios Process Outputs.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_postCondicion_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="La condicion que se cumplira cuando el Proceso concluya con exito. Puede expresar reglas de corelacion entre las varias Salidas del Proceso.",
-        searchable=1,
-        duplicates="0",
-        label2="Post Condition",
-        ea_localid="237",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="The condition that is guaranteed to be met, whent he Business Process completes successfully. May express corelation rules over the varios Process Outputs.",
-        ea_guid="{ADE0B368-5B74-4162-A5CE-F94276D53067}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Post Condicion",
-        length="0",
-        containment="Not Specified",
-        position="6",
-        owner_class_name="BPDProcesoDeNegocio"
-    ),
-
-    TextField(
-        name='preCondicion',
-        widget=TextAreaWidget(
-            label="Pre Condicion",
-            label2="Pre Condition",
-            description="La condicion que debera cumplirse para que pueda comenzar el Proceso. Puede expresar reglas de corelacion entre las varias Entradas del Proceso.",
-            description2="The condition that is required to be true, to allow the start of the Business Process execution. May express corelation rules over the varios Process Inputs.",
-            label_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_label',
-            description_msgid='gvSIGbpd_BPDProcesoDeNegocio_attr_preCondicion_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="La condicion que debera cumplirse para que pueda comenzar el Proceso. Puede expresar reglas de corelacion entre las varias Entradas del Proceso.",
-        searchable=1,
-        duplicates="0",
-        label2="Pre Condition",
-        ea_localid="236",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="The condition that is required to be true, to allow the start of the Business Process execution. May express corelation rules over the varios Process Inputs.",
-        ea_guid="{30ADBBDD-941A-4c1a-B6F7-0E033B19BF46}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Pre Condicion",
-        length="0",
-        containment="Not Specified",
-        position="5",
-        owner_class_name="BPDProcesoDeNegocio"
     ),
 
     RelationField(
@@ -649,17 +623,19 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-BPDProcesoDeNegocio_schema = getattr(BPDArquetipoConAdopcion, 'schema', Schema(())).copy() + \
+BPDProcesoDeNegocio_schema = getattr(BPDProgramable, 'schema', Schema(())).copy() + \
+    getattr(BPDArquetipoConAdopcion, 'schema', Schema(())).copy() + \
+    getattr(BPDPrePostCondicional, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
+class BPDProcesoDeNegocio(OrderedBaseFolder, BPDProgramable, BPDArquetipoConAdopcion, BPDPrePostCondicional):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoConAdopcion,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDProgramable,'__implements__',()),) + (getattr(BPDArquetipoConAdopcion,'__implements__',()),) + (getattr(BPDPrePostCondicional,'__implements__',()),)
 
 
 
@@ -693,7 +669,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
 
 
-    allowed_content_types = ['BPDColeccionProcesosDeNegocio', 'BPDExtensionProceso'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
+    allowed_content_types = ['BPDColeccionProcesosDeNegocio', 'BPDExtensionProceso'] + list(getattr(BPDProgramable, 'allowed_content_types', [])) + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', [])) + list(getattr(BPDPrePostCondicional, 'allowed_content_types', []))
 
     actions =  (
 

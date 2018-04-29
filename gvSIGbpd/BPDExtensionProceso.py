@@ -32,48 +32,18 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.BPDArquetipoReferenciable import BPDArquetipoReferenciable
+from Products.gvSIGbpd.BPDCondicional import BPDCondicional
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
 schema = Schema((
-
-    TextField(
-        name='condicion',
-        widget=TextAreaWidget(
-            label="Condicion",
-            label2="Condition",
-            description="Criterio para determinar si el Proceso de Negocio puede realmente extender el Proceso de Negocio extendido.",
-            description2="Criteria to determine whether this Business Process can actually extend the extended Business Process.",
-            label_msgid='gvSIGbpd_BPDExtensionProceso_attr_condicion_label',
-            description_msgid='gvSIGbpd_BPDExtensionProceso_attr_condicion_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Criterio para determinar si el Proceso de Negocio puede realmente extender el Proceso de Negocio extendido.",
-        searchable=1,
-        duplicates="0",
-        label2="Condition",
-        ea_localid="403",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Criteria to determine whether this Business Process can actually extend the extended Business Process.",
-        ea_guid="{6F7752F4-B5E9-45f5-B92B-710C993C3E8B}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Condicion",
-        length="0",
-        containment="Not Specified",
-        position="0",
-        owner_class_name="BPDExtensionProceso"
-    ),
 
     RelationField(
         name='puntosExtension',
@@ -178,16 +148,17 @@ schema = Schema((
 
 BPDExtensionProceso_schema = OrderedBaseFolderSchema.copy() + \
     getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
+    getattr(BPDCondicional, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDExtensionProceso(OrderedBaseFolder, BPDArquetipoReferenciable):
+class BPDExtensionProceso(OrderedBaseFolder, BPDArquetipoReferenciable, BPDCondicional):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),) + (getattr(BPDCondicional,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Extension de Proceso de Negocio'
@@ -226,7 +197,7 @@ class BPDExtensionProceso(OrderedBaseFolder, BPDArquetipoReferenciable):
 
 
 
-    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', [])) + list(getattr(BPDCondicional, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdextensionproceso.gif'

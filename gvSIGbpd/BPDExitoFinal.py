@@ -34,6 +34,7 @@ from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.BPDPasoGestorExcepciones import BPDPasoGestorExcepciones
 from Products.gvSIGbpd.BPDPasoMinimo import BPDPasoMinimo
 from Products.gvSIGbpd.BPDPasoConAnteriores import BPDPasoConAnteriores
+from Products.gvSIGbpd.BPDCondicional import BPDCondicional
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
@@ -88,16 +89,17 @@ BPDExitoFinal_schema = OrderedBaseFolderSchema.copy() + \
     getattr(BPDPasoGestorExcepciones, 'schema', Schema(())).copy() + \
     getattr(BPDPasoMinimo, 'schema', Schema(())).copy() + \
     getattr(BPDPasoConAnteriores, 'schema', Schema(())).copy() + \
+    getattr(BPDCondicional, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, BPDPasoConAnteriores):
+class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, BPDPasoConAnteriores, BPDCondicional):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),) + (getattr(BPDCondicional,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Exito Final'
@@ -136,7 +138,7 @@ class BPDExitoFinal(OrderedBaseFolder, BPDPasoGestorExcepciones, BPDPasoMinimo, 
 
 
 
-    allowed_content_types = [] + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDCondicional, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdexitofinal.gif'

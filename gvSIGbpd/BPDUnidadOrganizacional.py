@@ -90,6 +90,54 @@ schema = Schema((
         description='Colecciones de Perfiles tipificando las clases de individuos participantes en los Procesos de Negocio.'
     ),
 
+    ComputedField(
+        name='coleccionesListasDePruebas',
+        widget=ComputedWidget(
+            label="Listas de Pruebas (colecciones)",
+            label2="Test Suites (collections)",
+            description="Colecciones de Listas de Pruebas ensamblando secuencias de Casos de Prueba para ser ejecutados en secuencia.",
+            description2="Collections of Test Suites assembling sequences of Test Cases to be executed.",
+            label_msgid='gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesListasDePruebas_label',
+            description_msgid='gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesListasDePruebas_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        contains_collections=True,
+        label2='Test Suites (collections)',
+        label='Listas de Pruebas (colecciones)',
+        represents_aggregation=True,
+        description2='Collections of Test Suites assembling sequences of Test Cases to be executed.',
+        multiValued=1,
+        owner_class_name="BPDUnidadOrganizacional",
+        expression="context.objectValues(['BPDColeccionListasDePruebas'])",
+        computed_types=['BPDColeccionListasDePruebas'],
+        non_framework_elements=False,
+        description='Colecciones de Listas de Pruebas ensamblando secuencias de Casos de Prueba para ser ejecutados en secuencia.'
+    ),
+
+    ComputedField(
+        name='coleccionesCasosDePrueba',
+        widget=ComputedWidget(
+            label="Casos de Prueba (colecciones)",
+            label2="Test Cases (collections)",
+            description="Colecciones de Casos de Prueba definiendo conjuntos de valores concretos para los Escenarios relacionados.",
+            description2="Collections of Test Cases defining concrete data sets of values for the related Scenarios.",
+            label_msgid='gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesCasosDePrueba_label',
+            description_msgid='gvSIGbpd_BPDUnidadOrganizacional_contents_coleccionesCasosDePrueba_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        contains_collections=True,
+        label2='Test Cases (collections)',
+        label='Casos de Prueba (colecciones)',
+        represents_aggregation=True,
+        description2='Collections of Test Cases defining concrete data sets of values for the related Scenarios.',
+        multiValued=1,
+        owner_class_name="BPDUnidadOrganizacional",
+        expression="context.objectValues(['BPDColeccionCasosDePrueba'])",
+        computed_types=['BPDColeccionCasosDePrueba'],
+        non_framework_elements=False,
+        description='Colecciones de Casos de Prueba definiendo conjuntos de valores concretos para los Escenarios relacionados.'
+    ),
+
 ),
 )
 
@@ -146,7 +194,7 @@ class BPDUnidadOrganizacional(OrderedBaseFolder, BPDParticipante):
 
 
 
-    allowed_content_types = ['BPDColeccionUnidadesOrganizacionales', 'BPDColeccionPerfiles'] + list(getattr(BPDParticipante, 'allowed_content_types', []))
+    allowed_content_types = ['BPDColeccionListasDePruebas', 'BPDColeccionUnidadesOrganizacionales', 'BPDColeccionPerfiles', 'BPDColeccionCasosDePrueba'] + list(getattr(BPDParticipante, 'allowed_content_types', []))
     filter_content_types             = 1
     global_allow                     = 0
     content_icon = 'bpdunidadorganizacional.gif'
