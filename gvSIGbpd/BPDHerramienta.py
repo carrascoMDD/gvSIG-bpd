@@ -73,7 +73,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Herramientas utiles para manejar Artefactos de este tipo.",
         description="Artefactos que pueden ser manipulados con la Herramienta.",
-        relationship='Artefactos',
+        relationship='BPDArtefactos',
         inverse_relation_field_name='herramientas',
         sourcestyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
         label2="Artefacts handled with the Tool",
@@ -91,7 +91,7 @@ schema = Schema((
         description2="Artefacts where the tool is applied to visualize, edit or otherwise handle the Artefact content.",
         multiValued=1,
         inverse_relation_label2="Tools",
-        inverse_relationship='Herramientas',
+        inverse_relationship='BPDHerramientas',
         write_permission='Modify portal content',
         additional_columns=['codigo','estado','nivelDeImposicion','version','fechaAdopcion','fechaObsolescencia',]
     ),
@@ -101,7 +101,7 @@ schema = Schema((
         inverse_relation_label="Herramientas aplicadas",
         inverse_relation_description="Herramientas a utilizar para ejecutar el paso de proceso de negocio o manejar los artefactos usados.",
         description="Pasos de procesos de negocio donde se aplica la Herramienta.",
-        relationship='PasosAsistidos',
+        relationship='BPDPasosAsistidos',
         label2="Assisted Steps",
         widget=ReferenceBrowserWidget(
             label="Pasos Asistidos",
@@ -123,7 +123,7 @@ schema = Schema((
         label="Pasos Asistidos",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='HerramientasAplicadas'
+        inverse_relationship='BPDHerramientasAplicadas'
     ),
 
     RelationField(
@@ -132,7 +132,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Herramientas cuya utilizacion esta dirigida por la Regla de Negocio.",
         description="Reglas de Negocio que dirigen el uso de la Herramienta en la Organizacion.",
-        relationship='HerramientaAfectadaPorReglasDeNegocio',
+        relationship='BPDHerramientasAfectadasPorReglasDeNegocio',
         inverse_relation_field_name='herramientasDirigidas',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Directing Business Rules",
@@ -150,7 +150,7 @@ schema = Schema((
         description2="Business Rules directing the usage of the Tool.",
         multiValued=1,
         inverse_relation_label2="Driven Tools",
-        inverse_relationship='HerramientasDirigidas',
+        inverse_relationship='BPDHerramientasDirigidas',
         write_permission='Modify portal content',
         additional_columns=['codigo','estado','nivelDeImposicion',]
     ),
@@ -161,7 +161,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Herramientas cuya utilizacion esta prescrita o gobernada por la Politica de Negocio.",
         description="Politicas de Negocio que prescriben o gobiernan el uso de la Herramienta en la Organizacion.",
-        relationship='HerramientaAfectadaPorPoliticasDeNegocio',
+        relationship='BPDHerramientasAfectadasPorPoliticasDeNegocio',
         inverse_relation_field_name='herramientasGobernadas',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Governing Business Policies",
@@ -179,7 +179,7 @@ schema = Schema((
         description2="Business Policies that prescribe or govern the utilisation of the Tool in the Organisation",
         multiValued=1,
         inverse_relation_label2="Governed Tools",
-        inverse_relationship='HerramientasGobernadas',
+        inverse_relationship='BPDHerramientasGobernadas',
         write_permission='Modify portal content',
         additional_columns=['codigo','estado','nivelDeImposicion',]
     ),
@@ -189,7 +189,7 @@ schema = Schema((
         inverse_relation_label="Herramientas a su Cargo",
         inverse_relation_description="Herramientas que estan a cargo de el Perfil o Unidad Organizacional",
         description="Perfiles o Unidades Organizacionales a cargo de asistir a la organizacion en su manejo de esta Herramienta.",
-        relationship='ResponsablesDeHerramienta',
+        relationship='BPDResponsablesDeHerramienta',
         label2="Profiles or Organisational Units Responsible for the Tool",
         widget=ReferenceBrowserWidget(
             label="Responsables",
@@ -210,7 +210,7 @@ schema = Schema((
         label="Responsables",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='HerramientasACargo',
+        inverse_relationship='BPDHerramientasACargo',
         owner_class_name="BPDHerramienta"
     ),
 
@@ -238,6 +238,35 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
     meta_type = 'BPDHerramienta'
     portal_type = 'BPDHerramienta'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = ['BPDColeccionHerramientas'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -262,7 +291,7 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -271,7 +300,7 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -280,7 +309,7 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -289,7 +318,7 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -298,7 +327,7 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -307,7 +336,7 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -316,7 +345,25 @@ class BPDHerramienta(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

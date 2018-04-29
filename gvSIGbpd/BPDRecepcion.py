@@ -82,7 +82,7 @@ schema = Schema((
         additional_columns=['codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia'],
         inverse_relation_description="Recepciones pasos de Proceso de Negocio donde se recibe un Artefacto de este tipo de un participante externo.",
         description="Artefactos que se reciben de un Participante externo en este paso.",
-        relationship='ArtefactosRecibidos',
+        relationship='BPDArtefactosRecibidos',
         inverse_relation_field_name='pasosQueRecibenElArtefacto',
         inverse_relation_label2="Received at Business Process Steps",
         label2="Received Artefacts",
@@ -100,7 +100,7 @@ schema = Schema((
         description2="Artefacts to be received from an external participant during this step.",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PasosQueRecibenElArtefacto',
+        inverse_relationship='BPDPasosQueRecibenElArtefacto',
         owner_class_name="BPDRecepcion",
         deststyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;"
     ),
@@ -111,7 +111,7 @@ schema = Schema((
         additional_columns=['abreviatura', 'responsabilidadesClave'],
         inverse_relation_description="Recepciones originadas en este Perfil o Unidad Organizacional.",
         description="El Perfil o Unidad Organizacional que originan la Recepcion.",
-        relationship='Remitente',
+        relationship='BPDRemitente',
         inverse_relation_field_name='remitenteDeRecepciones',
         inverse_relation_label2="Sender of Reception steps",
         label2="Sender",
@@ -129,7 +129,7 @@ schema = Schema((
         description2="Participant Profiles or Organisational Units originating this Reception.",
         multiValued=0,
         containment="Unspecified",
-        inverse_relationship='RemitenteDeRecepciones',
+        inverse_relationship='BPDRemitenteDeRecepciones',
         owner_class_name="BPDRecepcion",
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"
     ),
@@ -214,6 +214,35 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
 
     meta_type = 'BPDRecepcion'
     portal_type = 'BPDRecepcion'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -238,7 +267,7 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -247,7 +276,7 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -256,7 +285,7 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -265,7 +294,7 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -274,7 +303,7 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -283,7 +312,7 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -292,7 +321,25 @@ class BPDRecepcion(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

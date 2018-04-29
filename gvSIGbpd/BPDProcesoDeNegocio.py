@@ -348,7 +348,7 @@ schema = Schema((
         additional_columns=['proposito','responsableMantenimiento','detallesProceso','estado','nivelDeImposicion',],
         inverse_relation_description="Proceso de Negocio que se ejecuta como parte del Proceso de Negocio de mayor alcance.",
         description="Pasos de otros Procesos de Negocio donde este proceso se ejecuta de principio a fin, como un Paso Sub-Proceso.",
-        relationship='UsadoComoSubProcesos',
+        relationship='BPDUsadoComoSubProcesos',
         inverse_relation_field_name='procesoUsado',
         sourcestyle="Owned=0;Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;",
         inverse_relation_label2="Used Business Process",
@@ -367,7 +367,7 @@ schema = Schema((
         description2="Business Processes where this one is used as a Sub-Process",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ProcesoUsado',
+        inverse_relationship='BPDProcesoUsado',
         dependency_supplier=True
     ),
 
@@ -376,7 +376,7 @@ schema = Schema((
         inverse_relation_label="Procesos de Negocio dirigidos",
         inverse_relation_description="Procesos de Negocio que toman en cuenta la Regla de Negocio durante su ejecucion.",
         description="Reglas de Negocio a tomar en cuenta durante durante la ejecucion del Proceso de Negocio.",
-        relationship='ReglasDeNegocioDirigentes',
+        relationship='BPDReglasDeNegocioDirigentes',
         label2="Guiding Business Rules",
         widget=ReferenceBrowserWidget(
             label="Reglas de Negocio Dirigentes",
@@ -397,7 +397,7 @@ schema = Schema((
         label="Reglas de Negocio Dirigentes",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ProcesosDeNegocioDirigidos',
+        inverse_relationship='BPDProcesosDeNegocioDirigidos',
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
@@ -406,7 +406,7 @@ schema = Schema((
         inverse_relation_label="Procesos de Negocio gobernados",
         inverse_relation_description="Procesos de Negocio que respetan o se esfuerzan en hacer cumplir la Politica de Negocio.",
         description="Politicas de Negocio a respetar durante la ejecucion del Proceso de Negocio.",
-        relationship='PoliticasDeNegocioGobernantes',
+        relationship='BPDPoliticasDeNegocioGobernantes',
         label2="Governing Business Policies",
         widget=ReferenceBrowserWidget(
             label="Politicas de Negocio Gobernantes",
@@ -427,7 +427,7 @@ schema = Schema((
         label="Politicas de Negocio Gobernantes",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ProcesosDeNegocioGobernados',
+        inverse_relationship='BPDProcesosDeNegocioGobernados',
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
@@ -436,7 +436,7 @@ schema = Schema((
         inverse_relation_label="Procesos Ejecutados",
         inverse_relation_description="Procesos de Negocio que se encarga de ejecutar el Perfil o Unidad Organizacional.",
         description="Los Perfiles o Unidades Organizacionales a cargo de ejecutar el Proceso de Negocio.",
-        relationship='EjecutoresDelProceso',
+        relationship='BPDEjecutoresDelProceso',
         label2="Performers",
         widget=ReferenceBrowserWidget(
             label="Ejecutores del Proceso",
@@ -457,7 +457,7 @@ schema = Schema((
         label="Ejecutores del Proceso",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ProcesosEjecutados',
+        inverse_relationship='BPDProcesosEjecutados',
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
@@ -466,7 +466,7 @@ schema = Schema((
         inverse_relation_label="Procesos Supervisados",
         inverse_relation_description="Procesos de Negocio que se encarga de supervisar el Perfil o Unidad Organizacional.",
         description="El Perfil o Unidad Organizacional a cargo de velar por que el cumplimiento del Proceso de Negocio se realize de acuerdo con la regulacion aplicable.",
-        relationship='Supervisor',
+        relationship='BPDSupervisor',
         label2="Supervisor",
         widget=ReferenceBrowserWidget(
             label="Supervisor",
@@ -487,7 +487,7 @@ schema = Schema((
         label="Supervisor",
         multiValued=0,
         containment="Unspecified",
-        inverse_relationship='ProcesosSupervisados',
+        inverse_relationship='BPDProcesosSupervisados',
         owner_class_name="BPDProcesoDeNegocio"
     ),
 
@@ -509,6 +509,35 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
     security = ClassSecurityInfo()
     __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoConAdopcion,'__implements__',()),)
 
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = ['BPDColeccionProcesosDeNegocio'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
 
     actions =  (
@@ -519,7 +548,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -528,7 +557,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -537,7 +566,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -546,7 +575,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -555,7 +584,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -564,7 +593,7 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -573,7 +602,25 @@ class BPDProcesoDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

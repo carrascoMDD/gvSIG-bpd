@@ -2,10 +2,86 @@ gvSIG Business Process Definition RELEASE NOTES
 ===============================================
 
 
+
 |
 |
 
 
+version 1.0.0.3
+---------------
+
+|
+|
+
+
+**RESOLVED**
+
+DEPL01 Deploy preproduction server at ModelDD.org 
+
+Derivation in the Textual view of a business process  of composite string field with business process step details does not convert its element 
+strings to Unicode
+
+ETTY 26v02 Element with owner path and fully qualified name
+
+ETTY 30 Auditable entities
+
+ETTY 31 Steps with Step Estimations
+
+ETTY 32 Steps with Start and End timing constraints
+
+ETTY26x1 Element with registry of fields pending translation and translation review
+
+FWRK 01 Supporting relationships for framework SUC SUC 22 Create a new version of a Model Instance
+
+FWRK 02 Supporting fields and relationships for framework SUC 21 Create Translation of a Model Instance into a new Language.
+
+REFA 02 Refactoring: Move elements to a different containing collection
+
+REFA 03 Refactoring: Create sub-process and business process from a subset of process steps
+
+REFA 04 Refactoring: Inline steps from a sub-process in the current process
+
+REFA 07 Refactoring: Create Business Rule from Condition Step text
+
+REFA 08 Refactoring: Embed the text of a Business Rule into a Condition Step
+
+REFA 13 Refactoring: Allow to copy the root organization
+
+SUC01 Create a new version of a root organization
+
+UI BPDProcesoDeNegocioSimple::Fields not sorted as specified in the model
+
+USEX 03 Conflicting default Plone actions must be intercepted  aliased  or disabled
+
+
+
+|
+|
+
+**KNOWN BUGS**
+
+ - None unresolved -
+
+|
+|
+
+
+**POSTPONED**
+
+USEX 02 Present at the bottom of each page the Footer with credits for the application project
+
+TEST01 Test complete application
+
+CHGS03 Implement changes of editorial impact on gvSIG-bpd
+
+|
+|
+
+
+------------------------------
+
+|
+|
 
 
 version 1.0.0.2
@@ -61,9 +137,10 @@ REFA 02 Refactoring: Move elements to a different containing collection
 |
 |
 
-
 ------------------------------
 
+|
+|
 
 
 version 1.0.0.1

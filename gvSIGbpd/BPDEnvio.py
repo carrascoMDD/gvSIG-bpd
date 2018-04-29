@@ -49,7 +49,7 @@ schema = Schema((
         additional_columns=['abreviatura', 'responsabilidadesClave'],
         inverse_relation_description="Envios que se destinan a este Perfil o Unidad Organizacional.",
         description="Perfiles o Unidades Organizacionales a los que se destina el Envio.",
-        relationship='Destinatarios',
+        relationship='BPDDestinatarios',
         inverse_relation_field_name='destinatarioDeEnvios',
         inverse_relation_label2="Receiver of Send steps",
         label2="Receivers",
@@ -67,7 +67,7 @@ schema = Schema((
         description2="Participant Profiles or Organisational Units to whom this is Sent",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='DestinatarioDeEnvios',
+        inverse_relationship='BPDDestinatarioDeEnvios',
         owner_class_name="BPDEnvio",
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"
     ),
@@ -110,7 +110,7 @@ schema = Schema((
         additional_columns=['codigo', 'estado', 'nivelDeImposicion', 'version', 'fechaAdopcion', 'fechaObsolescencia'],
         inverse_relation_description="Pasos de Proceso de Negocio que envian un Artefacto de este tipo a un Participante externo.",
         description="Artefactos que se envian en este paso a un Participante externo.",
-        relationship='ArtefactosEnviados',
+        relationship='BPDArtefactosEnviados',
         inverse_relation_field_name='pasosQueEnvianElArtefacto',
         inverse_relation_label2="Sent from Business Process Steps",
         label2="Sent Artefacts",
@@ -128,7 +128,7 @@ schema = Schema((
         description2="Artefacts thar shall be sent while in this step to an external participant.",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PasosQueEnvianElArtefacto',
+        inverse_relationship='BPDPasosQueEnvianElArtefacto',
         owner_class_name="BPDEnvio",
         deststyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;"
     ),
@@ -213,6 +213,35 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
 
     meta_type = 'BPDEnvio'
     portal_type = 'BPDEnvio'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -237,7 +266,7 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -246,7 +275,7 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -255,7 +284,7 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -264,7 +293,7 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -273,7 +302,7 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -282,7 +311,7 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -291,7 +320,25 @@ class BPDEnvio(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

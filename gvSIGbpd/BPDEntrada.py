@@ -48,7 +48,7 @@ schema = Schema((
         inverse_relation_label="Entrada a Procesos de Negocio",
         inverse_relation_description="Entradas a Procesos de Negocio en que el Artefacto debe estar disponible, para poder comenzar la ejecucion.",
         description="Artefactos que deben estar disponibles para comenzar el Proceso de Negocio",
-        relationship='ArtefactosDeEntrada',
+        relationship='BPDArtefactosDeEntrada',
         label2="Input Artefacts",
         widget=ReferenceBrowserWidget(
             label="Artefactos de Entrada",
@@ -69,7 +69,7 @@ schema = Schema((
         label="Artefactos de Entrada",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='EntradasAProcesosDeNegocio',
+        inverse_relationship='BPDEntradasAProcesosDeNegocio',
         owner_class_name="BPDEntrada"
     ),
 
@@ -248,6 +248,35 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
 
     meta_type = 'BPDEntrada'
     portal_type = 'BPDEntrada'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -272,7 +301,7 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -281,7 +310,7 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -290,7 +319,7 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -299,7 +328,7 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -308,7 +337,7 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -317,7 +346,7 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -326,7 +355,25 @@ class BPDEntrada(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

@@ -72,7 +72,7 @@ schema = Schema((
         inverse_relation_label="Artefactos de Entrada",
         inverse_relation_description="Artefactos que deben estar disponibles para comenzar el Proceso de Negocio",
         description="Entradas a Procesos de Negocio en que el Artefacto debe estar disponible, para poder comenzar la ejecucion.",
-        relationship='EntradasAProcesosDeNegocio',
+        relationship='BPDEntradasAProcesosDeNegocio',
         label2="Input to Business Processes",
         widget=ReferenceBrowserWidget(
             label="Entrada a Procesos de Negocio",
@@ -94,7 +94,7 @@ schema = Schema((
         label="Entrada a Procesos de Negocio",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ArtefactosDeEntrada'
+        inverse_relationship='BPDArtefactosDeEntrada'
     ),
 
     RelationField(
@@ -102,7 +102,7 @@ schema = Schema((
         inverse_relation_label="Artefactos",
         inverse_relation_description="Artefactos que pueden ser manipulados con la Herramienta.",
         description="Herramientas utiles para manejar Artefactos de este tipo.",
-        relationship='Herramientas',
+        relationship='BPDHerramientas',
         label2="Tools",
         widget=ReferenceBrowserWidget(
             label="Herramientas",
@@ -123,7 +123,7 @@ schema = Schema((
         label="Herramientas",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='Artefactos',
+        inverse_relationship='BPDArtefactos',
         owner_class_name="BPDArtefacto"
     ),
 
@@ -132,7 +132,7 @@ schema = Schema((
         inverse_relation_label="Artefactos de Salida",
         inverse_relation_description="Artefactos producidos como Salida al finalizar exitosamente el Proceso de Negocio.",
         description="Procesos de Negocio donde el Artefacto se produce como Salida, tras el final exitoso de la ejecucion.",
-        relationship='SalidasDeProcesosDeNegocio',
+        relationship='BPDSalidasDeProcesosDeNegocio',
         label2="Business Process Outputs",
         widget=ReferenceBrowserWidget(
             label="Salidas de Procesos de Negocio",
@@ -154,7 +154,7 @@ schema = Schema((
         label="Salidas de Procesos de Negocio",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ArtefactosDeSalida'
+        inverse_relationship='BPDArtefactosDeSalida'
     ),
 
     RelationField(
@@ -163,7 +163,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Artefactos cuya utilizacion esta prescrita o gobernada por la Regla de Negocio.",
         description="Reglas de Negocio que dirigen el uso del Artefacto en la Organizacion.",
-        relationship='ArtefactoAfectadoPorReglasDeNegocio',
+        relationship='BPDArtefactosAfectadosPorReglasDeNegocio',
         inverse_relation_field_name='artefactosDirigidos',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Affected by Business Rules",
@@ -181,7 +181,7 @@ schema = Schema((
         description2="Business Rules directing the use of the Artefact",
         multiValued=1,
         inverse_relation_label2="Affected Artefacts",
-        inverse_relationship='ArtefactosDirigidos',
+        inverse_relationship='BPDArtefactosDirigidos',
         write_permission='Modify portal content',
         additional_columns=['codigo','estado','nivelDeImposicion',]
     ),
@@ -192,7 +192,7 @@ schema = Schema((
         additional_columns=['codigo','estado','nivelDeImposicion','version','fechaAdopcion','fechaObsolescencia',],
         inverse_relation_description="Artefactos que se envian en este paso a un Participante externo.",
         description="Pasos de Proceso de Negocio que envian un Artefacto de este tipo a un Participante externo.",
-        relationship='PasosQueEnvianElArtefacto',
+        relationship='BPDPasosQueEnvianElArtefacto',
         inverse_relation_field_name='artefactosEnviados',
         sourcestyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
         inverse_relation_label2="Sent Artefacts",
@@ -211,7 +211,7 @@ schema = Schema((
         description2="Business Process Steps sending Artefacts of this type to external participants.",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ArtefactosEnviados',
+        inverse_relationship='BPDArtefactosEnviados',
         dependency_supplier=True
     ),
 
@@ -221,7 +221,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Artefactos cuya utilizacion esta prescrita o gobernada por la Politica de Negocio.",
         description="Politicas de Negocio que prescriben o gobiernan el uso del Artefacto en la Organizacion.",
-        relationship='ArtefactoAfectadoPorPoliticasDeNegocio',
+        relationship='BPDArtefactoAfectadoPorPoliticasDeNegocio',
         inverse_relation_field_name='artefactosGobernados',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Geverning Business Policies",
@@ -239,7 +239,7 @@ schema = Schema((
         description2="Business Policies that prescribe or govern the utilisation of the Artefact in the Organisation",
         multiValued=1,
         inverse_relation_label2="Governed Artefacts",
-        inverse_relationship='ArtefactosGobernados',
+        inverse_relationship='BPDArtefactosGobernados',
         write_permission='Modify portal content',
         additional_columns=['codigo','estado','nivelDeImposicion',]
     ),
@@ -250,7 +250,7 @@ schema = Schema((
         additional_columns=['codigo','estado','nivelDeImposicion','version','fechaAdopcion','fechaObsolescencia',],
         inverse_relation_description="Artefactos que se reciben de un Participante externo en este paso.",
         description="Recepciones pasos de Proceso de Negocio donde se recibe un Artefacto de este tipo de un participante externo.",
-        relationship='PasosQueRecibenElArtefacto',
+        relationship='BPDPasosQueRecibenElArtefacto',
         inverse_relation_field_name='artefactosRecibidos',
         sourcestyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
         inverse_relation_label2="Received Artefacts",
@@ -269,7 +269,7 @@ schema = Schema((
         description2="Business Process Steps where Artefacts of this type are received from external participants.",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ArtefactosRecibidos',
+        inverse_relationship='BPDArtefactosRecibidos',
         dependency_supplier=True
     ),
 
@@ -278,7 +278,7 @@ schema = Schema((
         inverse_relation_label="Artefactos a su cargo",
         inverse_relation_description="Artefactos que estan a cargo del Perfil o Unidad Organizacional.",
         description="Perfiles o Unidades Organizacionales a cargo de los Artefactos de este tipo.",
-        relationship='ResponsablesDeArtefacto',
+        relationship='BPDResponsablesDeArtefacto',
         label2="Responsible Profiles or Organisational Units",
         widget=ReferenceBrowserWidget(
             label="Responsables",
@@ -299,7 +299,7 @@ schema = Schema((
         label="Responsables",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ArtefactosACargo',
+        inverse_relationship='BPDArtefactosACargo',
         owner_class_name="BPDArtefacto"
     ),
 
@@ -327,6 +327,35 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
     meta_type = 'BPDArtefacto'
     portal_type = 'BPDArtefacto'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = ['BPDColeccionArtefactos'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -351,7 +380,7 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -360,7 +389,7 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -369,7 +398,7 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -378,7 +407,7 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -387,7 +416,7 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -396,7 +425,7 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -405,7 +434,25 @@ class BPDArtefacto(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

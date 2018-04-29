@@ -83,10 +83,12 @@ def initialize(context):
     import BPDPlazo
     import BPDArquetipo
     import BPDSalida
+    import BPDConRegistroActividad
     import BPDPoliticaDeNegocio
     import BPDFracasoFinal
     import BPDEnvio
     import BPDArquetipoConAdopcion
+    import BPDConTraducciones
     import BPDParticipante
     import BPDExitoFinal
     import BPDColeccionHerramientas
@@ -94,6 +96,7 @@ def initialize(context):
     import BPDUnidadOrganizacional
     import BPDColeccionProcesosDeNegocio
     import BPDProcesoDeNegocioSimple
+    import BPDPasoEstimado
     import BPDRecepcion
     import BPDColeccionArquetipos
     import BPDEntrada
@@ -111,6 +114,7 @@ def initialize(context):
     import BPDArtefacto
     import BPDProcesoDeNegocio
     import BPDArquetipoReferenciable
+    import BPDConVersiones
     import BPDPasoGeneral
     import BPDColeccionReglasDeNegocio
     import BPDReferenciaCualificada

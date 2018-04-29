@@ -83,7 +83,7 @@ schema = Schema((
         inverse_relation_label="Pasos Ejecutados",
         inverse_relation_description="Pasos de Negocio que se encarga de ejecutar el Perfil o Unidad Organizacional",
         description="Perfiles y Unidades Organizacionales a cargo de ejecutar el Paso.",
-        relationship='EjecutoresDelPaso',
+        relationship='BPDEjecutoresDelPaso',
         label2="Performers",
         widget=ReferenceBrowserWidget(
             label="Ejecutores",
@@ -104,7 +104,7 @@ schema = Schema((
         label="Ejecutores",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PasosEjecutados',
+        inverse_relationship='BPDPasosEjecutados',
         owner_class_name="BPDPasoGeneral"
     ),
 
@@ -113,7 +113,7 @@ schema = Schema((
         inverse_relation_label="Pasos requeridos",
         inverse_relation_description="Pasos que deben ejecutarse dentro del Plazo. Son los pasos que se espera que acontezcan en el tiempo de espera indicado.",
         description="Plazos en los que este Paso debe ejecutarse.",
-        relationship='RequeridosEnPlazos',
+        relationship='BPDRequeridosEnPlazos',
         label2="Deadlines to meet",
         widget=ReferenceBrowserWidget(
             label="Plazos a cumplir",
@@ -135,7 +135,7 @@ schema = Schema((
         label="Plazos a cumplir",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PasosRequeridosEnPlazo'
+        inverse_relationship='BPDPasosRequeridosEnPlazo'
     ),
 
 ),
@@ -160,6 +160,35 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
     security = ClassSecurityInfo()
     __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoConAnteriores,'__implements__',()),) + (getattr(BPDPasoConExcepciones,'__implements__',()),) + (getattr(BPDPasoGestorExcepciones,'__implements__',()),) + (getattr(BPDPasoMinimo,'__implements__',()),) + (getattr(BPDPasoConSiguientes,'__implements__',()),)
 
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = [] + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDPasoConExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', [])) + list(getattr(BPDPasoConSiguientes, 'allowed_content_types', []))
 
     actions =  (
@@ -170,7 +199,7 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -179,7 +208,7 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -188,7 +217,7 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -197,7 +226,7 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -206,7 +235,7 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -215,7 +244,7 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -224,7 +253,25 @@ class BPDPasoGeneral(OrderedBaseFolder, BPDPasoConAnteriores, BPDPasoConExcepcio
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

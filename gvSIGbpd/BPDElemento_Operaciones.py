@@ -110,6 +110,70 @@ class BPDElemento_Operaciones:
 
 
 
+
+
+
+
+     
+ 
+    security.declarePrivate( 'fComposeOwnerName')
+    def fComposeOwnerName( self, theSeparator, theAttributeName, theExcludeRoot=True):
+
+        if not theAttributeName:
+            return u''
+            
+        if self.getEsRaiz():
+            if theExcludeRoot:
+                return u''
+            else:
+                return self.fFV( theAttributeName)
+            
+        unContenedorQualifiedName = u''
+        unContenedor = self.getContenedor()
+        if unContenedor:
+            unContenedorQualifiedName = unContenedor.fComposeQualifiedName( theSeparator, theAttributeName, theExcludeRoot)
+ 
+        return unContenedorQualifiedName
+      
+     
+     
+     
+     
+     
+    security.declarePrivate( 'fComposeQualifiedName')
+    def fComposeQualifiedName( self, theSeparator, theAttributeName='title', theExcludeRoot=False):
+
+        if not theAttributeName:
+            return u''
+            
+        unSeparator = self.fAsUnicode( theSeparator)
+        if not unSeparator:
+            unSeparator = u''
+                 
+        if self.getEsRaiz():
+            if theExcludeRoot:
+                return u''
+            else:
+                return self.fFV( theAttributeName)
+            
+            
+        unQualifiedName = u''
+        unContenedor = self.getContenedor()
+        if unContenedor:
+            unContenedorQualifiedName = unContenedor.fComposeQualifiedName( theSeparator, theAttributeName, theExcludeRoot)
+            if unContenedorQualifiedName:
+                unQualifiedName = unSeparator.join( [ unContenedorQualifiedName, self.fFV( theAttributeName), ] )
+            else:
+                unQualifiedName = self.fFV( theAttributeName)
+            
+        return unQualifiedName
+      
+      
+      
+      
+      
+
+
     security.declarePrivate('getRaiz')
     def getRaiz(self):
         if self.getEsRaiz():
@@ -475,12 +539,300 @@ class BPDElemento_Operaciones:
     
     
     
+
+
+
+    
+    security.declarePrivate( 'fBoolFV')
+    def fBoolFV( self, theAttributeName, theBoolValueToDisplay=None, theSeparatorBefore='', theSeparatorAfter=''):
+
+        unElementSchema = self.schema        
+        if not( unElementSchema.has_key( theAttributeName)):
+            return ''
+        
+        unElementField  = unElementSchema[ theAttributeName]
+        if not unElementField:
+            return ''
+        
+        if not ( unElementField.type == 'boolean'):
+            return ''
+        
+        unRawValue = None
+        try:
+            unRawValue = unElementField.getRaw( self)
+        except:
+            return ''
+                
+        unBoolValue = unRawValue == True
+        
+        if not( theBoolValueToDisplay == None or ( theBoolValueToDisplay == unBoolValue)):
+            return ''
+                 
+        aTranslationService = self.translation_service        
+                 
+        aTrueTranslation    = aTranslationService.utranslate( 'ModelDDvlPlone',  'ModelDDvlPlone_True' ,                        mapping=None, context=self , target_language= None, default=u'True')                       
+        aFalseTranslation   = aTranslationService.utranslate( 'ModelDDvlPlone',  'ModelDDvlPlone_False',                        mapping=None, context=self , target_language= None, default=u'False')                       
+        aEsTranslation      = aTranslationService.utranslate( 'ModelDDvlPlone',  'ModelDDvlPlone_prefijoAttributoBoolean_es',   mapping=None, context=self , target_language= None, default=u'Es')                       
+        aNoEsTranslation    = aTranslationService.utranslate( 'ModelDDvlPlone',  'ModelDDvlPlone_prefijoAttributoBoolean_noes', mapping=None, context=self , target_language= None, default=u'No es')                       
+        
+
+        unTranslatedValue = str( unBoolValue)
+                            
+        if unBoolValue:
+            unTranslatedValue = aTrueTranslation
+        else:
+            unTranslatedValue = aFalseTranslation
+
+        unI18NDomain = self.getNombreProyecto()
+        unaLabelMsgId = ''
+        try:
+            unaLabelMsgId = unElementField.widget.label_msgid
+        except:
+            None            
+
+        unTranslatedLabel = ''
+        if unaLabelMsgId:     
+            unTranslatedLabel = aTranslationService.utranslate( unI18NDomain,  unaLabelMsgId, mapping=None, context=self , target_language= None, default=unaLabelMsgId)                       
+ 
+        if unTranslatedLabel.startswith( aEsTranslation):
+            if unBoolValue:
+                unTranslatedLabelAndValue = unTranslatedLabel            
+            else:
+                unBareLabel = unTranslatedLabel[ len( aEsTranslation):].strip()
+                unTranslatedLabelAndValue = u'%s %s' % ( aNoEsTranslation, unBareLabel)                        
+        else:                                   
+            unTranslatedLabelAndValue = u'%s %s' % ( unTranslatedLabel, unTranslatedValue)
+                             
+        aUnicodeTranslatedLabelAndValue= aTranslationService.asunicodetype( unTranslatedLabelAndValue, errors="ignore")            
+                            
+        if aUnicodeTranslatedLabelAndValue:
+            aUnicodeSeparatorBefore = aTranslationService.asunicodetype( theSeparatorBefore, errors="ignore")            
+            aUnicodeSeparatorAfter = aTranslationService.asunicodetype( theSeparatorAfter, errors="ignore")            
+
+            aUnicodeTranslatedLabelAndValue = aUnicodeSeparatorBefore + aUnicodeTranslatedLabelAndValue + aUnicodeSeparatorAfter 
+                    
+         
+        return aUnicodeTranslatedLabelAndValue               
+               
+        
+    
+
+     
+# ###########################################
+#  Character set methods
+#
+
+    security.declarePrivate( 'fAsUnicode')
+    def fAsUnicode( self, theString):
+        if not theString:
+            return u''
+
+        aTranslationService = None
+        try:
+            aTranslationService = self.translation_service
+        except:
+            None
+            
+         
+        if not aTranslationService:
+            return u'' + theString
+        
+        aUnicodeString = aTranslationService.asunicodetype( theString, errors="ignore")            
+        if not aUnicodeString:
+            return theString
+        
+        return aUnicodeString
     
     
     
+
+   
+# ###########################################
+#  Internationalisation methods
+#
+
+
+    security.declarePrivate( 'fTranslationI18NDomain')
+    def fTranslationI18NDomain( self, theI18NDomain):
+
+        aI18NDomain = theI18NDomain
+        if not aI18NDomain:
+            try:
+                aI18NDomain = self.getNombreProyecto()
+            except:
+                None
+            if not aI18NDomain:
+                aI18NDomain = 'ModelDDvlPlone'
+                
+        if not aI18NDomain:
+            aI18NDomain = "plone"
+            
+        return aI18NDomain
+
+
+
+    security.declarePrivate( 'fTranslateI18N')
+    def fTranslateI18N( self, theI18NDomain, theString, theDefault):
+        if not theString:
+            return ''
+
+        if not theContextualElement:
+            return theDefault
+
+        aI18NDomain = self.fTranslationI18NDomain( theI18NDomain)
+        if not aI18NDomain:
+            return theDefault
+             
+        aTranslation = theDefault
+        
+        aTranslationService = None
+        try:
+            aTranslationService = self.translation_service
+        except:
+            None
+            
+        if aTranslationService:
+            aTranslation = aTranslationService.utranslate( aI18NDomain, theString, mapping=None, context=self , target_language= None, default=theDefault)                       
+            if not aTranslation:
+                aTranslation = theDefault
+
+        if not aTranslation:
+            aTranslation = theString
+
+        return aTranslation
+
     
     
+
+      
+      
+    security.declarePrivate( 'getTransBool')
+    def getTransBool( self, theFieldName, theValueToShow=None, theSeparatorToAdd=''):
+
+        if not theFieldName:
+            return ''
+            
+        unAttributeMetaAndValue= self.getAttributeMetaAndValue( theFieldName)
+        if not unAttributeMetaAndValue:
+            return ''
+            
+        unValue             = unAttributeMetaAndValue[ 1]
+        unType              = unAttributeMetaAndValue[ 6]
+        unTranslatedLabel   = unAttributeMetaAndValue[ 8]
+        if not unType == 'boolean':
+            return str( unValue)
+           
+        unString = ''    
+        if (theValueToShow == None) or (theValueToShow == unValue):
+            if unValue == True:
+                unString = unTranslatedLabel + theSeparatorToAdd
+            else:
+                unString = self.fTranslateI18N( 'ModelDDvlPlone', 'ModelDDvlPlone_predicado_No', 'No') + ' ' + unTranslatedLabel + theSeparatorToAdd
+        
+        return unString       
+      
+ 
     
+    
+
+         
+ 
+ 
+
+    security.declarePrivate( 'fRecurseCollectingReferences')
+    def fRecurseCollectingReferences( self, theFieldNameToRecurse, theReferenceFieldNameToGet, theExcludeInitial=True):
+
+        if not theFieldNameToRecurse or not theReferenceFieldNameToGet:
+            return [ ]
+        
+        todosElementosReferenciados = [ ]
+        someAlreadyTraversed = [ self]
+        
+        unosElementosRecurrentes = self.fFOV( theFieldNameToRecurse)
+        if unosElementosRecurrentes:
+            for unElementoRecurrente in unosElementosRecurrentes:
+                unElementoRecurrente.pRecurseCollectingReferencesInto( theFieldNameToRecurse, theReferenceFieldNameToGet, todosElementosReferenciados, someAlreadyTraversed)
+        
+        if not theExcludeInitial:
+            unosElementosReferenciados = self.fFOV( theReferenceFieldNameToGet)
+            if unosElementosReferenciados:
+                for unElemento in unosElementosReferenciados:
+                    if not ( unElemento in todosElementosReferenciados):
+                        todosElementosReferenciados.append( unElemento)
+
+        return todosElementosReferenciados
+
+
+
+
+
+    security.declarePrivate( 'pRecurseCollectingReferencesInto')
+    def pRecurseCollectingReferencesInto( self, theFieldNameToRecurse, theReferenceFieldNameToGet, theElementosReferenciados, theAlreadyTraversed):
+
+        if not theFieldNameToRecurse or not theReferenceFieldNameToGet:
+            return
+            
+        if self in theAlreadyTraversed:
+            return 
+           
+        theAlreadyTraversed.append( self)
+            
+        unosElementosRecurrentes = self.fFOV( theFieldNameToRecurse)
+        if unosElementosRecurrentes:
+            for unElementoRecurrente in unosElementosRecurrentes:
+                unElementoRecurrente.pRecurseCollectingReferencesInto( theFieldNameToRecurse, theReferenceFieldNameToGet, theElementosReferenciados, theAlreadyTraversed)
+        
+        unosElementosReferenciados = self.fFOV( theReferenceFieldNameToGet)
+        if unosElementosReferenciados:
+            for unElemento in unosElementosReferenciados:
+                if not ( unElemento in theElementosReferenciados):
+                    theElementosReferenciados.append( unElemento)
+        
+        return self
+
+
+
+
+
+
+    security.declarePrivate( 'fRecurseCollect')
+    def fRecurseCollect( self, theFieldNameToRecurse, theExcludeInitial=True):
+
+        if not theFieldNameToRecurse:
+            return [ ]
+        
+        todosElementos = [ ]
+
+        if not theExcludeInitial:
+            todosElementos.append( self)
+        
+        unosElementosRecurrentes = self.fFOV( theFieldNameToRecurse)
+        if unosElementosRecurrentes:
+            for unElementoRecurrente in unosElementosRecurrentes:
+                unElementoRecurrente.pRecurseCollectInto( theFieldNameToRecurse, todosElementos)
+        
+        return todosElementos
+
+
+
+
+    security.declarePrivate( 'pRecurseCollectInto')
+    def pRecurseCollectInto( self, theFieldNameToRecurse, theElementosReferenciados):
+        if not theFieldNameToRecurse:
+            return
+        
+        if self in theElementosReferenciados:
+            return
+            
+        theElementosReferenciados.append( self)
+        
+        unosElementosRecurrentes = self.fFOV( theFieldNameToRecurse)
+        if unosElementosRecurrentes:
+            for unElementoRecurrente in unosElementosRecurrentes:
+                unElementoRecurrente.pRecurseCollectInto( theFieldNameToRecurse, theElementosReferenciados)
+        
+        return self
+
     
     
     
@@ -497,7 +849,7 @@ class BPDElemento_Operaciones:
              
     security.declarePrivate(   'pSetElementPermissions')
     def pSetElementPermissions(self, theElement):     
-        if not theElement:
+        if ( theElement == None):
             return self
 
         somePermissionsAndRoles = [ 
@@ -599,22 +951,39 @@ class BPDElemento_Operaciones:
         """
         try:
     
-            unPortalRoot = self.fPortalRoot()
-            if not unPortalRoot:
-                return None
+            # ACV 2009092 Seems easier to use the getToolByName, otherwise the commented code works ok
+            # Changed when eliminating arbitrary instantiations of ModelDDvlPloneTool, 
+            # rather than looking up the tool singleton
+            # Now, those cases retrieve the tool invoking this function
+            #
+            #unPortalRoot = self.fPortalRoot()
+            #if not unPortalRoot:
+                #return None
             
-            aModelDDvlPloneTool = None
-            try:
-                aModelDDvlPloneTool = aq_get( unPortalRoot, cModelDDvlPloneToolName, None, 1)
-            except:
-                None  
+            #aModelDDvlPloneTool = None
+            #try:
+                #aModelDDvlPloneTool = aq_get( unPortalRoot, cModelDDvlPloneToolName, None, 1)
+            #except:
+                #None  
+            #if aModelDDvlPloneTool:
+                #return aModelDDvlPloneTool
+            
+            #if not ( theAllowCreation and cLazyCreateModelDDvlPloneTool):
+                #return None
+     
+            
+            aModelDDvlPloneTool = getToolByName( self, 'ModelDDvlPlone_tool', None)
+            
             if aModelDDvlPloneTool:
                 return aModelDDvlPloneTool
             
             if not ( theAllowCreation and cLazyCreateModelDDvlPloneTool):
                 return None
      
-            
+            unPortalRoot = self.fPortalRoot()
+            if not unPortalRoot:
+                return None
+             
             unaNuevaTool = ModelDDvlPloneTool( ) 
             unPortalRoot._setObject( cModelDDvlPloneToolName,  unaNuevaTool)
             aModelDDvlPloneTool = None
@@ -643,6 +1012,9 @@ class BPDElemento_Operaciones:
             return None
              
 
+        
+        
+        
         
         
     security.declarePrivate( 'pHandle_manage_pasteObjects')        
@@ -696,8 +1068,10 @@ class BPDElemento_Operaciones:
             if anExportConfig:
                 someAwareObjects.append( anObjectToPaste)
                 
-        if not someAwareObjects:
-            return CopyContainer.manage_objectPaste( self, cb_copy_data, REQUEST)
+        # ACV 20090929 Shall paste even standard plone elements (non ModelDDvlPloneTool aware elements)
+        #
+        #if not someAwareObjects:
+            #return CopyContainer.manage_objectPaste( self, cb_copy_data, REQUEST)
         
         
         aRequest = REQUEST
@@ -713,14 +1087,17 @@ class BPDElemento_Operaciones:
             return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
         
         
-        unModelDDvlPloneTool = self.fModelDDvlPloneTool( True)
+        unModelDDvlPloneTool = self.fModelDDvlPloneTool( False)
         if not unModelDDvlPloneTool:
             return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
+        
+        unIsMoveOperation = op == 1
         
         return unModelDDvlPloneTool.fPaste( 
             theTimeProfilingResults     =None,
             theContainerObject          =self, 
             theObjectsToPaste           =someObjectsToPaste,
+            theIsMoveOperation          =unIsMoveOperation,
             theAdditionalParams         =None,
         )
     

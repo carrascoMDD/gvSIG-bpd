@@ -79,7 +79,7 @@ schema = Schema((
         additional_columns=['abreviatura','responsabilidadesClave',],
         inverse_relation_description="Perfiles o Unidades Organizacionales a los que se destina el Envio.",
         description="Envios que se destinan a este Perfil o Unidad Organizacional.",
-        relationship='DestinatarioDeEnvios',
+        relationship='BPDDestinatarioDeEnvios',
         inverse_relation_field_name='destinatarios',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         inverse_relation_label2="Receivers",
@@ -98,7 +98,7 @@ schema = Schema((
         description2="Send process steps addressed to this participant Profile or Organisational Unit.",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='Destinatarios',
+        inverse_relationship='BPDDestinatarios',
         dependency_supplier=True
     ),
 
@@ -107,7 +107,7 @@ schema = Schema((
         inverse_relation_label="Ejecutores",
         inverse_relation_description="Perfiles y Unidades Organizacionales a cargo de ejecutar el Paso.",
         description="Pasos de Negocio que se encarga de ejecutar el Perfil o Unidad Organizacional",
-        relationship='PasosEjecutados',
+        relationship='BPDPasosEjecutados',
         label2="Performed Business Process Steps",
         widget=ReferenceBrowserWidget(
             label="Pasos Ejecutados",
@@ -129,7 +129,7 @@ schema = Schema((
         label="Pasos Ejecutados",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='EjecutoresDelPaso'
+        inverse_relationship='BPDEjecutoresDelPaso'
     ),
 
     RelationField(
@@ -137,7 +137,7 @@ schema = Schema((
         inverse_relation_label="Ejecutores del Proceso",
         inverse_relation_description="Los Perfiles o Unidades Organizacionales a cargo de ejecutar el Proceso de Negocio.",
         description="Procesos de Negocio que se encarga de ejecutar el Perfil o Unidad Organizacional.",
-        relationship='ProcesosEjecutados',
+        relationship='BPDProcesosEjecutados',
         label2="Performed Business Processes",
         widget=ReferenceBrowserWidget(
             label="Procesos Ejecutados",
@@ -159,7 +159,7 @@ schema = Schema((
         label="Procesos Ejecutados",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='EjecutoresDelProceso'
+        inverse_relationship='BPDEjecutoresDelProceso'
     ),
 
     RelationField(
@@ -168,7 +168,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Perfiles y Unidades Organizacionales que aplican la Regla de Negocio durante su labor.",
         description="Las Reglas de Negocio que dirigen la labor de el Perfil o Unidad Organizacional.",
-        relationship='AfectadoPorReglasDeNegocio',
+        relationship='BPDAfectadoPorReglasDeNegocio',
         inverse_relation_field_name='participantesDirigidos',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Directing Business Rules",
@@ -186,7 +186,7 @@ schema = Schema((
         description2="Business Rule affecting the participant Profile or Organisational Unit",
         multiValued=1,
         inverse_relation_label2="Directed Participant Profiles and Organisational Units",
-        inverse_relationship='ParticipantesDirigidos',
+        inverse_relationship='BPDParticipantesDirigidos',
         write_permission='Modify portal content',
         additional_columns=['abreviatura','responsabilidadesClave',]
     ),
@@ -197,7 +197,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Perfiles y Unidades Organizacionales que aplican la Politica de Negocio durante su labor.",
         description="Las Politicas de Negocio que afectan a la labor del Perfil o Unidad Organizacional",
-        relationship='AfectadoPorPoliticasDeNegocio',
+        relationship='BPDAfectadoPorPoliticasDeNegocio',
         inverse_relation_field_name='participantesGobernados',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Governing Business Policies",
@@ -215,7 +215,7 @@ schema = Schema((
         description2="Business Policies governing the participant Profile or Organisational Unit.",
         multiValued=1,
         inverse_relation_label2="Governed participant Profiles and Organisational Units",
-        inverse_relationship='ParticipantesGobernados',
+        inverse_relationship='BPDParticipantesGobernados',
         write_permission='Modify portal content',
         additional_columns=['abreviatura','responsabilidadesClave',]
     ),
@@ -226,7 +226,7 @@ schema = Schema((
         additional_columns=['abreviatura','responsabilidadesClave',],
         inverse_relation_description="El Perfil o Unidad Organizacional que originan la Recepcion.",
         description="Recepciones originadas en este Perfil o Unidad Organizacional.",
-        relationship='RemitenteDeRecepciones',
+        relationship='BPDRemitenteDeRecepciones',
         inverse_relation_field_name='remitente',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         inverse_relation_label2="Sender",
@@ -245,7 +245,7 @@ schema = Schema((
         description2="Business Process Reception Steps originated by the participant Profile or Organisational Units.",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='Remitente',
+        inverse_relationship='BPDRemitente',
         dependency_supplier=True
     ),
 
@@ -285,7 +285,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Perfiles o Unidades Organizacionales a cargo de los Artefactos de este tipo.",
         description="Artefactos que estan a cargo del Perfil o Unidad Organizacional.",
-        relationship='ArtefactosACargo',
+        relationship='BPDArtefactosACargo',
         inverse_relation_field_name='responsablesDeArtefacto',
         sourcestyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
         label2="In charge of Artefacts",
@@ -303,7 +303,7 @@ schema = Schema((
         description2="Artefacts for which the the participant Profile or Organisational Unit is generally responsible for.",
         multiValued=1,
         inverse_relation_label2="Responsible Profiles or Organisational Units",
-        inverse_relationship='ResponsablesDeArtefacto',
+        inverse_relationship='BPDResponsablesDeArtefacto',
         write_permission='Modify portal content',
         additional_columns=['abreviatura','responsabilidadesClave',]
     ),
@@ -314,7 +314,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Perfiles o Unidades Organizacionales a cargo de asistir a la organizacion en su manejo de esta Herramienta.",
         description="Herramientas que estan a cargo de el Perfil o Unidad Organizacional",
-        relationship='HerramientasACargo',
+        relationship='BPDHerramientasACargo',
         inverse_relation_field_name='responsablesDeHerramienta',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="In charge of Tools",
@@ -332,7 +332,7 @@ schema = Schema((
         description2="Tools for which the the participant Profile or Organisational Unit is generally responsible for.",
         multiValued=1,
         inverse_relation_label2="Profiles or Organisational Units Responsible for the Tool",
-        inverse_relationship='ResponsablesDeHerramienta',
+        inverse_relationship='BPDResponsablesDeHerramienta',
         write_permission='Modify portal content',
         additional_columns=['abreviatura','responsabilidadesClave',]
     ),
@@ -342,7 +342,7 @@ schema = Schema((
         inverse_relation_label="Supervisor",
         inverse_relation_description="El Perfil o Unidad Organizacional a cargo de velar por que el cumplimiento del Proceso de Negocio se realize de acuerdo con la regulacion aplicable.",
         description="Procesos de Negocio que se encarga de supervisar el Perfil o Unidad Organizacional.",
-        relationship='ProcesosSupervisados',
+        relationship='BPDProcesosSupervisados',
         label2="Supervised Business Processes",
         widget=ReferenceBrowserWidget(
             label="Procesos Supervisados",
@@ -364,7 +364,7 @@ schema = Schema((
         label="Procesos Supervisados",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='Supervisor'
+        inverse_relationship='BPDSupervisor'
     ),
 
 ),
@@ -385,6 +385,35 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
     security = ClassSecurityInfo()
     __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
 
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
 
     actions =  (
@@ -395,7 +424,7 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -404,7 +433,7 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -413,7 +442,7 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -422,7 +451,7 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -431,7 +460,7 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -440,7 +469,7 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -449,7 +478,25 @@ class BPDParticipante(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

@@ -32,18 +32,22 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.BPDElemento_CopyConfig import BPDElemento_CopyConfig
+from Products.gvSIGbpd.BPDConRegistroActividad import BPDConRegistroActividad
+from Products.gvSIGbpd.BPDConTraducciones import BPDConTraducciones
 from Products.gvSIGbpd.BPDElemento_Meta import BPDElemento_Meta
+from Products.gvSIGbpd.BPDConVersiones import BPDConVersiones
 from Products.gvSIGbpd.BPDElemento_ExportConfig import BPDElemento_ExportConfig
 from Products.gvSIGbpd.BPDElemento_MappingConfig import BPDElemento_MappingConfig
 from Products.gvSIGbpd.BPDElemento_TraversalConfig import BPDElemento_TraversalConfig
 from Products.gvSIGbpd.BPDElemento_Operaciones import BPDElemento_Operaciones
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATContentTypes.content.document import ATDocument
+from Products.ATContentTypes.content.base import updateAliases
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
 from Products.CMFCore.utils  import getToolByName
-from Products.CMFCore.utils import getToolByName
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Acquisition  import aq_inner, aq_parent
 
@@ -52,120 +56,106 @@ from Acquisition  import aq_inner, aq_parent
 
 schema = Schema((
 
-    RelationField(
-        name='siguientesVersiones',
-        inverse_relation_label="Version Anterior",
-        inverse_relation_description="Version predecesora a la actual de este elemento",
-        description="Versiones posteriores del Elemento",
-        relationship='SiguientesVersiones',
-        label2="Next Versions",
-        widget=ReferenceBrowserWidget(
-            label="Siguientes Versiones",
-            label2="Next Versions",
-            description="Versiones posteriores del Elemento",
-            description2="Versions after this element's version.",
-            label_msgid='gvSIGbpd_BPDElemento_rel_siguientesVersiones_label',
-            description_msgid='gvSIGbpd_BPDElemento_rel_siguientesVersiones_help',
+    ComputedField(
+        name='ownerName',
+        widget=ComputedField._properties['widget'](
+            label="En",
+            label2="In",
+            description="El nombre cualificado del elemento que posee este elemento, incluyendo los nombres de  los elementos (paquetes o tipos) que lo poseen, recursivamente, desde la raiz del modelo.",
+            description2="The name of the owner of element, including the names of the container packages or type, recusively from the root of the model.",
+            label_msgid='gvSIGbpd_BPDElemento_attr_ownerName_label',
+            description_msgid='gvSIGbpd_BPDElemento_attr_ownerName_help',
             i18n_domain='gvSIGbpd',
         ),
-        description2="Versions after this element's version.",
-        inverse_relation_label2="Previous Version",
-        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
-        write_permission='Modify portal content',
-        inverse_relation_field_name='versionAnterior',
-        inverse_relation_description2="Versions before this element's version.",
-        label="Siguientes Versiones",
-        multiValued=1,
-        containment="Unspecified",
-        inverse_relationship='VersionAnterior',
-        owner_class_name="BPDElemento"
-    ),
-
-    RelationField(
-        name='versionAnterior',
-        inverse_relation_label="Siguientes Versiones",
-        inverse_relation_description="Versiones posteriores del Elemento",
-        description="Version predecesora a la actual de este elemento",
-        relationship='VersionAnterior',
-        label2="Previous Version",
-        widget=ReferenceBrowserWidget(
-            label="Version Anterior",
-            label2="Previous Version",
-            description="Version predecesora a la actual de este elemento",
-            description2="Versions before this element's version.",
-            label_msgid='gvSIGbpd_BPDElemento_rel_versionAnterior_label',
-            description_msgid='gvSIGbpd_BPDElemento_rel_versionAnterior_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description2="Versions before this element's version.",
-        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
-        inverse_relation_label2="Next Versions",
-        dependency_supplier=True,
-        inverse_relation_field_name='siguientesVersiones',
-        inverse_relation_description2="Versions after this element's version.",
-        write_permission='Modify portal content',
-        label="Version Anterior",
-        multiValued=0,
-        containment="Unspecified",
-        inverse_relationship='SiguientesVersiones'
-    ),
-
-    RelationField(
-        name='elementosTraducidos',
-        inverse_relation_label="Original de esta Traduccion",
-        inverse_relation_description="El elemento original de esta traduccion a otro idioma.",
-        description="Traducciones de este elemento a otros idiomas.",
-        relationship='ElementosTraducidos',
-        inverse_relation_field_name='originalDeTraduccion',
-        inverse_relation_label2="Original of this translation",
-        label2="Translated Elements",
-        inverse_relation_description2="The original element of this translation into a different language.",
-        widget=ReferenceBrowserWidget(
-            label="Elementos Traducidos",
-            label2="Translated Elements",
-            description="Traducciones de este elemento a otros idiomas.",
-            description2="Translations of this element into other languages.",
-            label_msgid='gvSIGbpd_BPDElemento_rel_elementosTraducidos_label',
-            description_msgid='gvSIGbpd_BPDElemento_rel_elementosTraducidos_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        write_permission='Modify portal content',
-        label="Elementos Traducidos",
-        description2="Translations of this element into other languages.",
-        multiValued=1,
-        deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
-        containment="Unspecified",
-        inverse_relationship='OriginalDeTraduccion',
+        description="El nombre cualificado del elemento que posee este elemento, incluyendo los nombres de  los elementos (paquetes o tipos) que lo poseen, recursivamente, desde la raiz del modelo.",
+        duplicates="0",
+        label2="In",
+        ea_localid="299",
+        derived="1",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;IsLiteral=0;",
+        description2="The name of the owner of element, including the names of the container packages or type, recusively from the root of the model.",
+        ea_guid="{F01A2C45-79CF-4e4d-8AFF-073EC965E097}",
+        scale="0",
+        label="En",
+        length="0",
+        containment="Not Specified",
+        position="2",
         owner_class_name="BPDElemento",
-        dependency_supplier=True
+        expression="context.fComposeOwnerName( '::', 'title', theExcludeRoot=True)",
+        computed_types="text",
+        exclude_from_copyconfig="True",
+        exclude_from_exportconfig="True"
     ),
 
-    RelationField(
-        name='originalDeTraduccion',
-        inverse_relation_label="Elementos Traducidos",
-        containment="Unspecified",
-        inverse_relation_description="Traducciones de este elemento a otros idiomas.",
-        description="El elemento original de esta traduccion a otro idioma.",
-        relationship='OriginalDeTraduccion',
-        inverse_relation_field_name='elementosTraducidos',
-        sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
-        label2="Original of this translation",
-        inverse_relation_description2="Translations of this element into other languages.",
-        widget=ReferenceBrowserWidget(
-            label="Original de esta Traduccion",
-            label2="Original of this translation",
-            description="El elemento original de esta traduccion a otro idioma.",
-            description2="The original element of this translation into a different language.",
-            label_msgid='gvSIGbpd_BPDElemento_rel_originalDeTraduccion_label',
-            description_msgid='gvSIGbpd_BPDElemento_rel_originalDeTraduccion_help',
+    ComputedField(
+        name='qualifiedName',
+        widget=ComputedField._properties['widget'](
+            label="Nombre completo",
+            label2="Qualified name",
+            description="El nombre cualificado del elemento, incluyendo los nombres de  los elementos ( paquetes o tipos) que lo poseen, recursivamente, desde la raiz del modelo.",
+            description2="The quailified name of the element, including the names of the owner packages and types, recursively from the root of the model.",
+            label_msgid='gvSIGbpd_BPDElemento_attr_qualifiedName_label',
+            description_msgid='gvSIGbpd_BPDElemento_attr_qualifiedName_help',
             i18n_domain='gvSIGbpd',
         ),
-        label="Original de esta Traduccion",
-        description2="The original element of this translation into a different language.",
-        multiValued=0,
-        inverse_relation_label2="Translated Elements",
-        inverse_relationship='ElementosTraducidos',
-        write_permission='Modify portal content'
+        exclude_from_values_paragraph="True",
+        description="El nombre cualificado del elemento, incluyendo los nombres de  los elementos ( paquetes o tipos) que lo poseen, recursivamente, desde la raiz del modelo.",
+        duplicates="0",
+        label2="Qualified name",
+        ea_localid="298",
+        derived="1",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;IsLiteral=0;",
+        description2="The quailified name of the element, including the names of the owner packages and types, recursively from the root of the model.",
+        ea_guid="{1D67433F-4F59-4584-A197-E27952AA904E}",
+        exclude_from_values_form="True",
+        scale="0",
+        computed_types="string",
+        label="Nombre completo",
+        length="0",
+        containment="Not Specified",
+        position="4",
+        owner_class_name="BPDElemento",
+        expression="context.fComposeQualifiedName( '::', 'title', theExcludeRoot=True)",
+        exclude_from_exportconfig="True",
+        exclude_from_copyconfig="True"
+    ),
+
+    ComputedField(
+        name='pathDelRaiz',
+        widget=ComputedField._properties['widget'](
+            label="Ruta del Raiz",
+            label2="Root's Path",
+            description="La ruta completamente cualificada del elemento raiz.",
+            description2="Roots element fully qualified path.",
+            label_msgid='gvSIGbpd_BPDElemento_attr_pathDelRaiz_label',
+            description_msgid='gvSIGbpd_BPDElemento_attr_pathDelRaiz_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="La ruta completamente cualificada del elemento raiz.",
+        duplicates="0",
+        label2="Root's Path",
+        ea_localid="253",
+        derived="1",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;IsLiteral=0;",
+        description2="Roots element fully qualified path.",
+        ea_guid="{941F79AF-536C-4d2b-B35B-845573440804}",
+        scale="0",
+        label="Ruta del Raiz",
+        length="0",
+        exclude_from_traversalconfig="True",
+        containment="Not Specified",
+        position="3",
+        owner_class_name="BPDElemento",
+        expression="context.fPathDelRaiz()",
+        computed_types="string",
+        exclude_from_copyconfig="True",
+        exclude_from_exportconfig="True"
     ),
 
     RelationField(
@@ -173,7 +163,7 @@ schema = Schema((
         inverse_relation_label="Elementos Base",
         inverse_relation_description="Elementos a partir de los cuales se ha derivado el actual.",
         description="Elementos que han sido derivados a partir del actual.",
-        relationship='ElementosDerivados',
+        relationship='BPDElementosDerivados',
         inverse_relation_field_name='elementosBase',
         inverse_relation_label2="Base Elements",
         label2="Derived Elements",
@@ -193,7 +183,7 @@ schema = Schema((
         multiValued=1,
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         containment="Unspecified",
-        inverse_relationship='ElementosBase',
+        inverse_relationship='BPDElementosBase',
         owner_class_name="BPDElemento",
         dependency_supplier=True
     ),
@@ -204,7 +194,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Elementos que han sido derivados a partir del actual.",
         description="Elementos a partir de los cuales se ha derivado el actual.",
-        relationship='ElementosBase',
+        relationship='BPDElementosBase',
         inverse_relation_field_name='elementosDerivados',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Base Elements",
@@ -222,7 +212,7 @@ schema = Schema((
         description2="Elements from whish this one has been derived.",
         multiValued=1,
         inverse_relation_label2="Derived Elements",
-        inverse_relationship='ElementosDerivados',
+        inverse_relationship='BPDElementosDerivados',
         write_permission='Modify portal content'
     ),
 
@@ -231,7 +221,7 @@ schema = Schema((
         inverse_relation_label="Elemento Usado",
         inverse_relation_description="El elemento que se reutiliza en esta definicion.",
         description="Donde se usa el elemento como parte de otra definicion.",
-        relationship='UsosDelElemento',
+        relationship='BPDUsosDelElemento',
         inverse_relation_field_name='elementoUsado',
         inverse_relation_label2="Used Element",
         label2="Uses of the element",
@@ -251,7 +241,7 @@ schema = Schema((
         multiValued=1,
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         containment="Unspecified",
-        inverse_relationship='ElementoUsado',
+        inverse_relationship='BPDElementoUsado',
         owner_class_name="BPDElemento",
         dependency_supplier=True
     ),
@@ -262,7 +252,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Donde se usa el elemento como parte de otra definicion.",
         description="El elemento que se reutiliza en esta definicion.",
-        relationship='ElementoUsado',
+        relationship='BPDElementoUsado',
         inverse_relation_field_name='usosDelElemento',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Used Element",
@@ -280,7 +270,7 @@ schema = Schema((
         description2="The element reustilised in this specification.",
         multiValued=0,
         inverse_relation_label2="Uses of the element",
-        inverse_relationship='UsosDelElemento',
+        inverse_relationship='BPDUsosDelElemento',
         write_permission='Modify portal content'
     ),
 
@@ -306,39 +296,6 @@ schema = Schema((
         computed_types=['ATFile'],
         non_framework_elements=True,
         description='Elementos Plone convencionales conteniendo un Fichero de contenido arbitrario.'
-    ),
-
-    StringField(
-        name='codigoIdioma',
-        widget=StringWidget(
-            label="Codigo de Idioma",
-            label2="Language Code",
-            description="Codigo del idioma en que se ha creado el contenido del elemento.",
-            description2="Code of the language used to edit the element contents.",
-            label_msgid='gvSIGbpd_BPDElemento_attr_codigoIdioma_label',
-            description_msgid='gvSIGbpd_BPDElemento_attr_codigoIdioma_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Codigo del idioma en que se ha creado el contenido del elemento.",
-        duplicates="0",
-        label2="Language Code",
-        ea_localid="255",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Code of the language used to edit the element contents.",
-        ea_guid="{B7601699-AE23-4127-B9B2-1E2A8D4C064B}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Codigo de Idioma",
-        length="0",
-        exclude_from_traversalconfig="True",
-        containment="Not Specified",
-        position="2",
-        owner_class_name="BPDElemento",
-        exclude_from_views="[ 'Textual', 'Tabular',  ]",
-        exclude_from_copyconfig="True"
     ),
 
     ComputedField(
@@ -437,32 +394,6 @@ schema = Schema((
         description='Elementos de Plone conteniendo una Noticia.'
     ),
 
-    ComputedField(
-        name='pathDelRaiz',
-        widget=ComputedField._properties['widget'](
-            label='Pathdelraiz',
-            label_msgid='gvSIGbpd_BPDElemento_attr_pathDelRaiz_label',
-            i18n_domain='gvSIGbpd',
-        ),
-        duplicates="0",
-        ea_localid="253",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        ea_guid="{941F79AF-536C-4d2b-B35B-845573440804}",
-        scale="0",
-        expression="context.fPathDelRaiz()",
-        length="0",
-        exclude_from_traversalconfig="True",
-        containment="Not Specified",
-        position="3",
-        owner_class_name="BPDElemento",
-        exclude_from_views="[ 'Textual', 'Tabular',  ]",
-        exclude_from_exportconfig="True",
-        exclude_from_copyconfig="True"
-    ),
-
     TextField(
         name='text',
         widget=TextAreaWidget(
@@ -489,41 +420,8 @@ schema = Schema((
         label="Texto",
         length="0",
         containment="Not Specified",
-        position="0",
+        position="5",
         owner_class_name="BPDElemento"
-    ),
-
-    StringField(
-        name='versionInterna',
-        widget=StringWidget(
-            label="Version Interna",
-            label2="Internal Version identifier",
-            description="Identificador de version para uso interno de la aplicacion.",
-            description2="Version identifier used internally by the application.",
-            label_msgid='gvSIGbpd_BPDElemento_attr_versionInterna_label',
-            description_msgid='gvSIGbpd_BPDElemento_attr_versionInterna_help',
-            i18n_domain='gvSIGbpd',
-        ),
-        description="Identificador de version para uso interno de la aplicacion.",
-        duplicates="0",
-        label2="Internal Version identifier",
-        ea_localid="254",
-        derived="0",
-        precision=0,
-        collection="false",
-        styleex="volatile=0;",
-        description2="Version identifier used internally by the application.",
-        ea_guid="{285124FC-4C3A-4c00-9645-4A026E460B11}",
-        write_permission='Modify portal content',
-        scale="0",
-        label="Version Interna",
-        length="0",
-        exclude_from_traversalconfig="True",
-        containment="Not Specified",
-        position="1",
-        owner_class_name="BPDElemento",
-        exclude_from_views="[ 'Textual', 'Tabular',  ]",
-        exclude_from_copyconfig="True"
     ),
 
 ),
@@ -533,7 +431,10 @@ schema = Schema((
 ##/code-section after-local-schema
 
 BPDElemento_schema = getattr(BPDElemento_CopyConfig, 'schema', Schema(())).copy() + \
+    getattr(BPDConRegistroActividad, 'schema', Schema(())).copy() + \
+    getattr(BPDConTraducciones, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_Meta, 'schema', Schema(())).copy() + \
+    getattr(BPDConVersiones, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_ExportConfig, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_MappingConfig, 'schema', Schema(())).copy() + \
     getattr(BPDElemento_TraversalConfig, 'schema', Schema(())).copy() + \
@@ -544,13 +445,55 @@ BPDElemento_schema = getattr(BPDElemento_CopyConfig, 'schema', Schema(())).copy(
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDElemento(BPDElemento_CopyConfig, BPDElemento_Meta, BPDElemento_ExportConfig, BPDElemento_MappingConfig, BPDElemento_TraversalConfig, BPDElemento_Operaciones, ATCTMixin):
+class BPDElemento(BPDElemento_CopyConfig, BPDConRegistroActividad, BPDConTraducciones, BPDElemento_Meta, BPDConVersiones, BPDElemento_ExportConfig, BPDElemento_MappingConfig, BPDElemento_TraversalConfig, BPDElemento_Operaciones, ATCTMixin):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BPDElemento_CopyConfig,'__implements__',()),) + (getattr(BPDElemento_Meta,'__implements__',()),) + (getattr(BPDElemento_ExportConfig,'__implements__',()),) + (getattr(BPDElemento_MappingConfig,'__implements__',()),) + (getattr(BPDElemento_TraversalConfig,'__implements__',()),) + (getattr(BPDElemento_Operaciones,'__implements__',()),) + (getattr(ATCTMixin,'__implements__',()),)
+    __implements__ = (getattr(BPDElemento_CopyConfig,'__implements__',()),) + (getattr(BPDConRegistroActividad,'__implements__',()),) + (getattr(BPDConTraducciones,'__implements__',()),) + (getattr(BPDElemento_Meta,'__implements__',()),) + (getattr(BPDConVersiones,'__implements__',()),) + (getattr(BPDElemento_ExportConfig,'__implements__',()),) + (getattr(BPDElemento_MappingConfig,'__implements__',()),) + (getattr(BPDElemento_TraversalConfig,'__implements__',()),) + (getattr(BPDElemento_Operaciones,'__implements__',()),) + (getattr(ATCTMixin,'__implements__',()),)
 
-    allowed_content_types = ['Image', 'Document', 'File', 'Link', 'News Item'] + list(getattr(BPDElemento_CopyConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Meta, 'allowed_content_types', [])) + list(getattr(BPDElemento_ExportConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_MappingConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_TraversalConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Operaciones, 'allowed_content_types', [])) + list(getattr(ATCTMixin, 'allowed_content_types', []))
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
+
+    # Traceability links fields
+
+    versioning_link_fields = ['versionesAnteriores', 'versionesSiguientes',]
+    translation_link_fields = ['originalDeTraduccion', 'elementosTraducidos',]
+    usage_link_fields = ['elementoUsado', 'usosDelElemento',]
+    derivation_link_fields = ['elementosBase', 'elementosDerivados',]
+
+
+
+    allowed_content_types = ['Image', 'Document', 'File', 'Link', 'News Item'] + list(getattr(BPDElemento_CopyConfig, 'allowed_content_types', [])) + list(getattr(BPDConRegistroActividad, 'allowed_content_types', [])) + list(getattr(BPDConTraducciones, 'allowed_content_types', [])) + list(getattr(BPDElemento_Meta, 'allowed_content_types', [])) + list(getattr(BPDConVersiones, 'allowed_content_types', [])) + list(getattr(BPDElemento_ExportConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_MappingConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_TraversalConfig, 'allowed_content_types', [])) + list(getattr(BPDElemento_Operaciones, 'allowed_content_types', [])) + list(getattr(ATCTMixin, 'allowed_content_types', []))
+
+    aliases = updateAliases( ATDocument, {'relations_form':'Tabular','folder_factories':'Tabular','delete_confirmation': 'Eliminar','object_rename': 'Editar','content_status_modify':'Tabular','content_status_history':'Tabular','placeful_workflow_configuration': 'Tabular',})
+
     _at_rename_after_creation = True
 
     schema = BPDElemento_schema
@@ -567,19 +510,89 @@ class BPDElemento(BPDElemento_CopyConfig, BPDElemento_Meta, BPDElemento_ExportCo
         
         return getToolByName( self, 'ModelDDvlPlone_tool').fCookedBodyForElement( None, self, stx_level, setlevel, None)
 
+    security.declarePublic('displayContentsTab')
+    def displayContentsTab(self):
+        """
+        """
+        
+        return False
+
+    security.declarePublic('externalEditorEnabled')
+    def externalEditorEnabled(self):
+        """
+        """
+        
+        return False
+
+    security.declarePublic('cb_isCopyable')
+    def cb_isCopyable(self):
+        """
+        """
+        
+        return self.fAllowRead()
+
+    security.declarePublic('cb_isMoveable')
+    def cb_isMoveable(self):
+        """
+        """
+        
+        return self.fAllowWrite()
+
+    security.declarePublic('fAllowExport')
+    def fAllowExport(self):
+        """
+        """
+        
+        return self.fAllowRead()
+
+    security.declarePublic('fAllowTranslation')
+    def fAllowTranslation(self):
+        """
+        """
+        
+        return self.fAllowRead()
+
+    security.declarePublic('fAllowVersion')
+    def fAllowVersion(self):
+        """
+        """
+        
+        return self.fAllowRead()
+
     security.declarePublic('fAllowImport')
     def fAllowImport(self):
         """
         """
         
-        return True
+        return self.fAllowWrite()
+
+    security.declarePublic('fAllowEditId')
+    def fAllowEditId(self):
+        """
+        """
+        
+        return self.fAllowWrite()
 
     security.declarePublic('fAllowPaste')
     def fAllowPaste(self):
         """
         """
         
-        return True
+        return self.fAlowWrite()
+
+    security.declarePublic('fAllowRead')
+    def fAllowRead(self):
+        """
+        """
+        
+        return self.getRaiz().fAllowRead()
+
+    security.declarePublic('fAllowWrite')
+    def fAllowWrite(self):
+        """
+        """
+        
+        return self.fAllowRead() and self.getRaiz().fAllowWrite()
 
     security.declarePublic('getContenedor')
     def getContenedor(self):
@@ -614,7 +627,7 @@ class BPDElemento(BPDElemento_CopyConfig, BPDElemento_Meta, BPDElemento_ExportCo
         """
         """
         
-        return not aq_parent( aq_inner( self)) or ( (self.meta_type == "BPDOrganizacion") and not( aq_parent( aq_inner( self)).meta_type == "BPDColeccionUnidadesOrganizacionales"))
+        return not aq_parent( aq_inner( self)) # Overriden in BPDOrganizacion. Test for objects still not hooed up into the hierarchy.
 
     security.declarePublic('getNombreProyecto')
     def getNombreProyecto(self):
@@ -622,6 +635,13 @@ class BPDElemento(BPDElemento_CopyConfig, BPDElemento_Meta, BPDElemento_ExportCo
         """
         
         return "gvSIGbpd"
+
+    security.declarePublic('getAddableTypesInMenu')
+    def getAddableTypesInMenu(self,theTypes):
+        """
+        """
+        
+        return []
 # end of class BPDElemento
 
 ##code-section module-footer #fill in your manual code here

@@ -48,7 +48,7 @@ schema = Schema((
         inverse_relation_label="Elementos Referenciados",
         inverse_relation_description="Elementos de la aplicacion referidos desde este elemento.",
         description="Elementos de la aplicacion que refieren al presente elemento.",
-        relationship='Referentes',
+        relationship='BPDReferentes',
         label2="Refering elements",
         widget=ReferenceBrowserWidget(
             label="Elementos Referentes",
@@ -69,7 +69,7 @@ schema = Schema((
         label="Elementos Referentes",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='Referidos'
+        inverse_relationship='BPDReferidos'
     ),
 
     RelationField(
@@ -77,7 +77,7 @@ schema = Schema((
         inverse_relation_label="Elementos Referentes",
         inverse_relation_description="Elementos de la aplicacion que refieren al presente elemento.",
         description="Elementos de la aplicacion referidos desde este elemento.",
-        relationship='Referidos',
+        relationship='BPDReferidos',
         label2="Referenced elements",
         widget=ReferenceBrowserWidget(
             label="Elementos Referenciados",
@@ -97,7 +97,7 @@ schema = Schema((
         label="Elementos Referenciados",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='Referentes',
+        inverse_relationship='BPDReferentes',
         owner_class_name="BPDArquetipoReferenciable"
     ),
 
@@ -166,7 +166,7 @@ schema = Schema((
         inverse_relation_label="Elementos cualificadamente Referidos",
         inverse_relation_description="Elementos referidos desde esta Referencia Cualificada.",
         description="Referencias Cualificadas refiriendo a este elemento.",
-        relationship='ReferentesCualificados',
+        relationship='BPDReferentesCualificados',
         label2="Refering Qualified References",
         widget=ReferenceBrowserWidget(
             label="Referentes Cualificados",
@@ -187,7 +187,7 @@ schema = Schema((
         label="Referentes Cualificados",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ReferidosCualificados'
+        inverse_relationship='BPDReferidosCualificados'
     ),
 
 ),
@@ -208,6 +208,35 @@ class BPDArquetipoReferenciable(BPDArquetipo):
     security = ClassSecurityInfo()
     __implements__ = (getattr(BPDArquetipo,'__implements__',()),)
 
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = ['BPDReferenciaCualificada'] + list(getattr(BPDArquetipo, 'allowed_content_types', []))
 
     actions =  (
@@ -218,7 +247,7 @@ class BPDArquetipoReferenciable(BPDArquetipo):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -227,7 +256,7 @@ class BPDArquetipoReferenciable(BPDArquetipo):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -236,7 +265,7 @@ class BPDArquetipoReferenciable(BPDArquetipo):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -245,7 +274,7 @@ class BPDArquetipoReferenciable(BPDArquetipo):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -254,7 +283,7 @@ class BPDArquetipoReferenciable(BPDArquetipo):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -263,7 +292,7 @@ class BPDArquetipoReferenciable(BPDArquetipo):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -272,7 +301,25 @@ class BPDArquetipoReferenciable(BPDArquetipo):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

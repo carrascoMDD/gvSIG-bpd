@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -114,7 +114,7 @@ schema = Schema((
         additional_columns=['proposito', 'responsableMantenimiento', 'detallesProceso', 'estado', 'nivelDeImposicion'],
         inverse_relation_description="Pasos de otros Procesos de Negocio donde este proceso se ejecuta de principio a fin, como un Paso Sub-Proceso.",
         description="Proceso de Negocio que se ejecuta como parte del Proceso de Negocio de mayor alcance.",
-        relationship='ProcesoUsado',
+        relationship='BPDProcesoUsado',
         inverse_relation_field_name='usadoComoSubProcesos',
         inverse_relation_label2="Used as Sub-Business Process in",
         label2="Used Business Process",
@@ -132,7 +132,7 @@ schema = Schema((
         description2="Business Process executed as part of the current one.",
         multiValued=0,
         containment="Unspecified",
-        inverse_relationship='UsadoComoSubProcesos',
+        inverse_relationship='BPDUsadoComoSubProcesos',
         owner_class_name="BPDSubProceso",
         deststyle="Owned=0;Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;"
     ),
@@ -161,6 +161,35 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
 
     meta_type = 'BPDSubProceso'
     portal_type = 'BPDSubProceso'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = [] + list(getattr(BPDPasoGeneral, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -185,7 +214,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -194,7 +223,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -203,7 +232,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -212,7 +241,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -221,7 +250,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -230,7 +259,7 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -239,7 +268,25 @@ class BPDSubProceso(OrderedBaseFolder, BPDPasoGeneral):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

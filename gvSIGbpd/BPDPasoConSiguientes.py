@@ -65,6 +65,7 @@ schema = Schema((
         owner_class_name="BPDPasoConSiguientes",
         styleex="volatile=0;",
         expression="', '.join( [a.Title() for a in context.getPasosSiguientes()])",
+        computed_types="string",
         exclude_from_values_form="True"
     ),
 
@@ -73,7 +74,7 @@ schema = Schema((
         inverse_relation_label="Pasos Anteriores",
         inverse_relation_description="Pasos que se ejecutan antes de este paso. Este paso se ejecuta tras completarse alguno de sus pasos anteriores.",
         description="Pasos que se ejecutaran tras completarse este paso.",
-        relationship='PasosSiguientes',
+        relationship='BPDPasosSiguientes',
         label2="Next Steps",
         widget=ReferenceBrowserWidget(
             label="Pasos Siguientes",
@@ -94,7 +95,7 @@ schema = Schema((
         label="Pasos Siguientes",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PasosAnteriores',
+        inverse_relationship='BPDPasosAnteriores',
         owner_class_name="BPDPasoConSiguientes"
     ),
 

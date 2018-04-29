@@ -34,10 +34,105 @@ from Products.Archetypes.atapi import *
 from Products.gvSIGbpd.BPDUnidadOrganizacional import BPDUnidadOrganizacional
 from Products.gvSIGbpd.config import *
 
+# additional imports from tagged value 'import'
+from Acquisition  import aq_inner, aq_parent
+
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
 schema = Schema((
+
+    BooleanField(
+        name='permiteLeer',
+        widget=BooleanField._properties['widget'](
+            label="Permite ver Organizacion",
+            label2="Allow to see Organization",
+            description="Si Verdadero, entonces los usuarios pueden ver la Organizacion. Puede ser Falso durante  procesos de importacion largos, o por indicacion del administrador.",
+            description2="If True, then the users may see  the Organization. It may be False during long import processes or by manager request.",
+            label_msgid='gvSIGbpd_BPDOrganizacion_attr_permiteLeer_label',
+            description_msgid='gvSIGbpd_BPDOrganizacion_attr_permiteLeer_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Si Verdadero, entonces los usuarios pueden ver la Organizacion. Puede ser Falso durante  procesos de importacion largos, o por indicacion del administrador.",
+        duplicates="0",
+        label2="Allow to see Organization",
+        ea_localid="344",
+        derived="0",
+        collection="false",
+        styleex="volatile=0;",
+        description2="If True, then the users may see  the Organization. It may be False during long import processes or by manager request.",
+        ea_guid="{4AB95A00-7009-4f7d-8E86-E26666E1849C}",
+        read_only="True",
+        default="True",
+        label="Permite ver Organizacion",
+        containment="Not Specified",
+        position="0",
+        owner_class_name="BPDOrganizacion",
+        exclude_from_exportconfig="True",
+        exclude_from_copyconfig="True"
+    ),
+
+    BooleanField(
+        name='permiteModificar',
+        widget=BooleanField._properties['widget'](
+            label="Permite modificar Organizacion",
+            label2="Allow to change Organization",
+            description="Si Verdadero, entonces los usuarios pueden cambiar la Organizacion. Puede ser Falso durante  procesos de importacion largos, o por indicacion del administrador.",
+            description2="If True, then the users may change the Organization. It may be False during long import processes or by manager request.",
+            label_msgid='gvSIGbpd_BPDOrganizacion_attr_permiteModificar_label',
+            description_msgid='gvSIGbpd_BPDOrganizacion_attr_permiteModificar_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Si Verdadero, entonces los usuarios pueden cambiar la Organizacion. Puede ser Falso durante  procesos de importacion largos, o por indicacion del administrador.",
+        duplicates="0",
+        label2="Allow to change Organization",
+        ea_localid="345",
+        derived="0",
+        collection="false",
+        styleex="volatile=0;",
+        description2="If True, then the users may change the Organization. It may be False during long import processes or by manager request.",
+        ea_guid="{159316D0-39EF-4c8d-8CF7-FF2DBFE4C49D}",
+        read_only="True",
+        default="True",
+        label="Permite modificar Organizacion",
+        containment="Not Specified",
+        position="2",
+        owner_class_name="BPDOrganizacion",
+        exclude_from_exportconfig="True",
+        exclude_from_copyconfig="True"
+    ),
+
+    StringField(
+        name='versionInterna',
+        widget=StringWidget(
+            label="Version (uso interno)",
+            label2="Version identifier (internal)",
+            description="Identificador de version para uso interno de la aplicacion.",
+            description2="Version identifier used internally by the application.",
+            label_msgid='gvSIGbpd_BPDOrganizacion_attr_versionInterna_label',
+            description_msgid='gvSIGbpd_BPDOrganizacion_attr_versionInterna_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Identificador de version para uso interno de la aplicacion.",
+        duplicates="0",
+        label2="Version identifier (internal)",
+        ea_localid="372",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Version identifier used internally by the application.",
+        ea_guid="{6F804C0A-A2C8-47e1-8D1D-3D708FAF4D61}",
+        write_permission='Modify portal content',
+        scale="0",
+        is_version="True",
+        label="Version (uso interno)",
+        length="0",
+        exclude_from_traversalconfig="True",
+        containment="Not Specified",
+        position="1",
+        owner_class_name="BPDOrganizacion"
+    ),
 
     ComputedField(
         name='coleccionesPoliticasDeNegocio',
@@ -159,6 +254,38 @@ schema = Schema((
         description='Colecciones de Herramientas que la Organizacion aplica para manejar ciertos Artefactos y asistir en la ejecucion de Pasos de Procesos de Negocio.'
     ),
 
+    StringField(
+        name='comentarioVersionInterna',
+        widget=StringWidget(
+            label="Comentario de Version (uso interno)",
+            label2="Version Comment (internal)",
+            description="Comentario a la version para uso interno de la aplicacion.",
+            description2="Comments on the Version used internally by the application.",
+            label_msgid='gvSIGbpd_BPDOrganizacion_attr_comentarioVersionInterna_label',
+            description_msgid='gvSIGbpd_BPDOrganizacion_attr_comentarioVersionInterna_help',
+            i18n_domain='gvSIGbpd',
+        ),
+        description="Comentario a la version para uso interno de la aplicacion.",
+        duplicates="0",
+        label2="Version Comment (internal)",
+        ea_localid="373",
+        derived="0",
+        precision=0,
+        collection="false",
+        styleex="volatile=0;",
+        description2="Comments on the Version used internally by the application.",
+        ea_guid="{E772FF53-10E9-4299-B6DB-1CE6FA85B39C}",
+        is_version_comment="True",
+        scale="0",
+        write_permission='Modify portal content',
+        label="Comentario de Version (uso interno)",
+        length="0",
+        exclude_from_traversalconfig="True",
+        containment="Not Specified",
+        position="3",
+        owner_class_name="BPDOrganizacion"
+    ),
+
 ),
 )
 
@@ -183,6 +310,35 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
 
     meta_type = 'BPDOrganizacion'
     portal_type = 'BPDOrganizacion'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = ['BPDColeccionPoliticasDeNegocio', 'BPDColeccionHerramientas', 'BPDColeccionProcesosDeNegocio', 'BPDColeccionReglasDeNegocio', 'BPDColeccionArtefactos'] + list(getattr(BPDUnidadOrganizacional, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 1
@@ -202,21 +358,30 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
     actions =  (
 
 
+       {'action': "string:$object_url/base_edit",
+        'category': "object",
+        'id': 'edit',
+        'name': 'Edit',
+        'permissions': ("ModifyPortalContent",),
+        'condition': """python:('portal_factory' in object.getPhysicalPath())"""
+       },
+
+
+       {'action': "string:$object_url/Editar",
+        'category': "object",
+        'id': 'editar',
+        'name': 'Edit',
+        'permissions': ("ModifyPortalContent",),
+        'condition': """python:( not ('portal_factory' in object.getPhysicalPath())) and object.fAllowWrite()"""
+       },
+
+
        {'action': "string:$object_url/content_status_history",
         'category': "object",
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
-       },
-
-
-       {'action': "string:${object_url}/Editar",
-        'category': "object",
-        'id': 'edit',
-        'name': 'Edit',
-        'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:0"""
        },
 
 
@@ -225,7 +390,7 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -234,7 +399,7 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -243,7 +408,7 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -252,7 +417,7 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -261,16 +426,25 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
-       {'action': "string:${object_url}/base_edit",
-        'category': "object",
-        'id': 'edit',
-        'name': 'Edit',
-        'permissions': ("ModifyPortalContent",),
-        'condition': 'python:here.getEsRaiz()'
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 
@@ -285,13 +459,6 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
 
     # Methods
 
-    security.declarePublic('cb_isCopyable')
-    def cb_isCopyable(self):
-        """
-        """
-        
-        return not self.getEsRaiz()
-
     security.declarePublic('manage_afterAdd')
     def manage_afterAdd(self,item,container):
         """
@@ -305,6 +472,27 @@ class BPDOrganizacion(OrderedBaseFolder, BPDUnidadOrganizacional):
         """
         
         return self.pHandle_manage_pasteObjects( cb_copy_data, REQUEST)
+
+    security.declarePublic('getEsRaiz')
+    def getEsRaiz(self):
+        """
+        """
+        
+        return not aq_parent( aq_inner( self)) or ( not( aq_parent( aq_inner( self)).meta_type == "BPDColeccionUnidadesOrganizacionales")) # First test for objects still not hooed up into the hierarchy
+
+    security.declarePublic('fAllowRead')
+    def fAllowRead(self):
+        """
+        """
+        
+        return self.getPermiteLeer() and ( self.getEsRaiz() or self.getRaiz().fAllowRead())
+
+    security.declarePublic('fAllowWrite')
+    def fAllowWrite(self):
+        """
+        """
+        
+        return self.fAllowRead() and self.getPermiteModificar() and ( self.getEsRaiz() or self.getRaiz().fAllowWrite())
 
 registerType(BPDOrganizacion, PROJECTNAME)
 # end of class BPDOrganizacion

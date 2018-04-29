@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -80,7 +80,7 @@ schema = Schema((
         inverse_relation_label="Salidas de Procesos de Negocio",
         inverse_relation_description="Procesos de Negocio donde el Artefacto se produce como Salida, tras el final exitoso de la ejecucion.",
         description="Artefactos producidos como Salida al finalizar exitosamente el Proceso de Negocio.",
-        relationship='ArtefactosDeSalida',
+        relationship='BPDArtefactosDeSalida',
         label2="Output Artefacts",
         widget=ReferenceBrowserWidget(
             label="Artefactos de Salida",
@@ -101,7 +101,7 @@ schema = Schema((
         label="Artefactos de Salida",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='SalidasDeProcesosDeNegocio',
+        inverse_relationship='BPDSalidasDeProcesosDeNegocio',
         owner_class_name="BPDSalida"
     ),
 
@@ -189,6 +189,35 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
 
     meta_type = 'BPDSalida'
     portal_type = 'BPDSalida'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -213,7 +242,7 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -222,7 +251,7 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -231,7 +260,7 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -240,7 +269,7 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -249,7 +278,7 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -258,7 +287,7 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -267,7 +296,25 @@ class BPDSalida(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

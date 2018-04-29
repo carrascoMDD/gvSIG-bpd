@@ -74,7 +74,7 @@ schema = Schema((
         additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
         inverse_relation_description="Politicas de Negocio de las que se deriva la Regla de Negocio",
         description="Reglas de Negocio que refinan la Politica de Negocio en terminos decidibles.",
-        relationship='ReglasDeNegocioDerivadas',
+        relationship='BPDReglasDeNegocioDerivadas',
         inverse_relation_field_name='politicasDeNegocioBase',
         inverse_relation_label2="Base Business Policies",
         label2="Derived Business Rules",
@@ -94,7 +94,7 @@ schema = Schema((
         multiValued=1,
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         containment="Unspecified",
-        inverse_relationship='PoliticasDeNegocioBase',
+        inverse_relationship='BPDPoliticasDeNegocioBase',
         owner_class_name="BPDPoliticaDeNegocio",
         dependency_supplier=True
     ),
@@ -105,7 +105,7 @@ schema = Schema((
         additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
         inverse_relation_description="Politicas de Negocio que prescriben o gobiernan el uso de la Herramienta en la Organizacion.",
         description="Herramientas cuya utilizacion esta prescrita o gobernada por la Politica de Negocio.",
-        relationship='HerramientasGobernadas',
+        relationship='BPDHerramientasGobernadas',
         inverse_relation_field_name='politicasDeNegocioGobernantes',
         inverse_relation_label2="Governing Business Policies",
         label2="Governed Tools",
@@ -125,7 +125,7 @@ schema = Schema((
         multiValued=1,
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         containment="Unspecified",
-        inverse_relationship='HerramientaAfectadaPorPoliticasDeNegocio',
+        inverse_relationship='BPDHerramientasAfectadasPorPoliticasDeNegocio',
         owner_class_name="BPDPoliticaDeNegocio",
         dependency_supplier=True
     ),
@@ -136,7 +136,7 @@ schema = Schema((
         additional_columns=['abreviatura', 'responsabilidadesClave'],
         inverse_relation_description="Las Politicas de Negocio que afectan a la labor del Perfil o Unidad Organizacional",
         description="Perfiles y Unidades Organizacionales que aplican la Politica de Negocio durante su labor.",
-        relationship='ParticipantesGobernados',
+        relationship='BPDParticipantesGobernados',
         inverse_relation_field_name='politicasDeNegocioGobernantes',
         inverse_relation_label2="Governing Business Policies",
         label2="Governed participant Profiles and Organisational Units",
@@ -156,7 +156,7 @@ schema = Schema((
         multiValued=1,
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         containment="Unspecified",
-        inverse_relationship='AfectadoPorPoliticasDeNegocio',
+        inverse_relationship='BPDAfectadoPorPoliticasDeNegocio',
         owner_class_name="BPDPoliticaDeNegocio",
         dependency_supplier=True
     ),
@@ -167,7 +167,7 @@ schema = Schema((
         additional_columns=['codigo', 'estado', 'nivelDeImposicion'],
         inverse_relation_description="Politicas de Negocio que prescriben o gobiernan el uso del Artefacto en la Organizacion.",
         description="Artefactos cuya utilizacion esta prescrita o gobernada por la Politica de Negocio.",
-        relationship='ArtefactosGobernados',
+        relationship='BPDArtefactosGobernados',
         inverse_relation_field_name='politicasDeNegocioGobernantes',
         inverse_relation_label2="Geverning Business Policies",
         label2="Governed Artefacts",
@@ -187,7 +187,7 @@ schema = Schema((
         multiValued=1,
         deststyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         containment="Unspecified",
-        inverse_relationship='ArtefactoAfectadoPorPoliticasDeNegocio',
+        inverse_relationship='BPDArtefactoAfectadoPorPoliticasDeNegocio',
         owner_class_name="BPDPoliticaDeNegocio",
         dependency_supplier=True
     ),
@@ -197,7 +197,7 @@ schema = Schema((
         inverse_relation_label="Politicas de Negocio Gobernantes",
         inverse_relation_description="Politicas de Negocio a respetar durante la ejecucion del Proceso de Negocio.",
         description="Procesos de Negocio que respetan o se esfuerzan en hacer cumplir la Politica de Negocio.",
-        relationship='ProcesosDeNegocioGobernados',
+        relationship='BPDProcesosDeNegocioGobernados',
         label2="Governed Business Processes",
         widget=ReferenceBrowserWidget(
             label="Procesos de Negocio gobernados",
@@ -219,7 +219,7 @@ schema = Schema((
         label="Procesos de Negocio gobernados",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PoliticasDeNegocioGobernantes'
+        inverse_relationship='BPDPoliticasDeNegocioGobernantes'
     ),
 
 ),
@@ -246,6 +246,35 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
     meta_type = 'BPDPoliticaDeNegocio'
     portal_type = 'BPDPoliticaDeNegocio'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = ['BPDColeccionPoliticasDeNegocio'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -270,7 +299,7 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -279,7 +308,7 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -288,7 +317,7 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -297,7 +326,7 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -306,7 +335,7 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -315,7 +344,7 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -324,7 +353,25 @@ class BPDPoliticaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

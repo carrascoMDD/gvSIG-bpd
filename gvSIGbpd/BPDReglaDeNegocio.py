@@ -36,8 +36,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTMixin
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATContentTypes.content.base import ATCTMixin
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -73,7 +73,7 @@ schema = Schema((
         inverse_relation_label="Reglas de Negocio aplicadas",
         inverse_relation_description="Reglas de Negocio aplicadas durante la ejecucion del Paso.",
         description="Pasos de Procesos de Negocio donde se aplica la Regla de Negocio",
-        relationship='PasosAplicandoLaRegla',
+        relationship='BPDPasosAplicandoLaRegla',
         label2="Business Process Steps applying the Business Rule",
         widget=ReferenceBrowserWidget(
             label="Pasos dirigidos",
@@ -95,7 +95,7 @@ schema = Schema((
         label="Pasos dirigidos",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ReglasDeNegocioAplicadas'
+        inverse_relationship='BPDReglasDeNegocioAplicadas'
     ),
 
     RelationField(
@@ -104,7 +104,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Reglas de Negocio que refinan la Politica de Negocio en terminos decidibles.",
         description="Politicas de Negocio de las que se deriva la Regla de Negocio",
-        relationship='PoliticasDeNegocioBase',
+        relationship='BPDPoliticasDeNegocioBase',
         inverse_relation_field_name='reglasDeNegocioDerivadas',
         sourcestyle="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;",
         label2="Base Business Policies",
@@ -122,7 +122,7 @@ schema = Schema((
         description2="Business Policies that are the basis of the Business Rule",
         multiValued=1,
         inverse_relation_label2="Derived Business Rules",
-        inverse_relationship='ReglasDeNegocioDerivadas',
+        inverse_relationship='BPDReglasDeNegocioDerivadas',
         write_permission='Modify portal content',
         additional_columns=['codigo','estado','nivelDeImposicion',]
     ),
@@ -132,7 +132,7 @@ schema = Schema((
         inverse_relation_label="Reglas de Negocio dirigentes",
         inverse_relation_description="Las Reglas de Negocio que dirigen la labor de el Perfil o Unidad Organizacional.",
         description="Perfiles y Unidades Organizacionales que aplican la Regla de Negocio durante su labor.",
-        relationship='ParticipantesDirigidos',
+        relationship='BPDParticipantesDirigidos',
         label2="Directed Participant Profiles and Organisational Units",
         widget=ReferenceBrowserWidget(
             label="Participantes dirigidos",
@@ -153,7 +153,7 @@ schema = Schema((
         label="Participantes dirigidos",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='AfectadoPorReglasDeNegocio',
+        inverse_relationship='BPDAfectadoPorReglasDeNegocio',
         owner_class_name="BPDReglaDeNegocio"
     ),
 
@@ -162,7 +162,7 @@ schema = Schema((
         inverse_relation_label="Reglas de Negocio dirigentes",
         inverse_relation_description="Reglas de Negocio que dirigen el uso de la Herramienta en la Organizacion.",
         description="Herramientas cuya utilizacion esta dirigida por la Regla de Negocio.",
-        relationship='HerramientasDirigidas',
+        relationship='BPDHerramientasDirigidas',
         label2="Driven Tools",
         widget=ReferenceBrowserWidget(
             label="Herramientas dirigidas",
@@ -183,7 +183,7 @@ schema = Schema((
         label="Herramientas dirigidas",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='HerramientaAfectadaPorReglasDeNegocio',
+        inverse_relationship='BPDHerramientasAfectadasPorReglasDeNegocio',
         owner_class_name="BPDReglaDeNegocio"
     ),
 
@@ -192,7 +192,7 @@ schema = Schema((
         inverse_relation_label="Reglas de Negocio dirigentes",
         inverse_relation_description="Reglas de Negocio que dirigen el uso del Artefacto en la Organizacion.",
         description="Artefactos cuya utilizacion esta prescrita o gobernada por la Regla de Negocio.",
-        relationship='ArtefactosDirigidos',
+        relationship='BPDArtefactosDirigidos',
         label2="Affected Artefacts",
         widget=ReferenceBrowserWidget(
             label="Artefactos dirigidos",
@@ -213,7 +213,7 @@ schema = Schema((
         label="Artefactos dirigidos",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='ArtefactoAfectadoPorReglasDeNegocio',
+        inverse_relationship='BPDArtefactosAfectadosPorReglasDeNegocio',
         owner_class_name="BPDReglaDeNegocio"
     ),
 
@@ -223,7 +223,7 @@ schema = Schema((
         containment="Unspecified",
         inverse_relation_description="Reglas de Negocio a tomar en cuenta durante durante la ejecucion del Proceso de Negocio.",
         description="Procesos de Negocio que toman en cuenta la Regla de Negocio durante su ejecucion.",
-        relationship='ProcesosDeNegocioDirigidos',
+        relationship='BPDProcesosDeNegocioDirigidos',
         inverse_relation_field_name='reglasDeNegocioDirigentes',
         sourcestyle="Navigable=Unspecified;Union=0;Derived=0;AllowDuplicates=0;Owned=0;",
         label2="Guided Business Processes",
@@ -241,7 +241,7 @@ schema = Schema((
         description2="Business Process applying or enforcing during their execution this Business Rule.",
         multiValued=1,
         inverse_relation_label2="Guiding Business Rules",
-        inverse_relationship='ReglasDeNegocioDirigentes',
+        inverse_relationship='BPDReglasDeNegocioDirigentes',
         write_permission='Modify portal content',
         additional_columns=['codigo','estado','nivelDeImposicion',]
     ),
@@ -270,6 +270,35 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
 
     meta_type = 'BPDReglaDeNegocio'
     portal_type = 'BPDReglaDeNegocio'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = ['BPDColeccionReglasDeNegocio'] + list(getattr(BPDArquetipoConAdopcion, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -294,7 +323,7 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -303,7 +332,7 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -312,7 +341,7 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -321,7 +350,7 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -330,7 +359,7 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -339,7 +368,7 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -348,7 +377,25 @@ class BPDReglaDeNegocio(OrderedBaseFolder, BPDArquetipoConAdopcion):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

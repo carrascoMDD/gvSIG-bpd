@@ -31,6 +31,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.gvSIGbpd.BPDPasoEstimado import BPDPasoEstimado
 from Products.gvSIGbpd.BPDArquetipoReferenciable import BPDArquetipoReferenciable
 from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
@@ -80,7 +81,7 @@ schema = Schema((
         inverse_relation_label="Pasos dirigidos",
         inverse_relation_description="Pasos de Procesos de Negocio donde se aplica la Regla de Negocio",
         description="Reglas de Negocio aplicadas durante la ejecucion del Paso.",
-        relationship='ReglasDeNegocioAplicadas',
+        relationship='BPDReglasDeNegocioAplicadas',
         label2="Applied Business Rules",
         widget=ReferenceBrowserWidget(
             label="Reglas de Negocio aplicadas",
@@ -101,7 +102,7 @@ schema = Schema((
         label="Reglas de Negocio aplicadas",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PasosAplicandoLaRegla',
+        inverse_relationship='BPDPasosAplicandoLaRegla',
         owner_class_name="BPDPasoMinimo"
     ),
 
@@ -110,7 +111,7 @@ schema = Schema((
         inverse_relation_label="Pasos Asistidos",
         inverse_relation_description="Pasos de procesos de negocio donde se aplica la Herramienta.",
         description="Herramientas a utilizar para ejecutar el paso de proceso de negocio o manejar los artefactos usados.",
-        relationship='HerramientasAplicadas',
+        relationship='BPDHerramientasAplicadas',
         label2="Applied Tools",
         widget=ReferenceBrowserWidget(
             label="Herramientas aplicadas",
@@ -131,7 +132,7 @@ schema = Schema((
         label="Herramientas aplicadas",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PasosAsistidos',
+        inverse_relationship='BPDPasosAsistidos',
         owner_class_name="BPDPasoMinimo"
     ),
 
@@ -173,19 +174,49 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-BPDPasoMinimo_schema = getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
+BPDPasoMinimo_schema = getattr(BPDPasoEstimado, 'schema', Schema(())).copy() + \
+    getattr(BPDArquetipoReferenciable, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable):
+class BPDPasoMinimo(OrderedBaseFolder, BPDPasoEstimado, BPDArquetipoReferenciable):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
+    __implements__ = (getattr(OrderedBaseFolder,'__implements__',()),) + (getattr(BPDPasoEstimado,'__implements__',()),) + (getattr(BPDArquetipoReferenciable,'__implements__',()),)
 
-    allowed_content_types = [] + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
+    allowed_content_types = [] + list(getattr(BPDPasoEstimado, 'allowed_content_types', [])) + list(getattr(BPDArquetipoReferenciable, 'allowed_content_types', []))
 
     actions =  (
 
@@ -195,7 +226,7 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -204,7 +235,7 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -213,7 +244,7 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -222,7 +253,7 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -231,7 +262,7 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -240,7 +271,7 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -249,7 +280,25 @@ class BPDPasoMinimo(OrderedBaseFolder, BPDArquetipoReferenciable):
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

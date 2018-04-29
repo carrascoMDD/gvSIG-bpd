@@ -40,8 +40,8 @@ from Products.Relations.field import RelationField
 from Products.gvSIGbpd.config import *
 
 # additional imports from tagged value 'import'
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.ATContentTypes.content.base import ATCTMixin
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -147,7 +147,7 @@ schema = Schema((
         inverse_relation_label="Plazos a cumplir",
         inverse_relation_description="Plazos en los que este Paso debe ejecutarse.",
         description="Pasos que deben ejecutarse dentro del Plazo. Son los pasos que se espera que acontezcan en el tiempo de espera indicado.",
-        relationship='PasosRequeridosEnPlazo',
+        relationship='BPDPasosRequeridosEnPlazo',
         label2="Required steps",
         widget=ReferenceBrowserWidget(
             label="Pasos requeridos",
@@ -168,7 +168,7 @@ schema = Schema((
         label="Pasos requeridos",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='RequeridosEnPlazos',
+        inverse_relationship='BPDRequeridosEnPlazos',
         owner_class_name="BPDPlazo"
     ),
 
@@ -264,6 +264,35 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
 
     meta_type = 'BPDPlazo'
     portal_type = 'BPDPlazo'
+
+
+    # Change Audit fields
+
+    creation_date_field = 'fechaCreacion'
+    creation_user_field = 'usuarioCreador'
+    modification_date_field = 'fechaModificacion'
+    modification_user_field = 'usuarioModificador'
+    deletion_date_field = 'fechaEliminacion'
+    deletion_user_field = 'usuarioEliminador'
+    is_inactive_field = 'estaInactivo'
+    change_counter_field = 'contadorCambios'
+    sources_counters_field = 'contadoresDeFuentes'
+    change_log_field = 'registroDeCambios'
+
+
+
+
+    # Versioning and Translation fields
+
+    inter_version_field = 'uidInterVersionesInterno'
+    version_field = 'versionInterna'
+    version_comment_field = 'comentarioVersionInterna'
+    language_field = 'codigoIdiomaInterno'
+    fields_pending_translation_field = 'camposPendientesTraduccionInterna'
+    fields_pending_revision_field = 'camposPendientesRevisionInterna'
+
+
+
     allowed_content_types = [] + list(getattr(BPDPasoConSiguientes, 'allowed_content_types', [])) + list(getattr(BPDPasoConAnteriores, 'allowed_content_types', [])) + list(getattr(BPDPasoGestorExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoConExcepciones, 'allowed_content_types', [])) + list(getattr(BPDPasoMinimo, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 0
@@ -288,7 +317,7 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
         'id': 'content_status_history',
         'name': 'State',
         'permissions': ("View",),
-        'condition': 'python:0'
+        'condition': """python:0"""
        },
 
 
@@ -297,7 +326,7 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
         'id': 'edit',
         'name': 'Edit',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowWrite()"""
        },
 
 
@@ -306,7 +335,7 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
         'id': 'mddexport',
         'name': 'Export',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowExport()"""
        },
 
 
@@ -315,7 +344,7 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
         'id': 'mddimport',
         'name': 'Import',
         'permissions': ("Modify portal content",),
-        'condition': 'python:1'
+        'condition': """python:object.fAllowImport()"""
        },
 
 
@@ -324,7 +353,7 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
         'id': 'local_roles',
         'name': 'Sharing',
         'permissions': ("Manage properties",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -333,7 +362,7 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
         'id': 'textual_rest',
         'name': 'TextualRest',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
        },
 
 
@@ -342,7 +371,25 @@ class BPDPlazo(OrderedBaseFolder, BPDPasoConSiguientes, BPDPasoConAnteriores, BP
         'id': 'view',
         'name': 'View',
         'permissions': ("View",),
-        'condition': 'python:1'
+        'condition': """python:1"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewVersion",
+        'category': "object_buttons",
+        'id': 'mddnewversion',
+        'name': 'New Version',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowVersion() and object.getEsRaiz()"""
+       },
+
+
+       {'action': "string:${object_url}/MDDNewTranslation",
+        'category': "object_buttons",
+        'id': 'mddnewtranslation',
+        'name': 'New Translation',
+        'permissions': ("Modify portal content",),
+        'condition': """python:object.fAllowTranslation() and object.getEsRaiz()"""
        },
 
 

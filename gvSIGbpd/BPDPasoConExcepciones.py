@@ -57,14 +57,15 @@ schema = Schema((
         ea_localid="258",
         derived="0",
         collection="false",
-        label="Pasos Alternativos o Excepcion",
+        styleex="volatile=0;",
         description2="Steps that will execute as an alternative to the main flow of next steps, or when an exceptional condition arises.",
         containment="Not Specified",
         ea_guid="{1FA73A97-84BC-4683-B4A4-7C409954B00B}",
         position="0",
         owner_class_name="BPDPasoConExcepciones",
-        styleex="volatile=0;",
+        label="Pasos Alternativos o Excepcion",
         expression="', '.join( [a.Title() for a in context.getPasosSiguientesEnCasoExcepcion()])",
+        computed_types="string",
         exclude_from_values_form="True"
     ),
 
@@ -73,7 +74,7 @@ schema = Schema((
         inverse_relation_label="Pasos anteriores en caso excepcion o flujo alternativo",
         inverse_relation_description="Pasos a los que sigue este paso como flujo alternativo, o en caso de excepcion.",
         description="Pasos que se ejecutan como alternativa al flujo principal de pasos siguientes, o cuando surje una condicion excepcional.",
-        relationship='PasosSiguientesEnCasoExcepcion',
+        relationship='BPDPasosSiguientesEnCasoExcepcion',
         label2="Alternative next steps or on Exception",
         widget=ReferenceBrowserWidget(
             label="Pasos Alternativos o en caso de Excepcion",
@@ -94,7 +95,7 @@ schema = Schema((
         label="Pasos Alternativos o en caso de Excepcion",
         multiValued=1,
         containment="Unspecified",
-        inverse_relationship='PasosOriginandoExcepcion',
+        inverse_relationship='BPDPasosOriginandoExcepcion',
         owner_class_name="BPDPasoConExcepciones"
     ),
 
