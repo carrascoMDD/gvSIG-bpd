@@ -1661,7 +1661,7 @@ class BPDElemento_Operaciones:
                 )
                 
                 
-            return REQUEST.RESPONSE.redirect(  '%s/Tabular?portal_status_message=%s' % ( self.absolute_url() + unPortalStatusMsg))
+            return REQUEST.RESPONSE.redirect(  '%s/Tabular?portal_status_message=%s' % ( self.absolute_url(),  unPortalStatusMsg))
                    
 
         # return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
