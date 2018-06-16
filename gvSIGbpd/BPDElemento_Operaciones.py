@@ -1610,7 +1610,7 @@ class BPDElemento_Operaciones:
             return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
         
         
-        unModelDDvlPloneTool = self.fModelDDvlPloneTool( False)
+        unModelDDvlPloneTool = self.fModelDDvlPloneTool()
         if not unModelDDvlPloneTool:
             return CopyContainer.manage_pasteObjects( self, cb_copy_data, REQUEST)
         
