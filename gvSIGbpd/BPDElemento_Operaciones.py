@@ -1648,7 +1648,7 @@ class BPDElemento_Operaciones:
                     unPasteResult.get( 'num_plone_elements_pasted', 0),
 
                     ( unPasteResult.get( 'error_reports', '') and self.fTranslateI18N( 'ModelDDvlPlone', 'error_reports', 'error_reports-')) or u'',
-                    self.fAsUnicode( self.fModelDDvlPloneTool().fPrettyPrint( unPasteResult.get( 'error_reports', []))),
+                    self.fAsUnicode( self.fModelDDvlPloneTool().fPrettyPrint( self, unPasteResult.get( 'error_reports', []))),
                 )
             else:
                 unPortalStatusMsg = ('#Total pasted=%d #MDD pasted=%d #Plone pasted=%d %s%s') % ( 
@@ -1657,7 +1657,7 @@ class BPDElemento_Operaciones:
                     unPasteResult.get( 'num_plone_elements_pasted', 0),
 
                     ( unPasteResult.get( 'error_reports', '') and self.fTranslateI18N( 'ModelDDvlPlone', 'error_reports', 'error_reports-')) or u'',
-                    self.fAsUnicode( self.fModelDDvlPloneTool().fPrettyPrint( unPasteResult.get( 'error_reports', []))),
+                    self.fAsUnicode( self.fModelDDvlPloneTool().fPrettyPrint( self, unPasteResult.get( 'error_reports', []))),
                 )
                 
                 
